@@ -9,7 +9,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.2.1 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.2.2 -->
 <style>
 :root{
   --bg:#f6f5f1; --panel:#ffffff; --ink:#1c1f24; --muted:#636a75; --line:#e2e0d9; --field:#2f6b3a;
@@ -127,6 +127,21 @@ input[type=search]{width:100%;padding:9px 10px;border:1px solid var(--line);bord
 select{padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;min-height:40px;width:100%}
 
 .worst.good{border-left-color:var(--go)}
+
+.cards{display:none}
+.sortbar{display:none;gap:8px;align-items:center;margin:6px 0 10px}
+.sortbar select{width:auto;flex:1}
+.ccard{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;width:100%;text-align:left;
+  border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);font:inherit;padding:10px 2px;cursor:pointer}
+.ccard.ref{cursor:default;font-style:italic}
+.cmain{min-width:0}
+.cnum{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;font-size:16px}
+.cnum .note{font-weight:400;font-size:11px}
+@media (max-width:640px){
+  .cards{display:block}
+  .sortbar{display:flex}
+  .widetable{display:none}
+}
 /* ---- phone first ---- */
 html,body{overflow-x:hidden}
 .formgrid>*,.row>*,.stepper,.card{min-width:0}
@@ -304,7 +319,11 @@ select{min-width:0;max-width:100%}
   <div class="card">
     <h2>Head coaches vs the engine</h2>
     <p class="note" id="coachintro"></p>
-    <div class="tablewrap"><table id="coachtable"></table></div>
+    <div class="sortbar"><label for="coachsort">Sort by</label>
+      <select id="coachsort"><option value="wins_lost_per_17">Fewest wins lost</option><option value="went_when_engine_said_go">Goes for it most when he should</option>
+      <option value="confident_mistakes">Fewest confident mistakes</option><option value="games">Most games</option></select></div>
+    <div class="cards" id="coachcards"></div>
+    <div class="tablewrap widetable"><table id="coachtable"></table></div>
   </div>
   <div class="card" style="margin-top:18px" id="coachdetail" hidden></div>
 </section>
@@ -314,7 +333,8 @@ select{min-width:0;max-width:100%}
   <div class="card">
     <h2>Kickers — skill and value over a replacement kicker</h2>
     <p class="note" id="kickintro"></p>
-    <div class="tablewrap"><table id="kicktable"></table></div>
+    <div class="cards" id="kickcards"></div>
+    <div class="tablewrap widetable"><table id="kicktable"></table></div>
   </div>
 </section>
 
@@ -835,9 +855,9 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
 (function () {
   if (typeof GRADES === "undefined") { $("coachtable").innerHTML = "<tr><td>Run engine/grade_coaches.py to build grades.</td></tr>"; return; }
   const G = GRADES;
-  $("coachintro").textContent = `${G.decisions.toLocaleString()} fourth downs ${G.seasons[0]}–${G.seasons[G.seasons.length - 1]}, each played twice: once as the coach called it, once as the engine would. ` +
-    `A coach is charged only for confident mistakes (≥90% of resampled models agree). Grades rank coaches against all ${G.coaches_in_reference} head coaches with a full season in the data. Click a coach for detail. ` +
-    `Read “wins lost” as a ranking: the engine's totals run larger than published research estimates (0.22–0.4 wins per team-season), so the order of coaches is more reliable than the exact numbers.`;
+  $("coachintro").textContent = `${G.decisions.toLocaleString()} fourth downs since ${G.seasons[0]}, each played twice: as the coach called it and as the engine would. ` +
+    `Coaches are charged only when 90% of the resampled models agree, and graded against all ${G.coaches_in_reference} head coaches with a full season. ` +
+    `Trust the order more than the exact numbers. Tap a coach for detail.`;
   const HABIT = { "punt->go": "Punts when he should go for it", "fg->go": "Kicks when he should go for it",
     "go->punt": "Goes for it when he should punt", "go->fg": "Goes for it when he should kick",
     "punt->fg": "Punts in field-goal range", "fg->punt": "Tries kicks he should punt" };
@@ -852,7 +872,17 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
   let sortKey = "wins_lost_per_17", asc = true;
   const rows = G.current.slice();
   function draw() {
-    rows.sort((a, b) => { const x = a[sortKey], y = b[sortKey]; const c = (x ?? 99) > (y ?? 99) ? 1 : (x ?? 99) < (y ?? 99) ? -1 : 0; return asc ? c : -c; });
+    rows.sort((a, b) => {
+      const ia = a.grade === "Incomplete", ib = b.grade === "Incomplete";
+      if (ia !== ib) return ia ? 1 : -1;            // ungraded coaches always last
+      const x = a[sortKey], y = b[sortKey]; const c = (x ?? 99) > (y ?? 99) ? 1 : (x ?? 99) < (y ?? 99) ? -1 : 0; return asc ? c : -c;
+    });
+    $("coachcards").innerHTML = rows.map((r) => `<button type="button" class="ccard" data-c="${esc(r.coach)}">
+      <span class="grade ${gradeClass(r.grade)}">${r.grade === "Incomplete" ? "\u2014" : r.grade}</span>
+      <span class="cmain"><b>${esc(r.coach)}</b> <span class="note">${r.teams.join(", ")} \u00b7 ${r.games} games</span><br>
+      <span class="note">${esc(r.habit)}</span></span>
+      <span class="cnum">${r.grade === "Incomplete" ? "<span class=note>too few games</span>" : r.wins_lost_per_17.toFixed(2) + "<br><span class=note>wins lost / yr</span>"}</span></button>`).join("");
+    $("coachcards").querySelectorAll(".ccard").forEach((b) => b.onclick = () => showCoach(G.current.find((c) => c.coach === b.dataset.c)));
     $("coachtable").innerHTML = "<thead><tr>" + cols.map(([k, t, n]) => `<th class="${n ? "n" : ""}" data-k="${k}">${t}</th>`).join("") + "</tr></thead><tbody>" +
       rows.map((r) => `<tr class="click" data-c="${esc(r.coach)}">
         <td><span class="grade ${gradeClass(r.grade)}">${r.grade === "Incomplete" ? "—" : r.grade}</span></td>
@@ -864,6 +894,11 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
     $("coachtable").querySelectorAll("th").forEach((th) => th.onclick = () => { asc = sortKey === th.dataset.k ? !asc : true; sortKey = th.dataset.k; draw(); });
     $("coachtable").querySelectorAll("tr.click").forEach((tr) => tr.onclick = () => showCoach(G.current.find((c) => c.coach === tr.dataset.c)));
   }
+  $("coachsort").onchange = () => {
+    sortKey = $("coachsort").value;
+    asc = !(sortKey === "went_when_engine_said_go" || sortKey === "games");
+    draw();
+  };
   draw();
   function showCoach(c) {
     const el = $("coachdetail"); el.hidden = false;
@@ -906,6 +941,12 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
       <td class="n">${pct(r.make_pct_50yd, 0)}</td><td class="n">${pct(r.make_pct_55yd, 0)}</td><td class="n">${r.fifty_pct_distance === null ? "70+" : r.fifty_pct_distance + " yd"}</td>
       <td class="n">${r.par_per_100.toFixed(1)}</td><td class="n">${r.points_above_replacement.toFixed(1)}</td></tr>`).join("") + repl + "</tbody>";
     $("kicktable").querySelectorAll("th").forEach((th) => th.onclick = () => { asc = key === th.dataset.k ? !asc : false; key = th.dataset.k; draw(); });
+    $("kickcards").innerHTML = rows.map((r) => `<div class="ccard">
+      <span class="grade ${gradeClass(r.grade)}">${r.grade ?? "\u2014"}</span>
+      <span class="cmain"><b>${esc(r.name)}</b> <span class="note">${r.attempts} att.</span><br>
+      <span class="note">${pct(r.fg_pct, 1)} made vs ${pct(r.expected_pct, 1)} expected \u00b7 ${pct(r.make_pct_50yd, 0)} from 50</span></span>
+      <span class="cnum">${r.par_per_100.toFixed(1)}<br><span class="note">pts / 100 over repl.</span></span></div>`).join("") +
+      `<div class="ccard ref"><span class="grade">\u2014</span><span class="cmain"><b>Replacement level</b><br><span class="note">${pct(R.made_pct, 1)} made vs ${pct(R.expected_pct, 1)} expected \u00b7 ${pct(R.make_pct_50yd, 0)} from 50</span></span><span class="cnum">0.0</span></div>`;
   }
   draw();
 })();

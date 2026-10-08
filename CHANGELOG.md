@@ -3,6 +3,22 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.2.2] — 2026-10-08
+
+### Changed
+
+- Phone layout for the Coaches and Kickers tabs: compact cards show the grade,
+  name, biggest habit and the key number without sideways scrolling, with a
+  "Sort by" menu. Coaches without a full season sort to the bottom instead of
+  the top. Shorter Coaches intro.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.2.1] — 2026-10-08
 
 ### Fixed

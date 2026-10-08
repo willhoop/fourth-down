@@ -3,6 +3,23 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.2.3] — 2026-10-08
+
+### Notes
+
+- Tested and rejected one explanation for the late-game "go" over-prediction
+  (risk 14): that defenses stop must-go tries more often. Late 4th downs by
+  trailing teams convert 43.7% against 44.6% predicted (n = 1,584; −0.9 ± 1.2
+  points), so the conversion model is not the source. Recorded in the risk
+  register so it is not chased again.
+
+### Record
+
+- **Measured.** No published figure changed (a new diagnostic in the risk register).
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Fold the risk 14 diagnostics into the white paper.
+
 ## [1.2.2] — 2026-10-08
 
 ### Changed

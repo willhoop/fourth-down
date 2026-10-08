@@ -5,7 +5,7 @@
 ## 1. Go for it, kick, or punt?
 
 - A fourth-down decision engine built on every NFL play since 2014
-- Version 1.0.0
+- Version 1.1.0
 
 ## 2. Fourth down is a choice between three gambles
 
@@ -49,7 +49,7 @@
 - A coach is only charged when the engine is sure he was wrong
 - Coaches went for it on 13% of fourth downs in 2014 and 24% in 2025
 - Closest to the math: Liam Coen, Mike Macdonald, Dan Campbell
-- Furthest from it: Todd Bowles, Shane Steichen, Sean Payton
+- Furthest from it: Shane Steichen, Todd Bowles, Sean Payton
 - Trust the order more than the exact numbers: the engine's totals run higher than published research
 
 ## 9. Kickers matter

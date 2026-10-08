@@ -32,6 +32,10 @@ RUSHPASS = ["run", "pass"]
 WP_MONO = {"score_diff": 1, "yardline": -1, "pos_to": 1, "def_to": -1, "spread": 1,
            "spread_time": 1, "diff_time_ratio": 1}
 WP_ALL = decide.WP_FEATURES + decide.WP_DERIVED
+# 4th-down-by-distance terms (is4_1, is4_23, is4_logtogo) were tested in 1.1.0 and
+# left out: on the same 1,849 hold-out 4th downs they moved log loss from 0.6424 to
+# 0.6419, a difference too small to justify three more terms. The columns stay
+# computed so the test can be repeated.
 CONV_BASE = ["is4", "togo", "logtogo", "goal", "inside10", "rz"]
 # Kicking era: a linear year trend, a 2020+ step (nfl4th's choice), or both.
 # The validation pass picks the one with the best hold-out log loss.
@@ -136,6 +140,9 @@ def conv_frame(s):
     c["goal"] = (c["ydstogo"] >= c["yardline_100"]).astype(int)
     c["inside10"] = (c["yardline_100"] <= 10).astype(int)
     c["rz"] = (c["yardline_100"].between(11, 20) & (c["ydstogo"] < c["yardline_100"])).astype(int)
+    c["is4_1"] = c["is4"] * (c["ydstogo"] == 1)
+    c["is4_23"] = c["is4"] * c["ydstogo"].between(2, 3)
+    c["is4_logtogo"] = c["is4"] * c["logtogo"]
     c["spread"] = c["spread"].fillna(0) / 10.0
     return c
 
@@ -225,6 +232,18 @@ def build(df, s, kicker_prior=None, ko_df=None, fg_era="trend", wp=True):
            "b": r6(eff.get(k, (0, 0))[1]), "attempts": int(tot[k])}
           for k in cnt[cnt >= CONFIG["kicker_list_min_attempts"]].index]
     out["fg"]["kickers"] = sorted(ks, key=lambda r: r["name"])
+    # Teams: home stadium (roof, altitude) and current kicker, from the latest
+    # fit season, so the app can fill these in from a team pick.
+    last = max(CONFIG["seasons"])
+    hg = df[(df["season"] == last) & (df["location"] == "Home")].drop_duplicates("game_id")
+    kick_last = f[f["season"] == last].groupby(["posteam", "kicker_player_id"]).size().reset_index(name="n")
+    teams = {}
+    for tm, g in hg.groupby("home_team"):
+        kk = kick_last[kick_last["posteam"] == tm].sort_values("n", ascending=False)
+        teams[tm] = {"indoor": int(g["indoor"].mode().iloc[0]),
+                     "altitude_kft": float(g["altitude_kft"].max()),
+                     "kicker": kk["kicker_player_id"].iloc[0] if len(kk) else None}
+    out["teams"] = teams
     out["fg"]["replacement"] = {k: (r6(v) if isinstance(v, float) else v) for k, v in repl.items()}
     out["fg"]["kicker_prior"] = [sa, sb]
     out["_kicker_effects"] = eff
@@ -340,11 +359,23 @@ def build(df, s, kicker_prior=None, ko_df=None, fg_era="trend", wp=True):
     out["kickoff_start"] = round(float(m["yardline_100"].mean()), 1)
     assert out["kickoff_start"] == out["kickoff_start"], "kickoff spot is NaN: no rules_season data"
 
+    # extra point and 2-point try rates
+    tr = df[df["season"] >= CONFIG["try_seasons_from"]]
+    pat, two = tr["extra_point_result"].dropna(), tr["two_point_conv_result"].dropna()
+    out["tries"] = {"pat": r6((pat == "good").mean()), "two": r6((two == "success").mean()),
+                    "n_pat": int(len(pat)), "n_two": int(len(two))}
+    # overtime: the better team's edge, fit on decided OT games; ties count 0.5
+    gm = df.drop_duplicates("game_id")
+    otg = gm[gm["game_id"].isin(set(df.loc[df["qtr"] == 5, "game_id"])) & gm["spread_line"].notna()]
+    dec = otg[otg["result"] != 0]
+    lr = LogisticRegression(fit_intercept=False).fit((dec[["spread_line"]] / 10.0).values, (dec["result"] > 0).astype(int))
+    out["ot"] = {"slope": r6(lr.coef_[0][0]), "p_tie": r6((otg["result"] == 0).mean()), "n_games": int(len(otg))}
     out["rules"] = {"season": CONFIG["rules_season"], "td_points": CONFIG["touchdown_points"],
                     "fg_distance_add": CONFIG["fg_distance_add"], "fg_snap_to_spot": CONFIG["fg_snap_to_spot"],
                     "missed_fg_min_spot": CONFIG["missed_fg_min_spot"],
                     "fg_max_distance": CONFIG["fg_max_distance"], "tossup_margin": CONFIG["tossup_margin"],
-                    "fair_catch_kick_window": CONFIG["fair_catch_kick_window"]}
+                    "fair_catch_kick_window": CONFIG["fair_catch_kick_window"],
+                    "short_yardage": CONFIG["short_yardage"]}
     return out
 
 

@@ -3,6 +3,54 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.1.0] — 2026-10-08
+
+### Added
+
+- Overtime is valued by team strength. Both teams now get the ball in overtime
+  (playoffs since 2022, regular season since 2025), so a tie at the end of
+  regulation is worth 0.5 plus the better team's edge, fit on 189 overtime games.
+  It was a flat 0.5.
+- After a touchdown the scoring team takes the extra point (94.4%) or the 2-point
+  try (47.7%), whichever is better for it. A touchdown was a flat 7.
+- 4th & 1 precision (Lopez 2020): the app asks "inches / not sure / about a yard",
+  and the coach grader judges teams that went at 0.70 yd and teams that kicked at
+  0.98 yd.
+- "This week" tab: each week's costliest calls and best gutsy calls for the
+  current season, refreshed every Tuesday by a scheduled GitHub Action.
+- Edge calibration check (`engine/edge_check.py`) and per-decision export
+  (`data/decisions.csv.gz`).
+- App: matchup picker (fills in stadium and kicker), a one-sentence "why" under
+  each call, a "Share this call" link that opens at the same situation,
+  install-to-home-screen, and each coach's biggest habit.
+
+### Changed
+
+- 4th-down-by-distance conversion terms were tested and left out: on the same
+  1,849 hold-out plays they moved log loss from 0.6424 to 0.6419.
+
+### Notes
+
+- These changes did not close the gap between the engine's league cost totals
+  and published estimates (risk 14). The edge check puts goers at -0.6 ± 0.6 WP
+  points against the engine's prediction relative to kickers, and -7.4 ± 3.2 in
+  the bin where the engine favors going by 8+ points. That bin is the next lead.
+- Fixed before release: the first weekly page counted a pick-six as a
+  "converted" gutsy call and listed forced last-second attempts as gutsy.
+
+### Record
+
+- **Measured.** League confident-mistake cost per team-season (`data/coach_grades.json`)
+  and the share of clear engine "go" calls moved; five coach letter grades moved.
+- **Basis.** unchanged — the same question (win probability of each option);
+  the overtime, touchdown and 4th & 1 terms refine how it is answered.
+- **Supersedes.** 2014 cost ~~0.90~~ 0.92; 2025 cost ~~0.61~~ 0.62; 2025 clear go
+  ~~33.7%~~ 34.5%. Grades: Andy Reid ~~B+~~ A, Dan Quinn ~~A~~ B+, Ben Johnson
+  ~~B~~ B+, DeMeco Ryans ~~B+~~ B, Shane Steichen ~~C+~~ C.
+- **Owed to the next major.** Fold risk 14's resolution into the white paper,
+  deck and technical docs once the cost totals are reconciled with published
+  estimates.
+
 ## [1.0.1] — 2026-10-08
 
 ### Added

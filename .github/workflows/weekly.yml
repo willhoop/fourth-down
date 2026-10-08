@@ -1,0 +1,39 @@
+name: Weekly calls
+
+# Every Tuesday in the season: refresh this season's play-by-play from nflverse,
+# grade the new 4th downs, commit the "This week" data and redeploy the site.
+on:
+  schedule:
+    - cron: "0 12 * * 2"     # Tuesday 12:00 UTC, after Monday Night Football
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: python -m pip install --upgrade pip pandas pyarrow numpy scikit-learn
+      - name: Grade this season's 4th downs
+        run: python engine/weekly.py --download
+      - name: Commit and redeploy if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "fourth-down-bot"
+          git config user.email "fourth-down-bot@users.noreply.github.com"
+          git add app/weekly.js data/weekly.json
+          if git diff --cached --quiet; then echo "No new games."; exit 0; fi
+          git commit -m "Weekly calls: $(date -u +%Y-%m-%d)"
+          git push
+          # pushes made with this token do not start other workflows; dispatch the deploy
+          gh workflow run pages.yml

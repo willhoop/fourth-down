@@ -216,3 +216,47 @@ def test_fair_catch_kick_out_of_range():
     m["punt"]["bins"][0].update(q=[65.0], p_fc=1.0)
     st = decide.prepare(dict(BASE, score_diff=2, half_seconds=3), {})
     assert decide.wp_punt(m, st, {})[0] == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------- v1.1: overtime, tries, 4th & 1
+def test_overtime_value_by_team_strength():
+    """Tie at the end of regulation. OT slope 0.7 per 10 points, ties 10%.
+    Even teams: 0.5. Favored by 10: 0.5 + 0.9 * (sigmoid(0.7) - 0.5)
+    = 0.5 + 0.9 * 0.1681878 = 0.6513690."""
+    m = make_stub(0, -1.0, -1.0, 1.0)
+    m["ot"] = {"slope": 0.7, "p_tie": 0.1}
+    st = decide.prepare(dict(BASE, half_seconds=3), {})
+    assert decide.value_after(m, st, True, 0, 50, 5) == pytest.approx(0.5)
+    st = decide.prepare(dict(BASE, half_seconds=3, spread=10.0), {"spread": True})
+    assert decide.value_after(m, st, True, 0, 50, 5) == pytest.approx(0.5 + 0.9 * (1 / (1 + math.exp(-0.7)) - 0.5))
+
+
+def test_touchdown_takes_the_better_try():
+    """Down 8, 3 s left: a touchdown ends the game. Extra point (95%) leaves us
+    down 1 -> 0. Two-point try (48%) ties -> 0.5 (no OT model). Value of the
+    touchdown = max(0, 0.48 * 0.5) = 0.24, so the team goes for two."""
+    m = make_stub(0, -1.0, -1.0, 1.0)
+    m["tries"] = {"pat": 0.95, "two": 0.48}
+    st = decide.prepare(dict(BASE, half_seconds=3, score_diff=-8), {})
+    assert decide.touchdown_value(m, st, True, -8, 5) == pytest.approx(0.24)
+
+
+def test_opponent_touchdown_takes_their_better_try():
+    """We lead by 7, 3 s left, they return a punt for a TD: down 1 after 6, they
+    pick the try that is worst for us. PAT (95%) ties: 0.95 * 0.5 + 0.05 * 1 = 0.525.
+    Two (48%) wins for them: 0.48 * 0 + 0.52 * 1 = 0.52. They go for two -> 0.52."""
+    m = make_stub(0, -1.0, -1.0, 1.0)
+    m["tries"] = {"pat": 0.95, "two": 0.48}
+    st = decide.prepare(dict(BASE, half_seconds=3, score_diff=7), {})
+    assert decide.touchdown_value(m, st, False, 7, 5) == pytest.approx(0.52)
+
+
+def test_fourth_and_inches_distance():
+    """Recorded 4th & 1, average true distance 0.85. Inches (0.35) -> the model
+    sees 0.5 yd; a full yard (1.0) -> 1.15 yd; unknown -> 1."""
+    m = make_stub(0, -1.0, -1.0, 1.0)
+    m["rules"]["short_yardage"] = {"mean_true": 0.85, "inches": 0.35, "full_yard": 1.0, "went": 0.7, "kicked": 0.98}
+    assert decide.conv_distance(m, {"ydstogo": 1, "short": "inches"}) == pytest.approx(0.5)
+    assert decide.conv_distance(m, {"ydstogo": 1, "short": "full_yard"}) == pytest.approx(1.15)
+    assert decide.conv_distance(m, {"ydstogo": 1}) == 1
+    assert decide.conv_distance(m, {"ydstogo": 2, "short": "inches"}) == 2

@@ -46,9 +46,19 @@
     return p.length ? p.join("+") : "base";
   }
 
+  // Distance the conversion model sees. On a recorded 4th & 1, "short" can say how
+  // far it really is (Lopez 2020): inches, a full yard, or the went/kicked averages.
+  function convDistance(model, st) {
+    const sy = model.rules.short_yardage;
+    if (st.ydstogo === 1 && sy && st.short !== undefined && st.short in sy) return 1 + sy[st.short] - sy.mean_true;
+    return st.ydstogo;
+  }
+
   function pConvert(model, st, tog) {
     const togo = st.ydstogo, yl = st.yardline;
-    const f = { is4: 1, togo: Math.min(togo, 20) / 10, logtogo: Math.log(togo),
+    const d = convDistance(model, st);
+    const f = { is4: 1, togo: Math.min(d, 20) / 10, logtogo: Math.log(d),
+      is4_1: togo === 1 ? 1 : 0, is4_23: togo >= 2 && togo <= 3 ? 1 : 0, is4_logtogo: Math.log(d),
       goal: togo >= yl ? 1 : 0, inside10: yl <= 10 ? 1 : 0,
       rz: (yl >= 11 && yl <= 20 && togo < yl) ? 1 : 0,
       spread: tog.spread ? (st.spread || 0) / 10 : 0 };
@@ -102,7 +112,7 @@
     if (tmw && hs - secs < 120) { hsNew = 120; tmwNew = 0; }
     else { hsNew = hs - secs; tmwNew = hs - secs > 120 ? tmw : 0; }
     if (hsNew <= 0) {
-      if (st.second_half) return sdUs > 0 ? 1 : (sdUs < 0 ? 0 : 0.5);
+      if (st.second_half) return sdUs > 0 ? 1 : (sdUs < 0 ? 0 : otValue(model, st));
       const usRecv = st.receive_2h === 1;
       const s2 = { score_diff: usRecv ? sdUs : -sdUs, game_seconds: 1800, half_seconds: 1800,
         second_half: 1, yardline: model.kickoff_start, down: 1, ydstogo: 10, pos_to: 3, def_to: 3,
@@ -124,6 +134,27 @@
     return usBall ? p : 1 - p;
   }
 
+  // Our chance from a tie at the end of regulation: both teams get the ball in
+  // overtime, so 0.5 plus the better team's measured edge; a tied OT is half a win.
+  function otValue(model, st) {
+    const ot = model.ot;
+    if (!ot) return 0.5;
+    return 0.5 + (1 - ot.p_tie) * (sigmoid(ot.slope * st.spread_used / 10) - 0.5);
+  }
+
+  // After a touchdown: 6 points, then the scorer takes the extra point or the
+  // 2-point try, whichever is better for the scorer.
+  function touchdownValue(model, st, usScored, sdBefore, secs) {
+    const tries = model.tries || { pat: 1, two: 0 };
+    const sign = usScored ? 1 : -1;
+    const after = (extra) => valueAfter(model, st, !usScored, sdBefore + sign * (model.rules.td_points + extra),
+      model.kickoff_start, secs);
+    const v0 = after(0), v1 = after(1), v2 = after(2);
+    const pat = tries.pat * v1 + (1 - tries.pat) * v0;
+    const two = tries.two * v2 + (1 - tries.two) * v0;
+    return usScored ? Math.max(pat, two) : Math.min(pat, two);
+  }
+
   function prepare(state, tog) {
     const s = Object.assign({}, state);
     s.second_half = s.qtr >= 3 ? 1 : 0;
@@ -138,12 +169,11 @@
     const yl = st.yardline, sd = st.score_diff, hs = st.half_seconds;
     const pc = pConvert(model, st, tog);
     const b = togoBucket(model, st.ydstogo);
-    const pts = model.rules.td_points;
     const gains = model.gain.success_q[b];
     let succ = 0;
     for (let g of gains) {
       g = Math.max(g, st.ydstogo);
-      if (g >= yl) succ += valueAfter(model, st, false, sd + pts, model.kickoff_start, elapsed(model, "score", hs));
+      if (g >= yl) succ += touchdownValue(model, st, true, sd, elapsed(model, "score", hs));
       else succ += valueAfter(model, st, true, sd, yl - g, elapsed(model, "go_success", hs));
     }
     succ /= gains.length;
@@ -158,11 +188,10 @@
     const b = togoBucket(model, togo);
     const gains = model.play.gain_q[dn - 1][b];
     const pTo = model.play.p_turnover[dn - 1];
-    const pts = model.rules.td_points;
     const first = [], short = [];
     for (const g of gains) {
       if (g >= yl) {
-        first.push(valueAfter(model, st, false, sd + pts, model.kickoff_start, elapsed(model, "score", hs)));
+        first.push(touchdownValue(model, st, true, sd, elapsed(model, "score", hs)));
         continue;
       }
       const made = g >= togo;
@@ -235,7 +264,7 @@
     for (const y of spots) normal += spotValue(y);
     normal /= spots.length;
     // return touchdown: they score 7, we receive the kickoff
-    const td = valueAfter(model, st, true, sd - model.rules.td_points, model.kickoff_start, secs);
+    const td = touchdownValue(model, st, false, sd, secs);
     // muff recovered by us: our ball at the recovery spot
     const muff = valueAfter(model, st, true, sd, b.muff_spot, secs);
     const v = (1 - b.p_td - b.p_muff) * normal + b.p_td * td + b.p_muff * muff;

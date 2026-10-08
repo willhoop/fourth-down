@@ -10,7 +10,9 @@ All settings that change over time are in one block: `CONFIG` in
 | `seasons` | Seasons used to fit the models. |
 | `holdout_seasons` | Seasons held out for validation. |
 | `rules_season` | Season that sets the kickoff spot (current kickoff rules). |
-| `touchdown_points` | Points for a touchdown, extra point included. |
+| `touchdown_points` | Points for a touchdown before the try (6). |
+| `try_seasons_from` | First season used to measure extra-point and 2-point rates. |
+| `short_yardage` | 4th & 1 true distances (Lopez 2020): average, went, kicked, inches, full yard. |
 | `fg_snap_to_spot`, `fg_distance_add`, `missed_fg_min_spot` | Field-goal geometry and the missed-kick rule. |
 | `fg_max_distance` | Longest kick the engine allows. |
 | `tossup_margin` | Edge below which a call is a toss-up. |

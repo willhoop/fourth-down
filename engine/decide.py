@@ -68,9 +68,22 @@ def combo_key(tog):
     return "+".join(parts) or "base"
 
 
+def conv_distance(model, st):
+    """Distance the conversion model sees. On a recorded 4th & 1, "short" can say
+    how far it really is (Lopez 2020): inches, a full yard, or, in grading, the
+    average for teams that went or kicked."""
+    togo = st["ydstogo"]
+    sy = model["rules"].get("short_yardage")
+    if togo == 1 and sy and st.get("short") in sy:
+        return 1.0 + sy[st["short"]] - sy["mean_true"]
+    return togo
+
+
 def p_convert(model, st, tog):
     togo, yl = st["ydstogo"], st["yardline"]
-    f = {"is4": 1, "togo": min(togo, 20) / 10.0, "logtogo": math.log(togo),
+    d = conv_distance(model, st)
+    f = {"is4": 1, "togo": min(d, 20) / 10.0, "logtogo": math.log(d),
+         "is4_1": 1 if togo == 1 else 0, "is4_23": 1 if 2 <= togo <= 3 else 0, "is4_logtogo": math.log(d),
          "goal": 1 if togo >= yl else 0, "inside10": 1 if yl <= 10 else 0,
          "rz": 1 if (11 <= yl <= 20 and togo < yl) else 0,
          "spread": (st.get("spread", 0.0) / 10.0) if tog.get("spread") else 0.0}
@@ -144,7 +157,7 @@ def value_after(model, st, us_ball, sd_us, yardline, secs, togo=None, down=1, po
         hs_new, tmw_new = hs - secs, tmw if hs - secs > 120 else 0
     if hs_new <= 0:
         if st["second_half"]:
-            return 1.0 if sd_us > 0 else (0.0 if sd_us < 0 else 0.5)
+            return 1.0 if sd_us > 0 else (0.0 if sd_us < 0 else ot_value(model, st))
         # Halftime: the second-half receiver starts at the kickoff spot.
         us_recv = st["receive_2h"] == 1
         s2 = {"score_diff": sd_us if us_recv else -sd_us, "game_seconds": 1800.0,
@@ -169,6 +182,30 @@ def value_after(model, st, us_ball, sd_us, yardline, secs, togo=None, down=1, po
     return p if us_ball else 1.0 - p
 
 
+def ot_value(model, st):
+    """Our chance to win from a tie at the end of regulation. Both teams get the
+    ball in overtime, so it is 0.5 plus the better team's measured edge; a tied
+    overtime counts as half a win."""
+    ot = model.get("ot")
+    if not ot:
+        return 0.5
+    edge = sigmoid(ot["slope"] * st["spread_used"] / 10.0) - 0.5
+    return 0.5 + (1.0 - ot["p_tie"]) * edge
+
+
+def touchdown_value(model, st, us_scored, sd_before, secs):
+    """WP for us after a touchdown: 6 points, then the scorer takes the extra
+    point or the 2-point try, whichever is better for the scorer."""
+    tries = model.get("tries", {"pat": 1.0, "two": 0.0})
+    sign = 1 if us_scored else -1
+    after = lambda extra: value_after(model, st, not us_scored, sd_before + sign * (model["rules"]["td_points"] + extra),
+                                      model["kickoff_start"], secs)
+    v0, v1, v2 = after(0), after(1), after(2)
+    pat = tries["pat"] * v1 + (1 - tries["pat"]) * v0
+    two = tries["two"] * v2 + (1 - tries["two"]) * v0
+    return max(pat, two) if us_scored else min(pat, two)
+
+
 def prepare(st, tog):
     """Fill the derived fields of a 4th-down state."""
     s = dict(st)
@@ -186,13 +223,12 @@ def wp_go(model, st, tog):
     yl, sd, hs = st["yardline"], st["score_diff"], st["half_seconds"]
     pc = p_convert(model, st, tog)
     b = togo_bucket(model, st["ydstogo"])
-    pts = model["rules"]["td_points"]
     succ = 0.0
     gains = model["gain"]["success_q"][b]
     for g in gains:
         g = max(g, st["ydstogo"])
-        if g >= yl:      # touchdown, then we kick off
-            succ += value_after(model, st, False, sd + pts, model["kickoff_start"], elapsed(model, "score", hs))
+        if g >= yl:      # touchdown, then the try, then we kick off
+            succ += touchdown_value(model, st, True, sd, elapsed(model, "score", hs))
         else:
             succ += value_after(model, st, True, sd, yl - g, elapsed(model, "go_success", hs))
     succ /= len(gains)
@@ -212,11 +248,10 @@ def wp_play(model, st, tog):
     b = togo_bucket(model, togo)
     gains = model["play"]["gain_q"][dn - 1][b]
     p_to = model["play"]["p_turnover"][dn - 1]
-    pts = model["rules"]["td_points"]
     first, short = [], []
     for g in gains:
         if g >= yl:
-            first.append(value_after(model, st, False, sd + pts, model["kickoff_start"], elapsed(model, "score", hs)))
+            first.append(touchdown_value(model, st, True, sd, elapsed(model, "score", hs)))
             continue
         made = g >= togo
         secs = elapsed(model, "play_first" if made else "play_short", hs)
@@ -290,7 +325,7 @@ def wp_punt(model, st, tog):
 
     normal = sum(spot_value(y) for y in spots) / len(spots)
     # return touchdown: they score 7, we receive the kickoff
-    td = value_after(model, st, True, sd - model["rules"]["td_points"], model["kickoff_start"], secs)
+    td = touchdown_value(model, st, False, sd, secs)
     # muff recovered by us: our ball at the recovery spot
     muff = value_after(model, st, True, sd, b["muff_spot"], secs)
     v = (1 - b["p_td"] - b["p_muff"]) * normal + b["p_td"] * td + b["p_muff"] * muff

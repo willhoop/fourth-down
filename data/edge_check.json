@@ -1,0 +1,63 @@
+{
+ "version": "1.1.0",
+ "bins": [
+  {
+   "edge_bin": "(-1.0, 0.0]",
+   "went": 1621,
+   "kicked": 18544,
+   "predicted_gap": -0.2822,
+   "actual_gap": -0.2779,
+   "se": 0.0117,
+   "actual_minus_predicted": 0.0043
+  },
+  {
+   "edge_bin": "(0.0, 0.01]",
+   "went": 1876,
+   "kicked": 7626,
+   "predicted_gap": -0.2474,
+   "actual_gap": -0.2601,
+   "se": 0.011,
+   "actual_minus_predicted": -0.0127
+  },
+  {
+   "edge_bin": "(0.01, 0.02]",
+   "went": 920,
+   "kicked": 4131,
+   "predicted_gap": -0.0642,
+   "actual_gap": -0.0578,
+   "se": 0.0178,
+   "actual_minus_predicted": 0.0064
+  },
+  {
+   "edge_bin": "(0.02, 0.04]",
+   "went": 1439,
+   "kicked": 4141,
+   "predicted_gap": -0.0045,
+   "actual_gap": -0.0181,
+   "se": 0.0151,
+   "actual_minus_predicted": -0.0136
+  },
+  {
+   "edge_bin": "(0.04, 0.08]",
+   "went": 1402,
+   "kicked": 2024,
+   "predicted_gap": 0.0279,
+   "actual_gap": 0.0308,
+   "se": 0.0171,
+   "actual_minus_predicted": 0.0029
+  },
+  {
+   "edge_bin": "(0.08, 1.0]",
+   "went": 730,
+   "kicked": 336,
+   "predicted_gap": 0.0025,
+   "actual_gap": -0.071,
+   "se": 0.0321,
+   "actual_minus_predicted": -0.0735
+  }
+ ],
+ "pooled_actual_minus_predicted": -0.0064,
+ "pooled_se": 0.006,
+ "reading": "Negative means teams that went did worse, relative to teams that kicked, than the engine predicted (the engine overstates going).",
+ "note": "Teams that went often knew something the engine cannot see, which flatters going; a result near zero does not clear the engine."
+}

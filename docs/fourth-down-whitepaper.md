@@ -1,6 +1,6 @@
 # Fourth Down Engine: Win-Probability Decisions for Go, Field Goal or Punt
 
-Version: 1.0.0 — 2026-10-08
+Version: 1.1.0 — 2026-10-08
 Author: Will Hooper
 Data: nflverse play-by-play, 2014–2025 (fit) and 2014–2026 (coach grading)
 
@@ -108,6 +108,10 @@ next states are built as follows.
   the opponent receives a kickoff). Otherwise it is our 1st & 10 (or & goal).
 - **Stopped.** The opponent takes over where the play ended (mean yards gained
   on failed attempts for that distance).
+- **Touchdown.** +6, then the scoring team takes the extra point or the 2-point
+  try, whichever gives it the better win chance (rates measured since 2015,
+  when the extra point moved back). Late in a game this matters: down 8, the
+  engine values a touchdown as the 2-point try that can tie.
 - **Made field goal.** +3, then the opponent receives a kickoff.
 - **Missed field goal.** The opponent takes over at the spot of the kick (line
   of scrimmage + 7), or at its own 20 if that is further from its goal.
@@ -137,7 +141,18 @@ next snap, measured from the data separately for the final two minutes of a
 half. If the two-minute warning is pending and the play would cross 2:00, the
 next state starts at 2:00 and the warning is spent. If the half ends, a first
 half resets to the second-half kickoff (the receiver gets the ball, timeouts
-reset); a second half ends the game, with WP 1, 0 or 0.5 by the final score.
+reset); a second half ends the game, with WP 1 or 0 by the final score.
+
+**Overtime.** Since 2022 (playoffs) and 2025 (regular season) both teams get a
+possession in overtime, so the coin toss decides much less than it did. A tie at
+the end of regulation is valued as
+
+  V_tie = 0.5 + (1 − p_tie) · (σ(β · spread / 10) − 0.5)
+
+where β is fit on every decided overtime game in the data (the better team's
+edge) and p_tie is the measured share of overtime games that end tied (half a
+win). With the team-strength factor off, V_tie = 0.5. Only about twenty games so
+far fall under the both-possess rules, too few to fit separately.
 Timeouts carry over unchanged.
 
 ### 3.3 Early downs: kick now or run a play?
@@ -169,7 +184,18 @@ fitted by maximum likelihood on all 3rd- and 4th-down runs and passes, with
 `is4 = 1` at prediction time. Pooling 3rd downs follows Romer (2006), who found
 the 3rd/4th difference small, and Brill et al. (2025), whose best conversion
 model pools them. A defensive penalty that gives a first down counts as a
-conversion, as in nfl4th. The spread term is used when the team-strength factor
+conversion, as in nfl4th. Terms that let 4th-down rates differ by distance were
+tested in 1.1.0 and left out: they moved hold-out log loss by 0.0005.
+
+**4th & 1 precision.** Play-by-play records yards to go as a whole number, so a
+recorded "4th & 1" runs from inches to more than a yard. With tracking data,
+Lopez (2020) found teams that went were 0.70 yd from the line and teams that
+kicked 0.98 yd. The engine treats a recorded 1 as the average true distance
+(0.85 yd) and shifts the distance the conversion model sees by
+(true − 0.85). In the app the user can say "inches" (0.35 yd) or "about a yard"
+(1.0 yd). The coach grader judges a team that went at 0.70 yd and a team that
+kicked at 0.98 yd, so a coach is not charged for passing on a 4th & 1 that was
+really a full yard. The spread term is used when the team-strength factor
 is on.
 
 ### 3.5 Field goals
@@ -247,6 +273,11 @@ him against every head coach with at least 17 games in the data: the best 10%
 earn A+, then A (to 25%), B+ (40%), B (60%), C+ (75%), C (90%) and D. Coaches
 with fewer than 17 games are listed as Incomplete.
 
+**This week.** During the season the same grading runs every Tuesday on the
+current season's games (engine/weekly.py, scheduled on GitHub). The app lists
+each week's costliest confident mistakes and its best gutsy calls: the coach
+went for it, the engine agreed by 3 or more points, and 90% of replicates agree.
+
 ## 6. Uncertainty and validation
 
 **Bootstrap.** Twenty replicates, each a full refit (WP, conversion, field goal,
@@ -259,6 +290,14 @@ in steps of 5%.
 are by season, so no game is on both sides. The key test is not WP accuracy
 alone but whether **option values** are calibrated: for the option a coach
 actually chose, does the engine's predicted WP match how often the team won?
+
+**Edge calibration.** Option values can be calibrated on average while the
+differences between options are not. So the graded decisions are also binned
+by the engine's predicted edge for going, and within each bin teams that went
+are compared with teams that kicked: predicted gap against realized gap
+(engine/edge_check.py). Teams that went often knew something the engine cannot
+see, so the realized gap is biased toward going; the ratio is an upper bound on
+how much of the predicted edge is real.
 
 **What validation does not prove.** That following the engine wins more games
 (no randomized test of 4th-down policy exists); that any single call is right;
@@ -273,11 +312,12 @@ or that short-yardage conversion is unbiased (section 8).
 
 - Win-probability log loss on held-out 2024, 2025: **0.446** (nflfastR `vegas_wp` on the same 81,654 plays: 0.4457).
 - Option values on held-out 4th downs, predicted vs actual win rate: go 37.3% vs 38.1% (n = 670); field goal 56.3% vs 55.6% (n = 826); punt 47.2% vs 46.6% (n = 1501).
-- League cost of 4th-down calls, confident mistakes only: **0.90** wins per team-season in 2014, **0.61** in 2025. Counting every disagreement: 1.16 and 0.84.
-- Coaches went for it on 12.7% of 4th downs in 2014 and 24.0% in 2025; the engine clearly favored going (edge of 1 point or more) on 32.6% and 33.7%.
-- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 38.4% to 44.7%. Share of calls the bootstrap is confident about: 47.8% to 50.5%.
-- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.35 wins/17 games (A+); Mike Macdonald 0.47 wins/17 games (A+); Dan Campbell 0.48 wins/17 games (A+).
-- Highest: Todd Bowles 0.88 (C); Shane Steichen 0.88 (C+); Sean Payton 0.84 (C+).
+- League cost of 4th-down calls, confident mistakes only: **0.92** wins per team-season in 2014, **0.62** in 2025. Counting every disagreement: 1.19 and 0.86.
+- Coaches went for it on 12.7% of 4th downs in 2014 and 24.0% in 2025; the engine clearly favored going (edge of 1 point or more) on 33.1% and 34.5%.
+- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 37.9% to 44.5%. Share of calls the bootstrap is confident about: 47.9% to 50.5%.
+- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.34 wins/17 games (A+); Mike Macdonald 0.47 wins/17 games (A+); Dan Campbell 0.49 wins/17 games (A+).
+- Highest: Shane Steichen 0.90 (C); Todd Bowles 0.90 (C); Sean Payton 0.85 (C+).
+- Edge check: relative to teams that kicked, teams that went did -0.6 ± 0.6 WP points versus the engine's prediction (negative = the engine overstates going; selection flatters going, so near zero does not clear it).
 - Replacement-level kicker: 76.4% made vs 85.5% expected; 61% from 50 yd vs 77% league average.
 - Top current kickers by points over replacement per 100 kicks: B.Aubrey 44.2; C.Boswell 40.8; W.Reichard 39.5.
 

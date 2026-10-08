@@ -12,13 +12,17 @@
 
 ## Refresh the current season during the year
 
+The **Weekly calls** GitHub Action does this every Tuesday: it runs
+`py engine/weekly.py --download`, commits `app/weekly.js` and redeploys the site.
+To do it by hand, or to refresh the coach grades too:
+
 1. Download the new weeks:
 
    ```bash
    py engine/download_data.py --force
    ```
 
-2. Do steps 5 to 8 in [rebuild-everything.md](rebuild-everything.md). You do
+2. Do steps 5 to 9 in [rebuild-everything.md](rebuild-everything.md). You do
    not refit the model.
 
 ## Apply a rule change

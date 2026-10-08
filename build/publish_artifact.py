@@ -21,12 +21,12 @@ def main():
     t = re.sub(r"</?html[^>]*>\s*|</?head>\s*|</?body>\s*", "", t)
     t = re.sub(r'<meta charset="utf-8">\s*', "", t)
     t = re.sub(r'<meta name="viewport"[^>]*>\s*', "", t)
-    t = re.sub(r'<link rel="icon"[^>]*>\s*', "", t)
+    t = re.sub(r'<link rel="(icon|apple-touch-icon|manifest)"[^>]*>\s*', "", t)
     # project-folder links do not exist on the web
     t = re.sub(r"<p>Full method, results and sources:.*?</p>",
                "<p>Full method, results and sources are in the white paper in the project folder.</p>", t, flags=re.S)
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8", newline="\n").write(t)
-    for f in ("model.js", "engine.js", "grades.js", "bootstrap.js"):
+    for f in ("model.js", "engine.js", "grades.js", "bootstrap.js", "weekly.js"):
         shutil.copy(os.path.join(ROOT, "app", f), os.path.join(OUT, f))
     print("wrote", os.path.relpath(OUT, ROOT))
 

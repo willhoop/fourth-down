@@ -56,8 +56,8 @@ def fmt_spot(yl):
     return "50" if yl == 50 else (f"opp {yl}" if yl < 50 else f"own {100 - yl}")
 
 
-def prepare():
-    df = load(CONFIG["grade_seasons"])
+def prepare(seasons=None):
+    df = load(seasons or CONFIG["grade_seasons"])
     df, _ = fill_outdoor_weather(df)
     s = snaps(df)
     g = s.groupby("game_id")
@@ -75,8 +75,9 @@ def prepare():
     return df, d, ab, by_game, by_season
 
 
-def main():
-    df, d, ab, by_game, by_season = prepare()
+def score(seasons=None):
+    """Play every 4th down in `seasons` twice; return (decisions frame, plays)."""
+    df, d, ab, by_game, by_season = prepare(seasons)
     games = df.drop_duplicates("game_id")
     final = {}
     for _, r in games.iterrows():
@@ -94,7 +95,10 @@ def main():
               "receive_2h": int(r["receive_2h"]), "spread": float(r["spread"]),
               "wind": float(r["wind_mph"]), "temp": float(r["temp_f"]), "precip": int(r["precip"]),
               "indoor": int(r["indoor"]), "altitude_kft": float(r["altitude_kft"]),
-              "kicker_a": ka, "kicker_b": kb}
+              "kicker_a": ka, "kicker_b": kb,
+              # Lopez (2020): on a recorded 4th & 1, teams that went were closer to
+              # the line than teams that kicked. Judge each call at its group's distance.
+              "short": "went" if CHOICE[r["play_type"]] == "go" else "kicked"}
         # The next regulation snap, or the final result when there is none
         # (game over, or the game went to overtime).
         nxt = None
@@ -134,6 +138,11 @@ def main():
     d["confident_mistake"] = (~d["agree"]) & (d["conf_wrong"] >= CONFIG["confident_share"])
     d["cost_confident"] = d["cost"].where(d["confident_mistake"], 0.0)
     d["coach"] = d["coach"].replace(CONFIG["coach_aliases"])
+    return d, df
+
+
+def main():
+    d, df = score()
     write(d, df)
 
 
@@ -207,6 +216,11 @@ def coach_table(d, games_by_coach, rng):
 
 
 def write(d, df):
+    # every graded decision, compact, for checks such as engine/edge_check.py
+    keep = ["season", "week", "game_id", "play_id", "posteam", "coach", "qtr", "half_seconds_remaining",
+            "score_diff", "ydstogo", "yardline_100", "choice", "best", "margin", "wp_go", "wp_fg", "wp_punt",
+            "conf_wrong", "realized", "win"]
+    d[keep].to_csv(os.path.join(ROOT, "data", "decisions.csv.gz"), index=False, float_format="%.4f")
     rng = np.random.default_rng(0)
     gm = pd.concat([df[["game_id", "home_coach"]].rename(columns={"home_coach": "coach"}),
                     df[["game_id", "away_coach"]].rename(columns={"away_coach": "coach"})]).drop_duplicates()

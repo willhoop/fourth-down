@@ -460,22 +460,22 @@
  },
  "coach_agreement": {
   "n": 3000,
-  "agreement": 0.624,
+  "agreement": 0.62,
   "matrix_engine_by_coach": {
    "go": {
-    "go": 564,
-    "fg": 373,
-    "punt": 567
+    "go": 565,
+    "fg": 386,
+    "punt": 571
    },
    "fg": {
-    "punt": 65,
-    "fg": 436,
-    "go": 61
+    "punt": 63,
+    "fg": 424,
+    "go": 60
    },
    "punt": {
-    "punt": 872,
+    "punt": 870,
     "go": 45,
-    "fg": 17
+    "fg": 16
    }
   },
   "option_calibration": {
@@ -495,10 +495,10 @@
     "actual": 0.466
    }
   },
-  "strong_go_n": 694,
-  "strong_go_coach_went": 0.471
+  "strong_go_n": 715,
+  "strong_go_coach_went": 0.466
  },
  "imputed_weather_plays": 1425,
- "version": "1.0.0",
+ "version": "1.1.0",
  "built": "2026-10-08"
 }

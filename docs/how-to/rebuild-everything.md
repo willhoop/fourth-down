@@ -35,23 +35,30 @@ You need Python 3.12 and Node.js 20 or later.
    py engine/grade_coaches.py
    ```
 
-6. Render the reports and the results block in the white paper:
+6. Make the weekly page and the edge check:
+
+   ```bash
+   py engine/weekly.py
+   py engine/edge_check.py
+   ```
+
+7. Render the reports and the results block in the white paper:
 
    ```bash
    py build/render_reports.py
    ```
 
-7. Build the PDFs and the deck:
+8. Build the PDFs and the deck:
 
    ```bash
    py build/build_docs.py
    ```
 
-8. Run the tests. All tests must pass:
+9. Run the tests. All tests must pass:
 
    ```bash
    py -m pytest tests -v
    ```
 
 Do the steps in this order. Each step reads the output of the step before it.
-If you change the model (step 3), do steps 4 to 8 again.
+If you change the model (step 3), do steps 4 to 9 again.

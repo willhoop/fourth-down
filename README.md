@@ -13,7 +13,7 @@ kicker against a replacement-level kicker.
 **Or locally:** double-click **Fourth Down Engine** on the desktop, or open
 `app/index.html`. No install, no internet.
 
-Version 1.0.1. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
+Version 1.1.0. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
 
 ## Components
 
@@ -27,6 +27,8 @@ Version 1.0.1. Results and figures: [white paper](docs/fourth-down-whitepaper.md
 | [engine/bootstrap.py](engine/bootstrap.py) | Refits everything on 20 resampled sets of games, for confidence. |
 | [engine/grade_coaches.py](engine/grade_coaches.py) | Plays every fourth down twice and grades head coaches. |
 | [engine/kickers.py](engine/kickers.py) | Kicker accuracy, range and replacement level. |
+| [engine/weekly.py](engine/weekly.py) | This season's costliest and best 4th-down calls, by week (updated every Tuesday by a GitHub Action). |
+| [engine/edge_check.py](engine/edge_check.py) | Checks whether teams that followed the engine won as much more as it predicted. |
 | [build/render_reports.py](build/render_reports.py) | Renders every published figure from the pipeline output. |
 | [build/build_docs.py](build/build_docs.py) | Builds the PDFs and the deck. |
 | [docs/fourth-down-whitepaper.md](docs/fourth-down-whitepaper.md) | White paper: method, math, results, sources. |

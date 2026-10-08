@@ -41,7 +41,8 @@ def make_stub(feature, threshold, left, right):
         "kickoff_start": 75.0,
         "punt": {"bins": [{"lo": 1, "hi": 99, "q": [80.0], "p_td": 0.0, "p_muff": 0.0,
                            "muff_spot": 40.0, "p_fc": 0.0}], "adj": {}},
-        "rules": {"season": 2025, "td_points": 7, "fg_distance_add": 17, "fg_snap_to_spot": 7,
+        "tries": {"pat": 1.0, "two": 0.0},     # a touchdown is worth exactly 7 in the stub
+        "rules": {"season": 2025, "td_points": 6, "fg_distance_add": 17, "fg_snap_to_spot": 7,
                   "missed_fg_min_spot": 20, "fg_max_distance": 70, "tossup_margin": 0.01,
                   "fair_catch_kick_window": 10},
     }

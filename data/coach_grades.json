@@ -1,5 +1,5 @@
 {
- "version": "1.0.0",
+ "version": "1.1.0",
  "seasons": [
   2014,
   2015,
@@ -42,144 +42,144 @@
    "season": 2014,
    "decisions": 3578.0,
    "go_rate": 0.127,
-   "engine_go_rate": 0.326,
-   "engine_tossup_share": 0.44,
-   "agree": 0.468,
-   "wins_lost_per_team_season_confident": 0.903,
-   "wins_lost_per_team_season_all": 1.163,
+   "engine_go_rate": 0.331,
+   "engine_tossup_share": 0.438,
+   "agree": 0.465,
+   "wins_lost_per_team_season_confident": 0.917,
+   "wins_lost_per_team_season_all": 1.187,
    "confident_share_of_calls": 0.497
   },
   {
    "season": 2015,
    "decisions": 3632.0,
    "go_rate": 0.133,
-   "engine_go_rate": 0.336,
-   "engine_tossup_share": 0.42,
-   "agree": 0.49,
-   "wins_lost_per_team_season_confident": 0.946,
-   "wins_lost_per_team_season_all": 1.222,
-   "confident_share_of_calls": 0.503
+   "engine_go_rate": 0.34,
+   "engine_tossup_share": 0.418,
+   "agree": 0.488,
+   "wins_lost_per_team_season_confident": 0.956,
+   "wins_lost_per_team_season_all": 1.243,
+   "confident_share_of_calls": 0.502
   },
   {
    "season": 2016,
    "decisions": 3577.0,
    "go_rate": 0.134,
-   "engine_go_rate": 0.346,
-   "engine_tossup_share": 0.405,
-   "agree": 0.478,
-   "wins_lost_per_team_season_confident": 0.92,
-   "wins_lost_per_team_season_all": 1.189,
-   "confident_share_of_calls": 0.503
+   "engine_go_rate": 0.351,
+   "engine_tossup_share": 0.404,
+   "agree": 0.475,
+   "wins_lost_per_team_season_confident": 0.926,
+   "wins_lost_per_team_season_all": 1.209,
+   "confident_share_of_calls": 0.501
   },
   {
    "season": 2017,
    "decisions": 3685.0,
    "go_rate": 0.135,
-   "engine_go_rate": 0.313,
-   "engine_tossup_share": 0.441,
-   "agree": 0.505,
-   "wins_lost_per_team_season_confident": 0.874,
-   "wins_lost_per_team_season_all": 1.126,
+   "engine_go_rate": 0.318,
+   "engine_tossup_share": 0.437,
+   "agree": 0.501,
+   "wins_lost_per_team_season_confident": 0.885,
+   "wins_lost_per_team_season_all": 1.147,
    "confident_share_of_calls": 0.497
   },
   {
    "season": 2018,
    "decisions": 3464.0,
    "go_rate": 0.158,
-   "engine_go_rate": 0.322,
-   "engine_tossup_share": 0.429,
-   "agree": 0.512,
-   "wins_lost_per_team_season_confident": 0.732,
-   "wins_lost_per_team_season_all": 0.984,
+   "engine_go_rate": 0.326,
+   "engine_tossup_share": 0.427,
+   "agree": 0.51,
+   "wins_lost_per_team_season_confident": 0.737,
+   "wins_lost_per_team_season_all": 1.003,
    "confident_share_of_calls": 0.505
   },
   {
    "season": 2019,
    "decisions": 3547.0,
    "go_rate": 0.172,
-   "engine_go_rate": 0.32,
-   "engine_tossup_share": 0.439,
-   "agree": 0.517,
-   "wins_lost_per_team_season_confident": 0.734,
-   "wins_lost_per_team_season_all": 0.973,
-   "confident_share_of_calls": 0.493
+   "engine_go_rate": 0.326,
+   "engine_tossup_share": 0.438,
+   "agree": 0.514,
+   "wins_lost_per_team_season_confident": 0.745,
+   "wins_lost_per_team_season_all": 0.994,
+   "confident_share_of_calls": 0.494
   },
   {
    "season": 2020,
    "decisions": 3408.0,
    "go_rate": 0.198,
-   "engine_go_rate": 0.343,
-   "engine_tossup_share": 0.438,
-   "agree": 0.518,
-   "wins_lost_per_team_season_confident": 0.658,
-   "wins_lost_per_team_season_all": 0.902,
-   "confident_share_of_calls": 0.491
+   "engine_go_rate": 0.348,
+   "engine_tossup_share": 0.436,
+   "agree": 0.519,
+   "wins_lost_per_team_season_confident": 0.664,
+   "wins_lost_per_team_season_all": 0.916,
+   "confident_share_of_calls": 0.492
   },
   {
    "season": 2021,
    "decisions": 3779.0,
    "go_rate": 0.211,
-   "engine_go_rate": 0.33,
-   "engine_tossup_share": 0.447,
-   "agree": 0.54,
-   "wins_lost_per_team_season_confident": 0.656,
-   "wins_lost_per_team_season_all": 0.892,
-   "confident_share_of_calls": 0.488
+   "engine_go_rate": 0.335,
+   "engine_tossup_share": 0.445,
+   "agree": 0.538,
+   "wins_lost_per_team_season_confident": 0.666,
+   "wins_lost_per_team_season_all": 0.912,
+   "confident_share_of_calls": 0.49
   },
   {
    "season": 2022,
    "decisions": 3853.0,
    "go_rate": 0.196,
-   "engine_go_rate": 0.356,
+   "engine_go_rate": 0.358,
    "engine_tossup_share": 0.401,
-   "agree": 0.53,
-   "wins_lost_per_team_season_confident": 0.789,
-   "wins_lost_per_team_season_all": 1.042,
-   "confident_share_of_calls": 0.5
+   "agree": 0.529,
+   "wins_lost_per_team_season_confident": 0.799,
+   "wins_lost_per_team_season_all": 1.06,
+   "confident_share_of_calls": 0.501
   },
   {
    "season": 2023,
    "decisions": 4011.0,
    "go_rate": 0.204,
-   "engine_go_rate": 0.337,
-   "engine_tossup_share": 0.407,
-   "agree": 0.549,
-   "wins_lost_per_team_season_confident": 0.7,
-   "wins_lost_per_team_season_all": 0.959,
+   "engine_go_rate": 0.342,
+   "engine_tossup_share": 0.406,
+   "agree": 0.547,
+   "wins_lost_per_team_season_confident": 0.711,
+   "wins_lost_per_team_season_all": 0.979,
    "confident_share_of_calls": 0.505
   },
   {
    "season": 2024,
    "decisions": 3790.0,
    "go_rate": 0.212,
-   "engine_go_rate": 0.324,
-   "engine_tossup_share": 0.416,
-   "agree": 0.568,
-   "wins_lost_per_team_season_confident": 0.602,
-   "wins_lost_per_team_season_all": 0.849,
-   "confident_share_of_calls": 0.478
+   "engine_go_rate": 0.33,
+   "engine_tossup_share": 0.413,
+   "agree": 0.565,
+   "wins_lost_per_team_season_confident": 0.611,
+   "wins_lost_per_team_season_all": 0.87,
+   "confident_share_of_calls": 0.479
   },
   {
    "season": 2025,
    "decisions": 3778.0,
    "go_rate": 0.24,
-   "engine_go_rate": 0.337,
-   "engine_tossup_share": 0.424,
-   "agree": 0.569,
-   "wins_lost_per_team_season_confident": 0.61,
-   "wins_lost_per_team_season_all": 0.845,
-   "confident_share_of_calls": 0.492
+   "engine_go_rate": 0.345,
+   "engine_tossup_share": 0.418,
+   "agree": 0.566,
+   "wins_lost_per_team_season_confident": 0.617,
+   "wins_lost_per_team_season_all": 0.865,
+   "confident_share_of_calls": 0.494
   },
   {
    "season": 2026,
    "decisions": 834.0,
    "go_rate": 0.194,
-   "engine_go_rate": 0.339,
-   "engine_tossup_share": 0.384,
-   "agree": 0.566,
-   "wins_lost_per_team_season_confident": 0.789,
-   "wins_lost_per_team_season_all": 1.025,
-   "confident_share_of_calls": 0.494
+   "engine_go_rate": 0.348,
+   "engine_tossup_share": 0.379,
+   "agree": 0.564,
+   "wins_lost_per_team_season_confident": 0.791,
+   "wins_lost_per_team_season_all": 1.035,
+   "confident_share_of_calls": 0.493
   }
  ],
  "current": [
@@ -192,43 +192,43 @@
    "last_season": 2026,
    "games": 22,
    "decisions": 134,
-   "clear_calls": 74,
+   "clear_calls": 75,
    "agree": 0.627,
-   "agree_clear": 0.77,
+   "agree_clear": 0.747,
    "go_rate": 0.209,
-   "engine_go_rate": 0.224,
-   "went_when_engine_said_go": 0.533,
-   "confident_mistakes": 22,
+   "engine_go_rate": 0.239,
+   "went_when_engine_said_go": 0.5,
+   "confident_mistakes": 21,
    "confident_mistake_kinds": {
     "fg->go": 4,
     "go->fg": 1,
     "go->punt": 1,
     "punt->fg": 3,
-    "punt->go": 13
+    "punt->go": 12
    },
-   "wp_lost_total": 0.45,
-   "wp_lost_per_game": 0.0204,
+   "wp_lost_total": 0.438,
+   "wp_lost_per_game": 0.0199,
    "wp_lost_per_game_ci90": [
-    0.0113,
-    0.0305
+    0.0106,
+    0.03
    ],
-   "wins_lost_per_17": 0.347,
-   "wins_lost_per_17_all_calls": 0.461,
-   "luck_total": -0.316,
+   "wins_lost_per_17": 0.338,
+   "wins_lost_per_17_all_calls": 0.47,
+   "luck_total": -0.338,
    "replay": {
     "n": 50,
-    "coach_expected": 0.5574,
-    "engine_expected": 0.5693,
-    "coach_realized": 0.5563
+    "coach_expected": 0.5616,
+    "engine_expected": 0.5738,
+    "coach_realized": 0.5627
    },
    "by_choice": {
     "go": {
      "coach": 28,
-     "engine": 63
+     "engine": 65
     },
     "fg": {
      "coach": 37,
-     "engine": 33
+     "engine": 31
     },
     "punt": {
      "coach": 69,
@@ -249,8 +249,8 @@
      "season": 2026,
      "team": "JAX",
      "decisions": 19,
-     "wp_lost_per_game": 0.0154,
-     "confident_mistakes": 4,
+     "wp_lost_per_game": 0.0121,
+     "confident_mistakes": 3,
      "go_rate": 0.0,
      "agree": 0.474
     }
@@ -337,11 +337,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.861,
+      "go": 0.86,
       "fg": 0.829,
       "punt": 0.82
      },
-     "cost": 0.031,
+     "cost": 0.03,
      "realized": 0.779,
      "confidence": 1.0,
      "what_happened": "(1:15) 39-C.Little 47 yard field goal is No Good, Wide Right, Center-46-R.Matiscik, Holder-9-L.Cooke."
@@ -360,7 +360,7 @@
    "games": 4,
    "decisions": 29,
    "clear_calls": 16,
-   "agree": 0.552,
+   "agree": 0.586,
    "agree_clear": 0.688,
    "go_rate": 0.207,
    "engine_go_rate": 0.31,
@@ -374,26 +374,26 @@
    "wp_lost_total": 0.096,
    "wp_lost_per_game": 0.0241,
    "wp_lost_per_game_ci90": [
-    0.0084,
-    0.0439
+    0.0079,
+    0.0441
    ],
    "wins_lost_per_17": 0.41,
    "wins_lost_per_17_all_calls": 0.544,
-   "luck_total": 0.43,
+   "luck_total": 0.417,
    "replay": {
-    "n": 13,
-    "coach_expected": 0.2882,
-    "engine_expected": 0.298,
-    "coach_realized": 0.299
+    "n": 12,
+    "coach_expected": 0.2819,
+    "engine_expected": 0.2925,
+    "coach_realized": 0.2907
    },
    "by_choice": {
     "go": {
      "coach": 6,
-     "engine": 14
+     "engine": 13
     },
     "fg": {
      "coach": 8,
-     "engine": 3
+     "engine": 4
     },
     "punt": {
      "coach": 15,
@@ -408,7 +408,7 @@
      "wp_lost_per_game": 0.0241,
      "confident_mistakes": 7,
      "go_rate": 0.207,
-     "agree": 0.552
+     "agree": 0.586
     }
    ],
    "worst_calls": [
@@ -421,11 +421,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.484,
+      "go": 0.486,
       "fg": 0.45,
       "punt": 0.422
      },
-     "cost": 0.035,
+     "cost": 0.036,
      "realized": 0.47,
      "confidence": 0.9,
      "what_happened": "(5:48) 25-A.Szmyt 48 yard field goal is GOOD, Center-50-R.Sunahara, Holder-13-C.Bojorquez."
@@ -457,7 +457,7 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.191,
+      "go": 0.19,
       "fg": 0.17,
       "punt": 0.161
      },
@@ -493,13 +493,13 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.352,
+      "go": 0.351,
       "fg": null,
       "punt": 0.346
      },
-     "cost": 0.006,
+     "cost": 0.005,
      "realized": 0.369,
-     "confidence": 0.95,
+     "confidence": 0.9,
      "what_happened": "(12:59) 13-C.Bojorquez punts 68 yards to PIT 7, Center-50-R.Sunahara. 10-K.Wetjen pushed ob at PIT 22 for 15 yards (86-B.Whiteheart)."
     }
    ],
@@ -515,40 +515,40 @@
    "last_season": 2026,
    "games": 4,
    "decisions": 25,
-   "clear_calls": 9,
-   "agree": 0.44,
-   "agree_clear": 0.333,
+   "clear_calls": 10,
+   "agree": 0.4,
+   "agree_clear": 0.4,
    "go_rate": 0.24,
-   "engine_go_rate": 0.28,
-   "went_when_engine_said_go": 0.143,
+   "engine_go_rate": 0.32,
+   "went_when_engine_said_go": 0.25,
    "confident_mistakes": 5,
    "confident_mistake_kinds": {
     "fg->go": 3,
     "punt->go": 2
    },
-   "wp_lost_total": 0.105,
-   "wp_lost_per_game": 0.0262,
+   "wp_lost_total": 0.104,
+   "wp_lost_per_game": 0.0261,
    "wp_lost_per_game_ci90": [
     0.0059,
-    0.0533
+    0.0531
    ],
-   "wins_lost_per_17": 0.445,
-   "wins_lost_per_17_all_calls": 0.677,
+   "wins_lost_per_17": 0.444,
+   "wins_lost_per_17_all_calls": 0.684,
    "luck_total": -0.183,
    "replay": {
-    "n": 14,
-    "coach_expected": 0.1095,
-    "engine_expected": 0.1209,
-    "coach_realized": 0.1028
+    "n": 15,
+    "coach_expected": 0.1043,
+    "engine_expected": 0.115,
+    "coach_realized": 0.098
    },
    "by_choice": {
     "go": {
      "coach": 6,
-     "engine": 19
+     "engine": 20
     },
     "fg": {
      "coach": 7,
-     "engine": 2
+     "engine": 1
     },
     "punt": {
      "coach": 12,
@@ -560,10 +560,10 @@
      "season": 2026,
      "team": "MIA",
      "decisions": 25,
-     "wp_lost_per_game": 0.0262,
+     "wp_lost_per_game": 0.0261,
      "confident_mistakes": 5,
      "go_rate": 0.24,
-     "agree": 0.44
+     "agree": 0.4
     }
    ],
    "worst_calls": [
@@ -670,9 +670,9 @@
    "last_season": 2026,
    "games": 41,
    "decisions": 266,
-   "clear_calls": 160,
-   "agree": 0.609,
-   "agree_clear": 0.681,
+   "clear_calls": 159,
+   "agree": 0.602,
+   "agree_clear": 0.679,
    "go_rate": 0.132,
    "engine_go_rate": 0.278,
    "went_when_engine_said_go": 0.351,
@@ -683,29 +683,29 @@
     "go->punt": 1,
     "punt->go": 28
    },
-   "wp_lost_total": 1.142,
-   "wp_lost_per_game": 0.0279,
+   "wp_lost_total": 1.14,
+   "wp_lost_per_game": 0.0278,
    "wp_lost_per_game_ci90": [
     0.0197,
-    0.0365
+    0.0363
    ],
-   "wins_lost_per_17": 0.474,
-   "wins_lost_per_17_all_calls": 0.707,
-   "luck_total": 0.915,
+   "wins_lost_per_17": 0.473,
+   "wins_lost_per_17_all_calls": 0.708,
+   "luck_total": 0.86,
    "replay": {
-    "n": 104,
-    "coach_expected": 0.5757,
-    "engine_expected": 0.5921,
-    "coach_realized": 0.5738
+    "n": 106,
+    "coach_expected": 0.5734,
+    "engine_expected": 0.5895,
+    "coach_realized": 0.5721
    },
    "by_choice": {
     "go": {
      "coach": 35,
-     "engine": 127
+     "engine": 129
     },
     "fg": {
      "coach": 81,
-     "engine": 55
+     "engine": 53
     },
     "punt": {
      "coach": 150,
@@ -717,16 +717,16 @@
      "season": 2024,
      "team": "SEA",
      "decisions": 118,
-     "wp_lost_per_game": 0.0208,
+     "wp_lost_per_game": 0.0211,
      "confident_mistakes": 16,
      "go_rate": 0.153,
-     "agree": 0.627
+     "agree": 0.619
     },
     {
      "season": 2025,
      "team": "SEA",
      "decisions": 122,
-     "wp_lost_per_game": 0.0309,
+     "wp_lost_per_game": 0.0305,
      "confident_mistakes": 22,
      "go_rate": 0.098,
      "agree": 0.607
@@ -738,7 +738,7 @@
      "wp_lost_per_game": 0.0428,
      "confident_mistakes": 5,
      "go_rate": 0.192,
-     "agree": 0.538
+     "agree": 0.5
     }
    ],
    "worst_calls": [
@@ -751,11 +751,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.353,
+      "go": 0.352,
       "fg": 0.271,
       "punt": 0.259
      },
-     "cost": 0.081,
+     "cost": 0.08,
      "realized": 0.273,
      "confidence": 1.0,
      "what_happened": "(4:44) 5-J.Myers 20 yard field goal is GOOD, Center-41-C.Stoll, Holder-4-M.Dickson."
@@ -769,11 +769,11 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.462,
+      "go": 0.46,
       "fg": 0.4,
       "punt": 0.396
      },
-     "cost": 0.067,
+     "cost": 0.065,
      "realized": 0.388,
      "confidence": 1.0,
      "what_happened": "(7:11) 4-M.Dickson punts 36 yards to PIT 13, Center-41-C.Stoll, fair catch by 19-C.Austin."
@@ -845,48 +845,48 @@
    "last_season": 2026,
    "games": 93,
    "decisions": 600,
-   "clear_calls": 345,
-   "agree": 0.595,
-   "agree_clear": 0.67,
+   "clear_calls": 344,
+   "agree": 0.598,
+   "agree_clear": 0.66,
    "go_rate": 0.322,
-   "engine_go_rate": 0.362,
-   "went_when_engine_said_go": 0.53,
-   "confident_mistakes": 117,
+   "engine_go_rate": 0.367,
+   "went_when_engine_said_go": 0.523,
+   "confident_mistakes": 115,
    "confident_mistake_kinds": {
-    "fg->go": 27,
+    "fg->go": 26,
     "fg->punt": 2,
     "go->fg": 3,
     "go->punt": 10,
     "punt->fg": 8,
-    "punt->go": 67
+    "punt->go": 66
    },
-   "wp_lost_total": 2.63,
-   "wp_lost_per_game": 0.0283,
+   "wp_lost_total": 2.663,
+   "wp_lost_per_game": 0.0286,
    "wp_lost_per_game_ci90": [
-    0.0232,
-    0.0334
+    0.0235,
+    0.0339
    ],
-   "wins_lost_per_17": 0.481,
-   "wins_lost_per_17_all_calls": 0.683,
-   "luck_total": 1.231,
+   "wins_lost_per_17": 0.487,
+   "wins_lost_per_17_all_calls": 0.702,
+   "luck_total": 0.847,
    "replay": {
-    "n": 243,
-    "coach_expected": 0.4979,
-    "engine_expected": 0.5133,
-    "coach_realized": 0.4983
+    "n": 241,
+    "coach_expected": 0.4977,
+    "engine_expected": 0.5136,
+    "coach_realized": 0.4976
    },
    "by_choice": {
     "go": {
      "coach": 193,
-     "engine": 354
+     "engine": 361
     },
     "fg": {
      "coach": 137,
-     "engine": 96
+     "engine": 91
     },
     "punt": {
      "coach": 270,
-     "engine": 150
+     "engine": 148
     }
    },
    "seasons": [
@@ -894,43 +894,43 @@
      "season": 2021,
      "team": "DET",
      "decisions": 126,
-     "wp_lost_per_game": 0.0319,
-     "confident_mistakes": 31,
+     "wp_lost_per_game": 0.032,
+     "confident_mistakes": 30,
      "go_rate": 0.317,
-     "agree": 0.571
+     "agree": 0.579
     },
     {
      "season": 2022,
      "team": "DET",
      "decisions": 113,
-     "wp_lost_per_game": 0.0289,
+     "wp_lost_per_game": 0.0299,
      "confident_mistakes": 21,
      "go_rate": 0.319,
-     "agree": 0.531
+     "agree": 0.522
     },
     {
      "season": 2023,
      "team": "DET",
      "decisions": 127,
-     "wp_lost_per_game": 0.0212,
-     "confident_mistakes": 16,
+     "wp_lost_per_game": 0.0215,
+     "confident_mistakes": 15,
      "go_rate": 0.346,
-     "agree": 0.646
+     "agree": 0.654
     },
     {
      "season": 2024,
      "team": "DET",
      "decisions": 101,
-     "wp_lost_per_game": 0.0278,
+     "wp_lost_per_game": 0.0277,
      "confident_mistakes": 20,
      "go_rate": 0.347,
-     "agree": 0.644
+     "agree": 0.653
     },
     {
      "season": 2025,
      "team": "DET",
      "decisions": 107,
-     "wp_lost_per_game": 0.0304,
+     "wp_lost_per_game": 0.0307,
      "confident_mistakes": 24,
      "go_rate": 0.29,
      "agree": 0.626
@@ -939,7 +939,7 @@
      "season": 2026,
      "team": "DET",
      "decisions": 26,
-     "wp_lost_per_game": 0.0386,
+     "wp_lost_per_game": 0.0401,
      "confident_mistakes": 5,
      "go_rate": 0.269,
      "agree": 0.423
@@ -965,6 +965,24 @@
      "what_happened": "(:06) (Shotgun) 16-J.Goff pass incomplete short left to 85-T.Kennedy [0-Y.Diaby]."
     },
     {
+     "season": 2023,
+     "week": 21,
+     "team": "DET",
+     "opp": "SF",
+     "situation": "Q2 0:10, up 14, 4th & 3 at opp 3",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.805,
+      "fg": 0.726,
+      "punt": 0.719
+     },
+     "cost": 0.079,
+     "realized": 0.756,
+     "confidence": 0.95,
+     "what_happened": "(:10) 17-M.Badgley 21 yard field goal is GOOD, Center-43-J.McQuaide, Holder-3-J.Fox."
+    },
+    {
      "season": 2025,
      "week": 12,
      "team": "DET",
@@ -983,24 +1001,6 @@
      "what_happened": "(9:54) 3-J.Fox punts 36 yards to NYG 8, Center-49-H.Hatten, fair catch by 80-G.Olszewski."
     },
     {
-     "season": 2023,
-     "week": 21,
-     "team": "DET",
-     "opp": "SF",
-     "situation": "Q2 0:10, up 14, 4th & 3 at opp 3",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.795,
-      "fg": 0.726,
-      "punt": 0.719
-     },
-     "cost": 0.069,
-     "realized": 0.756,
-     "confidence": 0.95,
-     "what_happened": "(:10) 17-M.Badgley 21 yard field goal is GOOD, Center-43-J.McQuaide, Holder-3-J.Fox."
-    },
-    {
      "season": 2021,
      "week": 16,
      "team": "DET",
@@ -1009,253 +1009,272 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.134,
+      "go": 0.133,
       "fg": 0.066,
       "punt": 0.033
      },
-     "cost": 0.068,
+     "cost": 0.067,
      "realized": 0.077,
      "confidence": 1.0,
      "what_happened": "(2:42) 6-R.Patterson 26 yard field goal is GOOD, Center-47-S.Daly, Holder-3-J.Fox."
     },
     {
-     "season": 2024,
-     "week": 1,
+     "season": 2021,
+     "week": 10,
      "team": "DET",
-     "opp": "LA",
-     "situation": "Q4 4:17, down 3, 4th & 5 at own 35",
-     "coach_call": "punt",
+     "opp": "PIT",
+     "situation": "Q2 0:02, down 3, 4th & 2 at opp 2",
+     "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.344,
-      "fg": null,
-      "punt": 0.286
+      "go": 0.343,
+      "fg": 0.28,
+      "punt": 0.228
      },
-     "cost": 0.058,
-     "realized": 0.31,
+     "cost": 0.062,
+     "realized": 0.252,
      "confidence": 1.0,
-     "what_happened": "(4:17) 3-J.Fox punts 54 yards to LA 11, Center-49-H.Hatten, fair catch by 23-K.Williams."
+     "what_happened": "(:02) 5-R.Santoso 20 yard field goal is GOOD, Center-47-S.Daly, Holder-3-J.Fox."
     }
    ],
    "percentile_better_than": 0.976,
    "grade": "A+"
   },
   {
-   "coach": "Matt LaFleur",
+   "coach": "Sean McDermott",
    "teams": [
-    "GB"
+    "BUF"
    ],
-   "first_season": 2019,
+   "first_season": 2017,
    "last_season": 2026,
-   "games": 130,
-   "decisions": 765,
-   "clear_calls": 449,
-   "agree": 0.601,
-   "agree_clear": 0.661,
-   "go_rate": 0.221,
-   "engine_go_rate": 0.322,
-   "went_when_engine_said_go": 0.439,
-   "confident_mistakes": 142,
+   "games": 168,
+   "decisions": 1020,
+   "clear_calls": 573,
+   "agree": 0.554,
+   "agree_clear": 0.611,
+   "go_rate": 0.187,
+   "engine_go_rate": 0.328,
+   "went_when_engine_said_go": 0.376,
+   "confident_mistakes": 221,
    "confident_mistake_kinds": {
-    "fg->go": 45,
-    "go->fg": 8,
-    "go->punt": 1,
-    "punt->fg": 6,
-    "punt->go": 82
+    "fg->go": 64,
+    "fg->punt": 3,
+    "go->fg": 3,
+    "go->punt": 3,
+    "punt->fg": 14,
+    "punt->go": 134
    },
-   "wp_lost_total": 3.697,
-   "wp_lost_per_game": 0.0284,
+   "wp_lost_total": 4.824,
+   "wp_lost_per_game": 0.0287,
    "wp_lost_per_game_ci90": [
-    0.0234,
-    0.0338
+    0.0249,
+    0.0328
    ],
-   "wins_lost_per_17": 0.483,
-   "wins_lost_per_17_all_calls": 0.658,
-   "luck_total": -2.078,
+   "wins_lost_per_17": 0.488,
+   "wins_lost_per_17_all_calls": 0.713,
+   "luck_total": -0.575,
    "replay": {
-    "n": 305,
-    "coach_expected": 0.5732,
-    "engine_expected": 0.5897,
-    "coach_realized": 0.5759
+    "n": 455,
+    "coach_expected": 0.5402,
+    "engine_expected": 0.5557,
+    "coach_realized": 0.5413
    },
    "by_choice": {
     "go": {
-     "coach": 169,
-     "engine": 415
+     "coach": 191,
+     "engine": 564
     },
     "fg": {
-     "coach": 198,
-     "engine": 135
+     "coach": 284,
+     "engine": 191
     },
     "punt": {
-     "coach": 398,
-     "engine": 215
+     "coach": 545,
+     "engine": 265
     }
    },
    "seasons": [
     {
-     "season": 2019,
-     "team": "GB",
-     "decisions": 114,
-     "wp_lost_per_game": 0.0431,
+     "season": 2017,
+     "team": "BUF",
+     "decisions": 125,
+     "wp_lost_per_game": 0.0413,
      "confident_mistakes": 29,
-     "go_rate": 0.14,
-     "agree": 0.553
+     "go_rate": 0.128,
+     "agree": 0.528
+    },
+    {
+     "season": 2018,
+     "team": "BUF",
+     "decisions": 116,
+     "wp_lost_per_game": 0.0319,
+     "confident_mistakes": 37,
+     "go_rate": 0.147,
+     "agree": 0.379
+    },
+    {
+     "season": 2019,
+     "team": "BUF",
+     "decisions": 131,
+     "wp_lost_per_game": 0.031,
+     "confident_mistakes": 26,
+     "go_rate": 0.145,
+     "agree": 0.58
     },
     {
      "season": 2020,
-     "team": "GB",
-     "decisions": 87,
-     "wp_lost_per_game": 0.013,
-     "confident_mistakes": 13,
-     "go_rate": 0.241,
-     "agree": 0.678
+     "team": "BUF",
+     "decisions": 100,
+     "wp_lost_per_game": 0.0296,
+     "confident_mistakes": 24,
+     "go_rate": 0.12,
+     "agree": 0.59
     },
     {
      "season": 2021,
-     "team": "GB",
-     "decisions": 108,
-     "wp_lost_per_game": 0.0178,
-     "confident_mistakes": 21,
-     "go_rate": 0.204,
-     "agree": 0.574
+     "team": "BUF",
+     "decisions": 106,
+     "wp_lost_per_game": 0.0353,
+     "confident_mistakes": 27,
+     "go_rate": 0.236,
+     "agree": 0.5
     },
     {
      "season": 2022,
-     "team": "GB",
-     "decisions": 102,
-     "wp_lost_per_game": 0.0233,
-     "confident_mistakes": 16,
-     "go_rate": 0.304,
-     "agree": 0.618
+     "team": "BUF",
+     "decisions": 99,
+     "wp_lost_per_game": 0.0166,
+     "confident_mistakes": 15,
+     "go_rate": 0.162,
+     "agree": 0.626
     },
     {
      "season": 2023,
-     "team": "GB",
-     "decisions": 114,
-     "wp_lost_per_game": 0.0312,
-     "confident_mistakes": 21,
-     "go_rate": 0.228,
-     "agree": 0.596
+     "team": "BUF",
+     "decisions": 104,
+     "wp_lost_per_game": 0.0251,
+     "confident_mistakes": 26,
+     "go_rate": 0.192,
+     "agree": 0.5
     },
     {
      "season": 2024,
-     "team": "GB",
-     "decisions": 107,
-     "wp_lost_per_game": 0.0376,
-     "confident_mistakes": 20,
-     "go_rate": 0.168,
-     "agree": 0.561
+     "team": "BUF",
+     "decisions": 120,
+     "wp_lost_per_game": 0.0316,
+     "confident_mistakes": 21,
+     "go_rate": 0.258,
+     "agree": 0.633
     },
     {
      "season": 2025,
-     "team": "GB",
-     "decisions": 104,
-     "wp_lost_per_game": 0.0223,
-     "confident_mistakes": 17,
-     "go_rate": 0.25,
-     "agree": 0.625
+     "team": "BUF",
+     "decisions": 103,
+     "wp_lost_per_game": 0.0195,
+     "confident_mistakes": 13,
+     "go_rate": 0.311,
+     "agree": 0.66
     },
     {
      "season": 2026,
-     "team": "GB",
-     "decisions": 29,
-     "wp_lost_per_game": 0.0752,
-     "confident_mistakes": 5,
-     "go_rate": 0.31,
-     "agree": 0.69
+     "team": "BUF",
+     "decisions": 16,
+     "wp_lost_per_game": 0.0267,
+     "confident_mistakes": 3,
+     "go_rate": 0.188,
+     "agree": 0.562
     }
    ],
    "worst_calls": [
     {
-     "season": 2026,
-     "week": 2,
-     "team": "GB",
-     "opp": "NYJ",
-     "situation": "Q4 0:02, tied, 4th & 10 at 50",
+     "season": 2021,
+     "week": 14,
+     "team": "BUF",
+     "opp": "TB",
+     "situation": "Q4 0:25, down 3, 4th & 2 at opp 7",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.446,
+      "fg": 0.314,
+      "punt": 0.029
+     },
+     "cost": 0.132,
+     "realized": 0.42,
+     "confidence": 0.95,
+     "what_happened": "(:25) 2-T.Bass 25 yard field goal is GOOD, Center-69-R.Ferguson, Holder-3-M.Haack."
+    },
+    {
+     "season": 2021,
+     "week": 9,
+     "team": "BUF",
+     "opp": "JAX",
+     "situation": "Q4 1:11, down 3, 4th & 16 at opp 48",
      "coach_call": "go",
      "engine_call": "fg",
      "wp": {
-      "go": 0.5,
-      "fg": 0.695,
-      "punt": 0.499
+      "go": 0.246,
+      "fg": 0.336,
+      "punt": 0.152
      },
-     "cost": 0.195,
-     "realized": 1.0,
+     "cost": 0.09,
+     "realized": 0.077,
      "confidence": 1.0,
-     "what_happened": "(:02) (Shotgun) 10-J.Love sacked at GB 45 for -5 yards (52-K.Enagbare)."
+     "what_happened": "(1:11) (Shotgun) 17-J.Allen pass incomplete deep left to 14-S.Diggs."
     },
     {
-     "season": 2024,
-     "week": 18,
-     "team": "GB",
-     "opp": "CHI",
-     "situation": "Q4 7:42, down 8, 4th & 4 at own 40",
+     "season": 2018,
+     "week": 6,
+     "team": "BUF",
+     "opp": "HOU",
+     "situation": "Q4 4:08, up 3, 4th & 2 at own 41",
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.255,
+      "go": 0.523,
       "fg": null,
-      "punt": 0.151
+      "punt": 0.435
      },
-     "cost": 0.104,
-     "realized": 0.147,
+     "cost": 0.089,
+     "realized": 0.456,
      "confidence": 1.0,
-     "what_happened": "(7:42) 19-D.Whelan punts 60 yards to end zone, Center-42-M.Orzech, Touchback."
+     "what_happened": "(4:08) 9-C.Bojorquez punts 51 yards to HOU 8, Center-69-R.Ferguson, downed by BUF-26-T.Jones."
     },
     {
-     "season": 2024,
-     "week": 18,
-     "team": "GB",
-     "opp": "CHI",
-     "situation": "Q2 2:00, down 4, 4th & 4 at opp 12",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.706,
-      "fg": 0.622,
-      "punt": 0.626
-     },
-     "cost": 0.085,
-     "realized": 0.602,
-     "confidence": 1.0,
-     "what_happened": "(2:00) 17-B.McManus 30 yard field goal is GOOD, Center-42-M.Orzech, Holder-19-D.Whelan."
-    },
-    {
-     "season": 2022,
-     "week": 7,
-     "team": "GB",
-     "opp": "WAS",
-     "situation": "Q3 9:03, down 3, 4th & 2 at own 47",
+     "season": 2025,
+     "week": 15,
+     "team": "BUF",
+     "opp": "NE",
+     "situation": "Q1 9:17, down 7, 4th & 5 at opp 44",
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.575,
-      "fg": 0.498,
-      "punt": 0.499
+      "go": 0.415,
+      "fg": 0.366,
+      "punt": 0.339
      },
      "cost": 0.076,
-     "realized": 0.487,
+     "realized": 0.344,
      "confidence": 1.0,
-     "what_happened": "(9:03) 16-P.O'Donnell punts 38 yards to WAS 15, Center-56-J.Coco, fair catch by 15-D.Milne."
+     "what_happened": "(9:17) 19-M.Wishnowsky punts 32 yards to NE 12, Center-69-R.Ferguson, out of bounds."
     },
     {
-     "season": 2022,
+     "season": 2017,
      "week": 9,
-     "team": "GB",
-     "opp": "DET",
-     "situation": "Q4 6:39, down 9, 4th & 3 at opp 7",
-     "coach_call": "fg",
+     "team": "BUF",
+     "opp": "NYJ",
+     "situation": "Q1 4:58, down 7, 4th & 3 at opp 44",
+     "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.211,
-      "fg": 0.137,
-      "punt": 0.064
+      "go": 0.443,
+      "fg": 0.392,
+      "punt": 0.368
      },
-     "cost": 0.074,
-     "realized": 0.151,
+     "cost": 0.076,
+     "realized": 0.359,
      "confidence": 1.0,
-     "what_happened": "(6:39) 2-M.Crosby 25 yard field goal is GOOD, Center-56-J.Coco, Holder-16-P.O'Donnell."
+     "what_happened": "(4:58) 6-C.Schmidt punts 36 yards to NYJ 8, Center-69-R.Ferguson, downed by BUF-14-J.Webb."
     }
    ],
    "percentile_better_than": 0.965,
@@ -1270,47 +1289,47 @@
    "last_season": 2026,
    "games": 99,
    "decisions": 643,
-   "clear_calls": 364,
-   "agree": 0.588,
-   "agree_clear": 0.651,
+   "clear_calls": 367,
+   "agree": 0.585,
+   "agree_clear": 0.649,
    "go_rate": 0.236,
-   "engine_go_rate": 0.327,
-   "went_when_engine_said_go": 0.443,
-   "confident_mistakes": 122,
+   "engine_go_rate": 0.333,
+   "went_when_engine_said_go": 0.444,
+   "confident_mistakes": 121,
    "confident_mistake_kinds": {
     "fg->go": 35,
-    "go->fg": 9,
+    "go->fg": 8,
     "go->punt": 4,
     "punt->fg": 6,
     "punt->go": 68
    },
-   "wp_lost_total": 2.82,
-   "wp_lost_per_game": 0.0285,
+   "wp_lost_total": 2.895,
+   "wp_lost_per_game": 0.0292,
    "wp_lost_per_game_ci90": [
-    0.0235,
-    0.0338
+    0.0243,
+    0.0347
    ],
-   "wins_lost_per_17": 0.484,
-   "wins_lost_per_17_all_calls": 0.689,
-   "luck_total": 1.292,
+   "wins_lost_per_17": 0.497,
+   "wins_lost_per_17_all_calls": 0.705,
+   "luck_total": 1.183,
    "replay": {
-    "n": 265,
-    "coach_expected": 0.6159,
-    "engine_expected": 0.631,
-    "coach_realized": 0.6158
+    "n": 267,
+    "coach_expected": 0.62,
+    "engine_expected": 0.6354,
+    "coach_realized": 0.6199
    },
    "by_choice": {
     "go": {
      "coach": 152,
-     "engine": 354
+     "engine": 356
     },
     "fg": {
      "coach": 163,
-     "engine": 106
+     "engine": 105
     },
     "punt": {
      "coach": 328,
-     "engine": 183
+     "engine": 182
     }
    },
    "seasons": [
@@ -1318,16 +1337,16 @@
      "season": 2021,
      "team": "PHI",
      "decisions": 116,
-     "wp_lost_per_game": 0.0273,
+     "wp_lost_per_game": 0.0285,
      "confident_mistakes": 23,
      "go_rate": 0.224,
-     "agree": 0.534
+     "agree": 0.526
     },
     {
      "season": 2022,
      "team": "PHI",
      "decisions": 125,
-     "wp_lost_per_game": 0.0264,
+     "wp_lost_per_game": 0.0272,
      "confident_mistakes": 32,
      "go_rate": 0.296,
      "agree": 0.488
@@ -1336,34 +1355,34 @@
      "season": 2023,
      "team": "PHI",
      "decisions": 107,
-     "wp_lost_per_game": 0.0232,
+     "wp_lost_per_game": 0.0246,
      "confident_mistakes": 15,
      "go_rate": 0.252,
-     "agree": 0.682
+     "agree": 0.692
     },
     {
      "season": 2024,
      "team": "PHI",
      "decisions": 140,
-     "wp_lost_per_game": 0.0402,
-     "confident_mistakes": 31,
+     "wp_lost_per_game": 0.0404,
+     "confident_mistakes": 30,
      "go_rate": 0.214,
-     "agree": 0.564
+     "agree": 0.557
     },
     {
      "season": 2025,
      "team": "PHI",
      "decisions": 126,
-     "wp_lost_per_game": 0.0265,
+     "wp_lost_per_game": 0.0266,
      "confident_mistakes": 18,
      "go_rate": 0.198,
-     "agree": 0.667
+     "agree": 0.659
     },
     {
      "season": 2026,
      "team": "PHI",
      "decisions": 29,
-     "wp_lost_per_game": 0.0151,
+     "wp_lost_per_game": 0.0173,
      "confident_mistakes": 3,
      "go_rate": 0.241,
      "agree": 0.655
@@ -1451,11 +1470,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.41,
+      "go": 0.407,
       "fg": 0.342,
       "punt": 0.28
      },
-     "cost": 0.068,
+     "cost": 0.065,
      "realized": 0.346,
      "confidence": 1.0,
      "what_happened": "(:22) 4-J.Elliott 21 yard field goal is GOOD, Center-49-R.Lovato, Holder-10-B.Mann."
@@ -1465,243 +1484,224 @@
    "grade": "A+"
   },
   {
-   "coach": "Sean McDermott",
+   "coach": "Matt LaFleur",
    "teams": [
-    "BUF"
+    "GB"
    ],
-   "first_season": 2017,
+   "first_season": 2019,
    "last_season": 2026,
-   "games": 168,
-   "decisions": 1020,
-   "clear_calls": 574,
-   "agree": 0.558,
-   "agree_clear": 0.61,
-   "go_rate": 0.187,
+   "games": 130,
+   "decisions": 765,
+   "clear_calls": 451,
+   "agree": 0.595,
+   "agree_clear": 0.656,
+   "go_rate": 0.221,
    "engine_go_rate": 0.327,
-   "went_when_engine_said_go": 0.374,
-   "confident_mistakes": 221,
+   "went_when_engine_said_go": 0.436,
+   "confident_mistakes": 142,
    "confident_mistake_kinds": {
-    "fg->go": 64,
-    "fg->punt": 3,
-    "go->fg": 3,
-    "go->punt": 3,
-    "punt->fg": 14,
-    "punt->go": 134
+    "fg->go": 45,
+    "go->fg": 8,
+    "go->punt": 1,
+    "punt->fg": 6,
+    "punt->go": 82
    },
-   "wp_lost_total": 4.793,
-   "wp_lost_per_game": 0.0285,
+   "wp_lost_total": 3.811,
+   "wp_lost_per_game": 0.0293,
    "wp_lost_per_game_ci90": [
-    0.0248,
-    0.0326
+    0.0241,
+    0.0347
    ],
-   "wins_lost_per_17": 0.485,
-   "wins_lost_per_17_all_calls": 0.702,
-   "luck_total": -0.273,
+   "wins_lost_per_17": 0.498,
+   "wins_lost_per_17_all_calls": 0.684,
+   "luck_total": -2.327,
    "replay": {
-    "n": 451,
-    "coach_expected": 0.5403,
-    "engine_expected": 0.5557,
-    "coach_realized": 0.5413
+    "n": 310,
+    "coach_expected": 0.5721,
+    "engine_expected": 0.589,
+    "coach_realized": 0.5746
    },
    "by_choice": {
     "go": {
-     "coach": 191,
-     "engine": 560
+     "coach": 169,
+     "engine": 420
     },
     "fg": {
-     "coach": 284,
-     "engine": 194
+     "coach": 198,
+     "engine": 130
     },
     "punt": {
-     "coach": 545,
-     "engine": 266
+     "coach": 398,
+     "engine": 215
     }
    },
    "seasons": [
     {
-     "season": 2017,
-     "team": "BUF",
-     "decisions": 125,
-     "wp_lost_per_game": 0.0405,
-     "confident_mistakes": 29,
-     "go_rate": 0.128,
-     "agree": 0.536
-    },
-    {
-     "season": 2018,
-     "team": "BUF",
-     "decisions": 116,
-     "wp_lost_per_game": 0.0318,
-     "confident_mistakes": 37,
-     "go_rate": 0.147,
-     "agree": 0.379
-    },
-    {
      "season": 2019,
-     "team": "BUF",
-     "decisions": 131,
-     "wp_lost_per_game": 0.0312,
-     "confident_mistakes": 26,
-     "go_rate": 0.145,
-     "agree": 0.603
+     "team": "GB",
+     "decisions": 114,
+     "wp_lost_per_game": 0.044,
+     "confident_mistakes": 29,
+     "go_rate": 0.14,
+     "agree": 0.553
     },
     {
      "season": 2020,
-     "team": "BUF",
-     "decisions": 100,
-     "wp_lost_per_game": 0.0293,
-     "confident_mistakes": 24,
-     "go_rate": 0.12,
-     "agree": 0.59
+     "team": "GB",
+     "decisions": 87,
+     "wp_lost_per_game": 0.014,
+     "confident_mistakes": 13,
+     "go_rate": 0.241,
+     "agree": 0.667
     },
     {
      "season": 2021,
-     "team": "BUF",
-     "decisions": 106,
-     "wp_lost_per_game": 0.0346,
-     "confident_mistakes": 27,
-     "go_rate": 0.236,
-     "agree": 0.5
+     "team": "GB",
+     "decisions": 108,
+     "wp_lost_per_game": 0.0191,
+     "confident_mistakes": 21,
+     "go_rate": 0.204,
+     "agree": 0.556
     },
     {
      "season": 2022,
-     "team": "BUF",
-     "decisions": 99,
-     "wp_lost_per_game": 0.0166,
-     "confident_mistakes": 15,
-     "go_rate": 0.162,
-     "agree": 0.626
+     "team": "GB",
+     "decisions": 102,
+     "wp_lost_per_game": 0.0241,
+     "confident_mistakes": 16,
+     "go_rate": 0.304,
+     "agree": 0.618
     },
     {
      "season": 2023,
-     "team": "BUF",
-     "decisions": 104,
-     "wp_lost_per_game": 0.025,
-     "confident_mistakes": 26,
-     "go_rate": 0.192,
-     "agree": 0.5
+     "team": "GB",
+     "decisions": 114,
+     "wp_lost_per_game": 0.0319,
+     "confident_mistakes": 21,
+     "go_rate": 0.228,
+     "agree": 0.588
     },
     {
      "season": 2024,
-     "team": "BUF",
-     "decisions": 120,
-     "wp_lost_per_game": 0.0317,
-     "confident_mistakes": 21,
-     "go_rate": 0.258,
-     "agree": 0.625
+     "team": "GB",
+     "decisions": 107,
+     "wp_lost_per_game": 0.0403,
+     "confident_mistakes": 20,
+     "go_rate": 0.168,
+     "agree": 0.551
     },
     {
      "season": 2025,
-     "team": "BUF",
-     "decisions": 103,
-     "wp_lost_per_game": 0.0196,
-     "confident_mistakes": 13,
-     "go_rate": 0.311,
-     "agree": 0.67
+     "team": "GB",
+     "decisions": 104,
+     "wp_lost_per_game": 0.0223,
+     "confident_mistakes": 17,
+     "go_rate": 0.25,
+     "agree": 0.625
     },
     {
      "season": 2026,
-     "team": "BUF",
-     "decisions": 16,
-     "wp_lost_per_game": 0.0267,
-     "confident_mistakes": 3,
-     "go_rate": 0.188,
-     "agree": 0.562
+     "team": "GB",
+     "decisions": 29,
+     "wp_lost_per_game": 0.0701,
+     "confident_mistakes": 5,
+     "go_rate": 0.31,
+     "agree": 0.69
     }
    ],
    "worst_calls": [
     {
-     "season": 2021,
-     "week": 14,
-     "team": "BUF",
-     "opp": "TB",
-     "situation": "Q4 0:25, down 3, 4th & 2 at opp 7",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.447,
-      "fg": 0.314,
-      "punt": 0.029
-     },
-     "cost": 0.133,
-     "realized": 0.42,
-     "confidence": 0.95,
-     "what_happened": "(:25) 2-T.Bass 25 yard field goal is GOOD, Center-69-R.Ferguson, Holder-3-M.Haack."
-    },
-    {
-     "season": 2021,
-     "week": 9,
-     "team": "BUF",
-     "opp": "JAX",
-     "situation": "Q4 1:11, down 3, 4th & 16 at opp 48",
+     "season": 2026,
+     "week": 2,
+     "team": "GB",
+     "opp": "NYJ",
+     "situation": "Q4 0:02, tied, 4th & 10 at 50",
      "coach_call": "go",
      "engine_call": "fg",
      "wp": {
-      "go": 0.246,
-      "fg": 0.336,
-      "punt": 0.152
+      "go": 0.552,
+      "fg": 0.727,
+      "punt": 0.551
      },
-     "cost": 0.09,
-     "realized": 0.077,
+     "cost": 0.174,
+     "realized": 1.0,
      "confidence": 1.0,
-     "what_happened": "(1:11) (Shotgun) 17-J.Allen pass incomplete deep left to 14-S.Diggs."
+     "what_happened": "(:02) (Shotgun) 10-J.Love sacked at GB 45 for -5 yards (52-K.Enagbare)."
     },
     {
-     "season": 2018,
-     "week": 6,
-     "team": "BUF",
-     "opp": "HOU",
-     "situation": "Q4 4:08, up 3, 4th & 2 at own 41",
+     "season": 2024,
+     "week": 18,
+     "team": "GB",
+     "opp": "CHI",
+     "situation": "Q4 7:42, down 8, 4th & 4 at own 40",
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.523,
+      "go": 0.255,
       "fg": null,
-      "punt": 0.435
+      "punt": 0.151
      },
-     "cost": 0.089,
-     "realized": 0.456,
+     "cost": 0.104,
+     "realized": 0.147,
      "confidence": 1.0,
-     "what_happened": "(4:08) 9-C.Bojorquez punts 51 yards to HOU 8, Center-69-R.Ferguson, downed by BUF-26-T.Jones."
+     "what_happened": "(7:42) 19-D.Whelan punts 60 yards to end zone, Center-42-M.Orzech, Touchback."
     },
     {
-     "season": 2025,
-     "week": 15,
-     "team": "BUF",
-     "opp": "NE",
-     "situation": "Q1 9:17, down 7, 4th & 5 at opp 44",
-     "coach_call": "punt",
+     "season": 2024,
+     "week": 18,
+     "team": "GB",
+     "opp": "CHI",
+     "situation": "Q2 2:00, down 4, 4th & 4 at opp 12",
+     "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.415,
-      "fg": 0.366,
-      "punt": 0.339
+      "go": 0.709,
+      "fg": 0.622,
+      "punt": 0.626
      },
-     "cost": 0.076,
-     "realized": 0.344,
+     "cost": 0.087,
+     "realized": 0.602,
      "confidence": 1.0,
-     "what_happened": "(9:17) 19-M.Wishnowsky punts 32 yards to NE 12, Center-69-R.Ferguson, out of bounds."
+     "what_happened": "(2:00) 17-B.McManus 30 yard field goal is GOOD, Center-42-M.Orzech, Holder-19-D.Whelan."
     },
     {
-     "season": 2017,
+     "season": 2019,
+     "week": 5,
+     "team": "GB",
+     "opp": "DAL",
+     "situation": "Q2 2:23, up 14, 4th & 2 at opp 2",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.822,
+      "fg": 0.744,
+      "punt": 0.76
+     },
+     "cost": 0.079,
+     "realized": 0.755,
+     "confidence": 0.95,
+     "what_happened": "(2:23) (Field Goal formation) 2-M.Crosby 20 yard field goal is GOOD, Center-43-H.Bradley, Holder-6-J.Scott."
+    },
+    {
+     "season": 2022,
      "week": 9,
-     "team": "BUF",
-     "opp": "NYJ",
-     "situation": "Q1 4:58, down 7, 4th & 3 at opp 44",
-     "coach_call": "punt",
+     "team": "GB",
+     "opp": "DET",
+     "situation": "Q4 6:39, down 9, 4th & 3 at opp 7",
+     "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.443,
-      "fg": 0.392,
-      "punt": 0.368
+      "go": 0.215,
+      "fg": 0.137,
+      "punt": 0.064
      },
-     "cost": 0.076,
-     "realized": 0.359,
+     "cost": 0.078,
+     "realized": 0.151,
      "confidence": 1.0,
-     "what_happened": "(4:58) 6-C.Schmidt punts 36 yards to NYJ 8, Center-69-R.Ferguson, downed by BUF-14-J.Webb."
+     "what_happened": "(6:39) 2-M.Crosby 25 yard field goal is GOOD, Center-56-J.Coco, Holder-16-P.O'Donnell."
     }
    ],
-   "percentile_better_than": 0.953,
+   "percentile_better_than": 0.941,
    "grade": "A+"
   },
   {
@@ -1713,39 +1713,39 @@
    "last_season": 2026,
    "games": 74,
    "decisions": 493,
-   "clear_calls": 314,
-   "agree": 0.568,
-   "agree_clear": 0.656,
+   "clear_calls": 313,
+   "agree": 0.566,
+   "agree_clear": 0.652,
    "go_rate": 0.181,
-   "engine_go_rate": 0.312,
-   "went_when_engine_said_go": 0.37,
-   "confident_mistakes": 94,
+   "engine_go_rate": 0.314,
+   "went_when_engine_said_go": 0.368,
+   "confident_mistakes": 93,
    "confident_mistake_kinds": {
     "fg->go": 27,
     "go->fg": 2,
     "go->punt": 2,
     "punt->fg": 4,
-    "punt->go": 59
+    "punt->go": 58
    },
-   "wp_lost_total": 2.388,
-   "wp_lost_per_game": 0.0323,
+   "wp_lost_total": 2.426,
+   "wp_lost_per_game": 0.0328,
    "wp_lost_per_game_ci90": [
-    0.0253,
-    0.0397
+    0.0258,
+    0.0404
    ],
-   "wins_lost_per_17": 0.549,
-   "wins_lost_per_17_all_calls": 0.777,
-   "luck_total": 0.473,
+   "wins_lost_per_17": 0.557,
+   "wins_lost_per_17_all_calls": 0.801,
+   "luck_total": 0.422,
    "replay": {
-    "n": 213,
-    "coach_expected": 0.4968,
-    "engine_expected": 0.5126,
-    "coach_realized": 0.4947
+    "n": 214,
+    "coach_expected": 0.4966,
+    "engine_expected": 0.5129,
+    "coach_realized": 0.4945
    },
    "by_choice": {
     "go": {
      "coach": 89,
-     "engine": 261
+     "engine": 262
     },
     "fg": {
      "coach": 142,
@@ -1753,7 +1753,7 @@
     },
     "punt": {
      "coach": 262,
-     "engine": 149
+     "engine": 148
     }
    },
    "seasons": [
@@ -1761,8 +1761,8 @@
      "season": 2022,
      "team": "MIN",
      "decisions": 120,
-     "wp_lost_per_game": 0.0316,
-     "confident_mistakes": 20,
+     "wp_lost_per_game": 0.032,
+     "confident_mistakes": 19,
      "go_rate": 0.175,
      "agree": 0.608
     },
@@ -1770,7 +1770,7 @@
      "season": 2023,
      "team": "MIN",
      "decisions": 113,
-     "wp_lost_per_game": 0.0491,
+     "wp_lost_per_game": 0.05,
      "confident_mistakes": 27,
      "go_rate": 0.23,
      "agree": 0.558
@@ -1779,7 +1779,7 @@
      "season": 2024,
      "team": "MIN",
      "decisions": 111,
-     "wp_lost_per_game": 0.0281,
+     "wp_lost_per_game": 0.0292,
      "confident_mistakes": 21,
      "go_rate": 0.153,
      "agree": 0.523
@@ -1788,16 +1788,16 @@
      "season": 2025,
      "team": "MIN",
      "decisions": 114,
-     "wp_lost_per_game": 0.0214,
+     "wp_lost_per_game": 0.0213,
      "confident_mistakes": 22,
      "go_rate": 0.193,
-     "agree": 0.544
+     "agree": 0.535
     },
     {
      "season": 2026,
      "team": "MIN",
      "decisions": 35,
-     "wp_lost_per_game": 0.0286,
+     "wp_lost_per_game": 0.0279,
      "confident_mistakes": 4,
      "go_rate": 0.086,
      "agree": 0.686
@@ -1831,11 +1831,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.48,
+      "go": 0.476,
       "fg": 0.394,
       "punt": 0.356
      },
-     "cost": 0.086,
+     "cost": 0.082,
      "realized": 0.412,
      "confidence": 1.0,
      "what_happened": "(2:23) 1-G.Joseph 19 yard field goal is GOOD, Center-42-A.DePaola, Holder-14-R.Wright."
@@ -1849,7 +1849,7 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.252,
+      "go": 0.251,
       "fg": 0.173,
       "punt": 0.178
      },
@@ -1867,11 +1867,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.412,
+      "go": 0.411,
       "fg": 0.335,
       "punt": 0.305
      },
-     "cost": 0.077,
+     "cost": 0.076,
      "realized": 0.353,
      "confidence": 1.0,
      "what_happened": "(6:42) 1-G.Joseph 25 yard field goal is GOOD, Center-42-A.DePaola, Holder-14-R.Wright."
@@ -1907,40 +1907,40 @@
    "last_season": 2026,
    "games": 21,
    "decisions": 127,
-   "clear_calls": 81,
-   "agree": 0.622,
-   "agree_clear": 0.642,
+   "clear_calls": 82,
+   "agree": 0.614,
+   "agree_clear": 0.634,
    "go_rate": 0.291,
-   "engine_go_rate": 0.417,
-   "went_when_engine_said_go": 0.472,
+   "engine_go_rate": 0.425,
+   "went_when_engine_said_go": 0.463,
    "confident_mistakes": 26,
    "confident_mistake_kinds": {
     "fg->go": 14,
     "punt->go": 12
    },
-   "wp_lost_total": 0.698,
-   "wp_lost_per_game": 0.0333,
+   "wp_lost_total": 0.704,
+   "wp_lost_per_game": 0.0335,
    "wp_lost_per_game_ci90": [
-    0.0221,
-    0.0456
+    0.0223,
+    0.0458
    ],
-   "wins_lost_per_17": 0.565,
-   "wins_lost_per_17_all_calls": 0.737,
-   "luck_total": 0.034,
+   "wins_lost_per_17": 0.57,
+   "wins_lost_per_17_all_calls": 0.764,
+   "luck_total": -0.028,
    "replay": {
-    "n": 48,
-    "coach_expected": 0.4141,
-    "engine_expected": 0.433,
-    "coach_realized": 0.4164
+    "n": 49,
+    "coach_expected": 0.4149,
+    "engine_expected": 0.4342,
+    "coach_realized": 0.4174
    },
    "by_choice": {
     "go": {
      "coach": 37,
-     "engine": 79
+     "engine": 80
     },
     "fg": {
      "coach": 47,
-     "engine": 26
+     "engine": 25
     },
     "punt": {
      "coach": 43,
@@ -1952,7 +1952,7 @@
      "season": 2025,
      "team": "DAL",
      "decisions": 106,
-     "wp_lost_per_game": 0.0298,
+     "wp_lost_per_game": 0.0302,
      "confident_mistakes": 21,
      "go_rate": 0.321,
      "agree": 0.623
@@ -1961,10 +1961,10 @@
      "season": 2026,
      "team": "DAL",
      "decisions": 21,
-     "wp_lost_per_game": 0.0478,
+     "wp_lost_per_game": 0.0477,
      "confident_mistakes": 5,
      "go_rate": 0.143,
-     "agree": 0.619
+     "agree": 0.571
     }
    ],
    "worst_calls": [
@@ -1981,7 +1981,7 @@
       "fg": 0.269,
       "punt": 0.257
      },
-     "cost": 0.065,
+     "cost": 0.064,
      "realized": 0.296,
      "confidence": 1.0,
      "what_happened": "(5:13) 17-B.Aubrey 39 yard field goal is GOOD, Center-44-T.Sieg, Holder-5-B.Anger."
@@ -2013,7 +2013,7 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.178,
+      "go": 0.177,
       "fg": null,
       "punt": 0.127
      },
@@ -2059,7 +2059,247 @@
      "what_happened": "(4:26) 17-B.Aubrey 53 yard field goal is GOOD, Center-44-T.Sieg, Holder-5-B.Anger."
     }
    ],
-   "percentile_better_than": 0.882,
+   "percentile_better_than": 0.894,
+   "grade": "A"
+  },
+  {
+   "coach": "Kyle Shanahan",
+   "teams": [
+    "SF"
+   ],
+   "first_season": 2017,
+   "last_season": 2026,
+   "games": 167,
+   "decisions": 977,
+   "clear_calls": 550,
+   "agree": 0.508,
+   "agree_clear": 0.545,
+   "go_rate": 0.155,
+   "engine_go_rate": 0.314,
+   "went_when_engine_said_go": 0.244,
+   "confident_mistakes": 227,
+   "confident_mistake_kinds": {
+    "fg->go": 63,
+    "fg->punt": 1,
+    "go->fg": 10,
+    "go->punt": 1,
+    "punt->fg": 14,
+    "punt->go": 138
+   },
+   "wp_lost_total": 6.011,
+   "wp_lost_per_game": 0.036,
+   "wp_lost_per_game_ci90": [
+    0.0311,
+    0.0413
+   ],
+   "wins_lost_per_17": 0.612,
+   "wins_lost_per_17_all_calls": 0.858,
+   "luck_total": 1.148,
+   "replay": {
+    "n": 481,
+    "coach_expected": 0.5703,
+    "engine_expected": 0.5878,
+    "coach_realized": 0.5736
+   },
+   "by_choice": {
+    "go": {
+     "coach": 151,
+     "engine": 543
+    },
+    "fg": {
+     "coach": 303,
+     "engine": 195
+    },
+    "punt": {
+     "coach": 523,
+     "engine": 239
+    }
+   },
+   "seasons": [
+    {
+     "season": 2017,
+     "team": "SF",
+     "decisions": 117,
+     "wp_lost_per_game": 0.0609,
+     "confident_mistakes": 31,
+     "go_rate": 0.154,
+     "agree": 0.53
+    },
+    {
+     "season": 2018,
+     "team": "SF",
+     "decisions": 99,
+     "wp_lost_per_game": 0.0353,
+     "confident_mistakes": 22,
+     "go_rate": 0.091,
+     "agree": 0.535
+    },
+    {
+     "season": 2019,
+     "team": "SF",
+     "decisions": 105,
+     "wp_lost_per_game": 0.0365,
+     "confident_mistakes": 25,
+     "go_rate": 0.124,
+     "agree": 0.562
+    },
+    {
+     "season": 2020,
+     "team": "SF",
+     "decisions": 101,
+     "wp_lost_per_game": 0.0431,
+     "confident_mistakes": 21,
+     "go_rate": 0.149,
+     "agree": 0.495
+    },
+    {
+     "season": 2021,
+     "team": "SF",
+     "decisions": 121,
+     "wp_lost_per_game": 0.0378,
+     "confident_mistakes": 30,
+     "go_rate": 0.174,
+     "agree": 0.57
+    },
+    {
+     "season": 2022,
+     "team": "SF",
+     "decisions": 119,
+     "wp_lost_per_game": 0.0492,
+     "confident_mistakes": 35,
+     "go_rate": 0.16,
+     "agree": 0.437
+    },
+    {
+     "season": 2023,
+     "team": "SF",
+     "decisions": 99,
+     "wp_lost_per_game": 0.0203,
+     "confident_mistakes": 25,
+     "go_rate": 0.141,
+     "agree": 0.444
+    },
+    {
+     "season": 2024,
+     "team": "SF",
+     "decisions": 99,
+     "wp_lost_per_game": 0.0249,
+     "confident_mistakes": 22,
+     "go_rate": 0.162,
+     "agree": 0.475
+    },
+    {
+     "season": 2025,
+     "team": "SF",
+     "decisions": 100,
+     "wp_lost_per_game": 0.0212,
+     "confident_mistakes": 14,
+     "go_rate": 0.24,
+     "agree": 0.51
+    },
+    {
+     "season": 2026,
+     "team": "SF",
+     "decisions": 17,
+     "wp_lost_per_game": 0.0291,
+     "confident_mistakes": 2,
+     "go_rate": 0.118,
+     "agree": 0.529
+    }
+   ],
+   "worst_calls": [
+    {
+     "season": 2017,
+     "week": 6,
+     "team": "SF",
+     "opp": "WAS",
+     "situation": "Q4 0:09, down 2, 4th & 20 at 50",
+     "coach_call": "go",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.025,
+      "fg": 0.307,
+      "punt": 0.0
+     },
+     "cost": 0.282,
+     "realized": 0.03,
+     "confidence": 1.0,
+     "what_happened": "(:09) (Shotgun) 3-C.Beathard pass deep right intended for 85-G.Kittle INTERCEPTED by 29-K.Fuller at WAS 32. 29-K.Fuller pushed ob at WAS 35 for 3 yards (81-T.Taylor)."
+    },
+    {
+     "season": 2018,
+     "week": 6,
+     "team": "SF",
+     "opp": "GB",
+     "situation": "Q4 5:45, up 7, 4th & 1 at own 13",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.742,
+      "fg": null,
+      "punt": 0.632
+     },
+     "cost": 0.111,
+     "realized": 0.622,
+     "confidence": 1.0,
+     "what_happened": "(5:45) 5-B.Pinion punts 45 yards to GB 42, Center-86-K.Nelson. 38-T.Williams to GB 48 for 6 yards (27-A.Colbert)."
+    },
+    {
+     "season": 2021,
+     "week": 20,
+     "team": "SF",
+     "opp": "GB",
+     "situation": "Q3 8:18, down 7, 4th & 4 at opp 11",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.268,
+      "fg": 0.185,
+      "punt": 0.177
+     },
+     "cost": 0.083,
+     "realized": 0.187,
+     "confidence": 1.0,
+     "what_happened": "(8:18) 9-R.Gould 29 yard field goal is GOOD, Center-46-T.Pepper, Holder-18-M.Wishnowsky."
+    },
+    {
+     "season": 2019,
+     "week": 6,
+     "team": "SF",
+     "opp": "LA",
+     "situation": "Q2 0:16, tied, 4th & 1 at opp 41",
+     "coach_call": "go",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.395,
+      "fg": 0.476,
+      "punt": 0.434
+     },
+     "cost": 0.081,
+     "realized": 0.592,
+     "confidence": 0.95,
+     "what_happened": "(:16) (Shotgun) 10-J.Garoppolo right tackle to LA 37 for 4 yards (51-T.Reeder)."
+    },
+    {
+     "season": 2019,
+     "week": 9,
+     "team": "SF",
+     "opp": "ARI",
+     "situation": "Q1 5:46, down 7, 4th & 2 at own 41",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.742,
+      "fg": null,
+      "punt": 0.667
+     },
+     "cost": 0.074,
+     "realized": 0.671,
+     "confidence": 1.0,
+     "what_happened": "(5:46) 6-M.Wishnowsky punts 49 yards to ARI 10, Center-86-K.Nelson. 12-P.Cooper to ARI 9 for -1 yards (31-R.Mostert; 33-T.Moore)."
+    }
+   ],
+   "percentile_better_than": 0.871,
    "grade": "A"
   },
   {
@@ -2071,12 +2311,12 @@
    "last_season": 2026,
    "games": 55,
    "decisions": 357,
-   "clear_calls": 201,
-   "agree": 0.507,
-   "agree_clear": 0.567,
+   "clear_calls": 199,
+   "agree": 0.499,
+   "agree_clear": 0.558,
    "go_rate": 0.227,
    "engine_go_rate": 0.345,
-   "went_when_engine_said_go": 0.341,
+   "went_when_engine_said_go": 0.333,
    "confident_mistakes": 80,
    "confident_mistake_kinds": {
     "fg->go": 34,
@@ -2085,33 +2325,33 @@
     "punt->fg": 3,
     "punt->go": 36
    },
-   "wp_lost_total": 1.971,
-   "wp_lost_per_game": 0.0358,
+   "wp_lost_total": 2.003,
+   "wp_lost_per_game": 0.0364,
    "wp_lost_per_game_ci90": [
-    0.0276,
-    0.0444
+    0.0282,
+    0.0451
    ],
-   "wins_lost_per_17": 0.609,
-   "wins_lost_per_17_all_calls": 0.875,
-   "luck_total": -1.594,
+   "wins_lost_per_17": 0.619,
+   "wins_lost_per_17_all_calls": 0.898,
+   "luck_total": -1.645,
    "replay": {
-    "n": 176,
-    "coach_expected": 0.2655,
-    "engine_expected": 0.2816,
-    "coach_realized": 0.2659
+    "n": 179,
+    "coach_expected": 0.2639,
+    "engine_expected": 0.2801,
+    "coach_realized": 0.2639
    },
    "by_choice": {
     "go": {
      "coach": 81,
-     "engine": 212
+     "engine": 215
     },
     "fg": {
      "coach": 96,
-     "engine": 55
+     "engine": 51
     },
     "punt": {
      "coach": 180,
-     "engine": 90
+     "engine": 91
     }
    },
    "seasons": [
@@ -2119,16 +2359,16 @@
      "season": 2023,
      "team": "ARI",
      "decisions": 121,
-     "wp_lost_per_game": 0.0259,
+     "wp_lost_per_game": 0.026,
      "confident_mistakes": 27,
      "go_rate": 0.281,
-     "agree": 0.504
+     "agree": 0.496
     },
     {
      "season": 2024,
      "team": "ARI",
      "decisions": 97,
-     "wp_lost_per_game": 0.0496,
+     "wp_lost_per_game": 0.0506,
      "confident_mistakes": 28,
      "go_rate": 0.165,
      "agree": 0.505
@@ -2137,19 +2377,19 @@
      "season": 2025,
      "team": "ARI",
      "decisions": 110,
-     "wp_lost_per_game": 0.0217,
+     "wp_lost_per_game": 0.022,
      "confident_mistakes": 17,
      "go_rate": 0.245,
-     "agree": 0.527
+     "agree": 0.518
     },
     {
      "season": 2026,
      "team": "ARI",
      "decisions": 29,
-     "wp_lost_per_game": 0.0794,
+     "wp_lost_per_game": 0.0814,
      "confident_mistakes": 8,
      "go_rate": 0.138,
-     "agree": 0.448
+     "agree": 0.414
     }
    ],
    "worst_calls": [
@@ -2162,11 +2402,11 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.468,
+      "go": 0.466,
       "fg": null,
       "punt": 0.376
      },
-     "cost": 0.092,
+     "cost": 0.09,
      "realized": 0.366,
      "confidence": 1.0,
      "what_happened": "(14:04) 12-B.Gillikin punts 60 yards to end zone, Center-59-C.Kreiter, Touchback."
@@ -2216,11 +2456,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.491,
+      "go": 0.489,
       "fg": 0.416,
       "punt": 0.353
      },
-     "cost": 0.074,
+     "cost": 0.073,
      "realized": 0.406,
      "confidence": 1.0,
      "what_happened": "(6:40) 38-C.Ryland 28 yard field goal is GOOD, Center-46-A.Brewer, Holder-12-B.Gillikin."
@@ -2234,257 +2474,17 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.497,
+      "go": 0.498,
       "fg": 0.429,
       "punt": 0.377
      },
-     "cost": 0.068,
+     "cost": 0.069,
      "realized": 0.425,
      "confidence": 1.0,
      "what_happened": "(:46) 5-M.Prater 27 yard field goal is GOOD, Center-46-A.Brewer, Holder-12-B.Gillikin."
     }
    ],
-   "percentile_better_than": 0.871,
-   "grade": "A"
-  },
-  {
-   "coach": "Kyle Shanahan",
-   "teams": [
-    "SF"
-   ],
-   "first_season": 2017,
-   "last_season": 2026,
-   "games": 167,
-   "decisions": 977,
-   "clear_calls": 548,
-   "agree": 0.507,
-   "agree_clear": 0.549,
-   "go_rate": 0.155,
-   "engine_go_rate": 0.308,
-   "went_when_engine_said_go": 0.239,
-   "confident_mistakes": 232,
-   "confident_mistake_kinds": {
-    "fg->go": 65,
-    "fg->punt": 1,
-    "go->fg": 11,
-    "go->punt": 1,
-    "punt->fg": 14,
-    "punt->go": 140
-   },
-   "wp_lost_total": 6.036,
-   "wp_lost_per_game": 0.0361,
-   "wp_lost_per_game_ci90": [
-    0.0312,
-    0.0413
-   ],
-   "wins_lost_per_17": 0.614,
-   "wins_lost_per_17_all_calls": 0.847,
-   "luck_total": 1.289,
-   "replay": {
-    "n": 482,
-    "coach_expected": 0.5685,
-    "engine_expected": 0.5858,
-    "coach_realized": 0.5718
-   },
-   "by_choice": {
-    "go": {
-     "coach": 151,
-     "engine": 540
-    },
-    "fg": {
-     "coach": 303,
-     "engine": 198
-    },
-    "punt": {
-     "coach": 523,
-     "engine": 239
-    }
-   },
-   "seasons": [
-    {
-     "season": 2017,
-     "team": "SF",
-     "decisions": 117,
-     "wp_lost_per_game": 0.0608,
-     "confident_mistakes": 31,
-     "go_rate": 0.154,
-     "agree": 0.53
-    },
-    {
-     "season": 2018,
-     "team": "SF",
-     "decisions": 99,
-     "wp_lost_per_game": 0.0388,
-     "confident_mistakes": 24,
-     "go_rate": 0.091,
-     "agree": 0.525
-    },
-    {
-     "season": 2019,
-     "team": "SF",
-     "decisions": 105,
-     "wp_lost_per_game": 0.0364,
-     "confident_mistakes": 25,
-     "go_rate": 0.124,
-     "agree": 0.562
-    },
-    {
-     "season": 2020,
-     "team": "SF",
-     "decisions": 101,
-     "wp_lost_per_game": 0.0436,
-     "confident_mistakes": 21,
-     "go_rate": 0.149,
-     "agree": 0.495
-    },
-    {
-     "season": 2021,
-     "team": "SF",
-     "decisions": 121,
-     "wp_lost_per_game": 0.0377,
-     "confident_mistakes": 30,
-     "go_rate": 0.174,
-     "agree": 0.562
-    },
-    {
-     "season": 2022,
-     "team": "SF",
-     "decisions": 119,
-     "wp_lost_per_game": 0.0487,
-     "confident_mistakes": 36,
-     "go_rate": 0.16,
-     "agree": 0.429
-    },
-    {
-     "season": 2023,
-     "team": "SF",
-     "decisions": 99,
-     "wp_lost_per_game": 0.0203,
-     "confident_mistakes": 25,
-     "go_rate": 0.141,
-     "agree": 0.455
-    },
-    {
-     "season": 2024,
-     "team": "SF",
-     "decisions": 99,
-     "wp_lost_per_game": 0.0242,
-     "confident_mistakes": 23,
-     "go_rate": 0.162,
-     "agree": 0.485
-    },
-    {
-     "season": 2025,
-     "team": "SF",
-     "decisions": 100,
-     "wp_lost_per_game": 0.0209,
-     "confident_mistakes": 14,
-     "go_rate": 0.24,
-     "agree": 0.51
-    },
-    {
-     "season": 2026,
-     "team": "SF",
-     "decisions": 17,
-     "wp_lost_per_game": 0.0283,
-     "confident_mistakes": 3,
-     "go_rate": 0.118,
-     "agree": 0.529
-    }
-   ],
-   "worst_calls": [
-    {
-     "season": 2017,
-     "week": 6,
-     "team": "SF",
-     "opp": "WAS",
-     "situation": "Q4 0:09, down 2, 4th & 20 at 50",
-     "coach_call": "go",
-     "engine_call": "fg",
-     "wp": {
-      "go": 0.025,
-      "fg": 0.307,
-      "punt": 0.0
-     },
-     "cost": 0.282,
-     "realized": 0.03,
-     "confidence": 1.0,
-     "what_happened": "(:09) (Shotgun) 3-C.Beathard pass deep right intended for 85-G.Kittle INTERCEPTED by 29-K.Fuller at WAS 32. 29-K.Fuller pushed ob at WAS 35 for 3 yards (81-T.Taylor)."
-    },
-    {
-     "season": 2018,
-     "week": 6,
-     "team": "SF",
-     "opp": "GB",
-     "situation": "Q4 5:45, up 7, 4th & 1 at own 13",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.746,
-      "fg": null,
-      "punt": 0.632
-     },
-     "cost": 0.114,
-     "realized": 0.622,
-     "confidence": 1.0,
-     "what_happened": "(5:45) 5-B.Pinion punts 45 yards to GB 42, Center-86-K.Nelson. 38-T.Williams to GB 48 for 6 yards (27-A.Colbert)."
-    },
-    {
-     "season": 2021,
-     "week": 20,
-     "team": "SF",
-     "opp": "GB",
-     "situation": "Q3 8:18, down 7, 4th & 4 at opp 11",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.268,
-      "fg": 0.185,
-      "punt": 0.177
-     },
-     "cost": 0.083,
-     "realized": 0.187,
-     "confidence": 1.0,
-     "what_happened": "(8:18) 9-R.Gould 29 yard field goal is GOOD, Center-46-T.Pepper, Holder-18-M.Wishnowsky."
-    },
-    {
-     "season": 2019,
-     "week": 6,
-     "team": "SF",
-     "opp": "LA",
-     "situation": "Q2 0:16, tied, 4th & 1 at opp 41",
-     "coach_call": "go",
-     "engine_call": "fg",
-     "wp": {
-      "go": 0.394,
-      "fg": 0.476,
-      "punt": 0.434
-     },
-     "cost": 0.082,
-     "realized": 0.592,
-     "confidence": 0.95,
-     "what_happened": "(:16) (Shotgun) 10-J.Garoppolo right tackle to LA 37 for 4 yards (51-T.Reeder)."
-    },
-    {
-     "season": 2025,
-     "week": 4,
-     "team": "SF",
-     "opp": "JAX",
-     "situation": "Q2 0:43, down 11, 4th & 5 at opp 5",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.29,
-      "fg": 0.214,
-      "punt": 0.208
-     },
-     "cost": 0.075,
-     "realized": 0.169,
-     "confidence": 1.0,
-     "what_happened": "(:43) 18-E.Pineiro 23 yard field goal is GOOD, Center-46-J.Weeks, Holder-7-T.Morstead."
-    }
-   ],
-   "percentile_better_than": 0.847,
+   "percentile_better_than": 0.859,
    "grade": "A"
   },
   {
@@ -2496,12 +2496,12 @@
    "last_season": 2026,
    "games": 21,
    "decisions": 154,
-   "clear_calls": 82,
-   "agree": 0.545,
-   "agree_clear": 0.573,
+   "clear_calls": 84,
+   "agree": 0.539,
+   "agree_clear": 0.571,
    "go_rate": 0.273,
-   "engine_go_rate": 0.377,
-   "went_when_engine_said_go": 0.397,
+   "engine_go_rate": 0.39,
+   "went_when_engine_said_go": 0.4,
    "confident_mistakes": 28,
    "confident_mistake_kinds": {
     "fg->go": 13,
@@ -2510,29 +2510,29 @@
     "punt->fg": 1,
     "punt->go": 11
    },
-   "wp_lost_total": 0.773,
-   "wp_lost_per_game": 0.0368,
+   "wp_lost_total": 0.776,
+   "wp_lost_per_game": 0.037,
    "wp_lost_per_game_ci90": [
-    0.0237,
+    0.0239,
     0.0513
    ],
-   "wins_lost_per_17": 0.626,
-   "wins_lost_per_17_all_calls": 0.942,
-   "luck_total": -1.106,
+   "wins_lost_per_17": 0.628,
+   "wins_lost_per_17_all_calls": 0.949,
+   "luck_total": -1.157,
    "replay": {
-    "n": 70,
-    "coach_expected": 0.2356,
-    "engine_expected": 0.2523,
-    "coach_realized": 0.2271
+    "n": 71,
+    "coach_expected": 0.2343,
+    "engine_expected": 0.2508,
+    "coach_realized": 0.2259
    },
    "by_choice": {
     "go": {
      "coach": 42,
-     "engine": 99
+     "engine": 100
     },
     "fg": {
      "coach": 43,
-     "engine": 17
+     "engine": 16
     },
     "punt": {
      "coach": 69,
@@ -2544,40 +2544,22 @@
      "season": 2025,
      "team": "NO",
      "decisions": 127,
-     "wp_lost_per_game": 0.0325,
+     "wp_lost_per_game": 0.0328,
      "confident_mistakes": 22,
      "go_rate": 0.268,
-     "agree": 0.543
+     "agree": 0.535
     },
     {
      "season": 2026,
      "team": "NO",
      "decisions": 27,
-     "wp_lost_per_game": 0.0552,
+     "wp_lost_per_game": 0.0547,
      "confident_mistakes": 6,
      "go_rate": 0.296,
      "agree": 0.556
     }
    ],
    "worst_calls": [
-    {
-     "season": 2025,
-     "week": 10,
-     "team": "NO",
-     "opp": "CAR",
-     "situation": "Q1 2:55, down 7, 4th & 2 at opp 2",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.291,
-      "fg": 0.225,
-      "punt": 0.217
-     },
-     "cost": 0.066,
-     "realized": 0.227,
-     "confidence": 1.0,
-     "what_happened": "(2:55) 19-B.Grupe 20 yard field goal is GOOD, Center-49-Z.Wood, Holder-32-K.Kroeger."
-    },
     {
      "season": 2026,
      "week": 1,
@@ -2587,7 +2569,7 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.176,
+      "go": 0.175,
       "fg": 0.111,
       "punt": 0.069
      },
@@ -2598,6 +2580,24 @@
     },
     {
      "season": 2025,
+     "week": 10,
+     "team": "NO",
+     "opp": "CAR",
+     "situation": "Q1 2:55, down 7, 4th & 2 at opp 2",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.289,
+      "fg": 0.225,
+      "punt": 0.217
+     },
+     "cost": 0.065,
+     "realized": 0.227,
+     "confidence": 1.0,
+     "what_happened": "(2:55) 19-B.Grupe 20 yard field goal is GOOD, Center-49-Z.Wood, Holder-32-K.Kroeger."
+    },
+    {
+     "season": 2025,
      "week": 14,
      "team": "NO",
      "opp": "TB",
@@ -2605,11 +2605,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.314,
+      "go": 0.315,
       "fg": 0.255,
       "punt": 0.216
      },
-     "cost": 0.059,
+     "cost": 0.06,
      "realized": 0.259,
      "confidence": 1.0,
      "what_happened": "(1:36) 39-C.Smyth 30 yard field goal is GOOD, Center-49-Z.Wood, Holder-32-K.Kroeger."
@@ -2623,11 +2623,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.211,
+      "go": 0.21,
       "fg": 0.152,
       "punt": 0.136
      },
-     "cost": 0.059,
+     "cost": 0.058,
      "realized": 0.158,
      "confidence": 1.0,
      "what_happened": "(3:49) 10-D.Carlson 23 yard field goal is GOOD, Center-46-S.Daly, Holder-17-R.Wright."
@@ -2641,248 +2641,17 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.395,
+      "go": 0.401,
       "fg": 0.346,
       "punt": 0.328
      },
-     "cost": 0.049,
+     "cost": 0.054,
      "realized": 0.338,
      "confidence": 1.0,
      "what_happened": "(12:54) 19-B.Grupe 34 yard field goal is GOOD, Center-49-Z.Wood, Holder-32-K.Kroeger."
     }
    ],
    "percentile_better_than": 0.824,
-   "grade": "A"
-  },
-  {
-   "coach": "Dan Quinn",
-   "teams": [
-    "ATL",
-    "WAS"
-   ],
-   "first_season": 2015,
-   "last_season": 2026,
-   "games": 131,
-   "decisions": 807,
-   "clear_calls": 477,
-   "agree": 0.543,
-   "agree_clear": 0.572,
-   "go_rate": 0.202,
-   "engine_go_rate": 0.346,
-   "went_when_engine_said_go": 0.33,
-   "confident_mistakes": 192,
-   "confident_mistake_kinds": {
-    "fg->go": 71,
-    "go->fg": 3,
-    "go->punt": 4,
-    "punt->fg": 18,
-    "punt->go": 96
-   },
-   "wp_lost_total": 4.998,
-   "wp_lost_per_game": 0.0382,
-   "wp_lost_per_game_ci90": [
-    0.0329,
-    0.0435
-   ],
-   "wins_lost_per_17": 0.649,
-   "wins_lost_per_17_all_calls": 0.877,
-   "luck_total": 1.972,
-   "replay": {
-    "n": 369,
-    "coach_expected": 0.5059,
-    "engine_expected": 0.5242,
-    "coach_realized": 0.5104
-   },
-   "by_choice": {
-    "go": {
-     "coach": 163,
-     "engine": 451
-    },
-    "fg": {
-     "coach": 255,
-     "engine": 161
-    },
-    "punt": {
-     "coach": 389,
-     "engine": 195
-    }
-   },
-   "seasons": [
-    {
-     "season": 2015,
-     "team": "ATL",
-     "decisions": 96,
-     "wp_lost_per_game": 0.0658,
-     "confident_mistakes": 30,
-     "go_rate": 0.167,
-     "agree": 0.479
-    },
-    {
-     "season": 2016,
-     "team": "ATL",
-     "decisions": 97,
-     "wp_lost_per_game": 0.0289,
-     "confident_mistakes": 22,
-     "go_rate": 0.124,
-     "agree": 0.588
-    },
-    {
-     "season": 2017,
-     "team": "ATL",
-     "decisions": 113,
-     "wp_lost_per_game": 0.0494,
-     "confident_mistakes": 37,
-     "go_rate": 0.133,
-     "agree": 0.54
-    },
-    {
-     "season": 2018,
-     "team": "ATL",
-     "decisions": 98,
-     "wp_lost_per_game": 0.0435,
-     "confident_mistakes": 29,
-     "go_rate": 0.194,
-     "agree": 0.459
-    },
-    {
-     "season": 2019,
-     "team": "ATL",
-     "decisions": 102,
-     "wp_lost_per_game": 0.0231,
-     "confident_mistakes": 17,
-     "go_rate": 0.206,
-     "agree": 0.559
-    },
-    {
-     "season": 2020,
-     "team": "ATL",
-     "decisions": 38,
-     "wp_lost_per_game": 0.0192,
-     "confident_mistakes": 5,
-     "go_rate": 0.289,
-     "agree": 0.711
-    },
-    {
-     "season": 2024,
-     "team": "WAS",
-     "decisions": 128,
-     "wp_lost_per_game": 0.0297,
-     "confident_mistakes": 24,
-     "go_rate": 0.289,
-     "agree": 0.602
-    },
-    {
-     "season": 2025,
-     "team": "WAS",
-     "decisions": 101,
-     "wp_lost_per_game": 0.0291,
-     "confident_mistakes": 19,
-     "go_rate": 0.248,
-     "agree": 0.475
-    },
-    {
-     "season": 2026,
-     "team": "WAS",
-     "decisions": 34,
-     "wp_lost_per_game": 0.0642,
-     "confident_mistakes": 9,
-     "go_rate": 0.206,
-     "agree": 0.588
-    }
-   ],
-   "worst_calls": [
-    {
-     "season": 2015,
-     "week": 9,
-     "team": "ATL",
-     "opp": "SF",
-     "situation": "Q4 3:00, down 4, 4th & 1 at opp 1",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.598,
-      "fg": 0.417,
-      "punt": 0.266
-     },
-     "cost": 0.181,
-     "realized": 0.464,
-     "confidence": 1.0,
-     "what_happened": "(3:00) 3-M.Bryant 19 yard field goal is GOOD, Center-47-J.Harris, Holder-5-M.Bosher."
-    },
-    {
-     "season": 2016,
-     "week": 2,
-     "team": "ATL",
-     "opp": "LV",
-     "situation": "Q2 0:40, up 3, 4th & 2 at opp 2",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.641,
-      "fg": 0.55,
-      "punt": 0.528
-     },
-     "cost": 0.091,
-     "realized": 0.57,
-     "confidence": 1.0,
-     "what_happened": "(:40) 3-M.Bryant 20 yard field goal is GOOD, Center-47-J.Harris, Holder-5-M.Bosher."
-    },
-    {
-     "season": 2018,
-     "week": 13,
-     "team": "ATL",
-     "opp": "BAL",
-     "situation": "Q3 8:47, down 3, 4th & 1 at own 34",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.408,
-      "fg": null,
-      "punt": 0.326
-     },
-     "cost": 0.082,
-     "realized": 0.345,
-     "confidence": 1.0,
-     "what_happened": "(8:47) 5-M.Bosher punts 53 yards to BAL 13, Center-47-J.Harris, fair catch by 27-C.Jones."
-    },
-    {
-     "season": 2015,
-     "week": 2,
-     "team": "ATL",
-     "opp": "NYG",
-     "situation": "Q4 4:38, down 3, 4th & 4 at own 46",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.32,
-      "fg": null,
-      "punt": 0.242
-     },
-     "cost": 0.079,
-     "realized": 0.191,
-     "confidence": 1.0,
-     "what_happened": "(4:38) 5-M.Bosher punts 47 yards to NYG 7, Center-47-J.Harris. 17-D.Harris to NYG 36 for 29 yards (5-M.Bosher)."
-    },
-    {
-     "season": 2017,
-     "week": 13,
-     "team": "ATL",
-     "opp": "MIN",
-     "situation": "Q4 5:04, down 5, 4th & 4 at opp 27",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.292,
-      "fg": 0.219,
-      "punt": 0.151
-     },
-     "cost": 0.073,
-     "realized": 0.111,
-     "confidence": 1.0,
-     "what_happened": "(5:04) 3-M.Bryant 45 yard field goal is No Good, Wide Left, Center-47-J.Harris, Holder-5-M.Bosher."
-    }
-   ],
-   "percentile_better_than": 0.776,
    "grade": "A"
   },
   {
@@ -2894,11 +2663,11 @@
    "last_season": 2026,
    "games": 39,
    "decisions": 268,
-   "clear_calls": 152,
-   "agree": 0.549,
-   "agree_clear": 0.599,
+   "clear_calls": 154,
+   "agree": 0.545,
+   "agree_clear": 0.597,
    "go_rate": 0.295,
-   "engine_go_rate": 0.388,
+   "engine_go_rate": 0.396,
    "went_when_engine_said_go": 0.481,
    "confident_mistakes": 62,
    "confident_mistake_kinds": {
@@ -2908,29 +2677,29 @@
     "punt->fg": 8,
     "punt->go": 31
    },
-   "wp_lost_total": 1.494,
-   "wp_lost_per_game": 0.0383,
+   "wp_lost_total": 1.513,
+   "wp_lost_per_game": 0.0388,
    "wp_lost_per_game_ci90": [
-    0.029,
-    0.0489
+    0.0293,
+    0.0495
    ],
-   "wins_lost_per_17": 0.651,
-   "wins_lost_per_17_all_calls": 0.871,
-   "luck_total": 1.244,
+   "wins_lost_per_17": 0.66,
+   "wins_lost_per_17_all_calls": 0.896,
+   "luck_total": 1.138,
    "replay": {
-    "n": 121,
-    "coach_expected": 0.2448,
-    "engine_expected": 0.2613,
-    "coach_realized": 0.2479
+    "n": 122,
+    "coach_expected": 0.2475,
+    "engine_expected": 0.2644,
+    "coach_realized": 0.2506
    },
    "by_choice": {
     "go": {
      "coach": 79,
-     "engine": 169
+     "engine": 170
     },
     "fg": {
      "coach": 57,
-     "engine": 37
+     "engine": 36
     },
     "punt": {
      "coach": 132,
@@ -2945,13 +2714,13 @@
      "wp_lost_per_game": 0.0303,
      "confident_mistakes": 30,
      "go_rate": 0.25,
-     "agree": 0.483
+     "agree": 0.474
     },
     {
      "season": 2025,
      "team": "CAR",
      "decisions": 124,
-     "wp_lost_per_game": 0.0468,
+     "wp_lost_per_game": 0.0479,
      "confident_mistakes": 29,
      "go_rate": 0.339,
      "agree": 0.573
@@ -2960,7 +2729,7 @@
      "season": 2026,
      "team": "CAR",
      "decisions": 28,
-     "wp_lost_per_game": 0.0342,
+     "wp_lost_per_game": 0.0341,
      "confident_mistakes": 3,
      "go_rate": 0.286,
      "agree": 0.714
@@ -2994,7 +2763,7 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.427,
+      "go": 0.426,
       "fg": 0.327,
       "punt": 0.288
      },
@@ -3002,6 +2771,24 @@
      "realized": 0.337,
      "confidence": 1.0,
      "what_happened": "(13:26) 10-R.Fitzgerald 41 yard field goal is GOOD, Center-44-J.Jansen, Holder-6-S.Martin."
+    },
+    {
+     "season": 2025,
+     "week": 6,
+     "team": "CAR",
+     "opp": "DAL",
+     "situation": "Q1 9:11, tied, 4th & 2 at opp 13",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.518,
+      "fg": 0.452,
+      "punt": 0.407
+     },
+     "cost": 0.066,
+     "realized": 0.462,
+     "confidence": 1.0,
+     "what_happened": "(9:11) 10-R.Fitzgerald 31 yard field goal is GOOD, Center-44-J.Jansen, Holder-6-S.Martin."
     },
     {
      "season": 2024,
@@ -3023,39 +2810,21 @@
     },
     {
      "season": 2025,
-     "week": 6,
+     "week": 7,
      "team": "CAR",
-     "opp": "DAL",
-     "situation": "Q1 9:11, tied, 4th & 2 at opp 13",
-     "coach_call": "fg",
+     "opp": "NYJ",
+     "situation": "Q4 2:56, up 7, 4th & 2 at own 48",
+     "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.512,
-      "fg": 0.452,
-      "punt": 0.407
-     },
-     "cost": 0.061,
-     "realized": 0.462,
-     "confidence": 1.0,
-     "what_happened": "(9:11) 10-R.Fitzgerald 31 yard field goal is GOOD, Center-44-J.Jansen, Holder-6-S.Martin."
-    },
-    {
-     "season": 2025,
-     "week": 17,
-     "team": "CAR",
-     "opp": "SEA",
-     "situation": "Q2 3:50, down 3, 4th & 1 at opp 17",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.209,
-      "fg": 0.153,
-      "punt": 0.14
+      "go": 0.893,
+      "fg": 0.82,
+      "punt": 0.839
      },
      "cost": 0.055,
-     "realized": 0.155,
+     "realized": 0.831,
      "confidence": 1.0,
-     "what_happened": "(3:50) 10-R.Fitzgerald 35 yard field goal is GOOD, Center-44-J.Jansen, Holder-6-S.Martin."
+     "what_happened": "(2:56) 6-S.Martin punts 38 yards to NYJ 14, Center-44-J.Jansen, out of bounds."
     }
    ],
    "percentile_better_than": 0.765,
@@ -3071,11 +2840,11 @@
    "games": 226,
    "decisions": 1369,
    "clear_calls": 774,
-   "agree": 0.519,
-   "agree_clear": 0.571,
+   "agree": 0.517,
+   "agree_clear": 0.566,
    "go_rate": 0.153,
-   "engine_go_rate": 0.324,
-   "went_when_engine_said_go": 0.302,
+   "engine_go_rate": 0.329,
+   "went_when_engine_said_go": 0.3,
    "confident_mistakes": 330,
    "confident_mistake_kinds": {
     "fg->go": 92,
@@ -3085,29 +2854,29 @@
     "punt->fg": 27,
     "punt->go": 198
    },
-   "wp_lost_total": 8.752,
-   "wp_lost_per_game": 0.0387,
+   "wp_lost_total": 8.827,
+   "wp_lost_per_game": 0.0391,
    "wp_lost_per_game_ci90": [
-    0.0343,
-    0.0431
+    0.0347,
+    0.0435
    ],
-   "wins_lost_per_17": 0.658,
-   "wins_lost_per_17_all_calls": 0.878,
-   "luck_total": 6.853,
+   "wins_lost_per_17": 0.664,
+   "wins_lost_per_17_all_calls": 0.891,
+   "luck_total": 6.409,
    "replay": {
-    "n": 659,
-    "coach_expected": 0.6584,
-    "engine_expected": 0.6761,
-    "coach_realized": 0.6619
+    "n": 661,
+    "coach_expected": 0.6579,
+    "engine_expected": 0.6758,
+    "coach_realized": 0.6613
    },
    "by_choice": {
     "go": {
      "coach": 210,
-     "engine": 765
+     "engine": 771
     },
     "fg": {
      "coach": 416,
-     "engine": 278
+     "engine": 272
     },
     "punt": {
      "coach": 743,
@@ -3119,7 +2888,7 @@
      "season": 2014,
      "team": "KC",
      "decisions": 107,
-     "wp_lost_per_game": 0.0635,
+     "wp_lost_per_game": 0.0646,
      "confident_mistakes": 35,
      "go_rate": 0.112,
      "agree": 0.43
@@ -3128,16 +2897,16 @@
      "season": 2015,
      "team": "KC",
      "decisions": 122,
-     "wp_lost_per_game": 0.0386,
+     "wp_lost_per_game": 0.0391,
      "confident_mistakes": 33,
      "go_rate": 0.082,
-     "agree": 0.492
+     "agree": 0.484
     },
     {
      "season": 2016,
      "team": "KC",
      "decisions": 123,
-     "wp_lost_per_game": 0.0468,
+     "wp_lost_per_game": 0.0472,
      "confident_mistakes": 34,
      "go_rate": 0.13,
      "agree": 0.48
@@ -3146,16 +2915,16 @@
      "season": 2017,
      "team": "KC",
      "decisions": 117,
-     "wp_lost_per_game": 0.0505,
+     "wp_lost_per_game": 0.0504,
      "confident_mistakes": 32,
      "go_rate": 0.094,
-     "agree": 0.556
+     "agree": 0.547
     },
     {
      "season": 2018,
      "team": "KC",
      "decisions": 95,
-     "wp_lost_per_game": 0.03,
+     "wp_lost_per_game": 0.0308,
      "confident_mistakes": 27,
      "go_rate": 0.189,
      "agree": 0.421
@@ -3164,7 +2933,7 @@
      "season": 2019,
      "team": "KC",
      "decisions": 105,
-     "wp_lost_per_game": 0.032,
+     "wp_lost_per_game": 0.0318,
      "confident_mistakes": 25,
      "go_rate": 0.124,
      "agree": 0.514
@@ -3173,25 +2942,25 @@
      "season": 2020,
      "team": "KC",
      "decisions": 101,
-     "wp_lost_per_game": 0.0201,
+     "wp_lost_per_game": 0.0211,
      "confident_mistakes": 22,
      "go_rate": 0.198,
-     "agree": 0.564
+     "agree": 0.584
     },
     {
      "season": 2021,
      "team": "KC",
      "decisions": 97,
-     "wp_lost_per_game": 0.0117,
+     "wp_lost_per_game": 0.0119,
      "confident_mistakes": 15,
      "go_rate": 0.165,
-     "agree": 0.608
+     "agree": 0.598
     },
     {
      "season": 2022,
      "team": "KC",
      "decisions": 101,
-     "wp_lost_per_game": 0.0404,
+     "wp_lost_per_game": 0.0402,
      "confident_mistakes": 25,
      "go_rate": 0.119,
      "agree": 0.426
@@ -3200,7 +2969,7 @@
      "season": 2023,
      "team": "KC",
      "decisions": 136,
-     "wp_lost_per_game": 0.0657,
+     "wp_lost_per_game": 0.0656,
      "confident_mistakes": 35,
      "go_rate": 0.162,
      "agree": 0.551
@@ -3209,16 +2978,16 @@
      "season": 2024,
      "team": "KC",
      "decisions": 124,
-     "wp_lost_per_game": 0.0231,
+     "wp_lost_per_game": 0.023,
      "confident_mistakes": 20,
      "go_rate": 0.169,
-     "agree": 0.573
+     "agree": 0.565
     },
     {
      "season": 2025,
      "team": "KC",
      "decisions": 116,
-     "wp_lost_per_game": 0.0498,
+     "wp_lost_per_game": 0.0509,
      "confident_mistakes": 22,
      "go_rate": 0.276,
      "agree": 0.586
@@ -3243,11 +3012,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.353,
+      "go": 0.356,
       "fg": 0.203,
       "punt": 0.161
      },
-     "cost": 0.151,
+     "cost": 0.154,
      "realized": 0.196,
      "confidence": 1.0,
      "what_happened": "(:06) 7-H.Butker 19 yard field goal is GOOD, Center-41-J.Winchester, Holder-14-M.Araiza."
@@ -3297,11 +3066,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.482,
+      "go": 0.481,
       "fg": 0.372,
       "punt": 0.255
      },
-     "cost": 0.11,
+     "cost": 0.109,
      "realized": 0.411,
      "confidence": 1.0,
      "what_happened": "(4:28) 5-C.Santos 33 yard field goal is GOOD, Center-41-J.Winchester, Holder-2-D.Colquitt."
@@ -3325,6 +3094,237 @@
      "what_happened": "(:47) 2-D.Colquitt punts 36 yards to end zone, Center-43-T.Gafford, Touchback."
     }
    ],
+   "percentile_better_than": 0.753,
+   "grade": "A"
+  },
+  {
+   "coach": "Dan Quinn",
+   "teams": [
+    "ATL",
+    "WAS"
+   ],
+   "first_season": 2015,
+   "last_season": 2026,
+   "games": 131,
+   "decisions": 807,
+   "clear_calls": 484,
+   "agree": 0.542,
+   "agree_clear": 0.566,
+   "go_rate": 0.202,
+   "engine_go_rate": 0.354,
+   "went_when_engine_said_go": 0.325,
+   "confident_mistakes": 192,
+   "confident_mistake_kinds": {
+    "fg->go": 71,
+    "go->fg": 3,
+    "go->punt": 4,
+    "punt->fg": 18,
+    "punt->go": 96
+   },
+   "wp_lost_total": 5.17,
+   "wp_lost_per_game": 0.0395,
+   "wp_lost_per_game_ci90": [
+    0.034,
+    0.045
+   ],
+   "wins_lost_per_17": 0.671,
+   "wins_lost_per_17_all_calls": 0.903,
+   "luck_total": 1.793,
+   "replay": {
+    "n": 370,
+    "coach_expected": 0.5065,
+    "engine_expected": 0.5253,
+    "coach_realized": 0.511
+   },
+   "by_choice": {
+    "go": {
+     "coach": 163,
+     "engine": 453
+    },
+    "fg": {
+     "coach": 255,
+     "engine": 160
+    },
+    "punt": {
+     "coach": 389,
+     "engine": 194
+    }
+   },
+   "seasons": [
+    {
+     "season": 2015,
+     "team": "ATL",
+     "decisions": 96,
+     "wp_lost_per_game": 0.0667,
+     "confident_mistakes": 30,
+     "go_rate": 0.167,
+     "agree": 0.479
+    },
+    {
+     "season": 2016,
+     "team": "ATL",
+     "decisions": 97,
+     "wp_lost_per_game": 0.0305,
+     "confident_mistakes": 22,
+     "go_rate": 0.124,
+     "agree": 0.577
+    },
+    {
+     "season": 2017,
+     "team": "ATL",
+     "decisions": 113,
+     "wp_lost_per_game": 0.0499,
+     "confident_mistakes": 37,
+     "go_rate": 0.133,
+     "agree": 0.54
+    },
+    {
+     "season": 2018,
+     "team": "ATL",
+     "decisions": 98,
+     "wp_lost_per_game": 0.0449,
+     "confident_mistakes": 29,
+     "go_rate": 0.194,
+     "agree": 0.459
+    },
+    {
+     "season": 2019,
+     "team": "ATL",
+     "decisions": 102,
+     "wp_lost_per_game": 0.0241,
+     "confident_mistakes": 17,
+     "go_rate": 0.206,
+     "agree": 0.559
+    },
+    {
+     "season": 2020,
+     "team": "ATL",
+     "decisions": 38,
+     "wp_lost_per_game": 0.019,
+     "confident_mistakes": 5,
+     "go_rate": 0.289,
+     "agree": 0.711
+    },
+    {
+     "season": 2024,
+     "team": "WAS",
+     "decisions": 128,
+     "wp_lost_per_game": 0.0314,
+     "confident_mistakes": 24,
+     "go_rate": 0.289,
+     "agree": 0.602
+    },
+    {
+     "season": 2025,
+     "team": "WAS",
+     "decisions": 101,
+     "wp_lost_per_game": 0.0316,
+     "confident_mistakes": 19,
+     "go_rate": 0.248,
+     "agree": 0.475
+    },
+    {
+     "season": 2026,
+     "team": "WAS",
+     "decisions": 34,
+     "wp_lost_per_game": 0.0654,
+     "confident_mistakes": 9,
+     "go_rate": 0.206,
+     "agree": 0.588
+    }
+   ],
+   "worst_calls": [
+    {
+     "season": 2015,
+     "week": 9,
+     "team": "ATL",
+     "opp": "SF",
+     "situation": "Q4 3:00, down 4, 4th & 1 at opp 1",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.603,
+      "fg": 0.417,
+      "punt": 0.266
+     },
+     "cost": 0.186,
+     "realized": 0.464,
+     "confidence": 1.0,
+     "what_happened": "(3:00) 3-M.Bryant 19 yard field goal is GOOD, Center-47-J.Harris, Holder-5-M.Bosher."
+    },
+    {
+     "season": 2016,
+     "week": 2,
+     "team": "ATL",
+     "opp": "LV",
+     "situation": "Q2 0:40, up 3, 4th & 2 at opp 2",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.645,
+      "fg": 0.55,
+      "punt": 0.528
+     },
+     "cost": 0.095,
+     "realized": 0.57,
+     "confidence": 1.0,
+     "what_happened": "(:40) 3-M.Bryant 20 yard field goal is GOOD, Center-47-J.Harris, Holder-5-M.Bosher."
+    },
+    {
+     "season": 2016,
+     "week": 2,
+     "team": "ATL",
+     "opp": "LV",
+     "situation": "Q2 12:01, tied, 4th & 2 at opp 3",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.503,
+      "fg": 0.418,
+      "punt": 0.38
+     },
+     "cost": 0.085,
+     "realized": 0.454,
+     "confidence": 1.0,
+     "what_happened": "(12:01) 3-M.Bryant 21 yard field goal is GOOD, Center-47-J.Harris, Holder-5-M.Bosher."
+    },
+    {
+     "season": 2018,
+     "week": 13,
+     "team": "ATL",
+     "opp": "BAL",
+     "situation": "Q3 8:47, down 3, 4th & 1 at own 34",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.406,
+      "fg": null,
+      "punt": 0.326
+     },
+     "cost": 0.081,
+     "realized": 0.345,
+     "confidence": 1.0,
+     "what_happened": "(8:47) 5-M.Bosher punts 53 yards to BAL 13, Center-47-J.Harris, fair catch by 27-C.Jones."
+    },
+    {
+     "season": 2015,
+     "week": 2,
+     "team": "ATL",
+     "opp": "NYG",
+     "situation": "Q4 4:38, down 3, 4th & 4 at own 46",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.32,
+      "fg": null,
+      "punt": 0.242
+     },
+     "cost": 0.079,
+     "realized": 0.191,
+     "confidence": 1.0,
+     "what_happened": "(4:38) 5-M.Bosher punts 47 yards to NYG 7, Center-47-J.Harris. 17-D.Harris to NYG 36 for 29 yards (5-M.Bosher)."
+    }
+   ],
    "percentile_better_than": 0.741,
    "grade": "B+"
   },
@@ -3337,12 +3337,12 @@
    "last_season": 2026,
    "games": 127,
    "decisions": 831,
-   "clear_calls": 471,
-   "agree": 0.529,
-   "agree_clear": 0.561,
+   "clear_calls": 476,
+   "agree": 0.526,
+   "agree_clear": 0.546,
    "go_rate": 0.181,
-   "engine_go_rate": 0.349,
-   "went_when_engine_said_go": 0.317,
+   "engine_go_rate": 0.362,
+   "went_when_engine_said_go": 0.309,
    "confident_mistakes": 185,
    "confident_mistake_kinds": {
     "fg->go": 68,
@@ -3352,33 +3352,33 @@
     "punt->fg": 3,
     "punt->go": 109
    },
-   "wp_lost_total": 5.012,
-   "wp_lost_per_game": 0.0395,
+   "wp_lost_total": 5.069,
+   "wp_lost_per_game": 0.0399,
    "wp_lost_per_game_ci90": [
-    0.0331,
-    0.0458
+    0.0336,
+    0.0463
    ],
-   "wins_lost_per_17": 0.671,
-   "wins_lost_per_17_all_calls": 0.95,
-   "luck_total": 0.308,
+   "wins_lost_per_17": 0.678,
+   "wins_lost_per_17_all_calls": 0.968,
+   "luck_total": 0.235,
    "replay": {
-    "n": 391,
-    "coach_expected": 0.4186,
-    "engine_expected": 0.4367,
-    "coach_realized": 0.42
+    "n": 394,
+    "coach_expected": 0.4191,
+    "engine_expected": 0.4375,
+    "coach_realized": 0.4205
    },
    "by_choice": {
     "go": {
      "coach": 150,
-     "engine": 495
+     "engine": 500
     },
     "fg": {
      "coach": 226,
-     "engine": 114
+     "engine": 110
     },
     "punt": {
      "coach": 455,
-     "engine": 222
+     "engine": 221
     }
    },
    "seasons": [
@@ -3386,43 +3386,43 @@
      "season": 2019,
      "team": "CIN",
      "decisions": 119,
-     "wp_lost_per_game": 0.0573,
+     "wp_lost_per_game": 0.058,
      "confident_mistakes": 34,
      "go_rate": 0.218,
-     "agree": 0.454
+     "agree": 0.445
     },
     {
      "season": 2020,
      "team": "CIN",
      "decisions": 122,
-     "wp_lost_per_game": 0.0381,
+     "wp_lost_per_game": 0.039,
      "confident_mistakes": 29,
      "go_rate": 0.221,
-     "agree": 0.451
+     "agree": 0.459
     },
     {
      "season": 2021,
      "team": "CIN",
      "decisions": 136,
-     "wp_lost_per_game": 0.031,
+     "wp_lost_per_game": 0.0307,
      "confident_mistakes": 23,
      "go_rate": 0.169,
-     "agree": 0.596
+     "agree": 0.588
     },
     {
      "season": 2022,
      "team": "CIN",
      "decisions": 105,
-     "wp_lost_per_game": 0.0451,
+     "wp_lost_per_game": 0.0446,
      "confident_mistakes": 23,
      "go_rate": 0.114,
-     "agree": 0.571
+     "agree": 0.562
     },
     {
      "season": 2023,
      "team": "CIN",
      "decisions": 118,
-     "wp_lost_per_game": 0.0507,
+     "wp_lost_per_game": 0.0516,
      "confident_mistakes": 32,
      "go_rate": 0.161,
      "agree": 0.559
@@ -3431,25 +3431,25 @@
      "season": 2024,
      "team": "CIN",
      "decisions": 101,
-     "wp_lost_per_game": 0.0236,
+     "wp_lost_per_game": 0.0248,
      "confident_mistakes": 19,
      "go_rate": 0.188,
-     "agree": 0.604
+     "agree": 0.584
     },
     {
      "season": 2025,
      "team": "CIN",
      "decisions": 105,
-     "wp_lost_per_game": 0.0241,
+     "wp_lost_per_game": 0.0248,
      "confident_mistakes": 17,
      "go_rate": 0.19,
-     "agree": 0.486
+     "agree": 0.495
     },
     {
      "season": 2026,
      "team": "CIN",
      "decisions": 25,
-     "wp_lost_per_game": 0.0762,
+     "wp_lost_per_game": 0.0761,
      "confident_mistakes": 8,
      "go_rate": 0.16,
      "agree": 0.48
@@ -3493,24 +3493,6 @@
      "what_happened": "(2:23) 10-K.Huber punts 35 yards to PIT 24, Center-46-C.Harris, fair catch by 14-R.McCloud."
     },
     {
-     "season": 2019,
-     "week": 16,
-     "team": "CIN",
-     "opp": "MIA",
-     "situation": "Q2 10:51, down 14, 4th & 2 at opp 2",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.249,
-      "fg": 0.142,
-      "punt": 0.153
-     },
-     "cost": 0.107,
-     "realized": 0.148,
-     "confidence": 1.0,
-     "what_happened": "(10:51) (Field Goal formation) 4-R.Bullock 20 yard field goal is GOOD, Center-46-C.Harris, Holder-10-K.Huber."
-    },
-    {
      "season": 2021,
      "week": 14,
      "team": "CIN",
@@ -3527,6 +3509,24 @@
      "realized": 0.257,
      "confidence": 1.0,
      "what_happened": "(1:46) 2-E.McPherson 28 yard field goal is GOOD, Center-46-C.Harris, Holder-10-K.Huber."
+    },
+    {
+     "season": 2019,
+     "week": 16,
+     "team": "CIN",
+     "opp": "MIA",
+     "situation": "Q2 10:51, down 14, 4th & 2 at opp 2",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.247,
+      "fg": 0.142,
+      "punt": 0.153
+     },
+     "cost": 0.105,
+     "realized": 0.148,
+     "confidence": 1.0,
+     "what_happened": "(10:51) (Field Goal formation) 4-R.Bullock 20 yard field goal is GOOD, Center-46-C.Harris, Holder-10-K.Huber."
     },
     {
      "season": 2026,
@@ -3547,7 +3547,7 @@
      "what_happened": "(4:40) 8-R.Rehkow punts 41 yards to PIT 10, Center-46-W.Wagner. 10-K.Wetjen pushed ob at PIT 15 for 5 yards (42-O.Burks)."
     }
    ],
-   "percentile_better_than": 0.729,
+   "percentile_better_than": 0.718,
    "grade": "B+"
   },
   {
@@ -3561,12 +3561,12 @@
    "last_season": 2026,
    "games": 175,
    "decisions": 1141,
-   "clear_calls": 660,
-   "agree": 0.543,
-   "agree_clear": 0.582,
+   "clear_calls": 658,
+   "agree": 0.54,
+   "agree_clear": 0.581,
    "go_rate": 0.198,
-   "engine_go_rate": 0.348,
-   "went_when_engine_said_go": 0.33,
+   "engine_go_rate": 0.35,
+   "went_when_engine_said_go": 0.333,
    "confident_mistakes": 244,
    "confident_mistake_kinds": {
     "fg->go": 94,
@@ -3576,33 +3576,33 @@
     "punt->fg": 8,
     "punt->go": 131
    },
-   "wp_lost_total": 6.98,
-   "wp_lost_per_game": 0.0399,
+   "wp_lost_total": 7.072,
+   "wp_lost_per_game": 0.0404,
    "wp_lost_per_game_ci90": [
-    0.0345,
-    0.0455
+    0.0349,
+    0.046
    ],
-   "wins_lost_per_17": 0.678,
-   "wins_lost_per_17_all_calls": 0.923,
-   "luck_total": 1.688,
+   "wins_lost_per_17": 0.687,
+   "wins_lost_per_17_all_calls": 0.938,
+   "luck_total": 1.384,
    "replay": {
-    "n": 521,
-    "coach_expected": 0.4946,
-    "engine_expected": 0.5128,
-    "coach_realized": 0.4993
+    "n": 525,
+    "coach_expected": 0.4942,
+    "engine_expected": 0.5126,
+    "coach_realized": 0.4989
    },
    "by_choice": {
     "go": {
      "coach": 226,
-     "engine": 671
+     "engine": 678
     },
     "fg": {
      "coach": 331,
-     "engine": 172
+     "engine": 166
     },
     "punt": {
      "coach": 584,
-     "engine": 298
+     "engine": 297
     }
    },
    "seasons": [
@@ -3610,25 +3610,25 @@
      "season": 2014,
      "team": "GB",
      "decisions": 99,
-     "wp_lost_per_game": 0.0488,
+     "wp_lost_per_game": 0.0513,
      "confident_mistakes": 23,
      "go_rate": 0.091,
-     "agree": 0.515
+     "agree": 0.505
     },
     {
      "season": 2015,
      "team": "GB",
      "decisions": 129,
-     "wp_lost_per_game": 0.0319,
+     "wp_lost_per_game": 0.0317,
      "confident_mistakes": 26,
      "go_rate": 0.186,
-     "agree": 0.55
+     "agree": 0.543
     },
     {
      "season": 2016,
      "team": "GB",
      "decisions": 112,
-     "wp_lost_per_game": 0.0416,
+     "wp_lost_per_game": 0.0419,
      "confident_mistakes": 23,
      "go_rate": 0.188,
      "agree": 0.571
@@ -3637,7 +3637,7 @@
      "season": 2017,
      "team": "GB",
      "decisions": 103,
-     "wp_lost_per_game": 0.0552,
+     "wp_lost_per_game": 0.0548,
      "confident_mistakes": 23,
      "go_rate": 0.262,
      "agree": 0.544
@@ -3649,13 +3649,13 @@
      "wp_lost_per_game": 0.0381,
      "confident_mistakes": 16,
      "go_rate": 0.163,
-     "agree": 0.477
+     "agree": 0.488
     },
     {
      "season": 2020,
      "team": "DAL",
      "decisions": 116,
-     "wp_lost_per_game": 0.0408,
+     "wp_lost_per_game": 0.042,
      "confident_mistakes": 22,
      "go_rate": 0.259,
      "agree": 0.534
@@ -3664,7 +3664,7 @@
      "season": 2021,
      "team": "DAL",
      "decisions": 120,
-     "wp_lost_per_game": 0.045,
+     "wp_lost_per_game": 0.0452,
      "confident_mistakes": 34,
      "go_rate": 0.208,
      "agree": 0.592
@@ -3673,34 +3673,34 @@
      "season": 2022,
      "team": "DAL",
      "decisions": 125,
-     "wp_lost_per_game": 0.0442,
+     "wp_lost_per_game": 0.0446,
      "confident_mistakes": 29,
      "go_rate": 0.176,
-     "agree": 0.544
+     "agree": 0.536
     },
     {
      "season": 2023,
      "team": "DAL",
      "decisions": 102,
-     "wp_lost_per_game": 0.019,
+     "wp_lost_per_game": 0.0193,
      "confident_mistakes": 19,
      "go_rate": 0.225,
-     "agree": 0.529
+     "agree": 0.52
     },
     {
      "season": 2024,
      "team": "DAL",
      "decisions": 122,
-     "wp_lost_per_game": 0.0335,
+     "wp_lost_per_game": 0.0345,
      "confident_mistakes": 23,
      "go_rate": 0.23,
-     "agree": 0.566
+     "agree": 0.557
     },
     {
      "season": 2026,
      "team": "PIT",
      "decisions": 27,
-     "wp_lost_per_game": 0.0457,
+     "wp_lost_per_game": 0.0456,
      "confident_mistakes": 6,
      "go_rate": 0.111,
      "agree": 0.481
@@ -3716,11 +3716,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.557,
+      "go": 0.551,
       "fg": 0.321,
       "punt": 0.191
      },
-     "cost": 0.236,
+     "cost": 0.23,
      "realized": 0.443,
      "confidence": 1.0,
      "what_happened": "(2:03) 2-M.Crosby 22 yard field goal is GOOD, Center-61-B.Goode, Holder-8-J.Vogel."
@@ -3734,11 +3734,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.269,
+      "go": 0.267,
       "fg": 0.147,
       "punt": 0.097
      },
-     "cost": 0.122,
+     "cost": 0.12,
      "realized": 0.168,
      "confidence": 1.0,
      "what_happened": "(4:13) (Field Goal formation) 2-M.Crosby 30 yard field goal is GOOD, Center-61-B.Goode, Holder-8-T.Masthay."
@@ -3752,11 +3752,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.61,
+      "go": 0.608,
       "fg": 0.495,
       "punt": 0.518
      },
-     "cost": 0.115,
+     "cost": 0.113,
      "realized": 0.512,
      "confidence": 1.0,
      "what_happened": "(9:42) 2-M.Crosby 40 yard field goal is GOOD, Center-61-B.Goode, Holder-8-T.Masthay."
@@ -3810,12 +3810,12 @@
    "last_season": 2026,
    "games": 49,
    "decisions": 331,
-   "clear_calls": 220,
-   "agree": 0.583,
-   "agree_clear": 0.673,
+   "clear_calls": 222,
+   "agree": 0.58,
+   "agree_clear": 0.667,
    "go_rate": 0.23,
-   "engine_go_rate": 0.347,
-   "went_when_engine_said_go": 0.461,
+   "engine_go_rate": 0.353,
+   "went_when_engine_said_go": 0.453,
    "confident_mistakes": 62,
    "confident_mistake_kinds": {
     "fg->go": 22,
@@ -3825,33 +3825,33 @@
     "punt->fg": 9,
     "punt->go": 27
    },
-   "wp_lost_total": 1.991,
-   "wp_lost_per_game": 0.0406,
+   "wp_lost_total": 2.028,
+   "wp_lost_per_game": 0.0414,
    "wp_lost_per_game_ci90": [
-    0.0279,
-    0.0553
+    0.0285,
+    0.0559
    ],
-   "wins_lost_per_17": 0.691,
-   "wins_lost_per_17_all_calls": 0.968,
-   "luck_total": 0.507,
+   "wins_lost_per_17": 0.703,
+   "wins_lost_per_17_all_calls": 0.999,
+   "luck_total": 0.437,
    "replay": {
-    "n": 138,
-    "coach_expected": 0.497,
-    "engine_expected": 0.5173,
-    "coach_realized": 0.4953
+    "n": 139,
+    "coach_expected": 0.4951,
+    "engine_expected": 0.5158,
+    "coach_realized": 0.4939
    },
    "by_choice": {
     "go": {
      "coach": 76,
-     "engine": 183
+     "engine": 186
     },
     "fg": {
      "coach": 108,
-     "engine": 68
+     "engine": 66
     },
     "punt": {
      "coach": 147,
-     "engine": 80
+     "engine": 79
     }
    },
    "seasons": [
@@ -3859,7 +3859,7 @@
      "season": 2020,
      "team": "ATL",
      "decisions": 72,
-     "wp_lost_per_game": 0.0322,
+     "wp_lost_per_game": 0.0351,
      "confident_mistakes": 15,
      "go_rate": 0.208,
      "agree": 0.583
@@ -3868,25 +3868,25 @@
      "season": 2024,
      "team": "ATL",
      "decisions": 114,
-     "wp_lost_per_game": 0.0523,
+     "wp_lost_per_game": 0.0527,
      "confident_mistakes": 21,
      "go_rate": 0.272,
-     "agree": 0.605
+     "agree": 0.588
     },
     {
      "season": 2025,
      "team": "ATL",
      "decisions": 122,
-     "wp_lost_per_game": 0.0352,
+     "wp_lost_per_game": 0.0351,
      "confident_mistakes": 18,
      "go_rate": 0.23,
-     "agree": 0.598
+     "agree": 0.607
     },
     {
      "season": 2026,
      "team": "ATL",
      "decisions": 23,
-     "wp_lost_per_game": 0.037,
+     "wp_lost_per_game": 0.0372,
      "confident_mistakes": 8,
      "go_rate": 0.087,
      "agree": 0.391
@@ -3938,11 +3938,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.369,
+      "go": 0.367,
       "fg": 0.272,
       "punt": 0.261
      },
-     "cost": 0.098,
+     "cost": 0.096,
      "realized": 0.275,
      "confidence": 1.0,
      "what_happened": "(:09) 6-Y.Koo 22 yard field goal is GOOD, Center-49-L.McCullough, Holder-13-B.Pinion."
@@ -3956,220 +3956,201 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.796,
+      "go": 0.794,
       "fg": 0.701,
       "punt": 0.714
      },
-     "cost": 0.083,
+     "cost": 0.08,
      "realized": 0.719,
      "confidence": 1.0,
      "what_happened": "(7:34) 13-B.Pinion punts 38 yards to LA 11, Center-49-L.McCullough, fair catch by 19-X.Smith."
     },
     {
-     "season": 2024,
-     "week": 14,
+     "season": 2020,
+     "week": 8,
      "team": "ATL",
-     "opp": "MIN",
-     "situation": "Q2 0:13, down 7, 4th & 2 at opp 2",
+     "opp": "CAR",
+     "situation": "Q1 11:17, tied, 4th & 1 at opp 3",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.198,
-      "fg": 0.137,
-      "punt": 0.138
+      "go": 0.559,
+      "fg": 0.484,
+      "punt": 0.421
      },
-     "cost": 0.062,
-     "realized": 0.137,
+     "cost": 0.075,
+     "realized": 0.494,
      "confidence": 1.0,
-     "what_happened": "(:13) 6-Y.Koo 20 yard field goal is GOOD, Center-49-L.McCullough, Holder-13-B.Pinion."
+     "what_happened": "(11:17) 7-Y.Koo 20 yard field goal is GOOD, Center-47-J.Harris, Holder-4-S.Hofrichter."
     }
    ],
-   "percentile_better_than": 0.682,
+   "percentile_better_than": 0.671,
    "grade": "B+"
   },
   {
-   "coach": "DeMeco Ryans",
+   "coach": "Ben Johnson",
    "teams": [
-    "HOU"
+    "CHI"
    ],
-   "first_season": 2023,
+   "first_season": 2025,
    "last_season": 2026,
-   "games": 61,
-   "decisions": 453,
-   "clear_calls": 269,
-   "agree": 0.585,
-   "agree_clear": 0.647,
-   "go_rate": 0.155,
-   "engine_go_rate": 0.28,
-   "went_when_engine_said_go": 0.323,
-   "confident_mistakes": 91,
+   "games": 23,
+   "decisions": 164,
+   "clear_calls": 115,
+   "agree": 0.573,
+   "agree_clear": 0.678,
+   "go_rate": 0.305,
+   "engine_go_rate": 0.421,
+   "went_when_engine_said_go": 0.536,
+   "confident_mistakes": 27,
    "confident_mistake_kinds": {
-    "fg->go": 36,
+    "fg->go": 11,
     "go->fg": 2,
-    "go->punt": 2,
-    "punt->fg": 8,
-    "punt->go": 43
+    "punt->fg": 1,
+    "punt->go": 13
    },
-   "wp_lost_total": 2.515,
-   "wp_lost_per_game": 0.0412,
+   "wp_lost_total": 0.966,
+   "wp_lost_per_game": 0.042,
    "wp_lost_per_game_ci90": [
-    0.0331,
-    0.0502
+    0.0276,
+    0.0576
    ],
-   "wins_lost_per_17": 0.701,
-   "wins_lost_per_17_all_calls": 0.955,
-   "luck_total": 0.402,
+   "wins_lost_per_17": 0.714,
+   "wins_lost_per_17_all_calls": 1.037,
+   "luck_total": 0.292,
    "replay": {
-    "n": 188,
-    "coach_expected": 0.5104,
-    "engine_expected": 0.5287,
-    "coach_realized": 0.5112
+    "n": 70,
+    "coach_expected": 0.4938,
+    "engine_expected": 0.5138,
+    "coach_realized": 0.4952
    },
    "by_choice": {
     "go": {
-     "coach": 70,
-     "engine": 221
+     "coach": 50,
+     "engine": 102
     },
     "fg": {
-     "coach": 137,
-     "engine": 92
+     "coach": 49,
+     "engine": 30
     },
     "punt": {
-     "coach": 246,
-     "engine": 140
+     "coach": 65,
+     "engine": 32
     }
    },
    "seasons": [
     {
-     "season": 2023,
-     "team": "HOU",
-     "decisions": 140,
-     "wp_lost_per_game": 0.039,
-     "confident_mistakes": 25,
-     "go_rate": 0.157,
-     "agree": 0.571
-    },
-    {
-     "season": 2024,
-     "team": "HOU",
-     "decisions": 136,
-     "wp_lost_per_game": 0.0282,
-     "confident_mistakes": 25,
-     "go_rate": 0.147,
-     "agree": 0.632
-    },
-    {
      "season": 2025,
-     "team": "HOU",
-     "decisions": 148,
-     "wp_lost_per_game": 0.0539,
-     "confident_mistakes": 36,
-     "go_rate": 0.142,
-     "agree": 0.541
+     "team": "CHI",
+     "decisions": 139,
+     "wp_lost_per_game": 0.043,
+     "confident_mistakes": 23,
+     "go_rate": 0.288,
+     "agree": 0.554
     },
     {
      "season": 2026,
-     "team": "HOU",
-     "decisions": 29,
-     "wp_lost_per_game": 0.0534,
-     "confident_mistakes": 5,
-     "go_rate": 0.241,
-     "agree": 0.655
+     "team": "CHI",
+     "decisions": 25,
+     "wp_lost_per_game": 0.0374,
+     "confident_mistakes": 4,
+     "go_rate": 0.4,
+     "agree": 0.68
     }
    ],
    "worst_calls": [
     {
      "season": 2025,
-     "week": 9,
-     "team": "HOU",
-     "opp": "DEN",
-     "situation": "Q4 1:00, tied, 4th & 6 at own 17",
+     "week": 18,
+     "team": "CHI",
+     "opp": "DET",
+     "situation": "Q4 1:55, tied, 4th & 5 at own 31",
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.393,
+      "go": 0.525,
       "fg": null,
-      "punt": 0.278
-     },
-     "cost": 0.114,
-     "realized": 0.294,
-     "confidence": 1.0,
-     "what_happened": "(1:00) 6-T.Townsend punts 55 yards to DEN 28, Center-40-A.Brinkman. 83-M.Bandy to DEN 36 for 8 yards (35-J.Hansen)."
-    },
-    {
-     "season": 2026,
-     "week": 2,
-     "team": "HOU",
-     "opp": "CIN",
-     "situation": "Q3 7:33, down 7, 4th & 1 at opp 40",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.33,
-      "fg": 0.253,
-      "punt": 0.264
-     },
-     "cost": 0.077,
-     "realized": 0.188,
-     "confidence": 1.0,
-     "what_happened": "(7:33) 15-K.Fairbairn 58 yard field goal is No Good, Short, Center-40-A.Brinkman, Holder-38-K.Kroeger."
-    },
-    {
-     "season": 2023,
-     "week": 9,
-     "team": "HOU",
-     "opp": "TB",
-     "situation": "Q4 14:15, down 1, 4th & 9 at opp 9",
-     "coach_call": "go",
-     "engine_call": "fg",
-     "wp": {
-      "go": 0.532,
-      "fg": 0.602,
       "punt": 0.428
      },
-     "cost": 0.07,
-     "realized": 0.801,
+     "cost": 0.097,
+     "realized": 0.317,
      "confidence": 1.0,
-     "what_happened": "(14:15) (Shotgun) 7-C.Stroud pass short right to 86-D.Schultz for 9 yards, TOUCHDOWN."
-    },
-    {
-     "season": 2023,
-     "week": 19,
-     "team": "HOU",
-     "opp": "CLE",
-     "situation": "Q1 5:32, tied, 4th & 2 at opp 2",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.534,
-      "fg": 0.467,
-      "punt": 0.426
-     },
-     "cost": 0.067,
-     "realized": 0.471,
-     "confidence": 1.0,
-     "what_happened": "(5:32) 15-K.Fairbairn 21 yard field goal is GOOD, Center-46-J.Weeks, Holder-11-C.Johnston."
+     "what_happened": "(1:55) 19-T.Taylor punts 46 yards to DET 23, Center-46-S.Daly. 11-K.Raymond pushed ob at DET 37 for 14 yards (21-T.Homer)."
     },
     {
      "season": 2025,
-     "week": 3,
-     "team": "HOU",
-     "opp": "JAX",
-     "situation": "Q2 6:57, down 7, 4th & 4 at opp 9",
+     "week": 1,
+     "team": "CHI",
+     "opp": "MIN",
+     "situation": "Q2 0:28, up 4, 4th & 2 at opp 24",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.339,
-      "fg": 0.272,
-      "punt": 0.251
+      "go": 0.789,
+      "fg": 0.717,
+      "punt": 0.718
      },
-     "cost": 0.067,
-     "realized": 0.309,
+     "cost": 0.071,
+     "realized": 0.77,
      "confidence": 1.0,
-     "what_happened": "(6:57) 15-K.Fairbairn 27 yard field goal is GOOD, Center-40-A.Brinkman, Holder-6-T.Townsend."
+     "what_happened": "(:28) 8-C.Santos 42 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
+    },
+    {
+     "season": 2025,
+     "week": 6,
+     "team": "CHI",
+     "opp": "WAS",
+     "situation": "Q4 6:12, down 2, 4th & 2 at own 17",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.253,
+      "fg": null,
+      "punt": 0.182
+     },
+     "cost": 0.071,
+     "realized": 0.177,
+     "confidence": 1.0,
+     "what_happened": "(6:12) 19-T.Taylor punts 53 yards to WAS 30, Center-46-S.Daly. 83-J.Lane to WAS 39 for 9 yards (48-D.Jackson; 36-J.Owens)."
+    },
+    {
+     "season": 2026,
+     "week": 4,
+     "team": "CHI",
+     "opp": "NYJ",
+     "situation": "Q2 2:32, up 4, 4th & 2 at opp 12",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.785,
+      "fg": 0.725,
+      "punt": 0.706
+     },
+     "cost": 0.06,
+     "realized": 0.73,
+     "confidence": 1.0,
+     "what_happened": "(2:32) 8-C.Santos 30 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
+    },
+    {
+     "season": 2025,
+     "week": 11,
+     "team": "CHI",
+     "opp": "MIN",
+     "situation": "Q2 2:04, up 4, 4th & 5 at opp 20",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.704,
+      "fg": 0.648,
+      "punt": 0.647
+     },
+     "cost": 0.057,
+     "realized": 0.641,
+     "confidence": 1.0,
+     "what_happened": "(2:04) 8-C.Santos 38 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
     }
    ],
-   "percentile_better_than": 0.647,
+   "percentile_better_than": 0.624,
    "grade": "B+"
   },
   {
@@ -4181,44 +4162,44 @@
    "last_season": 2026,
    "games": 169,
    "decisions": 1119,
-   "clear_calls": 641,
+   "clear_calls": 642,
    "agree": 0.545,
-   "agree_clear": 0.615,
+   "agree_clear": 0.609,
    "go_rate": 0.172,
-   "engine_go_rate": 0.311,
-   "went_when_engine_said_go": 0.33,
-   "confident_mistakes": 245,
+   "engine_go_rate": 0.316,
+   "went_when_engine_said_go": 0.331,
+   "confident_mistakes": 244,
    "confident_mistake_kinds": {
     "fg->go": 95,
     "fg->punt": 3,
     "go->fg": 1,
     "go->punt": 9,
     "punt->fg": 9,
-    "punt->go": 128
+    "punt->go": 127
    },
-   "wp_lost_total": 6.98,
-   "wp_lost_per_game": 0.0413,
+   "wp_lost_total": 7.096,
+   "wp_lost_per_game": 0.042,
    "wp_lost_per_game_ci90": [
-    0.036,
-    0.0467
+    0.0367,
+    0.0475
    ],
-   "wins_lost_per_17": 0.702,
-   "wins_lost_per_17_all_calls": 0.91,
-   "luck_total": -0.419,
+   "wins_lost_per_17": 0.714,
+   "wins_lost_per_17_all_calls": 0.931,
+   "luck_total": -0.614,
    "replay": {
     "n": 509,
-    "coach_expected": 0.5658,
-    "engine_expected": 0.5836,
-    "coach_realized": 0.5671
+    "coach_expected": 0.5644,
+    "engine_expected": 0.5826,
+    "coach_realized": 0.5661
    },
    "by_choice": {
     "go": {
      "coach": 192,
-     "engine": 620
+     "engine": 624
     },
     "fg": {
      "coach": 333,
-     "engine": 195
+     "engine": 191
     },
     "punt": {
      "coach": 594,
@@ -4230,19 +4211,19 @@
      "season": 2017,
      "team": "LA",
      "decisions": 123,
-     "wp_lost_per_game": 0.0398,
+     "wp_lost_per_game": 0.0406,
      "confident_mistakes": 26,
      "go_rate": 0.122,
-     "agree": 0.537
+     "agree": 0.545
     },
     {
      "season": 2018,
      "team": "LA",
      "decisions": 117,
-     "wp_lost_per_game": 0.044,
+     "wp_lost_per_game": 0.0448,
      "confident_mistakes": 27,
      "go_rate": 0.154,
-     "agree": 0.487
+     "agree": 0.504
     },
     {
      "season": 2019,
@@ -4257,8 +4238,8 @@
      "season": 2020,
      "team": "LA",
      "decisions": 131,
-     "wp_lost_per_game": 0.0571,
-     "confident_mistakes": 39,
+     "wp_lost_per_game": 0.0556,
+     "confident_mistakes": 38,
      "go_rate": 0.153,
      "agree": 0.527
     },
@@ -4269,13 +4250,13 @@
      "wp_lost_per_game": 0.0341,
      "confident_mistakes": 26,
      "go_rate": 0.162,
-     "agree": 0.569
+     "agree": 0.562
     },
     {
      "season": 2022,
      "team": "LA",
      "decisions": 115,
-     "wp_lost_per_game": 0.0402,
+     "wp_lost_per_game": 0.0431,
      "confident_mistakes": 24,
      "go_rate": 0.165,
      "agree": 0.504
@@ -4284,25 +4265,25 @@
      "season": 2023,
      "team": "LA",
      "decisions": 126,
-     "wp_lost_per_game": 0.06,
+     "wp_lost_per_game": 0.0616,
      "confident_mistakes": 30,
      "go_rate": 0.175,
-     "agree": 0.524
+     "agree": 0.516
     },
     {
      "season": 2024,
      "team": "LA",
      "decisions": 126,
-     "wp_lost_per_game": 0.0427,
+     "wp_lost_per_game": 0.0448,
      "confident_mistakes": 28,
      "go_rate": 0.206,
-     "agree": 0.571
+     "agree": 0.563
     },
     {
      "season": 2025,
      "team": "LA",
      "decisions": 120,
-     "wp_lost_per_game": 0.0273,
+     "wp_lost_per_game": 0.0271,
      "confident_mistakes": 19,
      "go_rate": 0.267,
      "agree": 0.583
@@ -4363,7 +4344,7 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.283,
+      "go": 0.282,
       "fg": 0.169,
       "punt": 0.15
      },
@@ -4413,356 +4394,344 @@
    "grade": "B+"
   },
   {
-   "coach": "Ben Johnson",
+   "coach": "DeMeco Ryans",
    "teams": [
-    "CHI"
+    "HOU"
    ],
-   "first_season": 2025,
+   "first_season": 2023,
    "last_season": 2026,
-   "games": 23,
-   "decisions": 164,
-   "clear_calls": 114,
-   "agree": 0.567,
-   "agree_clear": 0.684,
-   "go_rate": 0.305,
-   "engine_go_rate": 0.415,
-   "went_when_engine_said_go": 0.544,
-   "confident_mistakes": 27,
+   "games": 61,
+   "decisions": 453,
+   "clear_calls": 272,
+   "agree": 0.589,
+   "agree_clear": 0.647,
+   "go_rate": 0.155,
+   "engine_go_rate": 0.287,
+   "went_when_engine_said_go": 0.331,
+   "confident_mistakes": 90,
    "confident_mistake_kinds": {
-    "fg->go": 11,
+    "fg->go": 35,
     "go->fg": 2,
-    "punt->fg": 1,
-    "punt->go": 13
+    "go->punt": 2,
+    "punt->fg": 8,
+    "punt->go": 43
    },
-   "wp_lost_total": 0.957,
-   "wp_lost_per_game": 0.0416,
+   "wp_lost_total": 2.593,
+   "wp_lost_per_game": 0.0425,
    "wp_lost_per_game_ci90": [
-    0.0273,
-    0.057
+    0.0341,
+    0.0519
    ],
-   "wins_lost_per_17": 0.708,
-   "wins_lost_per_17_all_calls": 1.017,
-   "luck_total": 0.353,
+   "wins_lost_per_17": 0.723,
+   "wins_lost_per_17_all_calls": 0.981,
+   "luck_total": 0.331,
    "replay": {
-    "n": 71,
-    "coach_expected": 0.494,
-    "engine_expected": 0.5134,
-    "coach_realized": 0.4926
+    "n": 186,
+    "coach_expected": 0.5098,
+    "engine_expected": 0.5287,
+    "coach_realized": 0.5104
    },
    "by_choice": {
     "go": {
-     "coach": 50,
-     "engine": 103
+     "coach": 70,
+     "engine": 223
     },
     "fg": {
-     "coach": 49,
-     "engine": 29
+     "coach": 137,
+     "engine": 91
     },
     "punt": {
-     "coach": 65,
-     "engine": 32
+     "coach": 246,
+     "engine": 139
     }
    },
    "seasons": [
     {
+     "season": 2023,
+     "team": "HOU",
+     "decisions": 140,
+     "wp_lost_per_game": 0.0413,
+     "confident_mistakes": 25,
+     "go_rate": 0.157,
+     "agree": 0.571
+    },
+    {
+     "season": 2024,
+     "team": "HOU",
+     "decisions": 136,
+     "wp_lost_per_game": 0.0282,
+     "confident_mistakes": 25,
+     "go_rate": 0.147,
+     "agree": 0.647
+    },
+    {
      "season": 2025,
-     "team": "CHI",
-     "decisions": 139,
-     "wp_lost_per_game": 0.0425,
-     "confident_mistakes": 23,
-     "go_rate": 0.288,
-     "agree": 0.554
+     "team": "HOU",
+     "decisions": 148,
+     "wp_lost_per_game": 0.0555,
+     "confident_mistakes": 35,
+     "go_rate": 0.142,
+     "agree": 0.541
     },
     {
      "season": 2026,
-     "team": "CHI",
-     "decisions": 25,
-     "wp_lost_per_game": 0.0375,
-     "confident_mistakes": 4,
-     "go_rate": 0.4,
-     "agree": 0.64
+     "team": "HOU",
+     "decisions": 29,
+     "wp_lost_per_game": 0.0543,
+     "confident_mistakes": 5,
+     "go_rate": 0.241,
+     "agree": 0.655
     }
    ],
    "worst_calls": [
     {
      "season": 2025,
-     "week": 18,
-     "team": "CHI",
-     "opp": "DET",
-     "situation": "Q4 1:55, tied, 4th & 5 at own 31",
+     "week": 9,
+     "team": "HOU",
+     "opp": "DEN",
+     "situation": "Q4 1:00, tied, 4th & 6 at own 17",
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.525,
+      "go": 0.393,
       "fg": null,
-      "punt": 0.428
+      "punt": 0.278
      },
-     "cost": 0.097,
-     "realized": 0.317,
+     "cost": 0.114,
+     "realized": 0.294,
      "confidence": 1.0,
-     "what_happened": "(1:55) 19-T.Taylor punts 46 yards to DET 23, Center-46-S.Daly. 11-K.Raymond pushed ob at DET 37 for 14 yards (21-T.Homer)."
+     "what_happened": "(1:00) 6-T.Townsend punts 55 yards to DEN 28, Center-40-A.Brinkman. 83-M.Bandy to DEN 36 for 8 yards (35-J.Hansen)."
     },
     {
-     "season": 2025,
-     "week": 1,
-     "team": "CHI",
-     "opp": "MIN",
-     "situation": "Q2 0:28, up 4, 4th & 2 at opp 24",
+     "season": 2023,
+     "week": 19,
+     "team": "HOU",
+     "opp": "CLE",
+     "situation": "Q1 5:32, tied, 4th & 2 at opp 2",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.789,
-      "fg": 0.717,
-      "punt": 0.718
+      "go": 0.56,
+      "fg": 0.467,
+      "punt": 0.426
      },
-     "cost": 0.072,
-     "realized": 0.77,
+     "cost": 0.094,
+     "realized": 0.471,
      "confidence": 1.0,
-     "what_happened": "(:28) 8-C.Santos 42 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
-    },
-    {
-     "season": 2025,
-     "week": 6,
-     "team": "CHI",
-     "opp": "WAS",
-     "situation": "Q4 6:12, down 2, 4th & 2 at own 17",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.253,
-      "fg": null,
-      "punt": 0.182
-     },
-     "cost": 0.071,
-     "realized": 0.177,
-     "confidence": 1.0,
-     "what_happened": "(6:12) 19-T.Taylor punts 53 yards to WAS 30, Center-46-S.Daly. 83-J.Lane to WAS 39 for 9 yards (48-D.Jackson; 36-J.Owens)."
+     "what_happened": "(5:32) 15-K.Fairbairn 21 yard field goal is GOOD, Center-46-J.Weeks, Holder-11-C.Johnston."
     },
     {
      "season": 2026,
-     "week": 4,
-     "team": "CHI",
-     "opp": "NYJ",
-     "situation": "Q2 2:32, up 4, 4th & 2 at opp 12",
+     "week": 2,
+     "team": "HOU",
+     "opp": "CIN",
+     "situation": "Q3 7:33, down 7, 4th & 1 at opp 40",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.786,
-      "fg": 0.725,
-      "punt": 0.706
+      "go": 0.329,
+      "fg": 0.253,
+      "punt": 0.264
      },
-     "cost": 0.06,
-     "realized": 0.73,
+     "cost": 0.076,
+     "realized": 0.188,
      "confidence": 1.0,
-     "what_happened": "(2:32) 8-C.Santos 30 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
+     "what_happened": "(7:33) 15-K.Fairbairn 58 yard field goal is No Good, Short, Center-40-A.Brinkman, Holder-38-K.Kroeger."
     },
     {
-     "season": 2025,
-     "week": 11,
-     "team": "CHI",
-     "opp": "MIN",
-     "situation": "Q2 2:04, up 4, 4th & 5 at opp 20",
+     "season": 2023,
+     "week": 6,
+     "team": "HOU",
+     "opp": "NO",
+     "situation": "Q2 10:30, tied, 4th & 3 at opp 5",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.704,
-      "fg": 0.648,
-      "punt": 0.647
+      "go": 0.491,
+      "fg": 0.421,
+      "punt": 0.375
      },
-     "cost": 0.057,
-     "realized": 0.641,
+     "cost": 0.07,
+     "realized": 0.439,
      "confidence": 1.0,
-     "what_happened": "(2:04) 8-C.Santos 38 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
+     "what_happened": "(10:30) 15-K.Fairbairn 24 yard field goal is GOOD, Center-46-J.Weeks, Holder-11-C.Johnston."
+    },
+    {
+     "season": 2023,
+     "week": 9,
+     "team": "HOU",
+     "opp": "TB",
+     "situation": "Q4 14:15, down 1, 4th & 9 at opp 9",
+     "coach_call": "go",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.531,
+      "fg": 0.602,
+      "punt": 0.428
+     },
+     "cost": 0.07,
+     "realized": 0.801,
+     "confidence": 1.0,
+     "what_happened": "(14:15) (Shotgun) 7-C.Stroud pass short right to 86-D.Schultz for 9 yards, TOUCHDOWN."
     }
    ],
    "percentile_better_than": 0.6,
    "grade": "B"
   },
   {
-   "coach": "Jim Harbaugh",
+   "coach": "Jesse Minter",
    "teams": [
-    "LAC",
-    "SF"
+    "BAL"
    ],
-   "first_season": 2014,
+   "first_season": 2026,
    "last_season": 2026,
-   "games": 56,
-   "decisions": 384,
-   "clear_calls": 222,
-   "agree": 0.573,
-   "agree_clear": 0.626,
-   "go_rate": 0.164,
-   "engine_go_rate": 0.281,
-   "went_when_engine_said_go": 0.259,
-   "confident_mistakes": 80,
+   "games": 4,
+   "decisions": 22,
+   "clear_calls": 11,
+   "agree": 0.591,
+   "agree_clear": 0.636,
+   "go_rate": 0.182,
+   "engine_go_rate": 0.318,
+   "went_when_engine_said_go": 0.429,
+   "confident_mistakes": 5,
    "confident_mistake_kinds": {
-    "fg->go": 31,
-    "go->fg": 1,
-    "go->punt": 1,
-    "punt->fg": 4,
-    "punt->go": 43
+    "fg->go": 1,
+    "punt->go": 4
    },
-   "wp_lost_total": 2.431,
-   "wp_lost_per_game": 0.0434,
+   "wp_lost_total": 0.174,
+   "wp_lost_per_game": 0.0436,
    "wp_lost_per_game_ci90": [
-    0.0339,
-    0.0527
+    0.0125,
+    0.0787
    ],
-   "wins_lost_per_17": 0.738,
-   "wins_lost_per_17_all_calls": 0.981,
-   "luck_total": 0.427,
+   "wins_lost_per_17": 0.741,
+   "wins_lost_per_17_all_calls": 0.805,
+   "luck_total": -0.266,
    "replay": {
-    "n": 164,
-    "coach_expected": 0.5421,
-    "engine_expected": 0.5618,
-    "coach_realized": 0.5437
+    "n": 9,
+    "coach_expected": 0.7974,
+    "engine_expected": 0.8184,
+    "coach_realized": 0.7916
    },
    "by_choice": {
     "go": {
-     "coach": 63,
-     "engine": 198
+     "coach": 4,
+     "engine": 12
     },
     "fg": {
-     "coach": 110,
-     "engine": 69
+     "coach": 5,
+     "engine": 5
     },
     "punt": {
-     "coach": 211,
-     "engine": 117
+     "coach": 13,
+     "engine": 5
     }
    },
    "seasons": [
     {
-     "season": 2014,
-     "team": "SF",
-     "decisions": 106,
-     "wp_lost_per_game": 0.0387,
-     "confident_mistakes": 22,
-     "go_rate": 0.16,
-     "agree": 0.632
-    },
-    {
-     "season": 2024,
-     "team": "LAC",
-     "decisions": 130,
-     "wp_lost_per_game": 0.033,
-     "confident_mistakes": 23,
-     "go_rate": 0.131,
-     "agree": 0.531
-    },
-    {
-     "season": 2025,
-     "team": "LAC",
-     "decisions": 121,
-     "wp_lost_per_game": 0.05,
-     "confident_mistakes": 26,
-     "go_rate": 0.19,
-     "agree": 0.587
-    },
-    {
      "season": 2026,
-     "team": "LAC",
-     "decisions": 27,
-     "wp_lost_per_game": 0.0792,
-     "confident_mistakes": 9,
-     "go_rate": 0.222,
-     "agree": 0.481
+     "team": "BAL",
+     "decisions": 22,
+     "wp_lost_per_game": 0.0436,
+     "confident_mistakes": 5,
+     "go_rate": 0.182,
+     "agree": 0.591
     }
    ],
    "worst_calls": [
     {
      "season": 2026,
-     "week": 2,
-     "team": "LAC",
-     "opp": "LV",
-     "situation": "Q4 8:26, down 3, 4th & 2 at own 28",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.464,
-      "fg": null,
-      "punt": 0.353
-     },
-     "cost": 0.111,
-     "realized": 0.374,
-     "confidence": 1.0,
-     "what_happened": "(8:26) 16-J.Scott punts 55 yards to LV 17, Center-47-J.Harris, fair catch by 23-D.Laube."
-    },
-    {
-     "season": 2014,
-     "week": 9,
-     "team": "SF",
-     "opp": "LA",
-     "situation": "Q4 4:26, down 3, 4th & 4 at own 27",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.518,
-      "fg": null,
-      "punt": 0.414
-     },
-     "cost": 0.104,
-     "realized": 0.381,
-     "confidence": 1.0,
-     "what_happened": "(4:26) 4-A.Lee punts 45 yards to LA 28, Center-86-K.Nelson. 11-T.Austin pushed ob at LA 39 for 11 yards (35-E.Reid)."
-    },
-    {
-     "season": 2025,
      "week": 3,
-     "team": "LAC",
-     "opp": "DEN",
-     "situation": "Q3 5:38, down 7, 4th & 6 at opp 6",
-     "coach_call": "fg",
+     "team": "BAL",
+     "opp": "DAL",
+     "situation": "Q4 7:40, down 4, 4th & 5 at own 45",
+     "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.325,
-      "fg": 0.231,
-      "punt": 0.211
+      "go": 0.308,
+      "fg": null,
+      "punt": 0.247
      },
-     "cost": 0.094,
-     "realized": 0.226,
+     "cost": 0.061,
+     "realized": 0.23,
      "confidence": 1.0,
-     "what_happened": "(5:38) 11-C.Dicker 24 yard field goal is GOOD, Center-41-R.Lovato, Holder-16-J.Scott."
+     "what_happened": "(7:40) 30-R.Eckley punts 48 yards to DAL 7, Center-46-N.Moore. 9-K.Turpin to DAL 24 for 17 yards (46-N.Moore)."
     },
     {
-     "season": 2025,
-     "week": 19,
-     "team": "LAC",
-     "opp": "NE",
-     "situation": "Q2 6:55, down 3, 4th & 2 at opp 3",
-     "coach_call": "fg",
+     "season": 2026,
+     "week": 2,
+     "team": "BAL",
+     "opp": "NO",
+     "situation": "Q4 8:14, tied, 4th & 1 at own 37",
+     "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.48,
-      "fg": 0.397,
-      "punt": 0.356
+      "go": 0.723,
+      "fg": null,
+      "punt": 0.678
      },
-     "cost": 0.083,
-     "realized": 0.412,
+     "cost": 0.045,
+     "realized": 0.651,
      "confidence": 1.0,
-     "what_happened": "(6:55) 11-C.Dicker 21 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott."
+     "what_happened": "(8:14) 30-R.Eckley punts 40 yards to NO 23, Center-46-N.Moore. 19-B.Brown pushed ob at NO 32 for 9 yards (49-J.Higgins)."
     },
     {
-     "season": 2025,
-     "week": 14,
-     "team": "LAC",
-     "opp": "PHI",
-     "situation": "Q4 7:29, down 3, 4th & 3 at opp 13",
+     "season": 2026,
+     "week": 3,
+     "team": "BAL",
+     "opp": "DAL",
+     "situation": "Q2 4:48, up 4, 4th & 6 at opp 9",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.425,
-      "fg": 0.351,
-      "punt": 0.248
+      "go": 0.803,
+      "fg": 0.76,
+      "punt": 0.756
      },
-     "cost": 0.074,
-     "realized": 0.357,
+     "cost": 0.044,
+     "realized": 0.743,
      "confidence": 1.0,
-     "what_happened": "(7:29) 11-C.Dicker 31 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott."
+     "what_happened": "(4:48) 33-T.Loop 27 yard field goal is GOOD, Center-46-N.Moore, Holder-30-R.Eckley."
+    },
+    {
+     "season": 2026,
+     "week": 2,
+     "team": "BAL",
+     "opp": "NO",
+     "situation": "Q1 13:32, tied, 4th & 6 at own 29",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.7,
+      "fg": null,
+      "punt": 0.681
+     },
+     "cost": 0.019,
+     "realized": 0.691,
+     "confidence": 0.9,
+     "what_happened": "(13:32) 30-R.Eckley punts 47 yards to NO 24, Center-46-N.Moore, fair catch by 19-B.Brown."
+    },
+    {
+     "season": 2026,
+     "week": 4,
+     "team": "BAL",
+     "opp": "TEN",
+     "situation": "Q3 12:48, up 17, 4th & 3 at own 41",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.978,
+      "fg": null,
+      "punt": 0.972
+     },
+     "cost": 0.006,
+     "realized": 0.973,
+     "confidence": 0.95,
+     "what_happened": "(12:48) 30-R.Eckley punts 50 yards to TEN 9, Center-46-N.Moore, fair catch by 17-C.Dike."
     }
    ],
-   "percentile_better_than": 0.553,
-   "grade": "B"
+   "percentile_better_than": null,
+   "grade": "Incomplete"
   },
   {
    "coach": "John Harbaugh",
@@ -4774,48 +4743,48 @@
    "last_season": 2026,
    "games": 212,
    "decisions": 1390,
-   "clear_calls": 807,
-   "agree": 0.55,
-   "agree_clear": 0.599,
+   "clear_calls": 815,
+   "agree": 0.545,
+   "agree_clear": 0.59,
    "go_rate": 0.184,
-   "engine_go_rate": 0.329,
-   "went_when_engine_said_go": 0.348,
-   "confident_mistakes": 327,
+   "engine_go_rate": 0.337,
+   "went_when_engine_said_go": 0.344,
+   "confident_mistakes": 325,
    "confident_mistake_kinds": {
     "fg->go": 88,
     "fg->punt": 1,
-    "go->fg": 8,
+    "go->fg": 7,
     "go->punt": 7,
     "punt->fg": 30,
-    "punt->go": 193
+    "punt->go": 192
    },
-   "wp_lost_total": 9.259,
-   "wp_lost_per_game": 0.0437,
+   "wp_lost_total": 9.354,
+   "wp_lost_per_game": 0.0441,
    "wp_lost_per_game_ci90": [
-    0.0387,
-    0.0488
+    0.0391,
+    0.0493
    ],
-   "wins_lost_per_17": 0.742,
-   "wins_lost_per_17_all_calls": 0.951,
-   "luck_total": 2.386,
+   "wins_lost_per_17": 0.75,
+   "wins_lost_per_17_all_calls": 0.969,
+   "luck_total": 2.097,
    "replay": {
-    "n": 625,
-    "coach_expected": 0.5798,
-    "engine_expected": 0.5988,
-    "coach_realized": 0.5833
+    "n": 632,
+    "coach_expected": 0.5826,
+    "engine_expected": 0.6018,
+    "coach_realized": 0.5862
    },
    "by_choice": {
     "go": {
      "coach": 256,
-     "engine": 757
+     "engine": 768
     },
     "fg": {
      "coach": 403,
-     "engine": 269
+     "engine": 260
     },
     "punt": {
      "coach": 731,
-     "engine": 364
+     "engine": 362
     }
    },
    "seasons": [
@@ -4823,8 +4792,8 @@
      "season": 2014,
      "team": "BAL",
      "decisions": 114,
-     "wp_lost_per_game": 0.0513,
-     "confident_mistakes": 28,
+     "wp_lost_per_game": 0.0498,
+     "confident_mistakes": 27,
      "go_rate": 0.184,
      "agree": 0.526
     },
@@ -4832,16 +4801,16 @@
      "season": 2015,
      "team": "BAL",
      "decisions": 117,
-     "wp_lost_per_game": 0.0974,
+     "wp_lost_per_game": 0.097,
      "confident_mistakes": 35,
      "go_rate": 0.205,
-     "agree": 0.496
+     "agree": 0.487
     },
     {
      "season": 2016,
      "team": "BAL",
      "decisions": 127,
-     "wp_lost_per_game": 0.0669,
+     "wp_lost_per_game": 0.0678,
      "confident_mistakes": 35,
      "go_rate": 0.15,
      "agree": 0.512
@@ -4850,34 +4819,34 @@
      "season": 2017,
      "team": "BAL",
      "decisions": 130,
-     "wp_lost_per_game": 0.0578,
+     "wp_lost_per_game": 0.0576,
      "confident_mistakes": 40,
      "go_rate": 0.115,
-     "agree": 0.508
+     "agree": 0.515
     },
     {
      "season": 2018,
      "team": "BAL",
      "decisions": 117,
-     "wp_lost_per_game": 0.0348,
+     "wp_lost_per_game": 0.0389,
      "confident_mistakes": 23,
      "go_rate": 0.188,
-     "agree": 0.607
+     "agree": 0.598
     },
     {
      "season": 2019,
      "team": "BAL",
      "decisions": 94,
-     "wp_lost_per_game": 0.0226,
+     "wp_lost_per_game": 0.0236,
      "confident_mistakes": 18,
      "go_rate": 0.298,
-     "agree": 0.585
+     "agree": 0.564
     },
     {
      "season": 2020,
      "team": "BAL",
      "decisions": 103,
-     "wp_lost_per_game": 0.0168,
+     "wp_lost_per_game": 0.0171,
      "confident_mistakes": 23,
      "go_rate": 0.204,
      "agree": 0.553
@@ -4886,7 +4855,7 @@
      "season": 2021,
      "team": "BAL",
      "decisions": 126,
-     "wp_lost_per_game": 0.0503,
+     "wp_lost_per_game": 0.0501,
      "confident_mistakes": 26,
      "go_rate": 0.206,
      "agree": 0.563
@@ -4895,19 +4864,19 @@
      "season": 2022,
      "team": "BAL",
      "decisions": 117,
-     "wp_lost_per_game": 0.0476,
+     "wp_lost_per_game": 0.0492,
      "confident_mistakes": 25,
      "go_rate": 0.197,
-     "agree": 0.556
+     "agree": 0.547
     },
     {
      "season": 2023,
      "team": "BAL",
      "decisions": 120,
-     "wp_lost_per_game": 0.0317,
+     "wp_lost_per_game": 0.0316,
      "confident_mistakes": 29,
      "go_rate": 0.125,
-     "agree": 0.525
+     "agree": 0.517
     },
     {
      "season": 2024,
@@ -4922,17 +4891,17 @@
      "season": 2025,
      "team": "BAL",
      "decisions": 104,
-     "wp_lost_per_game": 0.0415,
+     "wp_lost_per_game": 0.0419,
      "confident_mistakes": 21,
      "go_rate": 0.24,
-     "agree": 0.596
+     "agree": 0.577
     },
     {
      "season": 2026,
      "team": "NYG",
      "decisions": 23,
-     "wp_lost_per_game": 0.0389,
-     "confident_mistakes": 5,
+     "wp_lost_per_game": 0.0391,
+     "confident_mistakes": 4,
      "go_rate": 0.087,
      "agree": 0.609
     }
@@ -4947,11 +4916,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.362,
+      "go": 0.357,
       "fg": 0.187,
       "punt": 0.168
      },
-     "cost": 0.174,
+     "cost": 0.17,
      "realized": 0.208,
      "confidence": 1.0,
      "what_happened": "(13:32) 9-J.Tucker 21 yard field goal is GOOD, Center-46-M.Cox, Holder-4-S.Koch."
@@ -4993,6 +4962,24 @@
      "what_happened": "(1:28) (Punt formation) 4-S.Koch punts 39 yards to CLE 37, Center-46-M.Cox, out of bounds."
     },
     {
+     "season": 2014,
+     "week": 3,
+     "team": "BAL",
+     "opp": "CLE",
+     "situation": "Q4 5:04, down 4, 4th & 3 at opp 3",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.461,
+      "fg": 0.32,
+      "punt": 0.187
+     },
+     "cost": 0.14,
+     "realized": 0.35,
+     "confidence": 1.0,
+     "what_happened": "(5:04) (Field Goal formation) 9-J.Tucker 21 yard field goal is GOOD, Center-46-M.Cox, Holder-4-S.Koch."
+    },
+    {
      "season": 2021,
      "week": 18,
      "team": "BAL",
@@ -5009,183 +4996,196 @@
      "realized": 0.46,
      "confidence": 1.0,
      "what_happened": "(1:17) 9-J.Tucker 46 yard field goal is GOOD, Center-46-N.Moore, Holder-4-S.Koch."
-    },
-    {
-     "season": 2014,
-     "week": 3,
-     "team": "BAL",
-     "opp": "CLE",
-     "situation": "Q4 5:04, down 4, 4th & 3 at opp 3",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.455,
-      "fg": 0.32,
-      "punt": 0.187
-     },
-     "cost": 0.134,
-     "realized": 0.35,
-     "confidence": 1.0,
-     "what_happened": "(5:04) (Field Goal formation) 9-J.Tucker 21 yard field goal is GOOD, Center-46-M.Cox, Holder-4-S.Koch."
     }
    ],
    "percentile_better_than": 0.529,
    "grade": "B"
   },
   {
-   "coach": "Jesse Minter",
+   "coach": "Jim Harbaugh",
    "teams": [
-    "BAL"
+    "LAC",
+    "SF"
    ],
-   "first_season": 2026,
+   "first_season": 2014,
    "last_season": 2026,
-   "games": 4,
-   "decisions": 22,
-   "clear_calls": 11,
-   "agree": 0.591,
-   "agree_clear": 0.636,
-   "go_rate": 0.182,
-   "engine_go_rate": 0.318,
-   "went_when_engine_said_go": 0.429,
-   "confident_mistakes": 5,
+   "games": 56,
+   "decisions": 384,
+   "clear_calls": 222,
+   "agree": 0.57,
+   "agree_clear": 0.626,
+   "go_rate": 0.164,
+   "engine_go_rate": 0.281,
+   "went_when_engine_said_go": 0.259,
+   "confident_mistakes": 80,
    "confident_mistake_kinds": {
-    "fg->go": 1,
-    "punt->go": 4
+    "fg->go": 31,
+    "go->fg": 1,
+    "go->punt": 1,
+    "punt->fg": 4,
+    "punt->go": 43
    },
-   "wp_lost_total": 0.176,
-   "wp_lost_per_game": 0.0441,
+   "wp_lost_total": 2.473,
+   "wp_lost_per_game": 0.0442,
    "wp_lost_per_game_ci90": [
-    0.0126,
-    0.0793
+    0.0344,
+    0.0537
    ],
-   "wins_lost_per_17": 0.749,
-   "wins_lost_per_17_all_calls": 0.813,
-   "luck_total": -0.249,
+   "wins_lost_per_17": 0.751,
+   "wins_lost_per_17_all_calls": 1.0,
+   "luck_total": 0.34,
    "replay": {
-    "n": 9,
-    "coach_expected": 0.7974,
-    "engine_expected": 0.8187,
-    "coach_realized": 0.7916
+    "n": 165,
+    "coach_expected": 0.5392,
+    "engine_expected": 0.5592,
+    "coach_realized": 0.5408
    },
    "by_choice": {
     "go": {
-     "coach": 4,
-     "engine": 12
+     "coach": 63,
+     "engine": 199
     },
     "fg": {
-     "coach": 5,
-     "engine": 5
+     "coach": 110,
+     "engine": 68
     },
     "punt": {
-     "coach": 13,
-     "engine": 5
+     "coach": 211,
+     "engine": 117
     }
    },
    "seasons": [
     {
+     "season": 2014,
+     "team": "SF",
+     "decisions": 106,
+     "wp_lost_per_game": 0.0389,
+     "confident_mistakes": 22,
+     "go_rate": 0.16,
+     "agree": 0.642
+    },
+    {
+     "season": 2024,
+     "team": "LAC",
+     "decisions": 130,
+     "wp_lost_per_game": 0.0339,
+     "confident_mistakes": 23,
+     "go_rate": 0.131,
+     "agree": 0.531
+    },
+    {
+     "season": 2025,
+     "team": "LAC",
+     "decisions": 121,
+     "wp_lost_per_game": 0.05,
+     "confident_mistakes": 26,
+     "go_rate": 0.19,
+     "agree": 0.57
+    },
+    {
      "season": 2026,
-     "team": "BAL",
-     "decisions": 22,
-     "wp_lost_per_game": 0.0441,
-     "confident_mistakes": 5,
-     "go_rate": 0.182,
-     "agree": 0.591
+     "team": "LAC",
+     "decisions": 27,
+     "wp_lost_per_game": 0.0848,
+     "confident_mistakes": 9,
+     "go_rate": 0.222,
+     "agree": 0.481
     }
    ],
    "worst_calls": [
     {
      "season": 2026,
-     "week": 3,
-     "team": "BAL",
-     "opp": "DAL",
-     "situation": "Q4 7:40, down 4, 4th & 5 at own 45",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.308,
-      "fg": null,
-      "punt": 0.247
-     },
-     "cost": 0.061,
-     "realized": 0.23,
-     "confidence": 1.0,
-     "what_happened": "(7:40) 30-R.Eckley punts 48 yards to DAL 7, Center-46-N.Moore. 9-K.Turpin to DAL 24 for 17 yards (46-N.Moore)."
-    },
-    {
-     "season": 2026,
      "week": 2,
-     "team": "BAL",
-     "opp": "NO",
-     "situation": "Q4 8:14, tied, 4th & 1 at own 37",
+     "team": "LAC",
+     "opp": "LV",
+     "situation": "Q4 8:26, down 3, 4th & 2 at own 28",
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.725,
+      "go": 0.464,
       "fg": null,
-      "punt": 0.678
+      "punt": 0.353
      },
-     "cost": 0.046,
-     "realized": 0.651,
+     "cost": 0.111,
+     "realized": 0.374,
      "confidence": 1.0,
-     "what_happened": "(8:14) 30-R.Eckley punts 40 yards to NO 23, Center-46-N.Moore. 19-B.Brown pushed ob at NO 32 for 9 yards (49-J.Higgins)."
+     "what_happened": "(8:26) 16-J.Scott punts 55 yards to LV 17, Center-47-J.Harris, fair catch by 23-D.Laube."
+    },
+    {
+     "season": 2014,
+     "week": 9,
+     "team": "SF",
+     "opp": "LA",
+     "situation": "Q4 4:26, down 3, 4th & 4 at own 27",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.518,
+      "fg": null,
+      "punt": 0.413
+     },
+     "cost": 0.104,
+     "realized": 0.381,
+     "confidence": 1.0,
+     "what_happened": "(4:26) 4-A.Lee punts 45 yards to LA 28, Center-86-K.Nelson. 11-T.Austin pushed ob at LA 39 for 11 yards (35-E.Reid)."
     },
     {
      "season": 2026,
      "week": 3,
-     "team": "BAL",
-     "opp": "DAL",
-     "situation": "Q2 4:48, up 4, 4th & 6 at opp 9",
+     "team": "LAC",
+     "opp": "BUF",
+     "situation": "Q3 6:15, tied, 4th & 3 at opp 3",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.804,
-      "fg": 0.76,
-      "punt": 0.756
+      "go": 0.439,
+      "fg": 0.344,
+      "punt": 0.297
      },
-     "cost": 0.044,
-     "realized": 0.743,
+     "cost": 0.095,
+     "realized": 0.339,
      "confidence": 1.0,
-     "what_happened": "(4:48) 33-T.Loop 27 yard field goal is GOOD, Center-46-N.Moore, Holder-30-R.Eckley."
+     "what_happened": "(6:15) 11-C.Dicker 21 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott."
     },
     {
-     "season": 2026,
-     "week": 2,
-     "team": "BAL",
-     "opp": "NO",
-     "situation": "Q1 13:32, tied, 4th & 6 at own 29",
-     "coach_call": "punt",
+     "season": 2025,
+     "week": 3,
+     "team": "LAC",
+     "opp": "DEN",
+     "situation": "Q3 5:38, down 7, 4th & 6 at opp 6",
+     "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.7,
-      "fg": null,
-      "punt": 0.681
+      "go": 0.323,
+      "fg": 0.231,
+      "punt": 0.211
      },
-     "cost": 0.018,
-     "realized": 0.691,
-     "confidence": 0.9,
-     "what_happened": "(13:32) 30-R.Eckley punts 47 yards to NO 24, Center-46-N.Moore, fair catch by 19-B.Brown."
+     "cost": 0.092,
+     "realized": 0.226,
+     "confidence": 1.0,
+     "what_happened": "(5:38) 11-C.Dicker 24 yard field goal is GOOD, Center-41-R.Lovato, Holder-16-J.Scott."
     },
     {
-     "season": 2026,
-     "week": 4,
-     "team": "BAL",
-     "opp": "TEN",
-     "situation": "Q3 12:48, up 17, 4th & 3 at own 41",
-     "coach_call": "punt",
+     "season": 2025,
+     "week": 19,
+     "team": "LAC",
+     "opp": "NE",
+     "situation": "Q2 6:55, down 3, 4th & 2 at opp 3",
+     "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.978,
-      "fg": null,
-      "punt": 0.972
+      "go": 0.478,
+      "fg": 0.397,
+      "punt": 0.356
      },
-     "cost": 0.006,
-     "realized": 0.973,
-     "confidence": 0.95,
-     "what_happened": "(12:48) 30-R.Eckley punts 50 yards to TEN 9, Center-46-N.Moore, fair catch by 17-C.Dike."
+     "cost": 0.081,
+     "realized": 0.412,
+     "confidence": 1.0,
+     "what_happened": "(6:55) 11-C.Dicker 21 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott."
     }
    ],
-   "percentile_better_than": null,
-   "grade": "Incomplete"
+   "percentile_better_than": 0.518,
+   "grade": "B"
   },
   {
    "coach": "Robert Saleh",
@@ -5198,47 +5198,47 @@
    "games": 72,
    "decisions": 547,
    "clear_calls": 317,
-   "agree": 0.527,
-   "agree_clear": 0.571,
+   "agree": 0.532,
+   "agree_clear": 0.565,
    "go_rate": 0.208,
-   "engine_go_rate": 0.342,
-   "went_when_engine_said_go": 0.305,
-   "confident_mistakes": 124,
+   "engine_go_rate": 0.346,
+   "went_when_engine_said_go": 0.302,
+   "confident_mistakes": 123,
    "confident_mistake_kinds": {
-    "fg->go": 42,
+    "fg->go": 41,
     "fg->punt": 1,
     "go->fg": 2,
     "go->punt": 4,
     "punt->fg": 2,
     "punt->go": 73
    },
-   "wp_lost_total": 3.201,
-   "wp_lost_per_game": 0.0445,
+   "wp_lost_total": 3.221,
+   "wp_lost_per_game": 0.0447,
    "wp_lost_per_game_ci90": [
-    0.0372,
-    0.052
+    0.0374,
+    0.0524
    ],
-   "wins_lost_per_17": 0.756,
-   "wins_lost_per_17_all_calls": 1.044,
-   "luck_total": -1.361,
+   "wins_lost_per_17": 0.76,
+   "wins_lost_per_17_all_calls": 1.058,
+   "luck_total": -1.442,
    "replay": {
-    "n": 259,
-    "coach_expected": 0.2705,
-    "engine_expected": 0.2875,
-    "coach_realized": 0.2701
+    "n": 256,
+    "coach_expected": 0.2732,
+    "engine_expected": 0.2907,
+    "coach_realized": 0.273
    },
    "by_choice": {
     "go": {
      "coach": 114,
-     "engine": 316
+     "engine": 319
     },
     "fg": {
      "coach": 125,
-     "engine": 64
+     "engine": 62
     },
     "punt": {
      "coach": 308,
-     "engine": 167
+     "engine": 166
     }
    },
    "seasons": [
@@ -5246,7 +5246,7 @@
      "season": 2021,
      "team": "NYJ",
      "decisions": 115,
-     "wp_lost_per_game": 0.0385,
+     "wp_lost_per_game": 0.0384,
      "confident_mistakes": 33,
      "go_rate": 0.252,
      "agree": 0.539
@@ -5258,14 +5258,14 @@
      "wp_lost_per_game": 0.0564,
      "confident_mistakes": 37,
      "go_rate": 0.201,
-     "agree": 0.439
+     "agree": 0.46
     },
     {
      "season": 2023,
      "team": "NYJ",
      "decisions": 156,
-     "wp_lost_per_game": 0.0504,
-     "confident_mistakes": 29,
+     "wp_lost_per_game": 0.0513,
+     "confident_mistakes": 28,
      "go_rate": 0.186,
      "agree": 0.538
     },
@@ -5273,7 +5273,7 @@
      "season": 2024,
      "team": "NYJ",
      "decisions": 108,
-     "wp_lost_per_game": 0.0333,
+     "wp_lost_per_game": 0.0337,
      "confident_mistakes": 16,
      "go_rate": 0.222,
      "agree": 0.611
@@ -5282,7 +5282,7 @@
      "season": 2026,
      "team": "TEN",
      "decisions": 29,
-     "wp_lost_per_game": 0.0414,
+     "wp_lost_per_game": 0.0413,
      "confident_mistakes": 9,
      "go_rate": 0.138,
      "agree": 0.517
@@ -5318,9 +5318,9 @@
      "wp": {
       "go": 0.413,
       "fg": 0.377,
-      "punt": 0.344
+      "punt": 0.343
      },
-     "cost": 0.069,
+     "cost": 0.07,
      "realized": 0.372,
      "confidence": 1.0,
      "what_happened": "(9:30) 5-T.Morstead punts 43 yards to NYG 3, Center-42-T.Hennessy, out of bounds."
@@ -5334,14 +5334,32 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.445,
+      "go": 0.443,
       "fg": null,
       "punt": 0.376
      },
-     "cost": 0.069,
+     "cost": 0.067,
      "realized": 0.369,
      "confidence": 1.0,
      "what_happened": "(3:36) 5-T.Morstead punts 53 yards to NYG 15, Center-42-T.Hennessy. 80-G.Olszewski to NYG 27 for 12 yards (21-A.Davis). FUMBLES (21-A.Davis), ball out of bounds at NYG 27."
+    },
+    {
+     "season": 2023,
+     "week": 18,
+     "team": "NYJ",
+     "opp": "NE",
+     "situation": "Q1 2:07, tied, 4th & 3 at opp 3",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.595,
+      "fg": 0.527,
+      "punt": 0.469
+     },
+     "cost": 0.067,
+     "realized": 0.537,
+     "confidence": 1.0,
+     "what_happened": "(2:07) 9-G.Zuerlein 21 yard field goal is GOOD, Center-42-T.Hennessy, Holder-5-T.Morstead."
     },
     {
      "season": 2023,
@@ -5360,24 +5378,6 @@
      "realized": 0.36,
      "confidence": 1.0,
      "what_happened": "(6:34) 5-T.Morstead punts 45 yards to NYG 23, Center-42-T.Hennessy. 80-G.Olszewski pushed ob at NYG 34 for 11 yards (44-J.Sherwood; 89-J.Ruckert)."
-    },
-    {
-     "season": 2021,
-     "week": 16,
-     "team": "NYJ",
-     "opp": "JAX",
-     "situation": "Q4 1:49, up 2, 4th & 1 at opp 1",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.896,
-      "fg": 0.832,
-      "punt": 0.751
-     },
-     "cost": 0.064,
-     "realized": 0.864,
-     "confidence": 1.0,
-     "what_happened": "(1:49) 69-C.McDermott reported in as eligible. 15-E.Pineiro 20 yard field goal is GOOD, Center-42-T.Hennessy, Holder-7-B.Mann."
     }
    ],
    "percentile_better_than": 0.494,
@@ -5392,42 +5392,42 @@
    "last_season": 2026,
    "games": 21,
    "decisions": 160,
-   "clear_calls": 76,
-   "agree": 0.5,
-   "agree_clear": 0.513,
+   "clear_calls": 77,
+   "agree": 0.506,
+   "agree_clear": 0.506,
    "go_rate": 0.269,
-   "engine_go_rate": 0.325,
-   "went_when_engine_said_go": 0.346,
-   "confident_mistakes": 41,
+   "engine_go_rate": 0.338,
+   "went_when_engine_said_go": 0.333,
+   "confident_mistakes": 40,
    "confident_mistake_kinds": {
-    "fg->go": 8,
+    "fg->go": 7,
     "go->punt": 2,
     "punt->fg": 3,
     "punt->go": 28
    },
-   "wp_lost_total": 0.96,
-   "wp_lost_per_game": 0.0457,
+   "wp_lost_total": 0.943,
+   "wp_lost_per_game": 0.0449,
    "wp_lost_per_game_ci90": [
-    0.0316,
-    0.0626
+    0.0309,
+    0.0617
    ],
-   "wins_lost_per_17": 0.777,
-   "wins_lost_per_17_all_calls": 1.054,
-   "luck_total": -0.334,
+   "wins_lost_per_17": 0.764,
+   "wins_lost_per_17_all_calls": 1.09,
+   "luck_total": -0.353,
    "replay": {
-    "n": 80,
-    "coach_expected": 0.1936,
-    "engine_expected": 0.2099,
-    "coach_realized": 0.1958
+    "n": 79,
+    "coach_expected": 0.196,
+    "engine_expected": 0.2131,
+    "coach_realized": 0.1983
    },
    "by_choice": {
     "go": {
      "coach": 43,
-     "engine": 94
+     "engine": 95
     },
     "fg": {
      "coach": 35,
-     "engine": 23
+     "engine": 22
     },
     "punt": {
      "coach": 82,
@@ -5439,16 +5439,16 @@
      "season": 2025,
      "team": "NYJ",
      "decisions": 134,
-     "wp_lost_per_game": 0.0452,
-     "confident_mistakes": 34,
+     "wp_lost_per_game": 0.0443,
+     "confident_mistakes": 33,
      "go_rate": 0.291,
-     "agree": 0.478
+     "agree": 0.485
     },
     {
      "season": 2026,
      "team": "NYJ",
      "decisions": 26,
-     "wp_lost_per_game": 0.0481,
+     "wp_lost_per_game": 0.0477,
      "confident_mistakes": 7,
      "go_rate": 0.154,
      "agree": 0.615
@@ -5464,11 +5464,11 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.372,
+      "go": 0.369,
       "fg": null,
       "punt": 0.269
      },
-     "cost": 0.103,
+     "cost": 0.101,
      "realized": 0.259,
      "confidence": 1.0,
      "what_happened": "(10:23) 14-A.McNamara punts 44 yards to DEN 26, Center-42-T.Hennessy, fair catch by 19-M.Mims."
@@ -5500,7 +5500,7 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.32,
+      "go": 0.319,
       "fg": 0.259,
       "punt": 0.238
      },
@@ -5522,7 +5522,7 @@
       "fg": 0.672,
       "punt": 0.657
      },
-     "cost": 0.057,
+     "cost": 0.056,
      "realized": 0.841,
      "confidence": 1.0,
      "what_happened": "(5:06) 19-J.Sanders 33 yard field goal is GOOD, Center-42-T.Hennessy, Holder-14-A.McNamara."
@@ -5546,7 +5546,7 @@
      "what_happened": "(7:19) 14-A.McNamara punts 38 yards to ATL 10, Center-42-T.Hennessy, downed by NYJ-37-Q.Stiggers."
     }
    ],
-   "percentile_better_than": 0.459,
+   "percentile_better_than": 0.482,
    "grade": "B"
   },
   {
@@ -5559,12 +5559,12 @@
    "last_season": 2026,
    "games": 129,
    "decisions": 810,
-   "clear_calls": 499,
+   "clear_calls": 502,
    "agree": 0.549,
-   "agree_clear": 0.615,
+   "agree_clear": 0.612,
    "go_rate": 0.168,
-   "engine_go_rate": 0.322,
-   "went_when_engine_said_go": 0.318,
+   "engine_go_rate": 0.326,
+   "went_when_engine_said_go": 0.314,
    "confident_mistakes": 197,
    "confident_mistake_kinds": {
     "fg->go": 54,
@@ -5574,20 +5574,20 @@
     "punt->fg": 12,
     "punt->go": 122
    },
-   "wp_lost_total": 6.007,
-   "wp_lost_per_game": 0.0466,
+   "wp_lost_total": 6.114,
+   "wp_lost_per_game": 0.0474,
    "wp_lost_per_game_ci90": [
-    0.0388,
-    0.0556
+    0.0395,
+    0.0566
    ],
-   "wins_lost_per_17": 0.792,
-   "wins_lost_per_17_all_calls": 1.0,
-   "luck_total": -0.24,
+   "wins_lost_per_17": 0.806,
+   "wins_lost_per_17_all_calls": 1.016,
+   "luck_total": -0.402,
    "replay": {
     "n": 365,
-    "coach_expected": 0.4643,
-    "engine_expected": 0.4851,
-    "coach_realized": 0.4643
+    "coach_expected": 0.4654,
+    "engine_expected": 0.4865,
+    "coach_realized": 0.4657
    },
    "by_choice": {
     "go": {
@@ -5596,11 +5596,11 @@
     },
     "fg": {
      "coach": 183,
-     "engine": 122
+     "engine": 120
     },
     "punt": {
      "coach": 491,
-     "engine": 247
+     "engine": 249
     }
    },
    "seasons": [
@@ -5608,16 +5608,16 @@
      "season": 2018,
      "team": "TEN",
      "decisions": 102,
-     "wp_lost_per_game": 0.069,
+     "wp_lost_per_game": 0.0702,
      "confident_mistakes": 37,
      "go_rate": 0.098,
-     "agree": 0.5
+     "agree": 0.48
     },
     {
      "season": 2019,
      "team": "TEN",
      "decisions": 118,
-     "wp_lost_per_game": 0.0682,
+     "wp_lost_per_game": 0.0688,
      "confident_mistakes": 34,
      "go_rate": 0.144,
      "agree": 0.559
@@ -5626,7 +5626,7 @@
      "season": 2020,
      "team": "TEN",
      "decisions": 95,
-     "wp_lost_per_game": 0.0375,
+     "wp_lost_per_game": 0.0385,
      "confident_mistakes": 24,
      "go_rate": 0.179,
      "agree": 0.484
@@ -5635,7 +5635,7 @@
      "season": 2021,
      "team": "TEN",
      "decisions": 109,
-     "wp_lost_per_game": 0.0352,
+     "wp_lost_per_game": 0.0355,
      "confident_mistakes": 24,
      "go_rate": 0.211,
      "agree": 0.541
@@ -5644,25 +5644,25 @@
      "season": 2022,
      "team": "TEN",
      "decisions": 112,
-     "wp_lost_per_game": 0.0311,
+     "wp_lost_per_game": 0.0307,
      "confident_mistakes": 19,
      "go_rate": 0.143,
-     "agree": 0.607
+     "agree": 0.616
     },
     {
      "season": 2023,
      "team": "TEN",
      "decisions": 118,
-     "wp_lost_per_game": 0.0403,
+     "wp_lost_per_game": 0.0432,
      "confident_mistakes": 23,
      "go_rate": 0.169,
-     "agree": 0.576
+     "agree": 0.585
     },
     {
      "season": 2025,
      "team": "NE",
      "decisions": 130,
-     "wp_lost_per_game": 0.0417,
+     "wp_lost_per_game": 0.0424,
      "confident_mistakes": 29,
      "go_rate": 0.215,
      "agree": 0.585
@@ -5723,11 +5723,11 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.364,
+      "go": 0.365,
       "fg": 0.248,
       "punt": 0.146
      },
-     "cost": 0.116,
+     "cost": 0.117,
      "realized": 0.258,
      "confidence": 1.0,
      "what_happened": "(2:20) 6-N.Folk 29 yard field goal is GOOD, Center-46-M.Cox, Holder-4-R.Stonehouse."
@@ -5769,7 +5769,7 @@
      "what_happened": "(6:35) (Field Goal formation) 7-C.Santos 53 yard field goal is No Good, Wide Left, Center-48-B.Brinkley, Holder-6-B.Kern."
     }
    ],
-   "percentile_better_than": 0.435,
+   "percentile_better_than": 0.424,
    "grade": "B"
   },
   {
@@ -5782,44 +5782,44 @@
    "last_season": 2026,
    "games": 194,
    "decisions": 1227,
-   "clear_calls": 747,
-   "agree": 0.529,
-   "agree_clear": 0.564,
+   "clear_calls": 752,
+   "agree": 0.524,
+   "agree_clear": 0.56,
    "go_rate": 0.161,
-   "engine_go_rate": 0.357,
+   "engine_go_rate": 0.363,
    "went_when_engine_said_go": 0.29,
-   "confident_mistakes": 301,
+   "confident_mistakes": 300,
    "confident_mistake_kinds": {
     "fg->go": 87,
     "fg->punt": 1,
     "go->fg": 6,
     "go->punt": 6,
     "punt->fg": 9,
-    "punt->go": 192
+    "punt->go": 191
    },
-   "wp_lost_total": 9.566,
-   "wp_lost_per_game": 0.0493,
+   "wp_lost_total": 9.671,
+   "wp_lost_per_game": 0.0499,
    "wp_lost_per_game_ci90": [
-    0.0431,
-    0.0553
+    0.0436,
+    0.0558
    ],
-   "wins_lost_per_17": 0.838,
-   "wins_lost_per_17_all_calls": 1.103,
-   "luck_total": 4.041,
+   "wins_lost_per_17": 0.847,
+   "wins_lost_per_17_all_calls": 1.12,
+   "luck_total": 3.816,
    "replay": {
-    "n": 578,
-    "coach_expected": 0.5204,
-    "engine_expected": 0.5421,
-    "coach_realized": 0.5228
+    "n": 584,
+    "coach_expected": 0.5211,
+    "engine_expected": 0.543,
+    "coach_realized": 0.5235
    },
    "by_choice": {
     "go": {
      "coach": 197,
-     "engine": 706
+     "engine": 712
     },
     "fg": {
      "coach": 326,
-     "engine": 178
+     "engine": 172
     },
     "punt": {
      "coach": 704,
@@ -5840,17 +5840,17 @@
      "season": 2015,
      "team": "NO",
      "decisions": 99,
-     "wp_lost_per_game": 0.0718,
+     "wp_lost_per_game": 0.0727,
      "confident_mistakes": 25,
      "go_rate": 0.162,
-     "agree": 0.545
+     "agree": 0.535
     },
     {
      "season": 2016,
      "team": "NO",
      "decisions": 92,
-     "wp_lost_per_game": 0.0562,
-     "confident_mistakes": 25,
+     "wp_lost_per_game": 0.055,
+     "confident_mistakes": 24,
      "go_rate": 0.163,
      "agree": 0.554
     },
@@ -5858,7 +5858,7 @@
      "season": 2017,
      "team": "NO",
      "decisions": 113,
-     "wp_lost_per_game": 0.0336,
+     "wp_lost_per_game": 0.0352,
      "confident_mistakes": 24,
      "go_rate": 0.15,
      "agree": 0.566
@@ -5870,22 +5870,22 @@
      "wp_lost_per_game": 0.0221,
      "confident_mistakes": 16,
      "go_rate": 0.191,
-     "agree": 0.564
+     "agree": 0.553
     },
     {
      "season": 2019,
      "team": "NO",
      "decisions": 106,
-     "wp_lost_per_game": 0.0428,
+     "wp_lost_per_game": 0.0435,
      "confident_mistakes": 26,
      "go_rate": 0.123,
-     "agree": 0.481
+     "agree": 0.472
     },
     {
      "season": 2020,
      "team": "NO",
      "decisions": 108,
-     "wp_lost_per_game": 0.0454,
+     "wp_lost_per_game": 0.0457,
      "confident_mistakes": 28,
      "go_rate": 0.148,
      "agree": 0.463
@@ -5894,10 +5894,10 @@
      "season": 2021,
      "team": "NO",
      "decisions": 128,
-     "wp_lost_per_game": 0.0567,
+     "wp_lost_per_game": 0.0597,
      "confident_mistakes": 33,
      "go_rate": 0.164,
-     "agree": 0.523
+     "agree": 0.516
     },
     {
      "season": 2023,
@@ -5912,25 +5912,25 @@
      "season": 2024,
      "team": "DEN",
      "decisions": 126,
-     "wp_lost_per_game": 0.0524,
+     "wp_lost_per_game": 0.0529,
      "confident_mistakes": 32,
      "go_rate": 0.19,
-     "agree": 0.46
+     "agree": 0.452
     },
     {
      "season": 2025,
      "team": "DEN",
      "decisions": 127,
-     "wp_lost_per_game": 0.0459,
+     "wp_lost_per_game": 0.0462,
      "confident_mistakes": 36,
      "go_rate": 0.165,
-     "agree": 0.528
+     "agree": 0.52
     },
     {
      "season": 2026,
      "team": "DEN",
      "decisions": 26,
-     "wp_lost_per_game": 0.0912,
+     "wp_lost_per_game": 0.0905,
      "confident_mistakes": 7,
      "go_rate": 0.077,
      "agree": 0.577
@@ -5966,7 +5966,7 @@
      "wp": {
       "go": 0.377,
       "fg": null,
-      "punt": 0.196
+      "punt": 0.195
      },
      "cost": 0.182,
      "realized": 0.251,
@@ -6018,7 +6018,7 @@
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.517,
+      "go": 0.516,
       "fg": 0.395,
       "punt": 0.386
      },
@@ -6028,424 +6028,8 @@
      "what_happened": "(7:05) 3-S.Graham 42 yard field goal is No Good, Wide Left, Center-47-J.Drescher, Holder-7-L.McCown."
     }
    ],
-   "percentile_better_than": 0.329,
+   "percentile_better_than": 0.341,
    "grade": "C+"
-  },
-  {
-   "coach": "Shane Steichen",
-   "teams": [
-    "IND"
-   ],
-   "first_season": 2023,
-   "last_season": 2026,
-   "games": 55,
-   "decisions": 383,
-   "clear_calls": 256,
-   "agree": 0.601,
-   "agree_clear": 0.629,
-   "go_rate": 0.24,
-   "engine_go_rate": 0.381,
-   "went_when_engine_said_go": 0.411,
-   "confident_mistakes": 77,
-   "confident_mistake_kinds": {
-    "fg->go": 32,
-    "go->fg": 1,
-    "go->punt": 2,
-    "punt->fg": 2,
-    "punt->go": 40
-   },
-   "wp_lost_total": 2.845,
-   "wp_lost_per_game": 0.0517,
-   "wp_lost_per_game_ci90": [
-    0.0393,
-    0.0643
-   ],
-   "wins_lost_per_17": 0.879,
-   "wins_lost_per_17_all_calls": 1.136,
-   "luck_total": 1.355,
-   "replay": {
-    "n": 153,
-    "coach_expected": 0.4421,
-    "engine_expected": 0.4661,
-    "coach_realized": 0.4462
-   },
-   "by_choice": {
-    "go": {
-     "coach": 92,
-     "engine": 221
-    },
-    "fg": {
-     "coach": 114,
-     "engine": 56
-    },
-    "punt": {
-     "coach": 177,
-     "engine": 106
-    }
-   },
-   "seasons": [
-    {
-     "season": 2023,
-     "team": "IND",
-     "decisions": 133,
-     "wp_lost_per_game": 0.0721,
-     "confident_mistakes": 33,
-     "go_rate": 0.233,
-     "agree": 0.571
-    },
-    {
-     "season": 2024,
-     "team": "IND",
-     "decisions": 125,
-     "wp_lost_per_game": 0.0341,
-     "confident_mistakes": 16,
-     "go_rate": 0.224,
-     "agree": 0.632
-    },
-    {
-     "season": 2025,
-     "team": "IND",
-     "decisions": 98,
-     "wp_lost_per_game": 0.0471,
-     "confident_mistakes": 23,
-     "go_rate": 0.276,
-     "agree": 0.582
-    },
-    {
-     "season": 2026,
-     "team": "IND",
-     "decisions": 27,
-     "wp_lost_per_game": 0.0597,
-     "confident_mistakes": 5,
-     "go_rate": 0.222,
-     "agree": 0.667
-    }
-   ],
-   "worst_calls": [
-    {
-     "season": 2025,
-     "week": 18,
-     "team": "IND",
-     "opp": "HOU",
-     "situation": "Q4 2:42, down 2, 4th & 2 at opp 4",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.391,
-      "fg": 0.185,
-      "punt": 0.133
-     },
-     "cost": 0.206,
-     "realized": 0.176,
-     "confidence": 1.0,
-     "what_happened": "(2:42) 10-B.Grupe 22 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
-    },
-    {
-     "season": 2023,
-     "week": 13,
-     "team": "IND",
-     "opp": "TEN",
-     "situation": "Q4 1:19, tied, 4th & 1 at own 39",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.677,
-      "fg": null,
-      "punt": 0.532
-     },
-     "cost": 0.145,
-     "realized": 0.534,
-     "confidence": 1.0,
-     "what_happened": "(1:19) 8-R.Sanchez punts 40 yards to TEN 21, Center-46-L.Rhodes, out of bounds."
-    },
-    {
-     "season": 2026,
-     "week": 2,
-     "team": "IND",
-     "opp": "KC",
-     "situation": "Q4 0:34, tied, 4th & 4 at own 49",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.483,
-      "fg": 0.4,
-      "punt": 0.344
-     },
-     "cost": 0.139,
-     "realized": 0.323,
-     "confidence": 0.95,
-     "what_happened": "(:34) 8-R.Sanchez punts 41 yards to KC 10, Center-46-L.Rhodes. 81-N.Remigio to KC 16 for 6 yards (80-D.Burks; 29-C.Taylor-Britt)."
-    },
-    {
-     "season": 2025,
-     "week": 9,
-     "team": "IND",
-     "opp": "PIT",
-     "situation": "Q2 3:33, down 7, 4th & 3 at own 37",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.491,
-      "fg": null,
-      "punt": 0.387
-     },
-     "cost": 0.104,
-     "realized": 0.379,
-     "confidence": 1.0,
-     "what_happened": "(3:33) 8-R.Sanchez punts 53 yards to PIT 10, Center-46-L.Rhodes. 85-K.Williams to PIT 18 for 8 yards (95-A.Adebawore; 16-A.Dulin)."
-    },
-    {
-     "season": 2023,
-     "week": 7,
-     "team": "IND",
-     "opp": "CLE",
-     "situation": "Q4 14:13, down 2, 4th & 3 at opp 9",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.453,
-      "fg": 0.363,
-      "punt": 0.285
-     },
-     "cost": 0.09,
-     "realized": 0.38,
-     "confidence": 1.0,
-     "what_happened": "(14:13) 7-M.Gay 27 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
-    }
-   ],
-   "percentile_better_than": 0.259,
-   "grade": "C+"
-  },
-  {
-   "coach": "Todd Bowles",
-   "teams": [
-    "NYJ",
-    "TB"
-   ],
-   "first_season": 2015,
-   "last_season": 2026,
-   "games": 140,
-   "decisions": 1009,
-   "clear_calls": 594,
-   "agree": 0.498,
-   "agree_clear": 0.54,
-   "go_rate": 0.164,
-   "engine_go_rate": 0.341,
-   "went_when_engine_said_go": 0.25,
-   "confident_mistakes": 260,
-   "confident_mistake_kinds": {
-    "fg->go": 85,
-    "go->fg": 5,
-    "go->punt": 10,
-    "punt->fg": 14,
-    "punt->go": 146
-   },
-   "wp_lost_total": 7.249,
-   "wp_lost_per_game": 0.0518,
-   "wp_lost_per_game_ci90": [
-    0.0455,
-    0.0583
-   ],
-   "wins_lost_per_17": 0.88,
-   "wins_lost_per_17_all_calls": 1.156,
-   "luck_total": -1.438,
-   "replay": {
-    "n": 507,
-    "coach_expected": 0.3896,
-    "engine_expected": 0.4084,
-    "coach_realized": 0.3911
-   },
-   "by_choice": {
-    "go": {
-     "coach": 165,
-     "engine": 583
-    },
-    "fg": {
-     "coach": 263,
-     "engine": 147
-    },
-    "punt": {
-     "coach": 581,
-     "engine": 279
-    }
-   },
-   "seasons": [
-    {
-     "season": 2015,
-     "team": "NYJ",
-     "decisions": 119,
-     "wp_lost_per_game": 0.0414,
-     "confident_mistakes": 26,
-     "go_rate": 0.118,
-     "agree": 0.58
-    },
-    {
-     "season": 2016,
-     "team": "NYJ",
-     "decisions": 120,
-     "wp_lost_per_game": 0.0709,
-     "confident_mistakes": 40,
-     "go_rate": 0.158,
-     "agree": 0.358
-    },
-    {
-     "season": 2017,
-     "team": "NYJ",
-     "decisions": 123,
-     "wp_lost_per_game": 0.067,
-     "confident_mistakes": 36,
-     "go_rate": 0.106,
-     "agree": 0.488
-    },
-    {
-     "season": 2018,
-     "team": "NYJ",
-     "decisions": 126,
-     "wp_lost_per_game": 0.0456,
-     "confident_mistakes": 35,
-     "go_rate": 0.159,
-     "agree": 0.444
-    },
-    {
-     "season": 2022,
-     "team": "TB",
-     "decisions": 143,
-     "wp_lost_per_game": 0.0872,
-     "confident_mistakes": 48,
-     "go_rate": 0.21,
-     "agree": 0.448
-    },
-    {
-     "season": 2023,
-     "team": "TB",
-     "decisions": 133,
-     "wp_lost_per_game": 0.0357,
-     "confident_mistakes": 28,
-     "go_rate": 0.158,
-     "agree": 0.504
-    },
-    {
-     "season": 2024,
-     "team": "TB",
-     "decisions": 94,
-     "wp_lost_per_game": 0.0318,
-     "confident_mistakes": 18,
-     "go_rate": 0.138,
-     "agree": 0.585
-    },
-    {
-     "season": 2025,
-     "team": "TB",
-     "decisions": 120,
-     "wp_lost_per_game": 0.0323,
-     "confident_mistakes": 19,
-     "go_rate": 0.242,
-     "agree": 0.6
-    },
-    {
-     "season": 2026,
-     "team": "TB",
-     "decisions": 31,
-     "wp_lost_per_game": 0.0703,
-     "confident_mistakes": 10,
-     "go_rate": 0.194,
-     "agree": 0.516
-    }
-   ],
-   "worst_calls": [
-    {
-     "season": 2017,
-     "week": 12,
-     "team": "NYJ",
-     "opp": "CAR",
-     "situation": "Q4 14:03, down 1, 4th & 1 at opp 1",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.531,
-      "fg": 0.409,
-      "punt": 0.26
-     },
-     "cost": 0.122,
-     "realized": 0.426,
-     "confidence": 1.0,
-     "what_happened": "(14:03) 7-C.Catanzaro 19 yard field goal is GOOD, Center-42-T.Hennessy, Holder-4-L.Edwards."
-    },
-    {
-     "season": 2016,
-     "week": 9,
-     "team": "NYJ",
-     "opp": "MIA",
-     "situation": "Q4 12:55, down 7, 4th & 3 at opp 10",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.3,
-      "fg": 0.191,
-      "punt": 0.158
-     },
-     "cost": 0.108,
-     "realized": 0.196,
-     "confidence": 1.0,
-     "what_happened": "(12:55) (Field Goal formation) 2-N.Folk 28 yard field goal is GOOD, Center-46-T.Purdum, Holder-4-L.Edwards."
-    },
-    {
-     "season": 2018,
-     "week": 13,
-     "team": "NYJ",
-     "opp": "TEN",
-     "situation": "Q4 4:02, up 3, 4th & 2 at own 33",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.519,
-      "fg": null,
-      "punt": 0.413
-     },
-     "cost": 0.106,
-     "realized": 0.423,
-     "confidence": 1.0,
-     "what_happened": "(4:02) (Punt formation) 4-L.Edwards punts 67 yards to end zone, Center-42-T.Hennessy, Touchback."
-    },
-    {
-     "season": 2022,
-     "week": 7,
-     "team": "TB",
-     "opp": "CAR",
-     "situation": "Q3 11:42, down 7, 4th & 2 at own 48",
-     "coach_call": "punt",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.724,
-      "fg": 0.631,
-      "punt": 0.62
-     },
-     "cost": 0.104,
-     "realized": 0.599,
-     "confidence": 1.0,
-     "what_happened": "(11:42) 5-J.Camarda punts 32 yards to CAR 20, Center-97-Z.Triner, out of bounds."
-    },
-    {
-     "season": 2024,
-     "week": 10,
-     "team": "TB",
-     "opp": "SF",
-     "situation": "Q4 0:44, down 3, 4th & 8 at opp 8",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.245,
-      "fg": 0.147,
-      "punt": 0.039
-     },
-     "cost": 0.098,
-     "realized": 0.136,
-     "confidence": 0.95,
-     "what_happened": "(:44) 4-C.McLaughlin 26 yard field goal is GOOD, Center-86-E.Deckers, Holder-16-T.Gill."
-    }
-   ],
-   "percentile_better_than": 0.247,
-   "grade": "C"
   },
   {
    "coach": "Klint Kubiak",
@@ -6456,30 +6040,30 @@
    "last_season": 2026,
    "games": 4,
    "decisions": 28,
-   "clear_calls": 17,
+   "clear_calls": 16,
    "agree": 0.571,
-   "agree_clear": 0.647,
+   "agree_clear": 0.625,
    "go_rate": 0.214,
-   "engine_go_rate": 0.321,
-   "went_when_engine_said_go": 0.444,
+   "engine_go_rate": 0.357,
+   "went_when_engine_said_go": 0.4,
    "confident_mistakes": 6,
    "confident_mistake_kinds": {
     "fg->go": 2,
     "punt->go": 4
    },
-   "wp_lost_total": 0.209,
-   "wp_lost_per_game": 0.0523,
+   "wp_lost_total": 0.206,
+   "wp_lost_per_game": 0.0515,
    "wp_lost_per_game_ci90": [
-    0.015,
-    0.1013
+    0.0149,
+    0.099
    ],
-   "wins_lost_per_17": 0.889,
-   "wins_lost_per_17_all_calls": 1.192,
-   "luck_total": 0.077,
+   "wins_lost_per_17": 0.875,
+   "wins_lost_per_17_all_calls": 1.177,
+   "luck_total": 0.036,
    "replay": {
     "n": 12,
-    "coach_expected": 0.58,
-    "engine_expected": 0.6034,
+    "coach_expected": 0.5801,
+    "engine_expected": 0.6032,
     "coach_realized": 0.5733
    },
    "by_choice": {
@@ -6501,7 +6085,7 @@
      "season": 2026,
      "team": "LV",
      "decisions": 28,
-     "wp_lost_per_game": 0.0523,
+     "wp_lost_per_game": 0.0515,
      "confident_mistakes": 6,
      "go_rate": 0.214,
      "agree": 0.571
@@ -6517,11 +6101,11 @@
      "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.574,
+      "go": 0.57,
       "fg": null,
       "punt": 0.472
      },
-     "cost": 0.102,
+     "cost": 0.099,
      "realized": 0.487,
      "confidence": 1.0,
      "what_happened": "(6:54) 6-A.Cole punts 50 yards to LAC 24, Center-47-A.Ward, fair catch by 12-D.Davis."
@@ -6601,6 +6185,422 @@
    ],
    "percentile_better_than": null,
    "grade": "Incomplete"
+  },
+  {
+   "coach": "Todd Bowles",
+   "teams": [
+    "NYJ",
+    "TB"
+   ],
+   "first_season": 2015,
+   "last_season": 2026,
+   "games": 140,
+   "decisions": 1009,
+   "clear_calls": 599,
+   "agree": 0.494,
+   "agree_clear": 0.538,
+   "go_rate": 0.164,
+   "engine_go_rate": 0.347,
+   "went_when_engine_said_go": 0.251,
+   "confident_mistakes": 261,
+   "confident_mistake_kinds": {
+    "fg->go": 86,
+    "go->fg": 5,
+    "go->punt": 10,
+    "punt->fg": 13,
+    "punt->go": 147
+   },
+   "wp_lost_total": 7.391,
+   "wp_lost_per_game": 0.0528,
+   "wp_lost_per_game_ci90": [
+    0.0465,
+    0.0594
+   ],
+   "wins_lost_per_17": 0.898,
+   "wins_lost_per_17_all_calls": 1.187,
+   "luck_total": -1.596,
+   "replay": {
+    "n": 511,
+    "coach_expected": 0.3895,
+    "engine_expected": 0.4087,
+    "coach_realized": 0.391
+   },
+   "by_choice": {
+    "go": {
+     "coach": 165,
+     "engine": 588
+    },
+    "fg": {
+     "coach": 263,
+     "engine": 142
+    },
+    "punt": {
+     "coach": 581,
+     "engine": 279
+    }
+   },
+   "seasons": [
+    {
+     "season": 2015,
+     "team": "NYJ",
+     "decisions": 119,
+     "wp_lost_per_game": 0.0417,
+     "confident_mistakes": 26,
+     "go_rate": 0.118,
+     "agree": 0.58
+    },
+    {
+     "season": 2016,
+     "team": "NYJ",
+     "decisions": 120,
+     "wp_lost_per_game": 0.0725,
+     "confident_mistakes": 40,
+     "go_rate": 0.158,
+     "agree": 0.35
+    },
+    {
+     "season": 2017,
+     "team": "NYJ",
+     "decisions": 123,
+     "wp_lost_per_game": 0.0664,
+     "confident_mistakes": 36,
+     "go_rate": 0.106,
+     "agree": 0.488
+    },
+    {
+     "season": 2018,
+     "team": "NYJ",
+     "decisions": 126,
+     "wp_lost_per_game": 0.0455,
+     "confident_mistakes": 35,
+     "go_rate": 0.159,
+     "agree": 0.444
+    },
+    {
+     "season": 2022,
+     "team": "TB",
+     "decisions": 143,
+     "wp_lost_per_game": 0.0896,
+     "confident_mistakes": 49,
+     "go_rate": 0.21,
+     "agree": 0.441
+    },
+    {
+     "season": 2023,
+     "team": "TB",
+     "decisions": 133,
+     "wp_lost_per_game": 0.0371,
+     "confident_mistakes": 28,
+     "go_rate": 0.158,
+     "agree": 0.504
+    },
+    {
+     "season": 2024,
+     "team": "TB",
+     "decisions": 94,
+     "wp_lost_per_game": 0.0332,
+     "confident_mistakes": 18,
+     "go_rate": 0.138,
+     "agree": 0.564
+    },
+    {
+     "season": 2025,
+     "team": "TB",
+     "decisions": 120,
+     "wp_lost_per_game": 0.0337,
+     "confident_mistakes": 19,
+     "go_rate": 0.242,
+     "agree": 0.6
+    },
+    {
+     "season": 2026,
+     "team": "TB",
+     "decisions": 31,
+     "wp_lost_per_game": 0.0716,
+     "confident_mistakes": 10,
+     "go_rate": 0.194,
+     "agree": 0.516
+    }
+   ],
+   "worst_calls": [
+    {
+     "season": 2017,
+     "week": 12,
+     "team": "NYJ",
+     "opp": "CAR",
+     "situation": "Q4 14:03, down 1, 4th & 1 at opp 1",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.526,
+      "fg": 0.409,
+      "punt": 0.26
+     },
+     "cost": 0.117,
+     "realized": 0.426,
+     "confidence": 1.0,
+     "what_happened": "(14:03) 7-C.Catanzaro 19 yard field goal is GOOD, Center-42-T.Hennessy, Holder-4-L.Edwards."
+    },
+    {
+     "season": 2016,
+     "week": 9,
+     "team": "NYJ",
+     "opp": "MIA",
+     "situation": "Q4 12:55, down 7, 4th & 3 at opp 10",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.299,
+      "fg": 0.191,
+      "punt": 0.158
+     },
+     "cost": 0.107,
+     "realized": 0.196,
+     "confidence": 1.0,
+     "what_happened": "(12:55) (Field Goal formation) 2-N.Folk 28 yard field goal is GOOD, Center-46-T.Purdum, Holder-4-L.Edwards."
+    },
+    {
+     "season": 2018,
+     "week": 13,
+     "team": "NYJ",
+     "opp": "TEN",
+     "situation": "Q4 4:02, up 3, 4th & 2 at own 33",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.519,
+      "fg": null,
+      "punt": 0.413
+     },
+     "cost": 0.106,
+     "realized": 0.423,
+     "confidence": 1.0,
+     "what_happened": "(4:02) (Punt formation) 4-L.Edwards punts 67 yards to end zone, Center-42-T.Hennessy, Touchback."
+    },
+    {
+     "season": 2022,
+     "week": 7,
+     "team": "TB",
+     "opp": "CAR",
+     "situation": "Q3 11:42, down 7, 4th & 2 at own 48",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.724,
+      "fg": 0.631,
+      "punt": 0.62
+     },
+     "cost": 0.104,
+     "realized": 0.599,
+     "confidence": 1.0,
+     "what_happened": "(11:42) 5-J.Camarda punts 32 yards to CAR 20, Center-97-Z.Triner, out of bounds."
+    },
+    {
+     "season": 2024,
+     "week": 10,
+     "team": "TB",
+     "opp": "SF",
+     "situation": "Q4 0:44, down 3, 4th & 8 at opp 8",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.243,
+      "fg": 0.147,
+      "punt": 0.039
+     },
+     "cost": 0.096,
+     "realized": 0.136,
+     "confidence": 0.95,
+     "what_happened": "(:44) 4-C.McLaughlin 26 yard field goal is GOOD, Center-86-E.Deckers, Holder-16-T.Gill."
+    }
+   ],
+   "percentile_better_than": 0.247,
+   "grade": "C"
+  },
+  {
+   "coach": "Shane Steichen",
+   "teams": [
+    "IND"
+   ],
+   "first_season": 2023,
+   "last_season": 2026,
+   "games": 55,
+   "decisions": 383,
+   "clear_calls": 259,
+   "agree": 0.595,
+   "agree_clear": 0.625,
+   "go_rate": 0.24,
+   "engine_go_rate": 0.394,
+   "went_when_engine_said_go": 0.411,
+   "confident_mistakes": 77,
+   "confident_mistake_kinds": {
+    "fg->go": 32,
+    "go->fg": 1,
+    "go->punt": 2,
+    "punt->fg": 2,
+    "punt->go": 40
+   },
+   "wp_lost_total": 2.917,
+   "wp_lost_per_game": 0.053,
+   "wp_lost_per_game_ci90": [
+    0.0405,
+    0.0657
+   ],
+   "wins_lost_per_17": 0.901,
+   "wins_lost_per_17_all_calls": 1.171,
+   "luck_total": 1.173,
+   "replay": {
+    "n": 155,
+    "coach_expected": 0.4438,
+    "engine_expected": 0.4682,
+    "coach_realized": 0.4471
+   },
+   "by_choice": {
+    "go": {
+     "coach": 92,
+     "engine": 223
+    },
+    "fg": {
+     "coach": 114,
+     "engine": 54
+    },
+    "punt": {
+     "coach": 177,
+     "engine": 106
+    }
+   },
+   "seasons": [
+    {
+     "season": 2023,
+     "team": "IND",
+     "decisions": 133,
+     "wp_lost_per_game": 0.0736,
+     "confident_mistakes": 33,
+     "go_rate": 0.233,
+     "agree": 0.556
+    },
+    {
+     "season": 2024,
+     "team": "IND",
+     "decisions": 125,
+     "wp_lost_per_game": 0.0358,
+     "confident_mistakes": 16,
+     "go_rate": 0.224,
+     "agree": 0.632
+    },
+    {
+     "season": 2025,
+     "team": "IND",
+     "decisions": 98,
+     "wp_lost_per_game": 0.0482,
+     "confident_mistakes": 23,
+     "go_rate": 0.276,
+     "agree": 0.582
+    },
+    {
+     "season": 2026,
+     "team": "IND",
+     "decisions": 27,
+     "wp_lost_per_game": 0.0594,
+     "confident_mistakes": 5,
+     "go_rate": 0.222,
+     "agree": 0.667
+    }
+   ],
+   "worst_calls": [
+    {
+     "season": 2025,
+     "week": 18,
+     "team": "IND",
+     "opp": "HOU",
+     "situation": "Q4 2:42, down 2, 4th & 2 at opp 4",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.389,
+      "fg": 0.185,
+      "punt": 0.133
+     },
+     "cost": 0.204,
+     "realized": 0.176,
+     "confidence": 1.0,
+     "what_happened": "(2:42) 10-B.Grupe 22 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
+    },
+    {
+     "season": 2023,
+     "week": 13,
+     "team": "IND",
+     "opp": "TEN",
+     "situation": "Q4 1:19, tied, 4th & 1 at own 39",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.671,
+      "fg": null,
+      "punt": 0.532
+     },
+     "cost": 0.139,
+     "realized": 0.534,
+     "confidence": 1.0,
+     "what_happened": "(1:19) 8-R.Sanchez punts 40 yards to TEN 21, Center-46-L.Rhodes, out of bounds."
+    },
+    {
+     "season": 2026,
+     "week": 2,
+     "team": "IND",
+     "opp": "KC",
+     "situation": "Q4 0:34, tied, 4th & 4 at own 49",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.483,
+      "fg": 0.4,
+      "punt": 0.344
+     },
+     "cost": 0.139,
+     "realized": 0.323,
+     "confidence": 0.95,
+     "what_happened": "(:34) 8-R.Sanchez punts 41 yards to KC 10, Center-46-L.Rhodes. 81-N.Remigio to KC 16 for 6 yards (80-D.Burks; 29-C.Taylor-Britt)."
+    },
+    {
+     "season": 2023,
+     "week": 8,
+     "team": "IND",
+     "opp": "NO",
+     "situation": "Q2 14:52, tied, 4th & 1 at opp 2",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.527,
+      "fg": 0.422,
+      "punt": 0.379
+     },
+     "cost": 0.105,
+     "realized": 0.43,
+     "confidence": 1.0,
+     "what_happened": "(14:52) 7-M.Gay 20 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
+    },
+    {
+     "season": 2025,
+     "week": 9,
+     "team": "IND",
+     "opp": "PIT",
+     "situation": "Q2 3:33, down 7, 4th & 3 at own 37",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.491,
+      "fg": null,
+      "punt": 0.387
+     },
+     "cost": 0.104,
+     "realized": 0.379,
+     "confidence": 1.0,
+     "what_happened": "(3:33) 8-R.Sanchez punts 53 yards to PIT 10, Center-46-L.Rhodes. 85-K.Williams to PIT 18 for 8 yards (95-A.Adebawore; 16-A.Dulin)."
+    }
+   ],
+   "percentile_better_than": 0.235,
+   "grade": "C"
   }
  ],
  "letters": [

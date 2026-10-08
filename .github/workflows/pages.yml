@@ -41,8 +41,7 @@ jobs:
       - name: Assemble the site
         run: |
           mkdir -p _site
-          cp app/index.html app/engine.js app/model.js app/grades.js app/bootstrap.js _site/
-          cp assets/icon.png _site/icon.png
+          cp app/index.html app/engine.js app/model.js app/grades.js app/bootstrap.js app/weekly.js app/icon.png app/manifest.webmanifest _site/
           REPO="https://github.com/${GITHUB_REPOSITORY}/blob/main"
           sed -i "s#\.\./assets/icon.png#icon.png#g; s#\.\./docs/#${REPO}/docs/#g; s#\.\./build/#${REPO}/build/#g" _site/index.html
       - uses: actions/configure-pages@v5

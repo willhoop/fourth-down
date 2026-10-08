@@ -19,13 +19,15 @@
 | `py engine/download_data.py [--force]` | GitHub (nflverse) | `data/raw/*.parquet` | 1 min |
 | `py engine/fit_models.py` | `data/raw/` | `app/model.js`, `data/model.json`, `data/validation.json`, `data/kickers.json` | 1 min |
 | `py engine/bootstrap.py` | `data/raw/`, `data/model.json` | `app/bootstrap.js` | 5–20 min |
-| `py engine/grade_coaches.py` | `data/raw/`, `app/model.js`, `app/bootstrap.js`, `data/kickers.json` | `data/coach_grades.json`, `app/grades.js` | ~10 min |
+| `py engine/grade_coaches.py` | `data/raw/`, `app/model.js`, `app/bootstrap.js`, `data/kickers.json` | `data/coach_grades.json`, `app/grades.js`, `data/decisions.csv.gz` | ~10 min |
+| `py engine/weekly.py [--download]` | `data/raw/` (current season), `app/model.js`, `app/bootstrap.js` | `data/weekly.json`, `app/weekly.js` | 1 min |
+| `py engine/edge_check.py` | `data/decisions.csv.gz` | `data/edge_check.json` | 1 s |
 | `py build/render_reports.py` | `data/*.json` | `docs/reports/*.md`, results block in the white paper | 1 s |
 | `py build/build_docs.py` | `docs/*.md` | `build/*.pdf`, `docs/fourth-down-deck.pptx`, `docs/fourth-down-deck.md` | 30 s |
 | `py -m pytest tests -v` | `app/model.js`, `engine/`, `data/*.json` | — | 20 s |
 
 ## Generated files — do not edit by hand
 
-`app/model.js`, `app/bootstrap.js`, `app/grades.js`, `data/*.json`,
+`app/model.js`, `app/bootstrap.js`, `app/grades.js`, `app/weekly.js`, `data/*.json`, `data/decisions.csv.gz`,
 `docs/reports/*.md`, `docs/fourth-down-deck.md`, and the block between the `GENERATED RESULTS` markers in
 the white paper.

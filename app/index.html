@@ -6,8 +6,10 @@
 <meta name="theme-color" content="#14161a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Fourth Down Engine</title>
-<link rel="icon" href="../assets/icon.png">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.0.0 -->
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<!-- FOURTH-DOWN ENGINE VERSION: 1.1.0 -->
 <style>
 :root{
   --bg:#f6f5f1; --panel:#ffffff; --ink:#1c1f24; --muted:#636a75; --line:#e2e0d9; --field:#2f6b3a;
@@ -118,6 +120,13 @@ a{color:var(--punt)}
 .krow.ref .kfill{background:var(--muted)}
 .kval{text-align:right;font-variant-numeric:tabular-nums}
 input[type=search]{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;min-height:42px}
+
+.why{margin:6px 0 2px;font-size:15px;max-width:62ch}
+.sumbtns{display:flex;gap:8px;flex-wrap:wrap}
+.sharebox{width:100%;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:inherit;font-size:12px}
+select{padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;min-height:40px;width:100%}
+
+.worst.good{border-left-color:var(--go)}
 /* ---- phone first ---- */
 html,body{overflow-x:hidden}
 .formgrid>*,.row>*,.stepper,.card{min-width:0}
@@ -148,6 +157,7 @@ select{min-width:0;max-width:100%}
   <h1>🏈 Fourth Down Engine</h1><span class="ver" id="ver"></span>
   <nav>
     <button data-tab="decide" class="on">Decision</button>
+    <button data-tab="week">This week</button>
     <button data-tab="coaches">Coaches</button>
     <button data-tab="kickers">Kickers</button>
     <button data-tab="about">About</button>
@@ -162,6 +172,9 @@ select{min-width:0;max-width:100%}
 <div class="formgrid">
   <div class="card">
     <h2>Situation</h2>
+    <label for="ourteam">Matchup (optional)</label>
+    <div class="row"><div><select id="ourteam" aria-label="Our team"></select></div><div><select id="theirteam" aria-label="Their team"></select></div></div>
+    <div class="note" id="teamnote"></div>
     <div class="row">
       <div><label for="us">Our score</label><input id="us" type="number" min="0" value="17"></div>
       <div><label for="them">Their score</label><input id="them" type="number" min="0" value="20"></div>
@@ -180,6 +193,8 @@ select{min-width:0;max-width:100%}
     <div class="seg" id="down"><button>1st</button><button>2nd</button><button>3rd</button><button class="on">4th</button></div>
     <div class="note" id="downnote"></div>
     <label for="togo">Yards to go</label><input id="togo" type="number" min="1" max="30" value="3">
+    <div id="shortbox" hidden><label>How far is the 1?</label>
+      <div class="seg" id="short"><button>Inches</button><button class="on">Not sure</button><button>About a yard</button></div></div>
     <div class="row">
       <div><label>Our timeouts</label><div class="seg" id="pto"><button>0</button><button>1</button><button class="on">2</button><button>3</button></div></div>
       <div><label>Their timeouts</label><div class="seg" id="dto"><button>0</button><button>1</button><button>2</button><button class="on">3</button></div></div>
@@ -238,11 +253,14 @@ select{min-width:0;max-width:100%}
 <div id="view-result" hidden>
   <div class="card summary">
     <div><b id="sumline"></b><div class="note" id="sumfactors"></div></div>
-    <button id="edit" class="ghost" type="button">← Edit situation</button>
+    <div class="sumbtns"><button id="share" class="ghost" type="button">Share this call</button>
+      <button id="edit" class="ghost" type="button">← Edit situation</button></div>
+    <div class="note" id="sharemsg" aria-live="polite" style="width:100%"></div>
   </div>
   <div class="card" style="margin-top:18px">
     <h2>The call</h2>
     <div class="call"><span class="big" id="callbig">—</span><span class="sub" id="callsub"></span></div>
+    <p class="why" id="why"></p>
     <div id="conf" class="note"></div>
     <div class="bars" id="bars"></div>
     <div class="details" id="details"></div>
@@ -253,6 +271,23 @@ select{min-width:0;max-width:100%}
     <div class="legend" id="maplegend"></div>
   </div>
 </div>
+</section>
+
+<!-- ======================= THIS WEEK ======================= -->
+<section class="tab" id="tab-week">
+  <div class="card">
+    <div class="summary"><h2 id="weektitle">This week</h2><select id="weekpick" aria-label="Week" style="width:auto"></select></div>
+    <p class="note" id="weekintro"></p>
+    <h2 style="margin-top:14px">Costliest calls</h2>
+    <div id="weekworst"></div>
+    <h2 style="margin-top:18px">Best gutsy calls</h2>
+    <div id="weekbest"></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2>Season so far, by team</h2>
+    <p class="note">Wins given up per 17 games on confident mistakes. Read it as a ranking.</p>
+    <div class="tablewrap"><table id="weekteams"></table></div>
+  </div>
 </section>
 
 <!-- ======================= COACHES ======================= -->
@@ -296,6 +331,7 @@ select{min-width:0;max-width:100%}
 <script src="model.js"></script>
 <script src="engine.js"></script>
 <script src="grades.js"></script>
+<script src="weekly.js"></script>
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
@@ -366,6 +402,7 @@ function readState() {
   return {
     score_diff: (+$("us").value || 0) - (+$("them").value || 0), qtr, half_seconds: Math.max(half, 1),
     yardline, ydstogo: Math.max(1, Math.min(+$("togo").value || 1, yardline)), down: segVal("down") + 1,
+    short: ["inches", undefined, "full_yard"][segVal("short")],
     pos_to: segVal("pto"), def_to: segVal("dto"), home: segVal("home") === 0 ? 1 : 0,
     receive_2h: segVal("r2h") === 0 ? 1 : 0, spread: -(+$("spread").value),   // betting line: favorite is negative
     wind: +$("wind").value, temp: +$("temp").value, precip: $("precip").checked ? 1 : 0,
@@ -453,6 +490,7 @@ function refreshForm() {
   const st = readState();
   $("r2hbox").style.display = st.qtr <= 2 ? "" : "none";
   $("tmwnote").textContent = (st.qtr === 2 || st.qtr === 4) ? (st.half_seconds > 120 ? "Two-minute warning still to come." : "Two-minute warning already used.") : "";
+  $("shortbox").hidden = !(st.down === 4 && st.ydstogo === 1);
   $("downnote").textContent = st.down < 4 ? "Early down: the engine compares running a play with kicking a field goal now." : "";
   const k = kickerSel;
   $("kickernote").textContent = k === "repl" ? `A replacement kicker makes ${pct(MODEL.fg.replacement.made_pct, 0)} of his kicks against ${pct(MODEL.fg.replacement.expected_pct, 0)} expected.` : "";
@@ -488,6 +526,7 @@ function renderCall(st, tog) {
     ? `${N[r.best]} by ${(r.margin * 100).toFixed(1)} pts — too close to call`
     : `+${(r.margin * 100).toFixed(1)} win-probability points over the next best`;
   renderConfidence(st, tog, r);
+  $("why").textContent = whyText(st, r);
   const best = r.wp[r.best];
   $("bars").innerHTML = `<div class="note" style="margin-bottom:6px">Each bar is a separate “what if”: how often you win the game <b>if you choose that option</b>. They are alternatives, so they do not add up to 100%.</div>` +
     ["go", "fg", "punt"].map((k) => {
@@ -568,6 +607,105 @@ $("map").addEventListener("click", (e) => {
   submit();
 });
 
+// ---------- matchup picker: fills in the stadium and our kicker
+const TEAM_NAMES = { ARI: "Cardinals", ATL: "Falcons", BAL: "Ravens", BUF: "Bills", CAR: "Panthers", CHI: "Bears",
+  CIN: "Bengals", CLE: "Browns", DAL: "Cowboys", DEN: "Broncos", DET: "Lions", GB: "Packers", HOU: "Texans",
+  IND: "Colts", JAX: "Jaguars", KC: "Chiefs", LA: "Rams", LAC: "Chargers", LV: "Raiders", MIA: "Dolphins",
+  MIN: "Vikings", NE: "Patriots", NO: "Saints", NYG: "Giants", NYJ: "Jets", PHI: "Eagles", PIT: "Steelers",
+  SEA: "Seahawks", SF: "49ers", TB: "Buccaneers", TEN: "Titans", WAS: "Commanders" };
+(function () {
+  const opts = (lab) => `<option value="">${lab}</option>` + Object.keys(TEAM_NAMES).sort((a, b) => TEAM_NAMES[a].localeCompare(TEAM_NAMES[b]))
+    .map((t) => `<option value="${t}">${TEAM_NAMES[t]} (${t})</option>`).join("");
+  $("ourteam").innerHTML = opts("Our team");
+  $("theirteam").innerHTML = opts("Their team");
+})();
+function setToggle(id, on) { const c = $(id).querySelector("input[type=checkbox]"); c.checked = on; }
+function applyTeams() {
+  const ours = $("ourteam").value, theirs = $("theirteam").value;
+  const home = segVal("home") === 0 ? ours : theirs;
+  const T = MODEL.teams || {};
+  const bits = [];
+  if (home && T[home]) {
+    setToggle("t-stadium", true);
+    segSet("roof", T[home].indoor ? 1 : 0);
+    $("alt").value = T[home].altitude_kft > 1 ? "5.28" : "0";
+    bits.push(`${TEAM_NAMES[home]} home field (${T[home].indoor ? "dome / roof" : "outdoors"}${T[home].altitude_kft > 1 ? ", altitude" : ""})`);
+  }
+  if (ours && T[ours] && T[ours].kicker && KLIST.some((k) => k.id === T[ours].kicker)) {
+    setToggle("t-kicker", true);
+    kickerSel = T[ours].kicker;
+    drawKickers();
+    bits.push(`kicker ${KLIST.find((k) => k.id === kickerSel).name}`);
+  }
+  $("teamnote").textContent = bits.length ? "Filled in: " + bits.join(" · ") + ". You can still change them below." : "";
+  refreshForm();
+}
+$("ourteam").addEventListener("change", applyTeams);
+$("theirteam").addEventListener("change", applyTeams);
+[...$("home").children].forEach((b) => b.addEventListener("click", () => { if ($("ourteam").value || $("theirteam").value) applyTeams(); }));
+
+// ---------- the one-sentence "why"
+function whyText(st, r) {
+  const d = r.detail, sd = st.score_diff, late = st.qtr === 4 && st.half_seconds <= 300;
+  const p = (x) => Math.round(x * 100) + "%";
+  if (r.tossup) return "Too close to call: the options are within 1 point of each other, so either is defensible.";
+  if (st.down < 4) {
+    return r.best === "fg" ? "Another play would likely run out the clock before you can kick, so take the points now."
+      : "There is time for another play, and the kick will still be there on a later down.";
+  }
+  const fgOk = r.wp.fg !== null;
+  if (r.best === "go") {
+    if (fgOk && late && sd + 3 < 0) return `A field goal still leaves you down ${-(sd + 3)}, and you convert ${p(d.go.p_convert)} of the time.`;
+    if (fgOk && r.wp.fg >= r.wp.punt) return `Converting (${p(d.go.p_convert)}) is worth more than a ${d.fg.distance}-yard kick that goes in ${p(d.fg.p_make)} of the time.`;
+    return `You convert ${p(d.go.p_convert)} of the time, and that is worth more than the field position a punt would gain.`;
+  }
+  if (r.best === "fg") {
+    if (late && sd >= -3 && sd <= 0 && st.half_seconds <= 120) return `The kick ${sd === -3 ? "ties it" : "puts you ahead"} and goes in ${p(d.fg.p_make)} of the time.`;
+    return `The ${d.fg.distance}-yard kick goes in ${p(d.fg.p_make)} of the time; going converts only ${p(d.go.p_convert)}.`;
+  }
+  const stop = 100 - st.yardline;
+  return `Going converts only ${p(d.go.p_convert)}, and a stop hands them the ball ${stop >= 50 ? "at midfield or better" : "at your " + Math.round(st.yardline)}; the punt pins them back instead.`;
+}
+
+// ---------- share a situation as a link that opens straight to the call
+const SHARE_KEYS = ["us", "them", "mm", "ss", "yd", "togo", "wind", "temp", "spread", "alt"];
+const SHARE_SEGS = ["qtr", "side", "down", "pto", "dto", "home", "r2h", "roof", "short"];
+function shareUrl() {
+  const q = new URLSearchParams();
+  SHARE_KEYS.forEach((k) => q.set(k, $(k).value));
+  SHARE_SEGS.forEach((k) => q.set(k, segVal(k)));
+  const tg = toggles();
+  q.set("f", ["weather", "stadium", "spread", "kicker"].map((k) => (tg[k] ? 1 : 0)).join(""));
+  q.set("p", $("precip").checked ? 1 : 0);
+  q.set("k", kickerSel);
+  if ($("ourteam").value) q.set("ot", $("ourteam").value);
+  if ($("theirteam").value) q.set("tt", $("theirteam").value);
+  return location.origin + location.pathname + "?" + q.toString();
+}
+function loadShared() {
+  const q = new URLSearchParams(location.search);
+  if (!q.has("qtr")) return false;
+  SHARE_KEYS.forEach((k) => { if (q.has(k)) $(k).value = q.get(k); });
+  SHARE_SEGS.forEach((k) => { if (q.has(k)) segSet(k, +q.get(k)); });
+  const f = q.get("f") || "0000";
+  ["t-weather", "t-stadium", "t-spread", "t-kicker"].forEach((id, i) => setToggle(id, f[i] === "1"));
+  $("precip").checked = q.get("p") === "1";
+  if (q.has("k") && KLIST.some((k) => k.id === q.get("k"))) kickerSel = q.get("k");
+  if (q.has("ot")) $("ourteam").value = q.get("ot");
+  if (q.has("tt")) $("theirteam").value = q.get("tt");
+  drawKickers();
+  return true;
+}
+$("share").onclick = async () => {
+  const url = shareUrl(), msg = $("sharemsg");
+  const text = `${$("sumline").textContent}: the engine says ${$("callbig").textContent.toLowerCase()}.`;
+  try {
+    if (navigator.share) { await navigator.share({ title: "Fourth Down Engine", text, url }); return; }
+  } catch (e) { if (e && e.name === "AbortError") return; }
+  try { await navigator.clipboard.writeText(url); msg.textContent = "Link copied. Paste it to a friend."; }
+  catch (e) { msg.innerHTML = `Copy this link: <input class="sharebox" readonly value="${esc(url)}">`; msg.querySelector("input").select(); }
+};
+
 // ---------- the two screens
 let lastState = null, lastTog = null, lastResult = null;
 function summary(st, tog) {
@@ -594,6 +732,7 @@ $("go").onclick = submit;
 $("view-form").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT") { e.preventDefault(); submit(); } });
 $("edit").onclick = () => { $("view-result").hidden = true; $("view-form").hidden = false; window.scrollTo(0, 0); };
 refreshForm();
+if (loadShared()) submit();
 
 // ---------- confidence models: 8 MB, loaded after the page so the call is never held up
 (function () {
@@ -602,6 +741,34 @@ refreshForm();
   sc.onload = () => { if (typeof BOOT !== "undefined") BOOTS = BOOT; if (lastResult) renderConfidence(lastState, lastTog, lastResult); };
   sc.onerror = () => { if (lastResult) $("conf").textContent = "Confidence models could not be loaded."; };
   setTimeout(() => document.body.appendChild(sc), 200);
+})();
+
+
+// ---------- this week
+(function () {
+  if (typeof WEEKLY === "undefined" || !WEEKLY.weeks.length) {
+    $("weekintro").textContent = "No games graded yet this season.";
+    return;
+  }
+  const W = WEEKLY;
+  $("weekpick").innerHTML = W.weeks.map((w) => `<option value="${w.week}">Week ${w.week}</option>`).join("");
+  const callTxt = { go: "went for it", fg: "kicked a field goal", punt: "punted" };
+  const engTxt = { go: "go for it", fg: "kick", punt: "punt" };
+  function draw() {
+    const w = W.weeks.find((x) => x.week === +$("weekpick").value) || W.weeks[0];
+    $("weektitle").textContent = `${W.season} season \u00b7 week ${w.week}`;
+    $("weekintro").textContent = `${w.decisions} fourth downs graded, ${w.confident_mistakes} confident mistakes. Updated ${W.updated}; new weeks appear every Tuesday.`;
+    $("weekworst").innerHTML = w.worst.length ? w.worst.map((c) => `<div class="worst"><b>${esc(c.team)} vs ${esc(c.opp)}</b> \u00b7 ${esc(c.coach)}<br>${esc(c.situation)}<br>
+      He ${callTxt[c.coach_call]}; the engine says <b>${engTxt[c.engine_call]}</b>. Cost ${(c.cost * 100).toFixed(1)} win-prob pts (${Math.round(c.confidence * 100)}% of models agree).<br>
+      <span class="note">What happened: ${esc(c.what_happened)}</span></div>`).join("") : `<p class="note">No confident mistakes this week.</p>`;
+    $("weekbest").innerHTML = w.best.length ? w.best.map((c) => `<div class="worst good"><b>${esc(c.team)} vs ${esc(c.opp)}</b> \u00b7 ${esc(c.coach)}<br>${esc(c.situation)}<br>
+      Went for it, worth +${(c.edge * 100).toFixed(1)} pts over the next option. ${c.converted ? "Converted." : "Stopped, but still the right call."}<br>
+      <span class="note">What happened: ${esc(c.what_happened)}</span></div>`).join("") : `<p class="note">No clear gutsy calls this week.</p>`;
+  }
+  $("weekpick").onchange = draw;
+  draw();
+  $("weekteams").innerHTML = `<thead><tr><th>Rank</th><th>Team</th><th class="n">Games</th><th class="n">4th downs</th><th class="n">Confident mistakes</th><th class="n">Wins lost / 17</th></tr></thead><tbody>` +
+    W.teams.map((r, i) => `<tr><td>${i + 1}</td><td>${esc(r.posteam)}</td><td class="n">${r.games}</td><td class="n">${r.calls}</td><td class="n">${r.mistakes}</td><td class="n">${r.wins_lost_per_17.toFixed(2)}</td></tr>`).join("") + "</tbody>";
 })();
 
 // ---------- coaches
@@ -613,8 +780,15 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
   $("coachintro").textContent = `${G.decisions.toLocaleString()} fourth downs ${G.seasons[0]}–${G.seasons[G.seasons.length - 1]}, each played twice: once as the coach called it, once as the engine would. ` +
     `A coach is charged only for confident mistakes (≥90% of resampled models agree). Grades rank coaches against all ${G.coaches_in_reference} head coaches with a full season in the data. Click a coach for detail. ` +
     `Read “wins lost” as a ranking: the engine's totals run larger than published research estimates (0.22–0.4 wins per team-season), so the order of coaches is more reliable than the exact numbers.`;
+  const HABIT = { "punt->go": "Punts when he should go for it", "fg->go": "Kicks when he should go for it",
+    "go->punt": "Goes for it when he should punt", "go->fg": "Goes for it when he should kick",
+    "punt->fg": "Punts in field-goal range", "fg->punt": "Tries kicks he should punt" };
+  G.current.forEach((c) => {
+    const kinds = Object.entries(c.confident_mistake_kinds || {}).sort((a, b) => b[1] - a[1]);
+    c.habit = kinds.length ? `${HABIT[kinds[0][0]] || kinds[0][0]} (${kinds[0][1]} of ${c.confident_mistakes})` : "No confident mistakes";
+  });
   const cols = [
-    ["grade", "Grade"], ["coach", "Coach"], ["teams", "Team(s)"], ["games", "Games", 1], ["decisions", "4th downs", 1],
+    ["grade", "Grade"], ["coach", "Coach"], ["habit", "Biggest habit"], ["teams", "Team(s)"], ["games", "Games", 1], ["decisions", "4th downs", 1],
     ["confident_mistakes", "Confident mistakes", 1], ["wins_lost_per_17", "Wins lost / season", 1],
     ["went_when_engine_said_go", "Went when engine said go", 1], ["luck_total", "Luck (wins)", 1]];
   let sortKey = "wins_lost_per_17", asc = true;
@@ -624,7 +798,7 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
     $("coachtable").innerHTML = "<thead><tr>" + cols.map(([k, t, n]) => `<th class="${n ? "n" : ""}" data-k="${k}">${t}</th>`).join("") + "</tr></thead><tbody>" +
       rows.map((r) => `<tr class="click" data-c="${esc(r.coach)}">
         <td><span class="grade ${gradeClass(r.grade)}">${r.grade === "Incomplete" ? "—" : r.grade}</span></td>
-        <td>${esc(r.coach)}</td><td>${r.teams.join(", ")}</td><td class="n">${r.games}</td><td class="n">${r.decisions}</td>
+        <td>${esc(r.coach)}</td><td>${esc(r.habit)}</td><td>${r.teams.join(", ")}</td><td class="n">${r.games}</td><td class="n">${r.decisions}</td>
         <td class="n">${r.confident_mistakes}</td>
         <td class="n">${r.wins_lost_per_17.toFixed(2)} <span class="note">[${(r.wp_lost_per_game_ci90[0] * 17).toFixed(2)}–${(r.wp_lost_per_game_ci90[1] * 17).toFixed(2)}]</span></td>
         <td class="n">${r.went_when_engine_said_go === null ? "—" : pct(r.went_when_engine_said_go, 0)}</td>
@@ -641,6 +815,7 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
       Coach ${CALL[w.coach_call]}; engine says <b>${NAMES[w.engine_call].toLowerCase()}</b>. Cost ${(w.cost * 100).toFixed(1)} win-prob pts (${Math.round(w.confidence * 100)}% of models agree).<br>
       <span class="note">What happened: ${esc(w.what_happened)}</span></div>`).join("");
     el.innerHTML = `<h2>${esc(c.coach)} — ${c.grade}</h2>
+      <p><b>Biggest habit:</b> ${esc(c.habit)}.</p>
       <p>${c.decisions} fourth downs in ${c.games} games (${c.first_season}–${c.last_season}). He went for it ${pct(c.go_rate, 0)} of the time; the engine would have gone ${pct(c.engine_go_rate, 0)}.
       He agreed with the engine on ${pct(c.agree, 0)} of calls. ${c.confident_mistakes} calls were confident mistakes, costing ${c.wins_lost_per_17.toFixed(2)} wins per 17 games
       (counting every disagreement, sure or not: ${c.wins_lost_per_17_all_calls.toFixed(2)}).</p>

@@ -83,6 +83,25 @@ def test_early_down_kicks_when_time_expires(shipped):
     assert out["best"] == "fg"
 
 
+def test_team_table(shipped):
+    """32 teams; Denver plays at altitude; Detroit and New Orleans play under a roof;
+    Green Bay does not. Every listed kicker is one the app can select."""
+    T = shipped["teams"]
+    assert len(T) == 32
+    assert T["DEN"]["altitude_kft"] > 5 and T["GB"]["altitude_kft"] == 0
+    assert T["DET"]["indoor"] == 1 and T["NO"]["indoor"] == 1 and T["GB"]["indoor"] == 0
+    ids = {k["id"] for k in shipped["fg"]["kickers"]}
+    assert all(t["kicker"] in ids for t in T.values() if t["kicker"])
+
+
+def test_overtime_and_tries_are_measured(shipped):
+    """Extra points are good about 94-96% of the time, 2-point tries about 45-50%
+    (since 2015). The better team wins overtime more often (positive slope)."""
+    assert 0.92 < shipped["tries"]["pat"] < 0.97
+    assert 0.42 < shipped["tries"]["two"] < 0.53
+    assert shipped["ot"]["slope"] > 0 and 0 < shipped["ot"]["p_tie"] < 0.15
+
+
 def test_wind_and_altitude_directions(shipped):
     """Clark et al. (2013): wind lowers and altitude raises make probability."""
     st = {"yardline": 33, "wind": 0, "temp": 60, "precip": 0}
@@ -115,6 +134,9 @@ def test_python_and_js_engines_agree(shipped):
                   kicker_a=rng.uniform(-0.5, 0.5), kicker_b=rng.uniform(-0.2, 0.2))
         st["ydstogo"] = min(st["ydstogo"], st["yardline"])
         st["down"] = rng.randint(1, 4)
+        st["short"] = rng.choice([None, "inches", "full_yard", "went", "kicked"])
+        if st["short"] is None:
+            del st["short"]
         tog = {k: rng.random() < 0.5 for k in ALL}
         cases.append({"state": st, "tog": tog})
     script = (

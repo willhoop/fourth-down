@@ -91,6 +91,18 @@ def validation_md(v, m):
              f"{m['rules']['season']} rules. Punt return TD rate {pct(m['punt']['return_td_rate'], 2)}; "
              f"muff recovered by the kicking team {pct(m['punt']['muff_rate'], 2)}.")
     s.append(f"\nWeather: outdoor wind or temperature imputed on {v['imputed_weather_plays']:,} plays after parsing the weather text.")
+    e = j("edge_check.json")
+    s.append("\n#### Edge calibration (does following the engine win as much more as it predicts?)\n")
+    s.append("Graded 4th downs binned by the engine's predicted edge for going. In each bin, teams that went are "
+             "compared with teams that kicked: the engine's predicted gap in win probability against the realized "
+             "gap in win rate. Teams that went often knew something the engine cannot see, so the realized gap is "
+             "biased toward going and the ratio is an upper bound on how much of the predicted edge is real.\n")
+    s.append(table(["Predicted edge for going", "Went", "Kicked", "Predicted gap", "Actual gap", "Actual \u2212 predicted", "\u00b1 SE"],
+                   [[r["edge_bin"], r["went"], r["kicked"], f"{100 * r['predicted_gap']:+.1f} pts",
+                     f"{100 * r['actual_gap']:+.1f} pts", f"{100 * r['actual_minus_predicted']:+.1f} pts",
+                     f"{100 * r['se']:.1f}"] for r in e["bins"]]))
+    s.append(f"\nPooled (precision-weighted): actual minus predicted {100 * e['pooled_actual_minus_predicted']:+.1f} "
+             f"\u00b1 {100 * e['pooled_se']:.1f} WP points. Games share outcomes, so the true uncertainty is larger.")
     return "\n".join(s)
 
 
@@ -196,6 +208,9 @@ def paper_block(v, m, g, k):
          f"- Current head coaches with the lowest confident-mistake cost: " +
          "; ".join(f"{c['coach']} {c['wins_lost_per_17']:.2f} wins/17 games ({c['grade']})" for c in top) + ".",
          f"- Highest: " + "; ".join(f"{c['coach']} {c['wins_lost_per_17']:.2f} ({c['grade']})" for c in bot) + ".",
+         (lambda e: f"- Edge check: relative to teams that kicked, teams that went did "
+          f"{100 * e['pooled_actual_minus_predicted']:+.1f} ± {100 * e['pooled_se']:.1f} WP points versus the engine's "
+          f"prediction (negative = the engine overstates going; selection flatters going, so near zero does not clear it).")(j("edge_check.json")),
          f"- Replacement-level kicker: {pct(k['replacement']['made_pct'])} made vs {pct(k['replacement']['expected_pct'])} expected; "
          f"{pct(k['replacement']['make_pct_50yd'], 0)} from 50 yd vs {pct(k['league_make_pct_50yd'], 0)} league average.",
          f"- Top current kickers by points over replacement per 100 kicks: " +

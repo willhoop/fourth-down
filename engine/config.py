@@ -7,7 +7,7 @@ is a single edit here followed by `py engine/fit_models.py`.
 
 CONFIG = {
     # ---- engine version (must equal the newest CHANGELOG entry) ----
-    "version": "1.0.1",
+    "version": "1.1.0",
 
     # ---- data ----
     # nflverse play-by-play, one parquet per season, from
@@ -24,9 +24,22 @@ CONFIG = {
     # Rules that change the value of a score (kickoff touchback spot, dynamic
     # kickoff) are measured from this season only. 2025 = touchback at the 35.
     "rules_season": 2025,
-    # Points credited for a touchdown (6 + extra point). The 2025 PAT rate was
-    # ~95%; the engine uses a whole 7 and says so in the white paper.
-    "touchdown_points": 7,
+    # Touchdown = 6, then the scoring team takes the extra point or the 2-point
+    # try, whichever gives it the better win chance. Rates are measured from
+    # these seasons on (the PAT moved to the 15 in 2015).
+    "touchdown_points": 6,
+    "try_seasons_from": 2015,
+    # Overtime: a tie at the end of regulation is worth 0.5 plus the better
+    # team's edge, fit on every overtime game in the data (ties count 0.5).
+    # Since 2022 (playoffs) and 2025 (regular season) both teams get the ball,
+    # so the coin toss no longer decides much; team strength still does.
+    # 4th & 1 precision (Lopez 2020, tracking data 2017-19): teams that went
+    # were 0.70 yd from the line, teams that kicked 0.98 yd; the average
+    # recorded "1" is about 0.85 yd. "Inches" and "a full yard" in the app,
+    # and the grader's correction for this selection, shift the distance the
+    # conversion model sees by (true distance - 0.85).
+    "short_yardage": {"mean_true": 0.85, "went": 0.70, "kicked": 0.98,
+                      "inches": 0.35, "full_yard": 1.0},
     # Missed field goal: ball goes to the opponent at the spot of the kick
     # (line of scrimmage + 7), or their 20 if that is closer to their goal.
     "fg_snap_to_spot": 7,

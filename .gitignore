@@ -13,3 +13,4 @@ data/grading_tmp/
 data/fit_log.txt
 data/bootstrap_log.txt
 build/artifact/
+data/grade_log.txt

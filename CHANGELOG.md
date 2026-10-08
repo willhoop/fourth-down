@@ -3,6 +3,28 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.0.1] — 2026-10-08
+
+### Added
+
+- The app is published at https://willhoop.github.io/fourth-down/ so it can be
+  shared and used on a phone. `.github/workflows/pages.yml` deploys `app/` after
+  the tests pass on every push to `main`.
+
+### Changed
+
+- The version test compares the white paper and data stamps at MAJOR.MINOR, the
+  same rule as `portfolio/build/check_projects.py`. A PATCH moves no figure, so
+  the 1.0.0 data files stay valid.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new. (Risk 14, the cost-total gap against
+  published estimates, remains owed.)
+
 ## [1.0.0] — 2026-10-08
 
 First release.

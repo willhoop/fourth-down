@@ -20,11 +20,15 @@ def test_reports_and_whitepaper_are_current():
 
 
 def test_versions_agree():
-    """CHANGELOG top version = config version = model, grades and white-paper stamps."""
+    """CHANGELOG top version = config version exactly. The white paper and the
+    data files must match MAJOR.MINOR: a PATCH moves no published figure, so
+    files stamped 1.0.0 stay valid under 1.0.1 (same rule as check_projects.py)."""
     import re
     from config import CONFIG
+    mm = lambda v: ".".join(v.split(".")[:2])
     top = re.search(r"^## \[([0-9.]+)\]", open(os.path.join(ROOT, "CHANGELOG.md"), encoding="utf-8").read(), re.M).group(1)
     paper = re.search(r"Version:\s*([0-9.]+)", open(os.path.join(ROOT, "docs", "fourth-down-whitepaper.md"), encoding="utf-8").read()).group(1)
-    assert top == CONFIG["version"] == paper
+    assert top == CONFIG["version"]
+    assert mm(paper) == mm(top)
     for f in ("model.json", "coach_grades.json", "kickers.json", "validation.json"):
-        assert json.load(open(os.path.join(ROOT, "data", f)))["version"] == top, f
+        assert mm(json.load(open(os.path.join(ROOT, "data", f)))["version"]) == mm(top), f

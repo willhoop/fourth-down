@@ -8,10 +8,12 @@ actual kicker are each a switch. It shows how sure it is, grades every current
 head coach by replaying each of his fourth downs both ways, and grades every
 kicker against a replacement-level kicker.
 
-**Open it:** double-click **Fourth Down Engine** on the desktop, or open
+**Use it online (phone or PC):** https://willhoop.github.io/fourth-down/
+
+**Or locally:** double-click **Fourth Down Engine** on the desktop, or open
 `app/index.html`. No install, no internet.
 
-Version 1.0.0. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
+Version 1.0.1. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
 
 ## Components
 

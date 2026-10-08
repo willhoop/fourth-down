@@ -1,0 +1,26 @@
+name: CI
+
+# Runs on every push and pull request. The tests read the shipped model in
+# app/model.js, so they run without the 245 MB raw data.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  tests:
+    name: Engine, kicker and shipped-model tests (incl. Python/JS parity)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip pytest numpy pandas
+      - name: Run tests
+        run: python -m pytest tests -v

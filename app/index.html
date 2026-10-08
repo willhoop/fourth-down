@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14161a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Fourth Down Engine</title>
+<link rel="icon" href="../assets/icon.png">
+<!-- FOURTH-DOWN ENGINE VERSION: 1.0.0 -->
+<style>
+:root{
+  --bg:#f6f5f1; --panel:#ffffff; --ink:#1c1f24; --muted:#636a75; --line:#e2e0d9; --field:#2f6b3a;
+  --go:#1f8a4c; --fg:#c98a12; --punt:#2f6fb5; --bad:#b4372f; --chip:#efede7; --focus:#1f6feb;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161a; --panel:#1d2026; --ink:#e9e7e1; --muted:#9aa1ab; --line:#2e323a; --field:#2a5a33;
+    --go:#37b36b; --fg:#e0a63a; --punt:#5b97dc; --bad:#e2675e; --chip:#262a31; --focus:#58a6ff; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161a; --panel:#1d2026; --ink:#e9e7e1; --muted:#9aa1ab; --line:#2e323a; --field:#2a5a33;
+  --go:#37b36b; --fg:#e0a63a; --punt:#5b97dc; --bad:#e2675e; --chip:#262a31; --focus:#58a6ff; color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;align-items:center;gap:20px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+header h1{font-size:18px;margin:0;letter-spacing:.2px}
+header .ver{color:var(--muted);font-size:12px}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav button{border:0;background:none;color:var(--muted);font:inherit;padding:7px 12px;border-radius:8px;cursor:pointer}
+nav button.on{background:var(--chip);color:var(--ink);font-weight:600}
+main{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
+.tab{display:none}.tab.on{display:block}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:980px;margin:0 auto}
+@media (max-width:860px){.formgrid{grid-template-columns:1fr}}
+.submit{display:block;width:100%;margin-top:22px;padding:14px;border:0;border-radius:10px;background:var(--go);color:#fff;
+  font:700 18px/1 system-ui,sans-serif;cursor:pointer}
+.submit:hover{filter:brightness(1.07)}
+.ghost{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 14px;border-radius:8px;font:inherit;cursor:pointer;white-space:nowrap}
+.summary{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.stepper button.big{width:42px;font-size:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:0 0 12px}
+label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}
+.row{display:flex;gap:8px}.row>*{flex:1}
+input[type=number],select{width:100%;padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input[type=range]{width:100%}
+/* always-visible steppers replace the browser's hover-only spin arrows */
+input[type=number]{-moz-appearance:textfield;appearance:textfield;text-align:center;min-width:0}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.stepper{display:flex;align-items:stretch;gap:4px}
+.stepper input{flex:1}
+.stepper button{flex:none;width:34px;border:1px solid var(--line);border-radius:8px;background:var(--chip);color:var(--ink);
+  font:600 18px/1 system-ui,sans-serif;cursor:pointer;user-select:none;touch-action:manipulation}
+.stepper button:hover{background:var(--line)}
+.stepper button:active{transform:translateY(1px)}
+.stepper button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{flex:1;border:0;background:var(--bg);color:var(--muted);padding:7px 4px;font:inherit;font-size:13px;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--panel)}
+.note{font-size:12px;color:var(--muted);margin-top:4px}
+.toggle{border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+.toggle>.head{display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:14px}
+.toggle .body{display:none}.toggle.on .body{display:block}
+.switch{position:relative;width:38px;height:22px;flex:none}
+.switch input{opacity:0;width:0;height:0}
+.switch span{position:absolute;inset:0;background:var(--line);border-radius:22px;cursor:pointer;transition:.15s}
+.switch span:before{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.15s}
+.switch input:checked+span{background:var(--go)}
+.switch input:checked+span:before{transform:translateX(16px)}
+.switch input:focus-visible+span{outline:2px solid var(--focus);outline-offset:2px}
+.call{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.call .big{font-size:34px;font-weight:800;letter-spacing:.5px}
+.call .sub{color:var(--muted)}
+.bars{margin-top:14px}
+.bar{display:grid;grid-template-columns:150px 1fr 64px 92px;align-items:center;gap:10px;margin:7px 0}
+.bar .track{height:22px;background:var(--chip);border-radius:6px;overflow:hidden}
+.bar .fill{height:100%;border-radius:6px}
+.bar .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.details{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+@media (max-width:640px){.details{grid-template-columns:1fr}}
+.details div{background:var(--bg);border-radius:8px;padding:10px;font-size:13px}
+.details b{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:600;background:var(--chip)}
+.mapwrap{overflow-x:auto}
+svg text{fill:var(--muted);font-size:10px}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-top:8px;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:8px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;cursor:pointer;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.click{cursor:pointer}tr.click:hover td{background:var(--bg)}
+.grade{font-weight:800;display:inline-block;min-width:34px;text-align:center;padding:2px 6px;border-radius:6px;background:var(--chip)}
+.gA{color:var(--go)}.gB{color:var(--punt)}.gC{color:var(--fg)}.gD{color:var(--bad)}
+.tablewrap{overflow-x:auto}
+.detail{background:var(--bg);padding:14px;border-radius:8px}
+.worst{border-left:3px solid var(--bad);padding:6px 10px;margin:8px 0;background:var(--panel);border-radius:4px;font-size:13px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--panel);padding:6px 9px;border-radius:6px;font-size:12px;display:none;z-index:9}
+p{max-width:780px}
+a{color:var(--punt)}
+
+
+.kchart{max-height:300px;overflow-y:auto;margin-top:6px;border:1px solid var(--line);border-radius:8px;padding:4px}
+.krow{display:grid;grid-template-columns:minmax(0,9.5em) 1fr 3em;gap:8px;align-items:center;width:100%;
+  border:0;background:none;color:var(--ink);font:inherit;font-size:13px;padding:6px 6px;border-radius:6px;cursor:pointer;text-align:left}
+.krow:hover{background:var(--chip)}
+.krow.on{background:var(--chip);outline:2px solid var(--go)}
+.krow:focus-visible{outline:2px solid var(--focus)}
+.kname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ktrack{height:12px;background:var(--chip);border-radius:4px;overflow:hidden}
+.kfill{display:block;height:100%;background:var(--fg);opacity:.55;border-radius:4px}
+.krow.on .kfill{opacity:1;background:var(--go)}
+.krow.ref .kname{font-style:italic;color:var(--muted)}
+.krow.ref .kfill{background:var(--muted)}
+.kval{text-align:right;font-variant-numeric:tabular-nums}
+input[type=search]{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;min-height:42px}
+/* ---- phone first ---- */
+html,body{overflow-x:hidden}
+.formgrid>*,.row>*,.stepper,.card{min-width:0}
+.stepper input{width:0;min-width:0;flex:1 1 0}
+select{min-width:0;max-width:100%}
+.stepper button{min-height:44px}
+.seg button{min-height:40px}
+@media (max-width:640px){
+  header{padding:10px 16px;gap:8px}
+  header h1{font-size:16px}
+  header .ver{display:none}
+  nav{margin-left:0;width:100%;justify-content:space-between}
+  nav button{padding:8px 8px}
+  main{padding-block:12px 90px;padding-inline:16px}
+  .card{padding:14px}
+  .call .big{font-size:28px}
+  .bar{grid-template-columns:1fr 54px 64px;row-gap:2px}
+  .bar>span:first-child{grid-column:1 / -1;font-size:13px}
+  .submit{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom, 0px));box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  .summary .ghost{width:100%}
+  .clockrow{flex-direction:column;gap:0}
+  .tab{max-width:100vw}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🏈 Fourth Down Engine</h1><span class="ver" id="ver"></span>
+  <nav>
+    <button data-tab="decide" class="on">Decision</button>
+    <button data-tab="coaches">Coaches</button>
+    <button data-tab="kickers">Kickers</button>
+    <button data-tab="about">About</button>
+  </nav>
+</header>
+<main>
+
+<!-- ======================= DECISION ======================= -->
+<section class="tab on" id="tab-decide">
+<!-- Screen 1: set the situation. Nothing is calculated until you press the button. -->
+<div id="view-form">
+<div class="formgrid">
+  <div class="card">
+    <h2>Situation</h2>
+    <div class="row">
+      <div><label for="us">Our score</label><input id="us" type="number" min="0" value="17"></div>
+      <div><label for="them">Their score</label><input id="them" type="number" min="0" value="20"></div>
+    </div>
+    <label>Quarter</label>
+    <div class="seg" id="qtr"><button>1</button><button>2</button><button>3</button><button class="on">4</button></div>
+    <div class="row clockrow">
+      <div><label for="mm">Clock (min)</label><input id="mm" type="number" min="0" max="15" value="4"></div>
+      <div><label for="ss">(sec)</label><input id="ss" type="number" min="0" max="59" value="30" data-big="5"></div>
+    </div>
+    <div class="note" id="tmwnote"></div>
+    <label>Ball on</label>
+    <div class="seg" id="side" style="margin-bottom:6px"><button>Own</button><button class="on">Opp</button></div>
+    <input id="yd" type="number" min="1" max="50" value="34" aria-label="yard line" data-big="5">
+    <label>Down</label>
+    <div class="seg" id="down"><button>1st</button><button>2nd</button><button>3rd</button><button class="on">4th</button></div>
+    <div class="note" id="downnote"></div>
+    <label for="togo">Yards to go</label><input id="togo" type="number" min="1" max="30" value="3">
+    <div class="row">
+      <div><label>Our timeouts</label><div class="seg" id="pto"><button>0</button><button>1</button><button class="on">2</button><button>3</button></div></div>
+      <div><label>Their timeouts</label><div class="seg" id="dto"><button>0</button><button>1</button><button>2</button><button class="on">3</button></div></div>
+    </div>
+    <label>We are</label>
+    <div class="seg" id="home"><button class="on">Home</button><button>Away</button></div>
+    <div id="r2hbox"><label>Second-half kickoff goes to</label>
+      <div class="seg" id="r2h"><button class="on">Us</button><button>Them</button></div></div>
+  </div>
+
+  <div class="card">
+    <h2>Optional factors</h2>
+    <div class="note">Each one is off unless you switch it on. Off means an average situation.</div>
+    <div class="toggle" id="t-weather">
+      <div class="head">Weather <label class="switch"><input type="checkbox" aria-label="Weather"><span></span></label></div>
+      <div class="body">
+        <label for="wind">Wind: <b id="windv">10</b> mph</label><input id="wind" type="range" min="0" max="35" value="10">
+        <label for="temp">Temperature: <b id="tempv">45</b> °F</label><input id="temp" type="range" min="-5" max="100" value="45">
+        <label><input id="precip" type="checkbox"> Rain or snow</label>
+      </div>
+    </div>
+    <div class="toggle" id="t-stadium">
+      <div class="head">Stadium <label class="switch"><input type="checkbox" aria-label="Stadium"><span></span></label></div>
+      <div class="body">
+        <label>Roof</label><div class="seg" id="roof"><button class="on">Outdoors</button><button>Dome / closed</button></div>
+        <label for="alt">Altitude</label>
+        <select id="alt"><option value="0">Sea level</option><option value="5.28">Denver (5,280 ft)</option><option value="7.35">Mexico City (7,350 ft)</option></select>
+      </div>
+    </div>
+    <div class="toggle" id="t-spread">
+      <div class="head">Team strength <label class="switch"><input type="checkbox" aria-label="Team strength"><span></span></label></div>
+      <div class="body">
+        <label for="spread">Our pre-game point spread: <b id="spreadv">PK</b> <span id="spreadtxt" class="note"></span></label>
+        <input id="spread" type="range" min="-17" max="17" step="0.5" value="0">
+        <div class="note">Read it like a betting line: −7 means we were 7-point favorites, +3 means 3-point underdogs.</div>
+      </div>
+    </div>
+    <div class="toggle" id="t-kicker">
+      <div class="head">Kicker <label class="switch"><input type="checkbox" aria-label="Kicker"><span></span></label></div>
+      <div class="body">
+        <label for="ksearch">Our kicker</label>
+        <input id="ksearch" type="search" placeholder="Search a name or team (Aubrey, DAL)" autocomplete="off" enterkeyhint="done">
+        <div class="note" id="kcount" aria-live="polite"></div>
+        <div class="note" id="kpicked" style="margin-top:6px"></div>
+        <div class="note" style="margin-top:8px">Ranked by make % from 50 yards in neutral conditions. Tap a bar to choose.</div>
+        <div class="kchart" id="kchart" role="listbox" aria-label="Kickers ranked by make percentage from 50 yards"></div>
+        <div class="note" id="kickernote"></div>
+      </div>
+    </div>
+    <button id="go" class="submit" type="button">Get the call →</button>
+  </div>
+</div>
+</div>
+
+<!-- Screen 2: the results for the situation that was submitted. -->
+<div id="view-result" hidden>
+  <div class="card summary">
+    <div><b id="sumline"></b><div class="note" id="sumfactors"></div></div>
+    <button id="edit" class="ghost" type="button">← Edit situation</button>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2>The call</h2>
+    <div class="call"><span class="big" id="callbig">—</span><span class="sub" id="callsub"></span></div>
+    <div id="conf" class="note"></div>
+    <div class="bars" id="bars"></div>
+    <div class="details" id="details"></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2 id="maptitle">Decision map</h2>
+    <div class="mapwrap"><svg id="map" role="img" aria-label="Decision map"></svg></div>
+    <div class="legend" id="maplegend"></div>
+  </div>
+</div>
+</section>
+
+<!-- ======================= COACHES ======================= -->
+<section class="tab" id="tab-coaches">
+  <div class="card">
+    <h2>Head coaches vs the engine</h2>
+    <p class="note" id="coachintro"></p>
+    <div class="tablewrap"><table id="coachtable"></table></div>
+  </div>
+  <div class="card" style="margin-top:18px" id="coachdetail" hidden></div>
+</section>
+
+<!-- ======================= KICKERS ======================= -->
+<section class="tab" id="tab-kickers">
+  <div class="card">
+    <h2>Kickers — skill and value over a replacement kicker</h2>
+    <p class="note" id="kickintro"></p>
+    <div class="tablewrap"><table id="kicktable"></table></div>
+  </div>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section class="tab" id="tab-about">
+  <div class="card">
+    <h2>How it works</h2>
+    <p>Each option (go, field goal, punt) leads to a few possible next situations. A win-probability model,
+      trained on every NFL play from 2014 to 2025, scores each one. The engine weights them by how likely
+      they are: <i>chance of converting × win chance if you convert + chance of failing × win chance if you
+      fail</i>, and the same for kicks and punts. The option with the highest total is the call.</p>
+    <p>Twenty copies of the whole model were refit on resampled games. The confidence line says how many
+      of them agree. A call with a small edge, or one the copies disagree on, is a toss-up, not a mistake.</p>
+    <p>Coaches are only charged for a call when at least 90% of the copies agree it was wrong.</p>
+    <p>Full method, results and sources: <a href="../docs/fourth-down-whitepaper.md">white paper</a> ·
+      <a href="../build/fourth-down-whitepaper.pdf">PDF</a> · <a href="../build/fourth-down-deck.pdf">plain-English deck</a></p>
+    <p class="note" id="aboutdata"></p>
+  </div>
+</section>
+</main>
+<div class="tip" id="tip"></div>
+
+<script src="model.js"></script>
+<script src="engine.js"></script>
+<script src="grades.js"></script>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+let BOOTS = [];
+const NAMES = { go: "Go for it", fg: "Field goal", punt: "Punt" };
+const COLORS = { go: "var(--go)", fg: "var(--fg)", punt: "var(--punt)" };
+const pct = (x, d = 1) => (x * 100).toFixed(d) + "%";
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+$("ver").textContent = `v${MODEL.version} · data ${MODEL.seasons[0]}–${MODEL.seasons[MODEL.seasons.length - 1]}`;
+
+// ---------- tabs
+document.querySelectorAll("nav button").forEach((b) => b.onclick = () => {
+  document.querySelectorAll("nav button").forEach((x) => x.classList.toggle("on", x === b));
+  document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("on", t.id === "tab-" + b.dataset.tab));
+  try { localStorage.setItem("fd-tab", b.dataset.tab); } catch (e) {}
+});
+try { const t = localStorage.getItem("fd-tab"); if (t) document.querySelector(`nav button[data-tab="${t}"]`)?.click(); } catch (e) {}
+
+// ---------- segmented controls (changing an input never recalculates; the button does)
+function segVal(id) { const b = [...$(id).children]; return b.findIndex((x) => x.classList.contains("on")); }
+function segSet(id, i) { [...$(id).children].forEach((x, j) => x.classList.toggle("on", j === i)); }
+document.querySelectorAll(".seg").forEach((s) => [...s.children].forEach((b, i) => b.onclick = () => { segSet(s.id, i); refreshForm(); }));
+
+// ---------- steppers: always-visible buttons on every number box (hold to repeat).
+// Boxes with data-big also get -5 / +5.
+document.querySelectorAll("input[type=number]").forEach((inp) => {
+  inp.setAttribute("inputmode", "numeric");
+  const wrap = document.createElement("div");
+  wrap.className = "stepper";
+  inp.parentNode.insertBefore(wrap, inp);
+  const mk = (txt, dir, big) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = txt;
+    if (big) b.className = "big";
+    b.setAttribute("aria-label", (dir < 0 ? "Decrease " : "Increase ") + (inp.getAttribute("aria-label") || inp.id) + " by " + Math.abs(dir));
+    const step = () => {
+      const min = inp.min === "" ? -Infinity : +inp.min, max = inp.max === "" ? Infinity : +inp.max;
+      inp.value = Math.min(max, Math.max(min, (+inp.value || 0) + dir));
+      refreshForm();
+    };
+    let hold = null, rep = null;
+    const stop = () => { clearTimeout(hold); clearInterval(rep); };
+    b.addEventListener("pointerdown", (e) => { e.preventDefault(); step(); hold = setTimeout(() => { rep = setInterval(step, 110); }, 450); });
+    ["pointerup", "pointerleave", "pointercancel"].forEach((ev) => b.addEventListener(ev, stop));
+    b.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); step(); } });
+    return b;
+  };
+  const big = +inp.dataset.big || 0;
+  const parts = [];
+  if (big) parts.push(mk("−" + big, -big, true));
+  parts.push(mk("−", -1), inp, mk("+", 1));
+  if (big) parts.push(mk("+" + big, big, true));
+  wrap.append(...parts);
+});
+
+// ---------- read the form
+function toggles() {
+  const on = (id) => $(id).querySelector("input[type=checkbox]").checked;
+  return { weather: on("t-weather"), stadium: on("t-stadium"), spread: on("t-spread"), kicker: on("t-kicker") };
+}
+function readState() {
+  const qtr = segVal("qtr") + 1;
+  const clock = Math.min(900, Math.max(0, (+$("mm").value || 0) * 60 + (+$("ss").value || 0)));
+  const half = clock + (qtr === 1 || qtr === 3 ? 900 : 0);
+  const yd = Math.min(50, Math.max(1, +$("yd").value || 1));
+  const yardline = segVal("side") === 0 ? 100 - yd : yd;
+  const [ka, kb] = kickerAB();
+  return {
+    score_diff: (+$("us").value || 0) - (+$("them").value || 0), qtr, half_seconds: Math.max(half, 1),
+    yardline, ydstogo: Math.max(1, Math.min(+$("togo").value || 1, yardline)), down: segVal("down") + 1,
+    pos_to: segVal("pto"), def_to: segVal("dto"), home: segVal("home") === 0 ? 1 : 0,
+    receive_2h: segVal("r2h") === 0 ? 1 : 0, spread: -(+$("spread").value),   // betting line: favorite is negative
+    wind: +$("wind").value, temp: +$("temp").value, precip: $("precip").checked ? 1 : 0,
+    indoor: segVal("roof") === 1 ? 1 : 0, altitude_kft: +$("alt").value, kicker_a: ka, kicker_b: kb,
+  };
+}
+const ORD = ["1st", "2nd", "3rd", "4th"];
+const spotTxt = (yl) => yl === 50 ? "midfield" : yl > 50 ? `own ${100 - yl}` : `opp ${yl}`;
+const names = (down) => down < 4 ? { go: "Run a play", fg: "Kick a FG now", punt: "Punt" } : NAMES;
+const verbs = (down) => down < 4 ? { go: "run a play", fg: "kick a field goal now", punt: "punt" } : { go: "go for it", fg: "kick a field goal", punt: "punt" };
+
+// ---------- kicker picker: smart search + ranked bar chart (tap a bar to choose)
+const KREF = { avg: { id: "avg", name: "League-average kicker", team: "", a: 0, b: 0, ref: true },
+               repl: { id: "repl", name: "Replacement-level kicker", team: "",
+                       a: MODEL.fg.replacement.a, b: MODEL.fg.replacement.b, ref: true } };
+const make50 = (k) => FourthDown.pFieldGoal(MODEL, { yardline: 33, kicker_a: k.a, kicker_b: k.b }, { kicker: true });
+const KLIST = MODEL.fg.kickers.map((k) => Object.assign({}, k, { p50: make50(k) }))
+  .concat([KREF.avg, KREF.repl].map((k) => Object.assign({}, k, { p50: make50(k) })))
+  .sort((x, y) => y.p50 - x.p50);
+let kickerSel = "avg";
+const norm = (s) => String(s || "").toLowerCase().replace(/[^a-z]/g, "");
+function lev1(a, b) {          // true when a and b differ by at most one edit
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0, j = 0, edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1;
+}
+function kickerScore(k, q) {   // higher = better match; 0 = no match
+  if (!q) return 1;
+  const sur = norm(k.name.split(".").pop()), full = norm(k.name), team = norm(k.team);
+  if (team && team === q) return 5;
+  if (sur.startsWith(q)) return 4;
+  if (full.includes(q) || sur.includes(q)) return 3;
+  if (q.length >= 4 && lev1(sur.slice(0, q.length + 1), q)) return 2;
+  if (q.length >= 4 && lev1(sur, q)) return 2;
+  return 0;
+}
+function drawKickers() {
+  const q = norm($("ksearch").value);
+  const max = KLIST[0].p50, min = Math.min(...KLIST.map((k) => k.p50));
+  const lo = Math.max(0, min - 0.08);
+  let shown = 0;
+  $("kchart").innerHTML = KLIST.map((k) => {
+    const s = k.ref ? 1 : kickerScore(k, q);
+    if (!s) return "";
+    shown += k.ref ? 0 : 1;
+    const w = ((k.p50 - lo) / (max - lo) * 100).toFixed(1);
+    const on = k.id === kickerSel;
+    return `<button type="button" class="krow${on ? " on" : ""}${k.ref ? " ref" : ""}" data-id="${esc(k.id)}" aria-pressed="${on}">
+      <span class="kname">${esc(k.name)}${k.team ? ` <span class="note">${esc(k.team)}</span>` : ""}</span>
+      <span class="ktrack"><span class="kfill" style="width:${w}%"></span></span>
+      <span class="kval">${pct(k.p50, 0)}</span></button>`;
+  }).join("") || "";
+  $("kcount").textContent = q ? (shown ? `${shown} match${shown === 1 ? "" : "es"}` : "No kicker matches. Try a surname or a team code like DAL.") : "";
+  $("kchart").querySelectorAll(".krow").forEach((b) => b.onclick = () => { kickerSel = b.dataset.id; drawKickers(); refreshForm(); });
+  const sel = $("kchart").querySelector(".krow.on");
+  if (sel && q) sel.scrollIntoView({ block: "nearest" });
+  const k = KLIST.find((x) => x.id === kickerSel);
+  $("kpicked").innerHTML = `Selected: <b>${esc(k.name)}</b>${k.team ? " · " + esc(k.team) : ""} · makes ${pct(k.p50, 0)} from 50 yd`;
+}
+$("ksearch").addEventListener("input", () => {
+  const q = norm($("ksearch").value);
+  const best = KLIST.filter((k) => !k.ref).map((k) => [kickerScore(k, q), k]).filter(([s]) => s).sort((a, b) => b[0] - a[0] || b[1].p50 - a[1].p50)[0];
+  if (q && best) kickerSel = best[1].id;    // the best match is picked as you type
+  drawKickers();
+});
+$("ksearch").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); $("ksearch").blur(); } });
+function kickerAB() {
+  const k = KLIST.find((x) => x.id === kickerSel) || KREF.avg;
+  return [k.a, k.b];
+}
+drawKickers();
+
+// ---------- form helpers (cheap: labels and notes only)
+function refreshForm() {
+  document.querySelectorAll(".toggle").forEach((t) => t.classList.toggle("on", t.querySelector("input[type=checkbox]").checked));
+  $("windv").textContent = $("wind").value; $("tempv").textContent = $("temp").value;
+  const line = +$("spread").value;
+  $("spreadv").textContent = line === 0 ? "PK" : (line > 0 ? "+" : "−") + Math.abs(line);
+  $("spreadtxt").textContent = line === 0 ? "· pick'em" : line < 0 ? `· we're favored by ${-line}` : `· we're ${line}-point underdogs`;
+  const st = readState();
+  $("r2hbox").style.display = st.qtr <= 2 ? "" : "none";
+  $("tmwnote").textContent = (st.qtr === 2 || st.qtr === 4) ? (st.half_seconds > 120 ? "Two-minute warning still to come." : "Two-minute warning already used.") : "";
+  $("downnote").textContent = st.down < 4 ? "Early down: the engine compares running a play with kicking a field goal now." : "";
+  const k = kickerSel;
+  $("kickernote").textContent = k === "repl" ? `A replacement kicker makes ${pct(MODEL.fg.replacement.made_pct, 0)} of his kicks against ${pct(MODEL.fg.replacement.expected_pct, 0)} expected.` : "";
+}
+document.querySelectorAll("#view-form input, #view-form select").forEach((el) => el.addEventListener("input", refreshForm));
+
+// ---------- the call
+function bootShare(st, tog, best) {
+  if (!BOOTS.length) return null;
+  let n = 0;
+  try {
+    for (const rep of BOOTS) if (FourthDown.decide(rep, st, tog).best === best) n++;
+  } catch (e) {
+    console.error("confidence models do not match this version", e);
+    return undefined;
+  }
+  return n;
+}
+function renderConfidence(st, tog, r) {
+  const N = names(st.down);
+  const n = bootShare(st, tog, r.best);
+  $("conf").textContent = n === undefined ? "Confidence unavailable: the resampled models are from an older build." :
+    n === null ? "Confidence: loading the 20 resampled models…" :
+    `Confidence: ${n} of ${BOOTS.length} resampled models also pick “${N[r.best].toLowerCase()}”` +
+    (n / BOOTS.length >= 0.9 ? " — a confident call." : n / BOOTS.length >= 0.7 ? " — a lean." : " — genuinely uncertain.");
+}
+function renderCall(st, tog) {
+  const r = FourthDown.decide(MODEL, st, tog);
+  const d = r.detail, N = names(st.down);
+  $("callbig").textContent = r.tossup ? "Toss-up" : N[r.best].toUpperCase();
+  $("callbig").style.color = r.tossup ? "var(--muted)" : COLORS[r.best];
+  $("callsub").textContent = r.tossup
+    ? `${N[r.best]} by ${(r.margin * 100).toFixed(1)} pts — too close to call`
+    : `+${(r.margin * 100).toFixed(1)} win-probability points over the next best`;
+  renderConfidence(st, tog, r);
+  const best = r.wp[r.best];
+  $("bars").innerHTML = `<div class="note" style="margin-bottom:6px">Each bar is a separate “what if”: how often you win the game <b>if you choose that option</b>. They are alternatives, so they do not add up to 100%.</div>` +
+    ["go", "fg", "punt"].map((k) => {
+      const v = r.wp[k];
+      if (v === null) {
+        const why = k === "punt" ? "not on early downs" : "out of range";
+        return `<div class="bar"><span>If you ${verbs(st.down)[k]}</span><div class="track"></div><span class="v note">—</span><span class="note">${why}</span></div>`;
+      }
+      const gap = k === r.best ? "best" : `${((v - best) * 100).toFixed(1)} pts`;
+      return `<div class="bar"><span>If you ${verbs(st.down)[k]}</span><div class="track"><div class="fill" style="width:${(v * 100).toFixed(1)}%;background:${COLORS[k]};opacity:${k === r.best ? 1 : .55}"></div></div><span class="v">${pct(v)}</span><span class="note">${gap}</span></div>`;
+    }).join("");
+  const fgTxt = d.fg.out_of_range ? `${d.fg.distance}-yd try — past the 70-yd longest attempt in the data.` :
+    `${d.fg.distance}-yd try · makes ${pct(d.fg.p_make, 0)}<br>Win if made ${pct(d.fg.wp_if_make)} · if missed ${pct(d.fg.wp_if_miss)}`;
+  const goTxt = st.down < 4
+    ? `Gains a first down ${pct(d.go.p_convert, 0)} · turnover ${pct(d.go.p_turnover, 1)}<br>Win if first down ${pct(d.go.wp_if_convert)} · if not ${pct(d.go.wp_if_fail)}`
+    : `Converts ${pct(d.go.p_convert, 0)}<br>Win if converted ${pct(d.go.wp_if_convert)} · if stopped ${pct(d.go.wp_if_fail)}`;
+  let puntTxt = "Not an option on an early down.";
+  if (st.down === 4) {
+    const opp = Math.round(100 - d.punt.opp_yardline_mean);
+    puntTxt = `Opponent starts around their own ${Math.min(50, opp)}<br>Return TD ${pct(d.punt.p_return_td)} · muff ${pct(d.punt.p_muff)}`;
+    if (d.punt.fair_catch_kick_risk > 0.0005) puntTxt += `<br><b>Fair-catch kick risk:</b> ${pct(d.punt.fair_catch_kick_risk)} that they fair-catch and make a free-kick FG.`;
+  }
+  $("details").innerHTML = `<div><b>${N.go}</b>${goTxt}</div><div><b>${N.fg}</b>${fgTxt}</div><div><b>Punt</b>${puntTxt}</div>`;
+  return r;
+}
+
+// ---------- decision map
+const MAP_TOGO = 15, CW = 13, CH = 17, ML = 34, MT = 8;
+function renderMap(st, tog) {
+  const step = window.innerWidth < 700 ? 4 : 2;          // fewer columns on a phone: faster, bigger squares
+  const cols = [];
+  for (let yl = 99; yl >= 1; yl -= step) cols.push(yl);
+  const cw = CW * step / 2;
+  const W = ML + cols.length * cw + 6, H = MT + MAP_TOGO * CH + 34;
+  const svg = $("map");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("width", "100%");
+  svg.style.maxWidth = Math.round(W * 1.6) + "px";
+  const N = names(st.down);
+  let s = "";
+  cols.forEach((yl, i) => {
+    for (let t = 1; t <= MAP_TOGO; t++) {
+      const x = ML + i * cw, y = MT + (t - 1) * CH;
+      if (t > yl) { s += `<rect x="${x}" y="${y}" width="${cw - 1}" height="${CH - 1}" fill="var(--chip)"/>`; continue; }
+      const r = FourthDown.decide(MODEL, Object.assign({}, st, { yardline: yl, ydstogo: t }), tog);
+      const op = r.tossup ? 0.3 : Math.min(1, 0.55 + r.margin * 12);
+      s += `<rect class="cell" data-yl="${yl}" data-t="${t}" data-b="${r.best}" data-m="${r.margin.toFixed(4)}" x="${x}" y="${y}" width="${cw - 1}" height="${CH - 1}" rx="2" fill="${COLORS[r.best]}" fill-opacity="${op}" style="cursor:pointer"/>`;
+    }
+  });
+  for (let t = 1; t <= MAP_TOGO; t += (t < 5 ? 1 : 5)) s += `<text x="${ML - 6}" y="${MT + (t - 0.35) * CH}" text-anchor="end">${t}</text>`;
+  s += `<text x="4" y="${MT + 8 * CH}" transform="rotate(-90 10 ${MT + 8 * CH})">yards to go</text>`;
+  [[99, "own 1"], [79, "own 21"], [51, "own 49"], [31, "opp 31"], [3, "opp 3"]].forEach(([yl, txt]) => {
+    const i = cols.reduce((b, c, j) => Math.abs(c - yl) < Math.abs(cols[b] - yl) ? j : b, 0);
+    s += `<text x="${ML + i * cw + cw / 2}" y="${MT + MAP_TOGO * CH + 14}" text-anchor="middle">${txt}</text>`;
+  });
+  s += `<text x="${ML + cols.length * cw / 2}" y="${H - 4}" text-anchor="middle">field position (attacking →)</text>`;
+  const ci = cols.reduce((b, yl, i) => Math.abs(yl - st.yardline) < Math.abs(cols[b] - st.yardline) ? i : b, 0);
+  if (st.ydstogo <= MAP_TOGO) s += `<text x="${ML + ci * cw + cw / 2}" y="${MT + (st.ydstogo - 0.3) * CH}" text-anchor="middle" style="fill:var(--ink);font-size:12px;font-weight:700">◆</text>`;
+  svg.innerHTML = s;
+  $("maptitle").textContent = `Decision map — ${ORD[st.down - 1]} down, same score, clock and factors, every spot`;
+  $("maplegend").innerHTML = `<span><i style="background:var(--go)"></i>${N.go}</span><span><i style="background:var(--fg)"></i>${N.fg}</span>` +
+    (st.down === 4 ? `<span><i style="background:var(--punt)"></i>Punt</span>` : "") +
+    `<span>Faded = toss-up (edge under 1 point)</span><span>◆ = this situation · tap a square to load it</span>`;
+}
+function cellTip(e) {
+  const c = e.target.closest(".cell"), tip = $("tip");
+  if (!c || !lastState) { tip.style.display = "none"; return; }
+  const st = lastState;
+  tip.innerHTML = `${ORD[st.down - 1]} & ${c.dataset.t} at ${spotTxt(+c.dataset.yl)}: <b>${names(st.down)[c.dataset.b]}</b> by ${(c.dataset.m * 100).toFixed(1)} pts`;
+  tip.style.display = "block"; tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY + 12) + "px";
+}
+$("map").addEventListener("mousemove", cellTip);
+$("map").addEventListener("mouseleave", () => $("tip").style.display = "none");
+$("map").addEventListener("click", (e) => {
+  const c = e.target.closest(".cell"); if (!c) return;
+  const yl = +c.dataset.yl;
+  segSet("side", yl > 50 ? 0 : 1); $("yd").value = yl > 50 ? 100 - yl : yl; $("togo").value = c.dataset.t;
+  submit();
+});
+
+// ---------- the two screens
+let lastState = null, lastTog = null, lastResult = null;
+function summary(st, tog) {
+  const sd = st.score_diff, clock = st.half_seconds - (st.qtr === 1 || st.qtr === 3 ? 900 : 0);
+  const score = sd === 0 ? "tied" : sd > 0 ? `up ${sd}` : `down ${-sd}`;
+  $("sumline").textContent = `${ORD[st.down - 1]} & ${st.ydstogo} at ${spotTxt(st.yardline)} · Q${st.qtr} ${Math.floor(clock / 60)}:${String(clock % 60).padStart(2, "0")} · ${score} · timeouts ${st.pos_to}–${st.def_to}`;
+  const line = -st.spread;
+  const lineTxt = line === 0 ? "PK" : (line > 0 ? "+" : "−") + Math.abs(line);
+  const on = Object.entries(tog).filter(([, v]) => v).map(([k]) => ({ weather: "weather", stadium: "stadium", spread: `team strength (line ${lineTxt})`, kicker: "kicker" }[k]));
+  $("sumfactors").textContent = on.length ? "Factors on: " + on.join(", ") : "No optional factors on.";
+}
+function submit() {
+  refreshForm();
+  const st = readState(), tog = toggles();
+  lastState = st; lastTog = tog;
+  $("view-form").hidden = true; $("view-result").hidden = false;
+  window.scrollTo(0, 0);
+  summary(st, tog);
+  lastResult = renderCall(st, tog);
+  $("map").innerHTML = `<text x="10" y="20">Drawing the map…</text>`;
+  setTimeout(() => renderMap(st, tog), 30);                // let the call paint first
+}
+$("go").onclick = submit;
+$("view-form").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT") { e.preventDefault(); submit(); } });
+$("edit").onclick = () => { $("view-result").hidden = true; $("view-form").hidden = false; window.scrollTo(0, 0); };
+refreshForm();
+
+// ---------- confidence models: 8 MB, loaded after the page so the call is never held up
+(function () {
+  const sc = document.createElement("script");
+  sc.src = "bootstrap.js";
+  sc.onload = () => { if (typeof BOOT !== "undefined") BOOTS = BOOT; if (lastResult) renderConfidence(lastState, lastTog, lastResult); };
+  sc.onerror = () => { if (lastResult) $("conf").textContent = "Confidence models could not be loaded."; };
+  setTimeout(() => document.body.appendChild(sc), 200);
+})();
+
+// ---------- coaches
+function gradeClass(g) { return g && g[0] in { A: 1, B: 1, C: 1, D: 1 } ? "g" + g[0] : ""; }
+const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
+(function () {
+  if (typeof GRADES === "undefined") { $("coachtable").innerHTML = "<tr><td>Run engine/grade_coaches.py to build grades.</td></tr>"; return; }
+  const G = GRADES;
+  $("coachintro").textContent = `${G.decisions.toLocaleString()} fourth downs ${G.seasons[0]}–${G.seasons[G.seasons.length - 1]}, each played twice: once as the coach called it, once as the engine would. ` +
+    `A coach is charged only for confident mistakes (≥90% of resampled models agree). Grades rank coaches against all ${G.coaches_in_reference} head coaches with a full season in the data. Click a coach for detail. ` +
+    `Read “wins lost” as a ranking: the engine's totals run larger than published research estimates (0.22–0.4 wins per team-season), so the order of coaches is more reliable than the exact numbers.`;
+  const cols = [
+    ["grade", "Grade"], ["coach", "Coach"], ["teams", "Team(s)"], ["games", "Games", 1], ["decisions", "4th downs", 1],
+    ["confident_mistakes", "Confident mistakes", 1], ["wins_lost_per_17", "Wins lost / season", 1],
+    ["went_when_engine_said_go", "Went when engine said go", 1], ["luck_total", "Luck (wins)", 1]];
+  let sortKey = "wins_lost_per_17", asc = true;
+  const rows = G.current.slice();
+  function draw() {
+    rows.sort((a, b) => { const x = a[sortKey], y = b[sortKey]; const c = (x ?? 99) > (y ?? 99) ? 1 : (x ?? 99) < (y ?? 99) ? -1 : 0; return asc ? c : -c; });
+    $("coachtable").innerHTML = "<thead><tr>" + cols.map(([k, t, n]) => `<th class="${n ? "n" : ""}" data-k="${k}">${t}</th>`).join("") + "</tr></thead><tbody>" +
+      rows.map((r) => `<tr class="click" data-c="${esc(r.coach)}">
+        <td><span class="grade ${gradeClass(r.grade)}">${r.grade === "Incomplete" ? "—" : r.grade}</span></td>
+        <td>${esc(r.coach)}</td><td>${r.teams.join(", ")}</td><td class="n">${r.games}</td><td class="n">${r.decisions}</td>
+        <td class="n">${r.confident_mistakes}</td>
+        <td class="n">${r.wins_lost_per_17.toFixed(2)} <span class="note">[${(r.wp_lost_per_game_ci90[0] * 17).toFixed(2)}–${(r.wp_lost_per_game_ci90[1] * 17).toFixed(2)}]</span></td>
+        <td class="n">${r.went_when_engine_said_go === null ? "—" : pct(r.went_when_engine_said_go, 0)}</td>
+        <td class="n">${r.luck_total >= 0 ? "+" : ""}${r.luck_total.toFixed(2)}</td></tr>`).join("") + "</tbody>";
+    $("coachtable").querySelectorAll("th").forEach((th) => th.onclick = () => { asc = sortKey === th.dataset.k ? !asc : true; sortKey = th.dataset.k; draw(); });
+    $("coachtable").querySelectorAll("tr.click").forEach((tr) => tr.onclick = () => showCoach(G.current.find((c) => c.coach === tr.dataset.c)));
+  }
+  draw();
+  function showCoach(c) {
+    const el = $("coachdetail"); el.hidden = false;
+    const rp = c.replay;
+    const seasons = c.seasons.map((s) => `<tr><td>${s.season}</td><td>${s.team}</td><td class="n">${s.decisions}</td><td class="n">${pct(s.go_rate, 0)}</td><td class="n">${pct(s.agree, 0)}</td><td class="n">${s.confident_mistakes}</td><td class="n">${(s.wp_lost_per_game * 17).toFixed(2)}</td></tr>`).join("");
+    const worst = c.worst_calls.map((w) => `<div class="worst"><b>${w.season} wk ${w.week} ${w.team} vs ${w.opp}</b> — ${esc(w.situation)}<br>
+      Coach ${CALL[w.coach_call]}; engine says <b>${NAMES[w.engine_call].toLowerCase()}</b>. Cost ${(w.cost * 100).toFixed(1)} win-prob pts (${Math.round(w.confidence * 100)}% of models agree).<br>
+      <span class="note">What happened: ${esc(w.what_happened)}</span></div>`).join("");
+    el.innerHTML = `<h2>${esc(c.coach)} — ${c.grade}</h2>
+      <p>${c.decisions} fourth downs in ${c.games} games (${c.first_season}–${c.last_season}). He went for it ${pct(c.go_rate, 0)} of the time; the engine would have gone ${pct(c.engine_go_rate, 0)}.
+      He agreed with the engine on ${pct(c.agree, 0)} of calls. ${c.confident_mistakes} calls were confident mistakes, costing ${c.wins_lost_per_17.toFixed(2)} wins per 17 games
+      (counting every disagreement, sure or not: ${c.wins_lost_per_17_all_calls.toFixed(2)}).</p>
+      <p><b>Played twice.</b> On the ${rp.n} calls where he and the engine disagreed, his choices were expected to leave a ${pct(rp.coach_expected)} average win chance;
+      the engine's choices, ${pct(rp.engine_expected)}. What actually happened after his calls: ${pct(rp.coach_realized)}.
+      Luck over his career (actual minus expected): ${c.luck_total >= 0 ? "+" : ""}${c.luck_total.toFixed(2)} wins.</p>
+      <div class="tablewrap"><table><thead><tr><th>Season</th><th>Team</th><th class="n">4th downs</th><th class="n">Go rate</th><th class="n">Agree</th><th class="n">Conf. mistakes</th><th class="n">Wins lost /17</th></tr></thead><tbody>${seasons}</tbody></table></div>
+      <h2 style="margin-top:16px">Costliest calls</h2>${worst}`;
+    el.scrollIntoView({ behavior: "smooth" });
+  }
+})();
+
+// ---------- kickers
+(function () {
+  if (typeof KICKERS === "undefined") return;
+  const K = KICKERS, R = K.replacement;
+  $("kickintro").textContent = `Every kick ${MODEL.seasons[0]}–${MODEL.seasons[MODEL.seasons.length - 1]}, judged against the league curve for its distance, weather and stadium. ` +
+    `Skill is shrunk toward average so a short hot streak does not top the list. Replacement level (${R.rule}): ${pct(R.made_pct, 1)} made against ${pct(R.expected_pct, 1)} expected; ${pct(R.make_pct_50yd, 0)} from 50 yards vs ${pct(K.league_make_pct_50yd, 0)} for an average kicker. Grades: ${K.grade_rule}.`;
+  const rows = K.kickers.filter((k) => k.current);
+  const cols = [["grade", "Grade"], ["name", "Kicker"], ["attempts", "Att.", 1], ["fg_pct", "FG%", 1], ["expected_pct", "Expected", 1], ["fgoe", "Makes over exp.", 1],
+    ["make_pct_50yd", "Make % 50 yd", 1], ["make_pct_55yd", "Make % 55 yd", 1], ["fifty_pct_distance", "50% range", 1],
+    ["par_per_100", "Pts over repl. /100", 1], ["points_above_replacement", "Career pts over repl.", 1]];
+  let key = "par_per_100", asc = false;
+  function draw() {
+    rows.sort((a, b) => { const x = a[key] ?? 999, y = b[key] ?? 999; const c = x > y ? 1 : x < y ? -1 : 0; return asc ? c : -c; });
+    const repl = `<tr style="font-style:italic"><td>—</td><td>Replacement level</td><td class="n">${R.attempts}</td><td class="n">${pct(R.made_pct, 1)}</td><td class="n">${pct(R.expected_pct, 1)}</td><td></td><td class="n">${pct(R.make_pct_50yd, 0)}</td><td></td><td class="n">${R.fifty_pct_distance ?? "70+"}</td><td class="n">0.0</td><td></td></tr>`;
+    $("kicktable").innerHTML = "<thead><tr>" + cols.map(([k, t, n]) => `<th class="${n ? "n" : ""}" data-k="${k}">${t}</th>`).join("") + "</tr></thead><tbody>" +
+      rows.map((r) => `<tr><td><span class="grade ${gradeClass(r.grade)}">${r.grade ?? "—"}</span></td><td>${esc(r.name)}</td><td class="n">${r.attempts}</td>
+      <td class="n">${pct(r.fg_pct, 1)}</td><td class="n">${pct(r.expected_pct, 1)}</td><td class="n">${r.fgoe > 0 ? "+" : ""}${r.fgoe}</td>
+      <td class="n">${pct(r.make_pct_50yd, 0)}</td><td class="n">${pct(r.make_pct_55yd, 0)}</td><td class="n">${r.fifty_pct_distance === null ? "70+" : r.fifty_pct_distance + " yd"}</td>
+      <td class="n">${r.par_per_100.toFixed(1)}</td><td class="n">${r.points_above_replacement.toFixed(1)}</td></tr>`).join("") + repl + "</tbody>";
+    $("kicktable").querySelectorAll("th").forEach((th) => th.onclick = () => { asc = key === th.dataset.k ? !asc : false; key = th.dataset.k; draw(); });
+  }
+  draw();
+})();
+$("aboutdata").textContent = `Data: ${MODEL.source}. ${MODEL.sample.plays.toLocaleString()} plays, ${MODEL.sample.field_goals.toLocaleString()} field goals, ${MODEL.sample.punts.toLocaleString()} punts. Model built ${MODEL.built}.`;
+</script>
+</body>
+</html>

@@ -1,0 +1,504 @@
+{
+ "train_seasons": [
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023
+ ],
+ "test_seasons": [
+  2024,
+  2025
+ ],
+ "fg_era": {
+  "candidates": {
+   "trend": {
+    "n": 2306,
+    "log_loss": 0.3688,
+    "brier": 0.1147
+   },
+   "era2020": {
+    "n": 2306,
+    "log_loss": 0.3694,
+    "brier": 0.115
+   },
+   "both": {
+    "n": 2306,
+    "log_loss": 0.3697,
+    "brier": 0.1151
+   }
+  },
+  "chosen": "trend"
+ },
+ "kicker_prior": {
+  "grid": [
+   {
+    "sa": 0.0,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3673,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.0,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.3672,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.0,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3671,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.0,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3671,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.0,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3674,
+    "brier": 0.1141
+   },
+   {
+    "sa": 0.1,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3671,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.1,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.367,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.1,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3669,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.1,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.367,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.1,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3673,
+    "brier": 0.1141
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3667,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3672,
+    "brier": 0.1142
+   },
+   {
+    "sa": 0.3,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3666,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.3,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.3666,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.3,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3666,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.3,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3667,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.3,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3671,
+    "brier": 0.1142
+   },
+   {
+    "sa": 0.4,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3666,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.4,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.3666,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.4,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3665,
+    "brier": 0.1139
+   },
+   {
+    "sa": 0.4,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3667,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.4,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3671,
+    "brier": 0.1142
+   },
+   {
+    "sa": 0.6,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.6,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.6,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.6,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.367,
+    "brier": 0.1142
+   },
+   {
+    "sa": 0.6,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3674,
+    "brier": 0.1144
+   }
+  ],
+  "chosen": [
+   0.4,
+   0.1
+  ],
+  "best_accuracy_only": {
+   "sa": 0.3,
+   "sb": 0.0,
+   "n": 2306,
+   "log_loss": 0.3666,
+   "brier": 0.1139
+  }
+ },
+ "wp": {
+  "engine": {
+   "n": 81654,
+   "log_loss": 0.446,
+   "brier": 0.148
+  },
+  "nflfastR_vegas_wp_same_plays": {
+   "n": 81654,
+   "log_loss": 0.4457,
+   "brier": 0.1475
+  },
+  "nflfastR_wp_no_spread_same_plays": {
+   "n": 81654,
+   "log_loss": 0.4841,
+   "brier": 0.1641
+  },
+  "engine_same_plays": {
+   "n": 81654,
+   "log_loss": 0.446,
+   "brier": 0.148
+  },
+  "score_only_baseline": {
+   "n": 81654,
+   "log_loss": 0.4931,
+   "brier": 0.1672
+  },
+  "calibration": [
+   {
+    "bin": "0.00-0.10",
+    "n": 11790,
+    "predicted": 0.034,
+    "actual": 0.035
+   },
+   {
+    "bin": "0.10-0.20",
+    "n": 7786,
+    "predicted": 0.15,
+    "actual": 0.166
+   },
+   {
+    "bin": "0.20-0.30",
+    "n": 7226,
+    "predicted": 0.248,
+    "actual": 0.261
+   },
+   {
+    "bin": "0.30-0.40",
+    "n": 6755,
+    "predicted": 0.35,
+    "actual": 0.343
+   },
+   {
+    "bin": "0.40-0.50",
+    "n": 6271,
+    "predicted": 0.449,
+    "actual": 0.434
+   },
+   {
+    "bin": "0.50-0.60",
+    "n": 6202,
+    "predicted": 0.551,
+    "actual": 0.552
+   },
+   {
+    "bin": "0.60-0.70",
+    "n": 7068,
+    "predicted": 0.651,
+    "actual": 0.644
+   },
+   {
+    "bin": "0.70-0.80",
+    "n": 7608,
+    "predicted": 0.751,
+    "actual": 0.736
+   },
+   {
+    "bin": "0.80-0.90",
+    "n": 7889,
+    "predicted": 0.85,
+    "actual": 0.835
+   },
+   {
+    "bin": "0.90-1.00",
+    "n": 13059,
+    "predicted": 0.964,
+    "actual": 0.961
+   }
+  ],
+  "games": 569,
+  "final_5_min": {
+   "n": 9427,
+   "log_loss": 0.2501,
+   "brier": 0.0812
+  }
+ },
+ "conv": {
+  "base": {
+   "n": 1849,
+   "log_loss": 0.6424,
+   "brier": 0.225
+  },
+  "spread": {
+   "n": 1849,
+   "log_loss": 0.6406,
+   "brier": 0.2242
+  },
+  "by_togo": [
+   {
+    "togo": "1",
+    "n": 721,
+    "predicted": 0.697,
+    "actual": 0.713
+   },
+   {
+    "togo": "2-3",
+    "n": 491,
+    "predicted": 0.609,
+    "actual": 0.603
+   },
+   {
+    "togo": "4-6",
+    "n": 332,
+    "predicted": 0.513,
+    "actual": 0.563
+   },
+   {
+    "togo": "7-10",
+    "n": 179,
+    "predicted": 0.373,
+    "actual": 0.369
+   },
+   {
+    "togo": "11-99",
+    "n": 126,
+    "predicted": 0.218,
+    "actual": 0.325
+   }
+  ]
+ },
+ "fg": {
+  "base": {
+   "n": 2306,
+   "log_loss": 0.3688,
+   "brier": 0.1147
+  },
+  "weather": {
+   "n": 2306,
+   "log_loss": 0.3671,
+   "brier": 0.114
+  },
+  "stadium": {
+   "n": 2306,
+   "log_loss": 0.3676,
+   "brier": 0.1142
+  },
+  "weather+stadium": {
+   "n": 2306,
+   "log_loss": 0.3673,
+   "brier": 0.114
+  },
+  "by_distance": [
+   {
+    "distance": "18-29",
+    "n": 469,
+    "predicted": 0.98,
+    "actual": 0.977
+   },
+   {
+    "distance": "30-39",
+    "n": 632,
+    "predicted": 0.933,
+    "actual": 0.937
+   },
+   {
+    "distance": "40-49",
+    "n": 640,
+    "predicted": 0.818,
+    "actual": 0.808
+   },
+   {
+    "distance": "50-54",
+    "n": 354,
+    "predicted": 0.693,
+    "actual": 0.74
+   },
+   {
+    "distance": "55-70",
+    "n": 211,
+    "predicted": 0.593,
+    "actual": 0.611
+   }
+  ]
+ },
+ "punt": {
+  "n": 3714,
+  "mae_yards": 6.75,
+  "naive_mae_yards": 10.9
+ },
+ "coach_agreement": {
+  "n": 3000,
+  "agreement": 0.624,
+  "matrix_engine_by_coach": {
+   "go": {
+    "go": 564,
+    "fg": 373,
+    "punt": 567
+   },
+   "fg": {
+    "punt": 65,
+    "fg": 436,
+    "go": 61
+   },
+   "punt": {
+    "punt": 872,
+    "go": 45,
+    "fg": 17
+   }
+  },
+  "option_calibration": {
+   "go": {
+    "n": 670,
+    "predicted": 0.373,
+    "actual": 0.381
+   },
+   "fg": {
+    "n": 826,
+    "predicted": 0.563,
+    "actual": 0.556
+   },
+   "punt": {
+    "n": 1501,
+    "predicted": 0.472,
+    "actual": 0.466
+   }
+  },
+  "strong_go_n": 694,
+  "strong_go_coach_went": 0.471
+ },
+ "imputed_weather_plays": 1425,
+ "version": "1.0.0",
+ "built": "2026-10-08"
+}

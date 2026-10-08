@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Raw nflverse play-by-play: ~245 MB, re-downloaded by engine/download_data.py.
+# Not redistributed here; see docs/adr/0001-data-source.md.
+data/raw/
+
+# Scratch output from the grader
+data/grading_tmp/
+data/fit_log.txt
+data/bootstrap_log.txt
+build/artifact/

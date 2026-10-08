@@ -1,9 +1,11 @@
 // Live game: turn one game from ESPN's public NFL scoreboard into form values.
-// The feed (site.api.espn.com) is unofficial and can change, so every field is
-// optional: anything missing comes back undefined and the form keeps its value.
+// The feed is unofficial and can change, so every field is optional: anything
+// missing comes back undefined and the form keeps its value. Browsers may only
+// read the site.web.api.espn.com host: site.api.espn.com sends no CORS header to
+// browsers (it does to curl), so pages on other sites are blocked from it.
 // tests/test_live.py runs this file against a saved copy of the real feed.
 (function (root) {
-  const ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
+  const ESPN_URL = "https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
   const RENAME = { WSH: "WAS", LAR: "LA" };            // ESPN code -> nflverse code
   const code = (a) => RENAME[a] || a;
 

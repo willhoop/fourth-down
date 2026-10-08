@@ -7,7 +7,7 @@ is a single edit here followed by `py engine/fit_models.py`.
 
 CONFIG = {
     # ---- engine version (must equal the newest CHANGELOG entry) ----
-    "version": "1.2.0",
+    "version": "1.2.1",
 
     # ---- data ----
     # nflverse play-by-play, one parquet per season, from

@@ -3,6 +3,23 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.2.1] — 2026-10-08
+
+### Fixed
+
+- Live game mode could not load on the website. `site.api.espn.com` sends a CORS
+  header to command-line tools but not to browsers, so the browser blocked it; a
+  curl check had wrongly suggested it would work. The app now reads the same
+  scoreboard from `site.web.api.espn.com`, which browsers may read. Verified by
+  driving the deployed site in a headless browser.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.2.0] — 2026-10-08
 
 ### Fixed

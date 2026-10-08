@@ -5,7 +5,7 @@
 ## 1. Go for it, kick, or punt?
 
 - A fourth-down decision engine built on every NFL play since 2014
-- Version 1.1.0
+- Version 1.2.0
 
 ## 2. Fourth down is a choice between three gambles
 
@@ -48,7 +48,7 @@
 - Once the way the coach called it, once the way the engine would
 - A coach is only charged when the engine is sure he was wrong
 - Coaches went for it on 13% of fourth downs in 2014 and 24% in 2025
-- Closest to the math: Liam Coen, Mike Macdonald, Dan Campbell
+- Closest to the math: Liam Coen, Sean McDermott, Matt LaFleur
 - Furthest from it: Shane Steichen, Todd Bowles, Sean Payton
 - Trust the order more than the exact numbers: the engine's totals run higher than published research
 
@@ -58,13 +58,21 @@
 - The engine can use your actual kicker's accuracy and range
 - Best current kickers above replacement: B.Aubrey, C.Boswell, W.Reichard
 
-## 10. What it can't tell you
+## 10. Built for game day
+
+- Fill from a live game: pick the game and your side, and the score, clock, down and spot fill in
+- Pick the two teams and the stadium, roof and your kicker are set for you
+- Share any call as a link that opens straight to the answer
+- Every Tuesday: the week's costliest calls and best gutsy ones
+- willhoop.github.io/fourth-down — add it to your phone's home screen
+
+## 11. What it can't tell you
 
 - '4th and 1' can mean inches or a full yard; the data can't tell them apart
 - It can't prove that following it wins more games: no one has run that experiment
 - Small edges are toss-ups, not mistakes
 
-## 11. Read the full story
+## 12. Read the full story
 
 - White paper: method, math, results and sources
 - docs/fourth-down-whitepaper.md  ·  build/fourth-down-whitepaper.pdf

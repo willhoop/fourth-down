@@ -1,5 +1,15 @@
 # How to use the app
 
+## Fill from a live game (website only)
+
+1. Click **Fill from a live game**. The app loads this week's games from ESPN.
+2. Pick the game. Games in progress are at the top, marked LIVE.
+3. Click **Away team** or **Home team** for your side.
+4. The app fills in the teams, betting line and roof, and in a live game the
+   score, clock, down, distance, ball spot and timeouts.
+5. Check every field. The feed is unofficial and can be late or wrong. Then
+   click **Get the call**.
+
 ## Set the situation
 
 1. Optional: pick **Our team** and **Their team** under **Matchup**. The app

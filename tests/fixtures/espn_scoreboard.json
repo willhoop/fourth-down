@@ -1,0 +1,18 @@
+{"events": [
+ {"id": "1", "shortName": "TB @ DAL", "competitions": [{
+   "status": {"period": 0, "displayClock": "0:00", "type": {"state": "pre", "shortDetail": "10/8 - 8:15 PM EDT"}},
+   "venue": {"indoor": true},
+   "odds": [{"details": "DAL -8.5"}],
+   "competitors": [
+     {"homeAway": "home", "score": "0", "team": {"id": "6", "abbreviation": "DAL"}},
+     {"homeAway": "away", "score": "0", "team": {"id": "27", "abbreviation": "TB"}}]}]},
+ {"id": "2", "shortName": "LAR @ WSH", "competitions": [{
+   "status": {"period": 4, "displayClock": "2:41", "type": {"state": "in", "shortDetail": "2:41 - 4th"}},
+   "venue": {"indoor": false},
+   "odds": [{"details": "EVEN"}],
+   "situation": {"down": 4, "distance": 2, "possessionText": "WSH 38", "possession": "14",
+                 "homeTimeouts": 1, "awayTimeouts": 3},
+   "competitors": [
+     {"homeAway": "home", "score": "20", "team": {"id": "28", "abbreviation": "WSH"}},
+     {"homeAway": "away", "score": "17", "team": {"id": "14", "abbreviation": "LAR"}}]}]}
+]}

@@ -25,8 +25,10 @@ def main():
     # project-folder links do not exist on the web
     t = re.sub(r"<p>Full method, results and sources:.*?</p>",
                "<p>Full method, results and sources are in the white paper in the project folder.</p>", t, flags=re.S)
+    # the artifact host blocks outside data, so the live-game box cannot work there
+    t = t.replace('<div id="livebox">', '<div id="livebox" hidden>')
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8", newline="\n").write(t)
-    for f in ("model.js", "engine.js", "grades.js", "bootstrap.js", "weekly.js"):
+    for f in ("model.js", "engine.js", "live.js", "grades.js", "bootstrap.js", "weekly.js"):
         shutil.copy(os.path.join(ROOT, "app", f), os.path.join(OUT, f))
     print("wrote", os.path.relpath(OUT, ROOT))
 

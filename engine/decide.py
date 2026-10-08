@@ -161,7 +161,7 @@ def value_after(model, st, us_ball, sd_us, yardline, secs, togo=None, down=1, po
         # Halftime: the second-half receiver starts at the kickoff spot.
         us_recv = st["receive_2h"] == 1
         s2 = {"score_diff": sd_us if us_recv else -sd_us, "game_seconds": 1800.0,
-              "half_seconds": 1800.0, "second_half": 1, "yardline": model["kickoff_start"],
+              "half_seconds": 1800.0, "second_half": 1, "yardline": kickoff_spot(model, st),
               "down": 1, "ydstogo": 10, "pos_to": 3, "def_to": 3, "tmw_pending": 1,
               "receive_2h": 0, "spread": st["spread_used"] * (1 if us_recv else -1),
               "home": st["home"] if us_recv else 1 - st["home"]}
@@ -182,6 +182,13 @@ def value_after(model, st, us_ball, sd_us, yardline, secs, togo=None, down=1, po
     return p if us_ball else 1.0 - p
 
 
+def kickoff_spot(model, st):
+    """Where the receiving team starts after a kickoff. The state can carry its
+    own season's spot (the grader sets it: touchbacks moved from the 20 to the 25
+    in 2016, the 30 in 2024 and the 35 in 2025); otherwise the current rules."""
+    return st.get("kickoff_start", model["kickoff_start"])
+
+
 def ot_value(model, st):
     """Our chance to win from a tie at the end of regulation. Both teams get the
     ball in overtime, so it is 0.5 plus the better team's measured edge; a tied
@@ -199,7 +206,7 @@ def touchdown_value(model, st, us_scored, sd_before, secs):
     tries = model.get("tries", {"pat": 1.0, "two": 0.0})
     sign = 1 if us_scored else -1
     after = lambda extra: value_after(model, st, not us_scored, sd_before + sign * (model["rules"]["td_points"] + extra),
-                                      model["kickoff_start"], secs)
+                                      kickoff_spot(model, st), secs)
     v0, v1, v2 = after(0), after(1), after(2)
     pat = tries["pat"] * v1 + (1 - tries["pat"]) * v0
     two = tries["two"] * v2 + (1 - tries["two"]) * v0
@@ -286,7 +293,7 @@ def wp_fg(model, st, tog):
     if yl + r["fg_distance_add"] > r["fg_max_distance"]:
         return None, {"p_make": 0.0, "distance": yl + r["fg_distance_add"], "out_of_range": True}
     pm = p_field_goal(model, st, tog)
-    make = value_after(model, st, False, sd + 3, model["kickoff_start"], elapsed(model, "fg", hs))
+    make = value_after(model, st, False, sd + 3, kickoff_spot(model, st), elapsed(model, "fg", hs))
     spot = yl + r["fg_snap_to_spot"]
     opp_yl = 80.0 if spot <= r["missed_fg_min_spot"] else 100.0 - spot
     miss = value_after(model, st, False, sd, opp_yl, elapsed(model, "fg", hs))

@@ -357,6 +357,14 @@ def build(df, s, kicker_prior=None, ko_df=None, fg_era="trend", wp=True):
                       direction="forward", suffixes=("", "_next"))
     m = m[m["posteam"] == m["posteam_next"]]
     out["kickoff_start"] = round(float(m["yardline_100"].mean()), 1)
+    # every season's spot, so past decisions are judged under their own rules
+    ka = ko_df[ko_df["play_type"] == "kickoff"].sort_values(["game_id", "play_id"])
+    sa = snaps(ko_df)[["game_id", "play_id", "posteam", "yardline_100"]]
+    ma = pd.merge_asof(ka[["game_id", "play_id", "posteam", "season"]].sort_values("play_id"),
+                       sa.sort_values("play_id"), on="play_id", by="game_id",
+                       direction="forward", suffixes=("", "_next"))
+    ma = ma[ma["posteam"] == ma["posteam_next"]]
+    out["kickoff_by_season"] = {str(k): round(float(v), 1) for k, v in ma.groupby("season")["yardline_100"].mean().items()}
     assert out["kickoff_start"] == out["kickoff_start"], "kickoff spot is NaN: no rules_season data"
 
     # extra point and 2-point try rates
@@ -525,7 +533,8 @@ def coach_agreement(mdl, te_s, n=3000):
     by = {}
     chosen = {"go": [], "fg": [], "punt": []}
     for _, r in rows.iterrows():
-        st = {"score_diff": r["score_diff"], "qtr": r["qtr"], "half_seconds": r["half_seconds_remaining"],
+        st = {"kickoff_start": mdl["kickoff_by_season"].get(str(int(r["season"])), mdl["kickoff_start"]),
+              "score_diff": r["score_diff"], "qtr": r["qtr"], "half_seconds": r["half_seconds_remaining"],
               "yardline": r["yardline_100"], "ydstogo": r["ydstogo"],
               "pos_to": r["posteam_timeouts_remaining"], "def_to": r["defteam_timeouts_remaining"],
               "home": r["home"], "receive_2h": r["receive_2h"]}

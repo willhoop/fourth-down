@@ -115,7 +115,7 @@
       if (st.second_half) return sdUs > 0 ? 1 : (sdUs < 0 ? 0 : otValue(model, st));
       const usRecv = st.receive_2h === 1;
       const s2 = { score_diff: usRecv ? sdUs : -sdUs, game_seconds: 1800, half_seconds: 1800,
-        second_half: 1, yardline: model.kickoff_start, down: 1, ydstogo: 10, pos_to: 3, def_to: 3,
+        second_half: 1, yardline: kickoffSpot(model, st), down: 1, ydstogo: 10, pos_to: 3, def_to: 3,
         tmw_pending: 1, receive_2h: 0, spread: st.spread_used * (usRecv ? 1 : -1),
         home: usRecv ? st.home : 1 - st.home };
       const p = wpRaw(model, s2);
@@ -134,6 +134,10 @@
     return usBall ? p : 1 - p;
   }
 
+  // Where the receiving team starts after a kickoff: the state's own season if the
+  // grader set it (touchbacks moved in 2016, 2024 and 2025), else current rules.
+  const kickoffSpot = (model, st) => (st.kickoff_start !== undefined ? st.kickoff_start : model.kickoff_start);
+
   // Our chance from a tie at the end of regulation: both teams get the ball in
   // overtime, so 0.5 plus the better team's measured edge; a tied OT is half a win.
   function otValue(model, st) {
@@ -148,7 +152,7 @@
     const tries = model.tries || { pat: 1, two: 0 };
     const sign = usScored ? 1 : -1;
     const after = (extra) => valueAfter(model, st, !usScored, sdBefore + sign * (model.rules.td_points + extra),
-      model.kickoff_start, secs);
+      kickoffSpot(model, st), secs);
     const v0 = after(0), v1 = after(1), v2 = after(2);
     const pat = tries.pat * v1 + (1 - tries.pat) * v0;
     const two = tries.two * v2 + (1 - tries.two) * v0;
@@ -227,7 +231,7 @@
       return [null, { p_make: 0, distance: yl + r.fg_distance_add, out_of_range: true }];
     }
     const pm = pFieldGoal(model, st, tog);
-    const make = valueAfter(model, st, false, sd + 3, model.kickoff_start, elapsed(model, "fg", hs));
+    const make = valueAfter(model, st, false, sd + 3, kickoffSpot(model, st), elapsed(model, "fg", hs));
     const spot = yl + r.fg_snap_to_spot;
     const oppYl = spot <= r.missed_fg_min_spot ? 80 : 100 - spot;
     const miss = valueAfter(model, st, false, sd, oppYl, elapsed(model, "fg", hs));

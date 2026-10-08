@@ -1,6 +1,6 @@
 # Fourth Down Engine: Win-Probability Decisions for Go, Field Goal or Punt
 
-Version: 1.1.0 — 2026-10-08
+Version: 1.2.0 — 2026-10-08
 Author: Will Hooper
 Data: nflverse play-by-play, 2014–2025 (fit) and 2014–2026 (coach grading)
 
@@ -133,8 +133,12 @@ next states are built as follows.
 - **Drop kicks from scrimmage** are legal on any down and score the same 3
   points, but they are almost never used and leave no data for a separate make
   rate. The engine treats a drop-kicked field goal as a field goal.
-- **Kickoffs** place the receiver at the mean start spot measured under the
-  current kickoff rules (`rules_season`).
+- **Kickoffs** place the receiver at the mean start spot. The app uses the
+  current rules (`rules_season`). The coach grader uses each season's own spot,
+  measured from that season: the touchback moved from the 20 to the 25 in 2016,
+  the 30 in 2024 and the 35 in 2025, and receivers started near their own 22,
+  25 and 31 in those eras. (Before 1.2.0 every season was graded with the 2025
+  spot, which undervalued scores in older seasons.)
 
 **Clock.** Each outcome uses the median game-clock time from this snap to the
 next snap, measured from the data separately for the final two minutes of a
@@ -311,13 +315,13 @@ or that short-yardage conversion is unbiased (section 8).
 **Headline results**
 
 - Win-probability log loss on held-out 2024, 2025: **0.446** (nflfastR `vegas_wp` on the same 81,654 plays: 0.4457).
-- Option values on held-out 4th downs, predicted vs actual win rate: go 37.3% vs 38.1% (n = 670); field goal 56.3% vs 55.6% (n = 826); punt 47.2% vs 46.6% (n = 1501).
-- League cost of 4th-down calls, confident mistakes only: **0.92** wins per team-season in 2014, **0.62** in 2025. Counting every disagreement: 1.19 and 0.86.
-- Coaches went for it on 12.7% of 4th downs in 2014 and 24.0% in 2025; the engine clearly favored going (edge of 1 point or more) on 33.1% and 34.5%.
-- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 37.9% to 44.5%. Share of calls the bootstrap is confident about: 47.9% to 50.5%.
-- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.34 wins/17 games (A+); Mike Macdonald 0.47 wins/17 games (A+); Dan Campbell 0.49 wins/17 games (A+).
-- Highest: Shane Steichen 0.90 (C); Todd Bowles 0.90 (C); Sean Payton 0.85 (C+).
-- Edge check: relative to teams that kicked, teams that went did -0.6 ± 0.6 WP points versus the engine's prediction (negative = the engine overstates going; selection flatters going, so near zero does not clear it).
+- Option values on held-out 4th downs, predicted vs actual win rate: go 37.3% vs 38.1% (n = 670); field goal 56.4% vs 55.6% (n = 826); punt 47.2% vs 46.6% (n = 1501).
+- League cost of 4th-down calls, confident mistakes only: **0.84** wins per team-season in 2014, **0.62** in 2025. Counting every disagreement: 1.11 and 0.86.
+- Coaches went for it on 12.7% of 4th downs in 2014 and 24.0% in 2025; the engine clearly favored going (edge of 1 point or more) on 30.2% and 34.5%.
+- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 37.9% to 45.2%. Share of calls the bootstrap is confident about: 47.7% to 49.9%.
+- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.34 wins/17 games (A+); Sean McDermott 0.46 wins/17 games (A+); Matt LaFleur 0.46 wins/17 games (A+).
+- Highest: Shane Steichen 0.86 (C); Todd Bowles 0.83 (C+); Sean Payton 0.81 (C+).
+- Edge check: relative to teams that kicked, teams that went did -0.5 ± 0.6 WP points versus the engine's prediction (negative = the engine overstates going; selection flatters going, so near zero does not clear it).
 - Replacement-level kicker: 76.4% made vs 85.5% expected; 61% from 50 yd vs 77% league average.
 - Top current kickers by points over replacement per 100 kicks: B.Aubrey 44.2; C.Boswell 40.8; W.Reichard 39.5.
 

@@ -9,7 +9,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.1.0 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.2.0 -->
 <style>
 :root{
   --bg:#f6f5f1; --panel:#ffffff; --ink:#1c1f24; --muted:#636a75; --line:#e2e0d9; --field:#2f6b3a;
@@ -172,6 +172,15 @@ select{min-width:0;max-width:100%}
 <div class="formgrid">
   <div class="card">
     <h2>Situation</h2>
+    <div id="livebox">
+      <button id="liveload" class="ghost" type="button" style="width:100%">Fill from a live game</button>
+      <div id="livepick" hidden>
+        <select id="livegame" aria-label="Game" style="margin-top:8px"></select>
+        <label>We are</label>
+        <div class="seg" id="liveside"><button class="on">Away team</button><button>Home team</button></div>
+      </div>
+      <div class="note" id="livemsg" aria-live="polite"></div>
+    </div>
     <label for="ourteam">Matchup (optional)</label>
     <div class="row"><div><select id="ourteam" aria-label="Our team"></select></div><div><select id="theirteam" aria-label="Their team"></select></div></div>
     <div class="note" id="teamnote"></div>
@@ -320,6 +329,11 @@ select{min-width:0;max-width:100%}
     <p>Twenty copies of the whole model were refit on resampled games. The confidence line says how many
       of them agree. A call with a small edge, or one the copies disagree on, is a toss-up, not a mistake.</p>
     <p>Coaches are only charged for a call when at least 90% of the copies agree it was wrong.</p>
+    <p>Overtime gives both teams the ball, so a tie at the end of regulation is worth about half a win, plus the
+      better team's edge. After a touchdown the engine assumes the scoring team picks the extra point or the 2-point
+      try, whichever helps it more. On 4th &amp; 1 you can say if it is inches or a full yard.</p>
+    <p>Live game mode reads ESPN's public scoreboard. It is unofficial and can lag, so check the form before you
+      get the call.</p>
     <p>Full method, results and sources: <a href="../docs/fourth-down-whitepaper.md">white paper</a> ·
       <a href="../build/fourth-down-whitepaper.pdf">PDF</a> · <a href="../build/fourth-down-deck.pdf">plain-English deck</a></p>
     <p class="note" id="aboutdata"></p>
@@ -330,6 +344,7 @@ select{min-width:0;max-width:100%}
 
 <script src="model.js"></script>
 <script src="engine.js"></script>
+<script src="live.js"></script>
 <script src="grades.js"></script>
 <script src="weekly.js"></script>
 <script>
@@ -706,6 +721,49 @@ $("share").onclick = async () => {
   catch (e) { msg.innerHTML = `Copy this link: <input class="sharebox" readonly value="${esc(url)}">`; msg.querySelector("input").select(); }
 };
 
+// ---------- live game: fill the form from ESPN's public scoreboard (app/live.js)
+let liveGames = [];
+async function loadLive() {
+  const msg = $("livemsg");
+  msg.textContent = "Loading this week's games\u2026";
+  try {
+    const r = await fetch(Live.ESPN_URL, { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    liveGames = Live.games(await r.json());
+    $("livegame").innerHTML = `<option value="">Pick a game</option>` + liveGames.map((g) =>
+      `<option value="${esc(g.id)}">${g.state === "in" ? "LIVE \u00b7 " : ""}${esc(g.name)} \u00b7 ${esc(g.detail || "")}</option>`).join("");
+    msg.textContent = liveGames.length ? "Pick a game, then pick your side." : "No games on the schedule right now.";
+  } catch (e) {
+    msg.textContent = "Live games are not available here (the feed could not be reached).";
+  }
+}
+function fillFromLive() {
+  const g = liveGames.find((x) => x.id === $("livegame").value);
+  if (!g) return;
+  const f = Live.fill(g, segVal("liveside") === 0 ? "away" : "home");
+  const filled = ["teams"];
+  $("ourteam").value = f.our; $("theirteam").value = f.their;
+  segSet("home", f.home ? 0 : 1);
+  applyTeams();
+  if (f.indoor !== undefined) { setToggle("t-stadium", true); segSet("roof", f.indoor ? 1 : 0); }
+  if (f.line !== undefined) { $("spread").value = f.line; setToggle("t-spread", true); filled.push("betting line"); }
+  if (f.state === "in") {
+    $("us").value = f.usScore; $("them").value = f.themScore; filled.push("score");
+    if (f.qtr) segSet("qtr", f.qtr - 1);
+    if (f.mm !== undefined) { $("mm").value = f.mm; $("ss").value = f.ss; filled.push("clock"); }
+    if (f.down) { segSet("down", f.down - 1); filled.push("down"); }
+    if (f.togo) { $("togo").value = f.togo; filled.push("distance"); }
+    if (f.yd !== undefined) { segSet("side", f.ownSide ? 0 : 1); $("yd").value = f.yd; filled.push("ball spot"); }
+    if (f.pto !== undefined) { segSet("pto", f.pto); filled.push("timeouts"); }
+    if (f.dto !== undefined) segSet("dto", f.dto);
+    if (f.weHaveBall === false) filled.push("note: the other team has the ball right now");
+  }
+  refreshForm();
+  $("livemsg").textContent = "Filled: " + filled.join(", ") + ". Check it, then get the call.";
+}
+$("liveload").onclick = () => { $("livepick").hidden = false; loadLive(); };
+$("livegame").onchange = fillFromLive;
+[...$("liveside").children].forEach((b) => b.addEventListener("click", () => { if ($("livegame").value) fillFromLive(); }));
 // ---------- the two screens
 let lastState = null, lastTog = null, lastResult = null;
 function summary(st, tog) {

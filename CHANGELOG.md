@@ -3,6 +3,47 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.2.0] — 2026-10-08
+
+### Fixed
+
+- **Past seasons were graded under today's kickoff rule.** Every post-score
+  kickoff used the 2025 starting spot (opponent at its own 31), but the receiving
+  team started near its own 22 in 2014–15 and its own 25 in 2016–23. So in older
+  seasons the engine handed the opponent 5–8 free yards after every score,
+  undervaluing field goals and touchdowns and overstating the case for going. The
+  spot is now measured for every season (`kickoff_by_season`) and each graded
+  decision uses its own season's spot. Found by checking each option's predicted
+  win rate against outcomes by score: field goals when trailing by 4–9 were
+  under-predicted by 2.5 ± 1.1 points (now 2.0 ± 1.1).
+- This also corrects a fairness problem: the error grew with how far back a
+  coach's career goes, so long-tenured coaches were graded more harshly.
+
+### Added
+
+- Live game mode: "Fill from a live game" reads ESPN's public NFL scoreboard and
+  fills in the teams, betting line, roof and, during a game, the score, clock,
+  down, distance, ball spot and timeouts (`app/live.js`). The feed is unofficial;
+  the user checks the form before getting the call. Not available in the private
+  Claude copy, which blocks outside data.
+
+### Record
+
+- **Measured.** League confident-mistake cost per team-season and the share of
+  clear engine "go" calls (`data/coach_grades.json`); nine coach letter grades;
+  the edge check (`data/edge_check.json`).
+- **Basis.** unchanged — the same question; the fix removes an error in how past
+  seasons were scored.
+- **Supersedes.** League cost ~~0.92~~ 0.84 (2014), ~~0.93~~ 0.86 (2016),
+  ~~0.71~~ 0.63 (2023); 2025 unchanged at 0.62. Clear go ~~33.1%~~ 30.2% (2014).
+  Grades: McCarthy ~~B+~~ A, Quinn ~~B+~~ A, Reid ~~A~~ B+, Moore ~~A~~ B+,
+  Canales ~~A~~ B+, Johnson ~~B+~~ B, Morris ~~B+~~ B, Glenn ~~B~~ C+,
+  Bowles ~~C~~ C+. Lowest-cost three: ~~Coen, Macdonald, Campbell~~ Coen,
+  McDermott, LaFleur. Edge check ~~−0.6~~ −0.5 ± 0.6 WP points.
+- **Owed to the next major.** Risk 14 (cost totals above published estimates)
+  remains; the residual option biases (field goals trailing by 4–9 +2.0 ± 1.1,
+  late going-for-it −2.7 ± 1.3) are the next lead.
+
 ## [1.1.0] — 2026-10-08
 
 ### Added

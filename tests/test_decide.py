@@ -260,3 +260,16 @@ def test_fourth_and_inches_distance():
     assert decide.conv_distance(m, {"ydstogo": 1, "short": "full_yard"}) == pytest.approx(1.15)
     assert decide.conv_distance(m, {"ydstogo": 1}) == 1
     assert decide.conv_distance(m, {"ydstogo": 2, "short": "inches"}) == 2
+
+
+def test_kickoff_spot_follows_the_state():
+    """A made field goal in 2015 (touchback at the 20: opponent starts at yardline
+    78) must use that spot, not today's. Stub WP on yardline (index 4): <= 75 -> +1,
+    else -1, for the team with the ball. 2015 spot 78 -> their -1 -> our S1.
+    Current spot 75 (stub default) -> their +1 -> our S_1. P(make) = 0.75, miss
+    at the 20 -> their spot 73 -> their +1 -> our S_1."""
+    m = make_stub(4, 75.0, 1.0, -1.0)
+    st = decide.prepare(dict(BASE, yardline=20), {})
+    old = decide.prepare(dict(BASE, yardline=20, kickoff_start=78.0), {})
+    assert decide.wp_fg(m, old, {})[0] == pytest.approx(0.75 * S1 + 0.25 * S_1)
+    assert decide.wp_fg(m, st, {})[0] == pytest.approx(S_1)

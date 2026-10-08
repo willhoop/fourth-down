@@ -13,7 +13,7 @@ kicker against a replacement-level kicker.
 **Or locally:** double-click **Fourth Down Engine** on the desktop, or open
 `app/index.html`. No install, no internet.
 
-Version 1.1.0. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
+Version 1.2.0. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
 
 ## Components
 

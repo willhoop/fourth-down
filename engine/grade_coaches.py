@@ -66,12 +66,14 @@ def prepare(seasons=None):
 
     kick = json.load(open(os.path.join(ROOT, "data", "kickers.json")))
     ab = {r["id"]: (r["accuracy"], r["range"]) for r in kick["kickers"]}
+    shipped = json.load(open(os.path.join(ROOT, "data", "model.json")))
     by_game, by_season = team_kickers(df, kick)
 
     d = s[(s["down"] == 4) & s["play_type"].isin(CHOICE) & (s["penalty"] != 1)
           & (s["qb_kneel"] != 1) & (s["qb_spike"] != 1) & s["spread"].notna()].copy()
     d["coach"] = np.where(d["posteam"] == d["home_team"], d["home_coach"], d["away_coach"]) \
         if "home_coach" in d else None
+    d.attrs["kickoff"] = (shipped["kickoff_by_season"], shipped["kickoff_start"])
     return df, d, ab, by_game, by_season
 
 
@@ -88,7 +90,9 @@ def score(seasons=None):
     for _, r in d.iterrows():
         kid = by_game.get((r["game_id"], r["posteam"])) or by_season.get((r["season"], r["posteam"]))
         ka, kb = ab.get(kid, (0.0, 0.0))
-        st = {"score_diff": float(r["score_diff"]), "qtr": int(r["qtr"]),
+        ko_map, ko_now = d.attrs["kickoff"]
+        st = {"kickoff_start": ko_map.get(str(int(r["season"])), ko_now),
+              "score_diff": float(r["score_diff"]), "qtr": int(r["qtr"]),
               "half_seconds": float(r["half_seconds_remaining"]), "yardline": float(r["yardline_100"]),
               "ydstogo": float(r["ydstogo"]), "pos_to": float(r["posteam_timeouts_remaining"]),
               "def_to": float(r["defteam_timeouts_remaining"]), "home": int(r["home"]),

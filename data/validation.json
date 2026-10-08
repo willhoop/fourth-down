@@ -463,14 +463,14 @@
   "agreement": 0.62,
   "matrix_engine_by_coach": {
    "go": {
-    "go": 565,
-    "fg": 386,
+    "go": 564,
+    "fg": 385,
     "punt": 571
    },
    "fg": {
     "punt": 63,
-    "fg": 424,
-    "go": 60
+    "fg": 425,
+    "go": 61
    },
    "punt": {
     "punt": 870,
@@ -486,7 +486,7 @@
    },
    "fg": {
     "n": 826,
-    "predicted": 0.563,
+    "predicted": 0.564,
     "actual": 0.556
    },
    "punt": {
@@ -495,10 +495,10 @@
     "actual": 0.466
    }
   },
-  "strong_go_n": 715,
-  "strong_go_coach_went": 0.466
+  "strong_go_n": 709,
+  "strong_go_coach_went": 0.467
  },
  "imputed_weather_plays": 1425,
- "version": "1.1.0",
+ "version": "1.2.0",
  "built": "2026-10-08"
 }

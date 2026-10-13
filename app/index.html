@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.3.4 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.3.5 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -1105,7 +1105,9 @@ function submit() {
   window.scrollTo(0, 0);
   summary(st, tog);
   lastResult = renderCall(st, tog);
-  drawDuel(addToCard(st, lastResult));
+  // the Duel card shows only when you made your call before this result
+  const duelRow = addToCard(st, lastResult);
+  if (duelRow) drawDuel(duelRow); else $("duel").hidden = true;
   segSet("mycall", -1);
   $("map").innerHTML = `<text x="10" y="20">Drawing the map…</text>`;
   setTimeout(() => renderMap(st, tog), 30);                // let the call paint first

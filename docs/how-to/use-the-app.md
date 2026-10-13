@@ -70,8 +70,13 @@ attempts in the last two seasons.
 1. On the results screen, click **Share this call**.
 2. On a phone, pick an app to send it. On a computer, the link is copied; paste
    it in a message.
-3. The link opens the app at the same situation and shows the call. It is
-   short: the situation is packed into about 21 digits.
+3. The message is only the call (for example "GO FOR IT.") and a link. In
+   iMessage and Android messages the link shows a large preview with the down,
+   the distance and the call.
+4. The link opens the app at the same situation and shows the call.
+
+To rebuild the preview images, run `py build/og_images.py` (needs Edge and
+Node). It writes `app/og/` and `app/s/`.
 
 ## Play the weekly game
 

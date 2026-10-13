@@ -3,6 +3,32 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.6] — 2026-10-13
+
+### Changed
+
+- **Sharing a call sends only the decision and a link**, for example
+  "GO FOR IT." The old message listed the whole situation and was hard to read
+  on a phone.
+- **Large link preview.** The link goes through a small page per call and
+  distance (`app/s/<call>-<yards>/`) with a 1200 × 630 image: "4TH & 2" over
+  "GO FOR IT". iMessage and Android show it as a large card. 68 images
+  (go, field goal, punt, toss-up; 4th & 1 to 15, then "long"; plus one each for
+  early downs), made by `build/og_images.py`. GitHub Pages is static, so the
+  yard line and clock cannot be in the image.
+
+### Notes
+
+- 1.3.5 committed an unfinished draft of these pages by mistake. It was not
+  deployed (the Pages workflow did not copy it) and is replaced here.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.3.5] — 2026-10-13
 
 ### Fixed

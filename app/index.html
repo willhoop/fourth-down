@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.3.5 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.3.6 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -999,13 +999,20 @@ function loadShared() {
   drawKickers();
   return true;
 }
+// a shared call is just the decision and a link. The link goes through a tiny page
+// (app/s/<call>-<yards>/) whose large preview image shows down, distance and the call.
+const SITE = "https://willhoop.github.io/fourth-down/";
+const SHOUT = { go: "GO FOR IT", fg: "KICK THE FIELD GOAL", punt: "PUNT IT", tossup: "TOSS-UP" };
 $("share").onclick = async () => {
-  const url = shareUrl(), msg = $("sharemsg");
-  const text = `${$("sumline").textContent}: the engine says ${$("callbig").textContent.toLowerCase()}.`;
+  const msg = $("sharemsg"), r = lastResult, st = lastState;
+  const call = r.tossup ? "tossup" : r.best;
+  const slug = call + (st.down === 4 ? "-" + (st.ydstogo > 15 ? "long" : st.ydstogo) : "");
+  const url = SITE + "s/" + slug + "/?" + shareUrl().split("?")[1];
+  const text = st.down === 4 ? SHOUT[call] + "." : $("callbig").textContent + ".";
   try {
-    if (navigator.share) { await navigator.share({ title: "Fourth Down Engine", text, url }); return; }
+    if (navigator.share) { await navigator.share({ text, url }); return; }
   } catch (e) { if (e && e.name === "AbortError") return; }
-  try { await navigator.clipboard.writeText(url); msg.textContent = "Link copied. Paste it to a friend."; }
+  try { await navigator.clipboard.writeText(text + " " + url); msg.textContent = "Copied. Paste it to a friend."; }
   catch (e) { msg.innerHTML = `Copy this link: <input class="sharebox" readonly value="${esc(url)}">`; msg.querySelector("input").select(); }
 };
 

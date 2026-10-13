@@ -3,7 +3,8 @@
 ## Fill from a live game (website only)
 
 1. Click **Fill from a live game**. The app loads this week's games from ESPN.
-2. Pick the game. Games in progress are at the top, marked LIVE.
+2. Tap the game in the list. Games in progress are at the top, marked LIVE.
+   To pick a different game, click **Fill from a live game** again.
 3. In a live game, the app selects the team with the ball. Before kickoff, it
    selects the away team. To change it, tap the other team under **Who has the
    ball?**.

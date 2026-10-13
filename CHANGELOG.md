@@ -3,6 +3,22 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.4] — 2026-10-13
+
+### Fixed
+
+- **Fill from a live game now shows the games at once.** The games were in a
+  drop-down that a script cannot open, so it took a second tap. They are now a
+  list of buttons, and the scoreboard loads with the page, so the list is ready
+  on the first tap. After a pick, only that game stays shown.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.3.3] — 2026-10-13
 
 ### Added

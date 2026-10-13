@@ -3,6 +3,38 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.9] — 2026-10-13
+
+### Added
+
+- **Comparison with nfl4th** (Ben Baldwin, nflverse), the only public 4th-down
+  model with per-play numbers: `engine/compare_nfl4th.py`, report
+  `docs/reports/nfl4th-comparison.md`. It reads nfl4th's published .rds file
+  directly (no R needed). Reason: the user asked how the engine compares with
+  public ones.
+
+### Notes
+
+- The comparison found a defect: the field-goal curve gives a 48% make chance
+  at 67 yards (risk 17). The engine recommends field goals from 58+ yards on
+  1,318 plays and charges 587 confident mistakes there. The fix (refit and
+  regrade) is the next release.
+
+### Record
+
+- **Measured.** No existing figure moved (PATCH). New figures, from `data/nfl4th_comparison.json`
+  (44,836 matched plays, 2014-2026): same call on 71.3% of plays,
+  87.8% of clear calls (n = 18,989); we recommend going for it on
+  57.7% of plays, nfl4th on 42.1%; held-out Brier score
+  0.1469 vs 0.1480 (difference -0.0011, 95% interval
+  -0.0027 to +0.0005: no detectable difference).
+- **Basis.** unchanged
+- **Supersedes.** Nothing. Coach grades are not retracted yet: the long-kick
+  defect is measured, but how much each grade moves is not; the next release
+  measures and replaces them.
+- **Owed to the next major.** White paper: a section on the nfl4th comparison
+  and the long-kick fix. Deck: one slide on how we compare.
+
 ## [1.3.8] — 2026-10-13
 
 ### Changed

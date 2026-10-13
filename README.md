@@ -13,7 +13,7 @@ kicker against a replacement-level kicker.
 **Or locally:** double-click **Fourth Down Engine** on the desktop, or open
 `app/index.html`. No install, no internet.
 
-Version 1.3.8. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
+Version 1.3.9. Results and figures: [white paper](docs/fourth-down-whitepaper.md).
 
 ## Components
 
@@ -37,6 +37,7 @@ Version 1.3.8. Results and figures: [white paper](docs/fourth-down-whitepaper.md
 | [docs/reports/](docs/reports/) | Validation report, coach grades, kicker grades (generated). |
 | [docs/adr/](docs/adr/) | Architecture decision records. |
 | [RISK_REGISTER.md](RISK_REGISTER.md) | Risks, including accepted ones. |
+| [docs/reports/nfl4th-comparison.md](docs/reports/nfl4th-comparison.md) | How this engine compares with nfl4th, play by play. |
 | [tests/](tests/) | Hand-derived engine tests, shipped-model checks, Python/JS parity, report freshness. |
 
 ## Data

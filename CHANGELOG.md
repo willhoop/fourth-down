@@ -3,6 +3,24 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.2.4] — 2026-10-13
+
+### Changed
+
+- The call now leads with a 100% split: how the 20 resampled models vote among
+  go, field goal and punt (for example 95% / 5% / 0%). The win chance after each
+  choice stays below it as detail.
+- Live game mode asks for your team by name ("Buccaneers" / "Cowboys") instead
+  of asking home or away a second time.
+- The weekly job also runs on Wednesday, in case nflverse posts Monday's game late.
+
+### Record
+
+- **Measured.** No figure changed (the split shows the existing bootstrap).
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.2.3] — 2026-10-08
 
 ### Notes

@@ -4,7 +4,7 @@
 
 1. Click **Fill from a live game**. The app loads this week's games from ESPN.
 2. Pick the game. Games in progress are at the top, marked LIVE.
-3. Click **Away team** or **Home team** for your side.
+3. Tap your team. The two buttons show the teams in the game you picked.
 4. The app fills in the teams, betting line and roof, and in a live game the
    score, clock, down, distance, ball spot and timeouts.
 5. Check every field. The feed is unofficial and can be late or wrong. Then
@@ -64,14 +64,19 @@ attempts in the last two seasons.
 
 ## Read the output
 
-Each bar is the chance to win **if you choose that option**. The bars are
-alternatives. They do not add up to 100%.
+The first bar is the **split**: how the 20 resampled models vote among the
+options. It adds up to 100%. For example, "Go for it 95% · Field goal 5% · Punt
+0%" means 19 of 20 models pick going for it.
+
+The bars under **Win chance after each choice** show how often you win the
+game if you choose each option. They are separate "what ifs" and do not add up
+to 100%.
 
 - **The call**: the option with the highest win probability. The line below it
   says why, in one sentence. "Toss-up" means
   the edge is under 1 point.
-- **Confidence**: the number of the 20 resampled models that agree. 18 or more
-  is a confident call.
+- **The split**: 90% or more for one option is a confident call; 70–85% is a
+  lean; less is genuinely uncertain.
 - **Detail boxes**: the odds and win probability behind each option.
 - **Decision map**: the call at every spot and distance for the current score,
   clock and factors.

@@ -16,9 +16,10 @@ Click **Get the call**.
 
 1. Look at **The call**. It shows the best option in large letters.
 2. Read the line below it. It gives the edge in win-probability points.
-3. Read the **Confidence** line. It tells you how many of the 20 resampled
-   models agree.
-4. Look at the three bars. Each bar is your chance to win after that choice.
+3. Look at the **split** bar. It shows how the 20 resampled models vote among
+   the options. It adds up to 100%.
+4. Look at the bars under **Win chance after each choice**. Each bar is your
+   chance to win after that choice.
 
 ## 3. Change the situation
 

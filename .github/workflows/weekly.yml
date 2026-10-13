@@ -1,10 +1,11 @@
 name: Weekly calls
 
-# Every Tuesday in the season: refresh this season's play-by-play from nflverse,
+# Every Tuesday (and again Wednesday) in the season: refresh this season's play-by-play from nflverse,
 # grade the new 4th downs, commit the "This week" data and redeploy the site.
 on:
   schedule:
-    - cron: "0 12 * * 2"     # Tuesday 12:00 UTC, after Monday Night Football
+    - cron: "0 12 * * 2"     # Tuesday 12:00 UTC (8 AM Eastern), after Monday Night Football
+    - cron: "0 12 * * 3"     # Wednesday again, in case nflverse posts Monday's game late
   workflow_dispatch:
 
 permissions:

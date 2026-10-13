@@ -9,7 +9,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.2.3 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.2.4 -->
 <style>
 :root{
   --bg:#f6f5f1; --panel:#ffffff; --ink:#1c1f24; --muted:#636a75; --line:#e2e0d9; --field:#2f6b3a;
@@ -142,6 +142,14 @@ select{padding:7px 8px;border:1px solid var(--line);border-radius:8px;background
   .sortbar{display:flex}
   .widetable{display:none}
 }
+
+.splitbox{margin:10px 0 4px}
+.splithead{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.split{display:flex;height:30px;border-radius:8px;overflow:hidden;background:var(--chip)}
+.split span{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;font-variant-numeric:tabular-nums}
+.split .seg0{background:var(--chip)}
+.splitlegend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin-top:6px}
+.splitlegend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 /* ---- phone first ---- */
 html,body{overflow-x:hidden}
 .formgrid>*,.row>*,.stepper,.card{min-width:0}
@@ -191,8 +199,8 @@ select{min-width:0;max-width:100%}
       <button id="liveload" class="ghost" type="button" style="width:100%">Fill from a live game</button>
       <div id="livepick" hidden>
         <select id="livegame" aria-label="Game" style="margin-top:8px"></select>
-        <label>We are</label>
-        <div class="seg" id="liveside"><button class="on">Away team</button><button>Home team</button></div>
+        <label>Your team</label>
+        <div class="seg" id="liveside"><button class="on">Away</button><button>Home</button></div>
       </div>
       <div class="note" id="livemsg" aria-live="polite"></div>
     </div>
@@ -285,7 +293,13 @@ select{min-width:0;max-width:100%}
     <h2>The call</h2>
     <div class="call"><span class="big" id="callbig">—</span><span class="sub" id="callsub"></span></div>
     <p class="why" id="why"></p>
+    <div class="splitbox">
+      <div class="splithead">How sure: the split among 20 resampled models</div>
+      <div class="split" id="split" role="img" aria-label="Share of models choosing each option"></div>
+      <div class="splitlegend" id="splitlegend"></div>
+    </div>
     <div id="conf" class="note"></div>
+    <h2 style="margin-top:16px">Win chance after each choice</h2>
     <div class="bars" id="bars"></div>
     <div class="details" id="details"></div>
   </div>
@@ -533,24 +547,36 @@ function refreshForm() {
 document.querySelectorAll("#view-form input, #view-form select").forEach((el) => el.addEventListener("input", refreshForm));
 
 // ---------- the call
-function bootShare(st, tog, best) {
+// How the resampled models vote: counts per option that add up to all of them.
+function bootVotes(st, tog) {
   if (!BOOTS.length) return null;
-  let n = 0;
+  const v = { go: 0, fg: 0, punt: 0 };
   try {
-    for (const rep of BOOTS) if (FourthDown.decide(rep, st, tog).best === best) n++;
+    for (const rep of BOOTS) v[FourthDown.decide(rep, st, tog).best] += 1;
   } catch (e) {
     console.error("confidence models do not match this version", e);
     return undefined;
   }
-  return n;
+  return v;
 }
 function renderConfidence(st, tog, r) {
-  const N = names(st.down);
-  const n = bootShare(st, tog, r.best);
-  $("conf").textContent = n === undefined ? "Confidence unavailable: the resampled models are from an older build." :
-    n === null ? "Confidence: loading the 20 resampled models…" :
-    `Confidence: ${n} of ${BOOTS.length} resampled models also pick “${N[r.best].toLowerCase()}”` +
-    (n / BOOTS.length >= 0.9 ? " — a confident call." : n / BOOTS.length >= 0.7 ? " — a lean." : " — genuinely uncertain.");
+  const N = names(st.down), v = bootVotes(st, tog);
+  const opts = ["go", "fg", "punt"].filter((k) => r.wp[k] !== null);
+  if (!v) {
+    $("split").innerHTML = `<span class="seg0" style="width:100%"></span>`;
+    $("splitlegend").textContent = v === undefined ? "Unavailable: the resampled models are from an older build."
+      : "Loading the 20 resampled models\u2026";
+    $("conf").textContent = "";
+    return;
+  }
+  const n = BOOTS.length;
+  $("split").innerHTML = opts.filter((k) => v[k] > 0).map((k) =>
+    `<span style="width:${(100 * v[k] / n).toFixed(1)}%;background:${COLORS[k]}">${v[k] / n >= 0.15 ? Math.round(100 * v[k] / n) + "%" : ""}</span>`).join("");
+  $("splitlegend").innerHTML = opts.map((k) =>
+    `<span><i style="background:${COLORS[k]}"></i>${N[k]} <b>${Math.round(100 * v[k] / n)}%</b></span>`).join("");
+  const top = Math.max(...opts.map((k) => v[k])) / n;
+  $("conf").textContent = top >= 0.9 ? "A confident call: nearly every model agrees."
+    : top >= 0.7 ? "A lean: most models agree, some do not." : "Genuinely uncertain: the models split.";
 }
 function renderCall(st, tog) {
   const r = FourthDown.decide(MODEL, st, tog);
@@ -563,7 +589,7 @@ function renderCall(st, tog) {
   renderConfidence(st, tog, r);
   $("why").textContent = whyText(st, r);
   const best = r.wp[r.best];
-  $("bars").innerHTML = `<div class="note" style="margin-bottom:6px">Each bar is a separate “what if”: how often you win the game <b>if you choose that option</b>. They are alternatives, so they do not add up to 100%.</div>` +
+  $("bars").innerHTML = `<div class="note" style="margin-bottom:6px">How often you win the game if you choose each option. These are separate \u201cwhat ifs\u201d; the split above is the one that adds to 100%.</div>` +
     ["go", "fg", "punt"].map((k) => {
       const v = r.wp[k];
       if (v === null) {
@@ -752,7 +778,7 @@ async function loadLive() {
     liveGames = Live.games(await r.json());
     $("livegame").innerHTML = `<option value="">Pick a game</option>` + liveGames.map((g) =>
       `<option value="${esc(g.id)}">${g.state === "in" ? "LIVE \u00b7 " : ""}${esc(g.name)} \u00b7 ${esc(g.detail || "")}</option>`).join("");
-    msg.textContent = liveGames.length ? "Pick a game, then pick your side." : "No games on the schedule right now.";
+    msg.textContent = liveGames.length ? "Pick a game, then tap your team." : "No games on the schedule right now.";
   } catch (e) {
     msg.textContent = "Live games are not available here (the feed could not be reached).";
   }
@@ -782,7 +808,17 @@ function fillFromLive() {
   $("livemsg").textContent = "Filled: " + filled.join(", ") + ". Check it, then get the call.";
 }
 $("liveload").onclick = () => { $("livepick").hidden = false; loadLive(); };
-$("livegame").onchange = fillFromLive;
+$("livegame").onchange = () => {
+  // label the two buttons with the teams in this game, then fill
+  const g = liveGames.find((x) => x.id === $("livegame").value);
+  if (g) {
+    const tm = (side) => Live.code(g.c.competitors.find((x) => x.homeAway === side).team.abbreviation);
+    const b = $("liveside").children;
+    b[0].textContent = TEAM_NAMES[tm("away")] || tm("away");
+    b[1].textContent = TEAM_NAMES[tm("home")] || tm("home");
+  }
+  fillFromLive();
+};
 [...$("liveside").children].forEach((b) => b.addEventListener("click", () => { if ($("livegame").value) fillFromLive(); }));
 // ---------- the two screens
 let lastState = null, lastTog = null, lastResult = null;

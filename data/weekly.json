@@ -1,8 +1,273 @@
 {
- "version": "1.2.0",
+ "version": "1.2.4",
  "season": 2026,
- "updated": "2026-10-08",
+ "updated": "2026-10-13",
  "weeks": [
+  {
+   "week": 5,
+   "decisions": 209,
+   "confident_mistakes": 33,
+   "wp_lost": 1.079,
+   "worst": [
+    {
+     "week": 5,
+     "team": "DEN",
+     "opp": "LAC",
+     "coach": "Sean Payton",
+     "situation": "Q4 5:10, tied, 4th & 1 at opp 1",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.78,
+      "fg": 0.715,
+      "punt": 0.609
+     },
+     "what_happened": "(5:10) 3-W.Lutz 19 yard field goal is GOOD, Center-48-M.Fraboni, Holder-16-J.Crawshaw.",
+     "cost": 0.064,
+     "confidence": 1.0
+    },
+    {
+     "week": 5,
+     "team": "CLE",
+     "opp": "NYJ",
+     "coach": "Todd Monken",
+     "situation": "Q1 3:30, down 7, 4th & 5 at opp 7",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.327,
+      "fg": 0.265,
+      "punt": 0.262
+     },
+     "what_happened": "(3:30) 25-A.Szmyt 25 yard field goal is GOOD, Center-50-R.Sunahara, Holder-13-C.Bojorquez.",
+     "cost": 0.062,
+     "confidence": 1.0
+    },
+    {
+     "week": 5,
+     "team": "SF",
+     "opp": "SEA",
+     "coach": "Kyle Shanahan",
+     "situation": "Q4 2:00, tied, 4th & 2 at opp 25",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.66,
+      "fg": 0.599,
+      "punt": 0.388
+     },
+     "what_happened": "(2:00) 18-E.Pineiro 44 yard field goal is GOOD, Center-46-J.Weeks, Holder-15-C.Waitman.",
+     "cost": 0.061,
+     "confidence": 0.95
+    },
+    {
+     "week": 5,
+     "team": "BAL",
+     "opp": "ATL",
+     "coach": "Jesse Minter",
+     "situation": "Q1 10:30, tied, 4th & 3 at opp 3",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.455,
+      "fg": 0.396,
+      "punt": 0.356
+     },
+     "what_happened": "(10:30) 33-T.Loop 21 yard field goal is GOOD, Center-46-N.Moore, Holder-30-R.Eckley.",
+     "cost": 0.059,
+     "confidence": 1.0
+    },
+    {
+     "week": 5,
+     "team": "NYG",
+     "opp": "WAS",
+     "coach": "John Harbaugh",
+     "situation": "Q3 10:58, down 9, 4th & 2 at opp 37",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.221,
+      "fg": 0.168,
+      "punt": 0.15
+     },
+     "what_happened": "(10:58) 34-D.Zvada 56 yard field goal is GOOD, Center-58-B.Mann, Holder-15-J.Stout.",
+     "cost": 0.053,
+     "confidence": 1.0
+    },
+    {
+     "week": 5,
+     "team": "LA",
+     "opp": "BUF",
+     "coach": "Sean McVay",
+     "situation": "Q3 6:56, up 1, 4th & 4 at own 13",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.544,
+      "fg": null,
+      "punt": 0.496
+     },
+     "what_happened": "(6:56) 42-E.Evans punts 62 yards to BUF 25, Center-49-J.Cardona. 19-G.Dortch pushed ob at BUF 39 for 14 yards (33-D.Connors; 89-T.Higbee).",
+     "cost": 0.048,
+     "confidence": 0.95
+    },
+    {
+     "week": 5,
+     "team": "DEN",
+     "opp": "LAC",
+     "coach": "Sean Payton",
+     "situation": "Q4 12:08, down 7, 4th & 7 at opp 24",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.323,
+      "fg": 0.275,
+      "punt": 0.217
+     },
+     "what_happened": "(12:08) 3-W.Lutz 42 yard field goal is No Good, Wide Left, Center-48-M.Fraboni, Holder-16-J.Crawshaw.",
+     "cost": 0.048,
+     "confidence": 1.0
+    },
+    {
+     "week": 5,
+     "team": "HOU",
+     "opp": "TEN",
+     "coach": "DeMeco Ryans",
+     "situation": "Q1 9:12, down 3, 4th & 5 at own 49",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.764,
+      "fg": 0.739,
+      "punt": 0.716
+     },
+     "what_happened": "(9:12) 38-K.Kroeger punts 38 yards to TEN 13, Center-40-A.Brinkman, downed by HOU-23-D.Ogunbowale.",
+     "cost": 0.047,
+     "confidence": 1.0
+    },
+    {
+     "week": 5,
+     "team": "BAL",
+     "opp": "ATL",
+     "coach": "Jesse Minter",
+     "situation": "Q4 6:30, down 5, 4th & 4 at own 38",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.186,
+      "fg": null,
+      "punt": 0.139
+     },
+     "what_happened": "(6:30) 30-R.Eckley punts 44 yards to ATL 18, Center-46-N.Moore, fair catch by 17-Z.Branch.",
+     "cost": 0.047,
+     "confidence": 1.0
+    },
+    {
+     "week": 5,
+     "team": "NYJ",
+     "opp": "CLE",
+     "coach": "Aaron Glenn",
+     "situation": "Q3 11:56, up 1, 4th & 3 at opp 47",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.603,
+      "fg": 0.533,
+      "punt": 0.557
+     },
+     "what_happened": "(11:56) 14-A.McNamara punts 38 yards to CLE 9, Center-42-T.Hennessy, downed by NYJ-37-Q.Stiggers.",
+     "cost": 0.046,
+     "confidence": 1.0
+    }
+   ],
+   "best": [
+    {
+     "week": 5,
+     "team": "JAX",
+     "opp": "PHI",
+     "coach": "Liam Coen",
+     "situation": "Q4 6:40, down 4, 4th & 5 at opp 5",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.497,
+      "fg": 0.413,
+      "punt": 0.3
+     },
+     "what_happened": "(6:40) (Shotgun) 16-T.Lawrence pass incomplete short left to 3-J.Meyers [17-A.Ebiketie].",
+     "edge": 0.084,
+     "converted": false
+    },
+    {
+     "week": 5,
+     "team": "DAL",
+     "opp": "TB",
+     "coach": "Brian Schottenheimer",
+     "situation": "Q3 1:49, down 14, 4th & 3 at own 43",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.238,
+      "fg": null,
+      "punt": 0.156
+     },
+     "what_happened": "(1:49) (Shotgun) 4-D.Prescott pass incomplete short left to 87-J.Ferguson.",
+     "edge": 0.082,
+     "converted": false
+    },
+    {
+     "week": 5,
+     "team": "JAX",
+     "opp": "PHI",
+     "coach": "Liam Coen",
+     "situation": "Q4 3:26, down 4, 4th & 5 at opp 27",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.417,
+      "fg": 0.335,
+      "punt": 0.238
+     },
+     "what_happened": "(3:26) (Shotgun) 16-T.Lawrence pass deep right to 11-P.Washington for 27 yards, TOUCHDOWN.",
+     "edge": 0.082,
+     "converted": true
+    },
+    {
+     "week": 5,
+     "team": "NO",
+     "opp": "MIN",
+     "coach": "Kellen Moore",
+     "situation": "Q2 11:13, down 3, 4th & 1 at opp 27",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.477,
+      "fg": 0.402,
+      "punt": 0.368
+     },
+     "what_happened": "(11:13) (Shotgun) 6-T.Shough pass short left to 14-D.Vele to MIN 23 for 4 yards (23-J.Pierre).",
+     "edge": 0.076,
+     "converted": true
+    },
+    {
+     "week": 5,
+     "team": "CHI",
+     "opp": "GB",
+     "coach": "Ben Johnson",
+     "situation": "Q2 1:56, down 14, 4th & 1 at opp 1",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.197,
+      "fg": 0.115,
+      "punt": 0.129
+     },
+     "what_happened": "(1:56) (Shotgun) 4-D.Swift left tackle for 1 yard, TOUCHDOWN.",
+     "edge": 0.068,
+     "converted": true
+    }
+   ]
+  },
   {
    "week": 4,
    "decisions": 223,
@@ -1067,59 +1332,66 @@
  "teams": [
   {
    "posteam": "JAX",
-   "games": 4,
+   "games": 5,
    "mistakes": 3,
-   "calls": 19,
-   "wins_lost_per_17": 0.206
-  },
-  {
-   "posteam": "LA",
-   "games": 4,
-   "mistakes": 2,
-   "calls": 25,
-   "wins_lost_per_17": 0.222
+   "calls": 28,
+   "wins_lost_per_17": 0.165
   },
   {
    "posteam": "PHI",
-   "games": 4,
-   "mistakes": 3,
-   "calls": 29,
-   "wins_lost_per_17": 0.294
+   "games": 5,
+   "mistakes": 4,
+   "calls": 38,
+   "wins_lost_per_17": 0.334
   },
   {
-   "posteam": "CLE",
-   "games": 4,
-   "mistakes": 7,
-   "calls": 29,
-   "wins_lost_per_17": 0.41
+   "posteam": "LA",
+   "games": 5,
+   "mistakes": 3,
+   "calls": 30,
+   "wins_lost_per_17": 0.341
   },
   {
    "posteam": "MIA",
-   "games": 4,
-   "mistakes": 5,
-   "calls": 25,
-   "wins_lost_per_17": 0.444
+   "games": 5,
+   "mistakes": 6,
+   "calls": 29,
+   "wins_lost_per_17": 0.387
   },
   {
    "posteam": "BUF",
-   "games": 4,
-   "mistakes": 3,
-   "calls": 16,
-   "wins_lost_per_17": 0.454
+   "games": 5,
+   "mistakes": 4,
+   "calls": 19,
+   "wins_lost_per_17": 0.45
+  },
+  {
+   "posteam": "ATL",
+   "games": 5,
+   "mistakes": 8,
+   "calls": 31,
+   "wins_lost_per_17": 0.506
   },
   {
    "posteam": "MIN",
-   "games": 4,
-   "mistakes": 4,
-   "calls": 35,
-   "wins_lost_per_17": 0.474
+   "games": 5,
+   "mistakes": 6,
+   "calls": 41,
+   "wins_lost_per_17": 0.515
   },
   {
-   "posteam": "SF",
-   "games": 4,
-   "mistakes": 2,
-   "calls": 17,
-   "wins_lost_per_17": 0.494
+   "posteam": "CHI",
+   "games": 5,
+   "mistakes": 5,
+   "calls": 35,
+   "wins_lost_per_17": 0.544
+  },
+  {
+   "posteam": "DET",
+   "games": 5,
+   "mistakes": 5,
+   "calls": 33,
+   "wins_lost_per_17": 0.545
   },
   {
    "posteam": "CAR",
@@ -1136,158 +1408,151 @@
    "wins_lost_per_17": 0.585
   },
   {
-   "posteam": "ATL",
-   "games": 4,
-   "mistakes": 8,
-   "calls": 23,
-   "wins_lost_per_17": 0.632
-  },
-  {
-   "posteam": "CHI",
-   "games": 4,
-   "mistakes": 4,
-   "calls": 25,
-   "wins_lost_per_17": 0.636
-  },
-  {
-   "posteam": "NYG",
-   "games": 4,
-   "mistakes": 4,
-   "calls": 23,
-   "wins_lost_per_17": 0.664
-  },
-  {
-   "posteam": "DET",
-   "games": 4,
-   "mistakes": 5,
-   "calls": 26,
-   "wins_lost_per_17": 0.681
-  },
-  {
-   "posteam": "TEN",
-   "games": 4,
-   "mistakes": 9,
-   "calls": 29,
-   "wins_lost_per_17": 0.702
-  },
-  {
-   "posteam": "SEA",
-   "games": 4,
-   "mistakes": 5,
-   "calls": 26,
-   "wins_lost_per_17": 0.727
-  },
-  {
-   "posteam": "BAL",
-   "games": 4,
-   "mistakes": 5,
-   "calls": 22,
-   "wins_lost_per_17": 0.741
+   "posteam": "SF",
+   "games": 5,
+   "mistakes": 3,
+   "calls": 24,
+   "wins_lost_per_17": 0.603
   },
   {
    "posteam": "PIT",
-   "games": 4,
+   "games": 5,
    "mistakes": 6,
-   "calls": 27,
-   "wins_lost_per_17": 0.775
+   "calls": 32,
+   "wins_lost_per_17": 0.62
+  },
+  {
+   "posteam": "CLE",
+   "games": 5,
+   "mistakes": 9,
+   "calls": 41,
+   "wins_lost_per_17": 0.683
+  },
+  {
+   "posteam": "TEN",
+   "games": 5,
+   "mistakes": 11,
+   "calls": 35,
+   "wins_lost_per_17": 0.695
   },
   {
    "posteam": "DAL",
-   "games": 4,
-   "mistakes": 5,
-   "calls": 21,
-   "wins_lost_per_17": 0.811
-  },
-  {
-   "posteam": "NYJ",
-   "games": 4,
-   "mistakes": 7,
-   "calls": 26,
-   "wins_lost_per_17": 0.811
-  },
-  {
-   "posteam": "LV",
-   "games": 4,
+   "games": 5,
    "mistakes": 6,
-   "calls": 28,
-   "wins_lost_per_17": 0.875
+   "calls": 26,
+   "wins_lost_per_17": 0.698
   },
   {
-   "posteam": "HOU",
-   "games": 4,
-   "mistakes": 5,
-   "calls": 29,
-   "wins_lost_per_17": 0.923
+   "posteam": "SEA",
+   "games": 5,
+   "mistakes": 6,
+   "calls": 34,
+   "wins_lost_per_17": 0.71
   },
   {
    "posteam": "NO",
-   "games": 4,
+   "games": 5,
    "mistakes": 6,
-   "calls": 27,
-   "wins_lost_per_17": 0.93
+   "calls": 34,
+   "wins_lost_per_17": 0.744
   },
   {
-   "posteam": "IND",
-   "games": 4,
-   "mistakes": 5,
-   "calls": 27,
-   "wins_lost_per_17": 1.009
+   "posteam": "LV",
+   "games": 5,
+   "mistakes": 7,
+   "calls": 34,
+   "wins_lost_per_17": 0.777
+  },
+  {
+   "posteam": "NYG",
+   "games": 5,
+   "mistakes": 6,
+   "calls": 31,
+   "wins_lost_per_17": 0.814
   },
   {
    "posteam": "NE",
-   "games": 4,
+   "games": 5,
    "mistakes": 7,
-   "calls": 26,
-   "wins_lost_per_17": 1.041
+   "calls": 31,
+   "wins_lost_per_17": 0.833
+  },
+  {
+   "posteam": "NYJ",
+   "games": 5,
+   "mistakes": 9,
+   "calls": 33,
+   "wins_lost_per_17": 0.881
   },
   {
    "posteam": "WAS",
-   "games": 4,
+   "games": 5,
    "mistakes": 9,
-   "calls": 34,
-   "wins_lost_per_17": 1.111
+   "calls": 41,
+   "wins_lost_per_17": 0.889
   },
   {
    "posteam": "GB",
-   "games": 4,
+   "games": 5,
    "mistakes": 5,
-   "calls": 29,
-   "wins_lost_per_17": 1.192
+   "calls": 36,
+   "wins_lost_per_17": 0.953
+  },
+  {
+   "posteam": "BAL",
+   "games": 5,
+   "mistakes": 7,
+   "calls": 27,
+   "wins_lost_per_17": 0.954
+  },
+  {
+   "posteam": "HOU",
+   "games": 5,
+   "mistakes": 7,
+   "calls": 35,
+   "wins_lost_per_17": 0.964
   },
   {
    "posteam": "TB",
-   "games": 4,
+   "games": 5,
    "mistakes": 10,
-   "calls": 31,
-   "wins_lost_per_17": 1.217
+   "calls": 36,
+   "wins_lost_per_17": 0.974
   },
   {
    "posteam": "CIN",
-   "games": 4,
+   "games": 5,
+   "mistakes": 9,
+   "calls": 29,
+   "wins_lost_per_17": 1.07
+  },
+  {
+   "posteam": "IND",
+   "games": 5,
    "mistakes": 8,
-   "calls": 25,
-   "wins_lost_per_17": 1.293
+   "calls": 38,
+   "wins_lost_per_17": 1.106
   },
   {
    "posteam": "ARI",
-   "games": 4,
-   "mistakes": 8,
-   "calls": 29,
-   "wins_lost_per_17": 1.383
+   "games": 5,
+   "mistakes": 9,
+   "calls": 38,
+   "wins_lost_per_17": 1.134
   },
   {
    "posteam": "LAC",
-   "games": 4,
-   "mistakes": 9,
-   "calls": 27,
-   "wins_lost_per_17": 1.441
+   "games": 5,
+   "mistakes": 10,
+   "calls": 35,
+   "wins_lost_per_17": 1.294
   },
   {
    "posteam": "DEN",
-   "games": 4,
-   "mistakes": 7,
-   "calls": 26,
-   "wins_lost_per_17": 1.539
+   "games": 5,
+   "mistakes": 11,
+   "calls": 36,
+   "wins_lost_per_17": 1.793
   }
  ]
 }

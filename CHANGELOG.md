@@ -3,6 +3,21 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.1] — 2026-10-13
+
+### Changed
+
+- Play-by-play is read from the shared NFL data store (`Projects/nfl-data`)
+  when it is present, so this machine keeps one copy of the data. CI and fresh
+  clones still use `data/raw/` (`store_dir` in the config).
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.3.0] — 2026-10-13
 
 ### Fixed

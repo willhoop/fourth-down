@@ -60,11 +60,18 @@ def _stadium(df):
     return df
 
 
+def pbp_path(season):
+    """The season's play-by-play: from the shared store if it has the file, else raw_dir."""
+    name = f"play_by_play_{season}.parquet"
+    store = os.path.normpath(os.path.join(ROOT, CONFIG["store_dir"], name))
+    return store if os.path.exists(store) else os.path.join(ROOT, CONFIG["raw_dir"], name)
+
+
 def load(seasons=None):
     seasons = seasons or CONFIG["seasons"]
     frames = []
     for s in seasons:
-        p = os.path.join(ROOT, CONFIG["raw_dir"], f"play_by_play_{s}.parquet")
+        p = pbp_path(s)
         frames.append(pd.read_parquet(p, columns=COLS))
     df = pd.concat(frames, ignore_index=True)
     df = _parse_weather(df)

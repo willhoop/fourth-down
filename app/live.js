@@ -6,8 +6,26 @@
 // tests/test_live.py runs this file against a saved copy of the real feed.
 (function (root) {
   const ESPN_URL = "https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
+  const ESPN_SUMMARY = "https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=";
   const RENAME = { WSH: "WAS", LAR: "LA" };            // ESPN code -> nflverse code
   const code = (a) => RENAME[a] || a;
+
+  // "DAL -8.5": DAL favored by 8.5. Returned for team `ours`: negative = ours favored.
+  function parseLine(det, ours) {
+    if (!det) return undefined;
+    const m = String(det).trim().match(/^([A-Z]{2,3})\s+([-+]?\d+(?:\.\d+)?)$/);
+    if (m) return code(m[1]) === ours ? -Math.abs(+m[2]) : Math.abs(+m[2]);
+    if (/^(EVEN|PK|PICK)/i.test(String(det).trim())) return 0;
+    return undefined;
+  }
+  // the summary feed for one game: the first sportsbook line that parses
+  function lineFromSummary(sum, ours) {
+    for (const p of (sum && sum.pickcenter) || []) {
+      const v = parseLine(p.details, ours);
+      if (v !== undefined) return v;
+    }
+    return undefined;
+  }
 
   function games(feed) {
     const order = { in: 0, pre: 1, post: 2 };
@@ -28,12 +46,8 @@
     if (c.neutralSite === true) out.neutral = true;       // London, Mexico City, the Super Bowl
     // betting line such as "DAL -8.5": the named team is favored by 8.5.
     // Returned in betting convention for us: negative = we are favored.
-    const det = ((c.odds || [])[0] || {}).details;
-    if (det) {
-      const m = String(det).match(/^([A-Z]{2,3})\s+([-+]?\d+(?:\.\d+)?)$/);
-      if (m) out.line = code(m[1]) === ours ? -Math.abs(+m[2]) : Math.abs(+m[2]);
-      else if (/^(EVEN|PK|PICK)/i.test(det)) out.line = 0;
-    }
+    const line = parseLine(((c.odds || [])[0] || {}).details, ours);
+    if (line !== undefined) out.line = line;
     if (game.state !== "in") return out;
     out.usScore = +us.score || 0;
     out.themScore = +them.score || 0;
@@ -57,7 +71,7 @@
     return out;
   }
 
-  const api = { ESPN_URL, games, fill, code };
+  const api = { ESPN_URL, ESPN_SUMMARY, games, fill, code, parseLine, lineFromSummary };
   if (typeof module !== "undefined") module.exports = api;
   else root.Live = api;
 })(this);

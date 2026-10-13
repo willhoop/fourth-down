@@ -3,6 +3,37 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.2] — 2026-10-13
+
+### Added
+
+- **4th Down Duel**, a Wordle-style game for group chats. Make your call before
+  the engine, log what the coach did, and send a scorecard of green, yellow and
+  black squares. It uses the phone's share sheet (iMessage, Android) or copies
+  the text. Reason: friends asked for something to send mid-game.
+- **Betting line autofill.** Picking two teams (or a live game) looks up the
+  pre-game line on ESPN, falling back to the game summary because the
+  scoreboard drops the line at kickoff. If no line is found the app says so and
+  sets the teams even.
+
+### Changed
+
+- **No "your team" perspective.** The form is in terms of the team with the
+  ball and the defense, labelled with team names. A live game selects the team
+  with the ball automatically; a swap button gives the ball to the other team
+  and flips every two-sided input.
+- Team strength reads "Texans by 6.5" instead of a signed betting line.
+- Higher contrast: darker page, lighter input wells with visible edges.
+
+### Record
+
+- **Measured.** No figure changed. The engine, models and grades are untouched;
+  the betting line is an input the user could already set by hand.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Deck: mention the Duel and the line autofill. The
+  technical how-to is updated in this release.
+
 ## [1.3.1] — 2026-10-13
 
 ### Changed

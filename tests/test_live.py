@@ -70,3 +70,25 @@ def test_in_game_from_the_home_side():
     """Washington's view: "WSH 38" is its own 38; timeouts swap; it does not have the ball."""
     f = run({"1": "away", "2": "home"})["out"]["2"]
     assert f["ownSide"] is True and (f["pto"], f["dto"]) == (1, 3) and f["weHaveBall"] is False
+
+
+def node(js):
+    res = subprocess.run(["node", "-e", "const L=require(process.argv[1]+'/app/live.js');" + js, ROOT],
+                         capture_output=True, text=True, check=True)
+    return json.loads(res.stdout)
+
+
+def test_summary_line_after_kickoff():
+    """The summary feed keeps the line after kickoff. "HOU -6.5": HOU favored by
+    6.5, so -6.5 for HOU and +6.5 for TEN. A book with no usable line is skipped."""
+    sum_ = {"pickcenter": [{"details": None}, {"provider": {"name": "DraftKings"}, "details": "HOU -6.5"}]}
+    out = node("const s=" + json.dumps(sum_) + ";console.log(JSON.stringify([L.lineFromSummary(s,'HOU'),L.lineFromSummary(s,'TEN')]))")
+    assert out == [-6.5, 6.5]
+
+
+def test_no_line_is_undefined():
+    """No pickcenter, or text that is not a line, gives no value (the app then sets the teams even).
+    "EVEN" is a line of 0; ESPN's WSH maps to WAS."""
+    out = node("console.log(JSON.stringify([L.lineFromSummary({},'HOU')===undefined,L.parseLine('OFF','HOU')===undefined,"
+               "L.parseLine('EVEN','HOU'),L.parseLine('WSH -3','WAS')]))")
+    assert out == [True, True, 0, -3]

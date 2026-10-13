@@ -4,7 +4,9 @@
 
 1. Click **Fill from a live game**. The app loads this week's games from ESPN.
 2. Pick the game. Games in progress are at the top, marked LIVE.
-3. Tap your team. The two buttons show the teams in the game you picked.
+3. In a live game, the app selects the team with the ball. Before kickoff, it
+   selects the away team. To change it, tap the other team under **Who has the
+   ball?**.
 4. The app fills in the teams, betting line and roof, and in a live game the
    score, clock, down, distance, ball spot and timeouts.
 5. Check every field. The feed is unofficial and can be late or wrong. Then
@@ -12,20 +14,23 @@
 
 ## Set the situation
 
-1. Optional: pick **Our team** and **Their team** under **Matchup**. The app
-   sets the stadium (roof, altitude) from the home team and your kicker from
-   your team. You can still change them.
-2. Enter **Our score** and **Their score**.
+1. Optional: under **Who has the ball?**, pick the offense, then the defense.
+   The engine grades the offense's fourth-down decision only.
+   The app sets the stadium (roof, altitude) from the home team, the kicker of
+   the team with the ball, and the betting line from ESPN. All labels then use
+   the team names. Click **⇄** to give the ball to the other team: the app
+   swaps the scores, timeouts, field side, home side and line.
+2. Enter the score for each team.
 3. Click the **Quarter**.
 4. Enter the **Clock** (minutes and seconds left in the quarter). The app shows
    if the two-minute warning is still to come.
-5. Click **Own** or **Opp** and set the yard line (1–50).
+5. Click the side of the field (for example **HOU side**) and set the yard
+   line (1–50).
 6. Click the **Down**. The app starts on 4th down.
 7. Set **Yards to go**. On 4th & 1, click how far it is: **Inches**, **Not
    sure** or **About a yard**.
 8. Click the number of timeouts for each team.
-9. Under **Where's the game?**, click **Our stadium**, **Their stadium** or
-   **Neutral site** (London, Mexico City, the Super Bowl). It sets home-field
+9. Under **Where's the game?**, click the home team or **Neutral site** (London, Mexico City, the Super Bowl). It sets home-field
    advantage and, with a matchup picked, the stadium.
 10. In the first half, click who gets the second-half kickoff.
 11. Click **Get the call**. The app shows the results screen. To change the
@@ -46,8 +51,13 @@ Each factor has a switch. A factor that is off uses a neutral value.
 |---|---|---|
 | Weather | Wind (mph), temperature (°F), rain or snow | No wind, 70 °F, dry |
 | Stadium | Roof (outdoors or dome), altitude | An average stadium |
-| Team strength | Pre-game point spread, as a betting line (−7 = you are 7-point favorites) | Equal teams, with the usual home-field edge for the home team |
+| Team strength | Which team was favored before kickoff, and by how many points (for example "Texans by 6.5") | Equal teams, with the usual home-field edge for the home team |
 | Kicker | A kicker, league average, or replacement level | A league-average kicker |
+
+When you pick two teams, the app looks up the pre-game line on ESPN (the
+scoreboard, then the game summary, which keeps the line after kickoff). If no
+line is found, the app says so, sets the teams even and switches Team strength
+off.
 
 A dome cancels weather. The kicker list shows kickers with at least 10
 attempts in the last two seasons.
@@ -59,6 +69,28 @@ attempts in the last two seasons.
    it in a message.
 3. The link opens the app at the same situation and shows the call. It is
    short: the situation is packed into about 21 digits.
+
+## Play the 4th Down Duel
+
+The Duel is a game for your group chat. You call each fourth down before the
+engine does.
+
+1. Before you click **Get the call**, click **Your call**: **Go for it**,
+   **Field goal** or **Punt**. It shows only on 4th down. Click it again to
+   clear it.
+2. Click **Get the call**. The Duel card shows a square for each call:
+   green = you agree with the engine; yellow = a toss-up, and you picked the
+   other close option (half credit); black = a miss.
+3. Under **What did the coach do?**, click the coach's real call. The coach gets
+   a row of squares too.
+4. Click **Send scorecard**. On a phone, pick Messages or another app. On a
+   computer, the scorecard is copied; paste it in a message. The squares show in
+   iMessage, Android messages and most chat apps.
+5. For the next fourth down, click **Edit situation**, change the situation, and
+   repeat. One card holds one game for one day. Click **New game** to start
+   again.
+
+The card stays on your device only.
 
 ## Put the app on your home screen
 

@@ -12,14 +12,14 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.3.0 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.3.2 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
 :root{
   color-scheme:dark;
-  --bg:#0c0f12; --panel:#14181d; --raise:#1b2027; --line:#252b33;
-  --ink:#eef1f4; --muted:#8e98a4; --faint:#5d6773;
+  --bg:#06080a; --panel:#12161b; --raise:#232a33; --line:#3b4552;
+  --ink:#f4f6f8; --muted:#aab4bf; --faint:#76818d;
   --go:#3ccf7e; --fg:#f2b441; --punt:#5aa2f0; --bad:#f07067; --focus:#7cc4ff;
   --chip:#1b2027; --field:#2a5a33; --panel-ink:#0c0f12;
   --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
@@ -60,7 +60,7 @@ main{max-width:1080px;margin:0 auto;padding-block:20px 90px;padding-inline:16px}
 .formgrid>.card+.card{margin-top:0}
 label{display:block;font-size:13px;font-weight:500;color:var(--muted);margin:16px 0 6px}
 .row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
-input[type=number],select,input[type=search]{width:100%;min-width:0;padding:10px 12px;border:1px solid transparent;border-radius:10px;
+input[type=number],select,input[type=search]{width:100%;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
   background:var(--raise);color:var(--ink);font:500 16px var(--body);min-height:46px}
 input[type=number]{-moz-appearance:textfield;appearance:textfield;text-align:center;font-variant-numeric:tabular-nums}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
@@ -68,11 +68,12 @@ input:focus,select:focus{border-color:var(--focus);outline:none}
 input[type=range]{width:100%;accent-color:var(--go)}
 .stepper{display:flex;align-items:stretch;gap:6px;min-width:0}
 .stepper input{width:0;min-width:0;flex:1 1 0}
-.stepper button{flex:none;width:44px;min-height:46px;border:0;border-radius:10px;background:var(--raise);color:var(--ink);
+.stepper button{flex:none;width:44px;min-height:46px;border:1px solid var(--line);border-radius:10px;background:var(--raise);color:var(--ink);
   font:600 20px/1 var(--body);cursor:pointer;user-select:none;touch-action:manipulation}
 .stepper button.big{width:48px;font-size:14px;color:var(--muted)}
 .stepper button:active{background:var(--line)}
-.seg{display:flex;gap:4px;background:var(--raise);border-radius:12px;padding:4px}
+.seg{display:flex;gap:4px;background:var(--raise);border:1px solid var(--line);border-radius:12px;padding:4px}
+.note.warn{color:var(--fg)}
 .seg button{flex:1;border:0;background:none;color:var(--muted);padding:9px 4px;min-height:40px;border-radius:9px;
   font:600 14px var(--body);cursor:pointer}
 .seg button.on{background:var(--ink);color:var(--panel-ink)}
@@ -211,6 +212,18 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
   main{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
   .submit{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 }
+
+.swapbtn{flex:0 0 auto;padding:10px 14px;font-size:20px;line-height:1}
+.spreadends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:2px}
+.mybox{margin:14px 0 4px}
+.duel h2{margin-bottom:8px}
+.duelverdict{font-size:15px;margin-bottom:10px;padding-left:10px;border-left:3px solid var(--line)}
+.duelverdict.vg{border-color:#538d4e}.duelverdict.vy{border-color:#c9b458}.duelverdict.vb{border-color:#787c7e}
+.duelgrid{display:grid;gap:6px;margin-bottom:14px}
+.drow{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:8px;font-size:14px}
+.dsq{display:flex;flex-wrap:wrap;gap:4px}
+.sq{display:inline-block;width:22px;height:22px;border-radius:4px}
+.sg{background:#538d4e}.sy{background:#c9b458}.sb{background:#4a5059}.sn{border:2px solid #4a5059}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -238,17 +251,22 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
       <button id="liveload" class="ghost" type="button" style="width:100%">Fill from a live game</button>
       <div id="livepick" hidden>
         <select id="livegame" aria-label="Game" style="margin-top:8px"></select>
-        <label>Your team</label>
+        <label>Who has the ball?</label>
         <div class="seg" id="liveside"><button class="on">Away</button><button>Home</button></div>
       </div>
       <div class="note" id="livemsg" aria-live="polite"></div>
     </div>
-    <label for="ourteam">Matchup (optional)</label>
-    <div class="row"><div><select id="ourteam" aria-label="Our team"></select></div><div><select id="theirteam" aria-label="Their team"></select></div></div>
+    <div id="matchupbox">
+      <label for="ourteam">Who has the ball? <span class="note">(optional, then the defense)</span></label>
+      <div class="row"><div><select id="ourteam" aria-label="Who has the ball"></select></div>
+        <div><select id="theirteam" aria-label="Defense"></select></div>
+        <button id="swapteams" class="ghost swapbtn" type="button" aria-label="Swap which team has the ball" title="Swap which team has the ball">&#8644;</button></div>
+    </div>
     <div class="note" id="teamnote"></div>
+    <div class="note" id="linenote" aria-live="polite"></div>
     <div class="row">
-      <div><label for="us">Our score</label><input id="us" type="number" min="0" value="17"></div>
-      <div><label for="them">Their score</label><input id="them" type="number" min="0" value="20"></div>
+      <div><label for="us" id="lab_us">Offense score</label><input id="us" type="number" min="0" value="17"></div>
+      <div><label for="them" id="lab_them">Defense score</label><input id="them" type="number" min="0" value="20"></div>
     </div>
     <label>Quarter</label>
     <div class="seg" id="qtr"><button>1</button><button>2</button><button>3</button><button class="on">4</button></div>
@@ -258,7 +276,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     </div>
     <div class="note" id="tmwnote"></div>
     <label>Ball on</label>
-    <div class="seg" id="side" style="margin-bottom:6px"><button>Own</button><button class="on">Opp</button></div>
+    <div class="seg" id="side" style="margin-bottom:6px"><button>Offense side</button><button class="on">Defense side</button></div>
     <input id="yd" type="number" min="1" max="50" value="34" aria-label="yard line" data-big="5">
     <label>Down</label>
     <div class="seg" id="down"><button>1st</button><button>2nd</button><button>3rd</button><button class="on">4th</button></div>
@@ -267,13 +285,13 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <div id="shortbox" hidden><label>How far is the 1?</label>
       <div class="seg" id="short"><button>Inches</button><button class="on">Not sure</button><button>About a yard</button></div></div>
     <div class="row">
-      <div><label>Our timeouts</label><div class="seg" id="pto"><button>0</button><button>1</button><button class="on">2</button><button>3</button></div></div>
-      <div><label>Their timeouts</label><div class="seg" id="dto"><button>0</button><button>1</button><button>2</button><button class="on">3</button></div></div>
+      <div><label id="lab_pto">Offense timeouts</label><div class="seg" id="pto"><button>0</button><button>1</button><button class="on">2</button><button>3</button></div></div>
+      <div><label id="lab_dto">Defense timeouts</label><div class="seg" id="dto"><button>0</button><button>1</button><button>2</button><button class="on">3</button></div></div>
     </div>
     <label>Where's the game?</label>
-    <div class="seg" id="home"><button class="on">Our stadium</button><button>Their stadium</button><button>Neutral site</button></div>
+    <div class="seg" id="home"><button class="on">Offense home</button><button>Defense home</button><button>Neutral site</button></div>
     <div id="r2hbox"><label>Second-half kickoff goes to</label>
-      <div class="seg" id="r2h"><button class="on">Us</button><button>Them</button></div></div>
+      <div class="seg" id="r2h"><button class="on">Offense</button><button>Defense</button></div></div>
   </div>
 
   <div class="card">
@@ -298,16 +316,17 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <div class="toggle" id="t-spread">
       <div class="head">Team strength <label class="switch"><input type="checkbox" aria-label="Team strength"><span></span></label></div>
       <div class="body">
-        <label for="spread">Our pre-game point spread: <b id="spreadv">PK</b> <span id="spreadtxt" class="note"></span></label>
+        <label for="spread">Favored before kickoff: <b id="spreadv">Even</b></label>
         <input id="spread" type="range" min="-17" max="17" step="0.5" value="0">
-        <div class="note">Read it like a betting line: −7 means we were 7-point favorites, +3 means 3-point underdogs.
+        <div class="spreadends"><span id="lab_sl">Offense</span><span id="lab_sr">Defense</span></div>
+        <div class="note">Slide toward the team that was favored, by the pre-game point spread.
           With this off, the teams are treated as equal and the home team gets the usual home-field edge.</div>
       </div>
     </div>
     <div class="toggle" id="t-kicker">
       <div class="head">Kicker <label class="switch"><input type="checkbox" aria-label="Kicker"><span></span></label></div>
       <div class="body">
-        <label for="ksearch">Our kicker</label>
+        <label for="ksearch" id="lab_kick">Offense kicker</label>
         <input id="ksearch" type="search" placeholder="Search a name or team (Aubrey, DAL)" autocomplete="off" enterkeyhint="done">
         <div class="note" id="kcount" aria-live="polite"></div>
         <div class="note" id="kpicked" style="margin-top:6px"></div>
@@ -315,6 +334,10 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
         <div class="kchart" id="kchart" role="listbox" aria-label="Kickers ranked by make percentage from 50 yards"></div>
         <div class="note" id="kickernote"></div>
       </div>
+    </div>
+    <div id="mybox" class="mybox">
+      <label>Your call <span class="note">(optional) · play the Duel against the engine</span></label>
+      <div class="seg" id="mycall"><button type="button">Go for it</button><button type="button">Field goal</button><button type="button">Punt</button></div>
     </div>
     <button id="go" class="submit" type="button">Get the call →</button>
   </div>
@@ -336,6 +359,19 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <div class="actions"><button id="share" class="primary" type="button">Share this call</button>
       <button id="edit" class="ghost" type="button">Edit situation</button></div>
     <div class="note" id="sharemsg" aria-live="polite"></div>
+  </div>
+  <div class="card duel" id="duel" hidden>
+    <h2 id="dueltitle">4th Down Duel</h2>
+    <p class="note" id="duelempty">Pick <b>Your call</b> before you tap Get the call. Every fourth down adds a square: green for a match with the engine, yellow for half credit on a toss-up, black for a miss. Then send the card to your friends.</p>
+    <div id="duelbody" hidden>
+      <div class="duelverdict" id="duelverdict" aria-live="polite"></div>
+      <div class="duelgrid" id="duelgrid"></div>
+      <label>What did the coach do?</label>
+      <div class="seg" id="coachcall"><button type="button">Go for it</button><button type="button">Field goal</button><button type="button">Punt</button></div>
+      <div class="actions"><button id="duelsend" class="primary" type="button">Send scorecard</button>
+        <button id="duelnew" class="ghost" type="button">New game</button></div>
+      <div class="note" id="duelmsg" aria-live="polite"></div>
+    </div>
   </div>
   <div class="card">
     <h2>Win chance after each choice</h2>
@@ -585,12 +621,12 @@ function refreshForm() {
   document.querySelectorAll(".toggle").forEach((t) => t.classList.toggle("on", t.querySelector("input[type=checkbox]").checked));
   $("windv").textContent = $("wind").value; $("tempv").textContent = $("temp").value;
   const line = +$("spread").value;
-  $("spreadv").textContent = line === 0 ? "PK" : (line > 0 ? "+" : "−") + Math.abs(line);
-  $("spreadtxt").textContent = line === 0 ? "· pick'em" : line < 0 ? `· we're favored by ${-line}` : `· we're ${line}-point underdogs`;
+  $("spreadv").textContent = favTxt(line);
   const st = readState();
   $("r2hbox").style.display = st.qtr <= 2 ? "" : "none";
   $("tmwnote").textContent = (st.qtr === 2 || st.qtr === 4) ? (st.half_seconds > 120 ? "Two-minute warning still to come." : "Two-minute warning already used.") : "";
   $("shortbox").hidden = !(st.down === 4 && st.ydstogo === 1);
+  $("mybox").hidden = st.down !== 4;
   $("downnote").textContent = st.down < 4 ? "Early down: the engine compares running a play with kicking a field goal now." : "";
   const k = kickerSel;
   $("kickernote").textContent = k === "repl" ? `A replacement kicker makes ${pct(MODEL.fg.replacement.made_pct, 0)} of his kicks against ${pct(MODEL.fg.replacement.expected_pct, 0)} expected.` : "";
@@ -731,8 +767,8 @@ const TEAM_NAMES = { ARI: "Cardinals", ATL: "Falcons", BAL: "Ravens", BUF: "Bill
 (function () {
   const opts = (lab) => `<option value="">${lab}</option>` + Object.keys(TEAM_NAMES).sort((a, b) => TEAM_NAMES[a].localeCompare(TEAM_NAMES[b]))
     .map((t) => `<option value="${t}">${TEAM_NAMES[t]} (${t})</option>`).join("");
-  $("ourteam").innerHTML = opts("Our team");
-  $("theirteam").innerHTML = opts("Their team");
+  $("ourteam").innerHTML = opts("Who has the ball");
+  $("theirteam").innerHTML = opts("Defense");
 })();
 function setToggle(id, on) { const c = $(id).querySelector("input[type=checkbox]"); c.checked = on; }
 function applyTeams() {
@@ -754,11 +790,90 @@ function applyTeams() {
     bits.push(`kicker ${KLIST.find((k) => k.id === kickerSel).name}`);
   }
   $("teamnote").textContent = bits.length ? "Filled in: " + bits.join(" · ") + ". You can still change them below." : "";
+  teamLabels();
+  refreshForm();
+  autoLine();
+}
+// the pre-game betting line for the two teams, from ESPN: the scoreboard first,
+// then the game summary (it keeps the line after kickoff). If neither has it,
+// say so and set the teams even.
+const lineCache = {};
+let lineToken = 0;
+async function autoLine() {
+  const O = $("ourteam").value, D = $("theirteam").value, note = $("linenote");
+  if (!O || !D || O === D) { note.textContent = ""; return; }
+  const tok = ++lineToken, key = O + "|" + D;
+  let line = lineCache[key];
+  if (line === undefined) {
+    note.className = "note"; note.textContent = "Looking up the betting line\u2026";
+    try {
+      if (!liveGames.length) {
+        const r = await fetch(Live.ESPN_URL, { cache: "no-store" });
+        if (r.ok) liveGames = Live.games(await r.json());
+      }
+      const g = liveGames.find((x) => x.c.competitors.every((c) => [O, D].includes(Live.code(c.team.abbreviation))));
+      if (g) {
+        const side = Live.code(g.c.competitors.find((c) => c.homeAway === "home").team.abbreviation) === O ? "home" : "away";
+        line = Live.fill(g, side).line;
+        if (line === undefined) {
+          const r = await fetch(Live.ESPN_SUMMARY + encodeURIComponent(g.id), { cache: "no-store" });
+          if (r.ok) line = Live.lineFromSummary(await r.json(), O);
+        }
+      }
+    } catch (e) { line = undefined; }
+    if (line !== undefined) { lineCache[key] = line; lineCache[D + "|" + O] = -line; }
+  }
+  if (tok !== lineToken) return;                          // the teams changed while we waited
+  if (line === undefined) {
+    $("spread").value = 0; setToggle("t-spread", false);
+    note.className = "note warn";
+    note.textContent = `No betting line found for ${O} vs ${D}, so the teams are set even. You can set it under Team strength.`;
+  } else {
+    $("spread").value = line; setToggle("t-spread", true);
+    note.className = "note";
+    note.textContent = `Betting line from ESPN: ${favTxt(line)}.`;
+  }
   refreshForm();
 }
 $("ourteam").addEventListener("change", applyTeams);
 $("theirteam").addEventListener("change", applyTeams);
 [...$("home").children].forEach((b) => b.addEventListener("click", () => { if ($("ourteam").value || $("theirteam").value) applyTeams(); }));
+
+// the spread in team terms only: "Bills by 3", "Even"
+function favTxt(line) {
+  if (line === 0) return "Even";
+  const O = $("ourteam").value, D = $("theirteam").value;
+  const fav = line < 0 ? (O ? TEAM_NAMES[O] || O : "Offense") : (D ? TEAM_NAMES[D] || D : "Defense");
+  return `${fav} by ${Math.abs(line)}`;
+}
+// labels follow the teams: "Texans score", "HOU side", "Titans home"...
+function teamLabels() {
+  const O = $("ourteam").value, D = $("theirteam").value;
+  const on = O ? TEAM_NAMES[O] || O : "Offense", dn = D ? TEAM_NAMES[D] || D : "Defense";
+  const oc = O || "Offense", dc = D || "Defense";
+  $("lab_us").textContent = on + " score";
+  $("lab_them").textContent = dn + " score";
+  $("lab_pto").textContent = on + " timeouts";
+  $("lab_dto").textContent = dn + " timeouts";
+  $("lab_kick").textContent = on + " kicker";
+  $("lab_sl").textContent = on + " favored"; $("lab_sr").textContent = dn + " favored";
+  $("spreadv").textContent = favTxt(+$("spread").value);
+  const s = $("side").children; s[0].textContent = oc + " side"; s[1].textContent = dc + " side";
+  const h = $("home").children; h[0].textContent = (O ? oc : "Offense") + " home"; h[1].textContent = (D ? dc : "Defense") + " home";
+  const k = $("r2h").children; k[0].textContent = on; k[1].textContent = dn;
+}
+// swap which team has the ball: flips every two-sided input
+function swapSides() {
+  [$("ourteam").value, $("theirteam").value] = [$("theirteam").value, $("ourteam").value];
+  [$("us").value, $("them").value] = [$("them").value, $("us").value];
+  const pto = segVal("pto"); segSet("pto", segVal("dto")); segSet("dto", pto);
+  segSet("side", 1 - segVal("side"));
+  if (segVal("home") < 2) segSet("home", 1 - segVal("home"));
+  segSet("r2h", 1 - segVal("r2h"));
+  $("spread").value = -(+$("spread").value);
+  applyTeams();
+}
+$("swapteams").onclick = swapSides;
 
 // ---------- the one-sentence "why"
 function whyText(st, r) {
@@ -828,6 +943,7 @@ function loadShared() {
     if (KLIST.some((x) => x.id === id)) kickerSel = id;
   }
   if (tail[n] && tail[n].includes("~")) { const [o, th] = tail[n].split("~"); $("ourteam").value = o; $("theirteam").value = th; }
+  teamLabels();
   drawKickers();
   return true;
 }
@@ -852,7 +968,7 @@ async function loadLive() {
     liveGames = Live.games(await r.json());
     $("livegame").innerHTML = `<option value="">Pick a game</option>` + liveGames.map((g) =>
       `<option value="${esc(g.id)}">${g.state === "in" ? "LIVE \u00b7 " : ""}${esc(g.name)} \u00b7 ${esc(g.detail || "")}</option>`).join("");
-    msg.textContent = liveGames.length ? "Pick a game, then tap your team." : "No games on the schedule right now.";
+    msg.textContent = liveGames.length ? "Pick a game." : "No games on the schedule right now.";
   } catch (e) {
     msg.textContent = "Live games are not available here (the feed could not be reached).";
   }
@@ -866,7 +982,7 @@ function fillFromLive() {
   segSet("home", f.neutral ? 2 : (f.home ? 0 : 1));
   applyTeams();
   if (f.indoor !== undefined) { setToggle("t-stadium", true); segSet("roof", f.indoor ? 1 : 0); }
-  if (f.line !== undefined) { $("spread").value = f.line; setToggle("t-spread", true); filled.push("betting line"); }
+
   if (f.state === "in") {
     $("us").value = f.usScore; $("them").value = f.themScore; filled.push("score");
     if (f.qtr) segSet("qtr", f.qtr - 1);
@@ -876,21 +992,26 @@ function fillFromLive() {
     if (f.yd !== undefined) { segSet("side", f.ownSide ? 0 : 1); $("yd").value = f.yd; filled.push("ball spot"); }
     if (f.pto !== undefined) { segSet("pto", f.pto); filled.push("timeouts"); }
     if (f.dto !== undefined) segSet("dto", f.dto);
-    if (f.weHaveBall === false) filled.push("note: the other team has the ball right now");
+
   }
   refreshForm();
+  $("matchupbox").hidden = true;
   $("livemsg").textContent = "Filled: " + filled.join(", ") + ". Check it, then get the call.";
 }
 $("liveload").onclick = () => { $("livepick").hidden = false; loadLive(); };
 $("livegame").onchange = () => {
   // label the two buttons with the teams in this game, then fill
   const g = liveGames.find((x) => x.id === $("livegame").value);
-  if (g) {
-    const tm = (side) => Live.code(g.c.competitors.find((x) => x.homeAway === side).team.abbreviation);
-    const b = $("liveside").children;
-    b[0].textContent = TEAM_NAMES[tm("away")] || tm("away");
-    b[1].textContent = TEAM_NAMES[tm("home")] || tm("home");
-  }
+  liveName = g ? `${Live.code(g.c.competitors.find((x) => x.homeAway === "away").team.abbreviation)} @ ${Live.code(g.c.competitors.find((x) => x.homeAway === "home").team.abbreviation)}` : "";
+  if (!g) { $("matchupbox").hidden = false; return; }
+  const comp = (side) => g.c.competitors.find((x) => x.homeAway === side);
+  const tm = (side) => Live.code(comp(side).team.abbreviation);
+  const b = $("liveside").children;
+  b[0].textContent = TEAM_NAMES[tm("away")] || tm("away");
+  b[1].textContent = TEAM_NAMES[tm("home")] || tm("home");
+  // during a game the feed says who has the ball; otherwise start with the away team
+  const pos = g.c.situation && g.c.situation.possession;
+  segSet("liveside", pos !== undefined && String(pos) === String(comp("home").team.id) ? 1 : 0);
   fillFromLive();
 };
 [...$("liveside").children].forEach((b) => b.addEventListener("click", () => { if ($("livegame").value) fillFromLive(); }));
@@ -899,10 +1020,12 @@ let lastState = null, lastTog = null, lastResult = null;
 function summary(st, tog) {
   const sd = st.score_diff, clock = st.half_seconds - (st.qtr === 1 || st.qtr === 3 ? 900 : 0);
   const score = sd === 0 ? "tied" : sd > 0 ? `up ${sd}` : `down ${-sd}`;
-  $("sumline").textContent = `${ORD[st.down - 1]} & ${st.ydstogo} at ${spotTxt(st.yardline)} · Q${st.qtr} ${Math.floor(clock / 60)}:${String(clock % 60).padStart(2, "0")} · ${score} · timeouts ${st.pos_to}–${st.def_to}`;
-  const line = -st.spread;
-  const lineTxt = line === 0 ? "PK" : (line > 0 ? "+" : "−") + Math.abs(line);
-  const on = Object.entries(tog).filter(([, v]) => v).map(([k]) => ({ weather: "weather", stadium: "stadium", spread: `team strength (line ${lineTxt})`, kicker: "kicker" }[k]));
+  const O = $("ourteam").value, D = $("theirteam").value;
+  const at = O && D ? (st.yardline === 50 ? "midfield" : st.yardline > 50 ? `${O} ${100 - st.yardline}` : `${D} ${st.yardline}`) : spotTxt(st.yardline);
+  const scoreTxt = O && D ? `${O} ${$("us").value}\u2013${$("them").value} ${D}` : score;
+  $("sumline").textContent = `${O ? O + " ball \u00b7 " : ""}${ORD[st.down - 1]} & ${st.ydstogo} at ${at} \u00b7 Q${st.qtr} ${Math.floor(clock / 60)}:${String(clock % 60).padStart(2, "0")} \u00b7 ${scoreTxt} \u00b7 timeouts ${st.pos_to}\u2013${st.def_to}`;
+  const lineTxt = favTxt(-st.spread);
+  const on = Object.entries(tog).filter(([, v]) => v).map(([k]) => ({ weather: "weather", stadium: "stadium", spread: `team strength (${lineTxt})`, kicker: "kicker" }[k]));
   $("sumfactors").textContent = on.length ? "Factors on: " + on.join(", ") : "No optional factors on.";
 }
 function submit() {
@@ -913,13 +1036,115 @@ function submit() {
   window.scrollTo(0, 0);
   summary(st, tog);
   lastResult = renderCall(st, tog);
+  drawDuel(addToCard(st, lastResult));
+  segSet("mycall", -1);
   $("map").innerHTML = `<text x="10" y="20">Drawing the map…</text>`;
   setTimeout(() => renderMap(st, tog), 30);                // let the call paint first
 }
+// ---------- 4th Down Duel: make your call before the engine does, log what the
+// coach did, send the scorecard. Green = matched the engine. Yellow = a toss-up
+// and you took the other close option (half credit). Black = missed. The emoji
+// squares exist only in the text that is sent; the page draws plain boxes.
+const SQ = { g: "\uD83D\uDFE9", y: "\uD83D\uDFE8", b: "\u2B1B", n: "\u2B1C" };
+const CALLS = ["go", "fg", "punt"];
+let liveName = "";                                   // "BUF @ KC" when a live game is picked
+function cardTitle() {
+  if (liveName) return liveName;
+  const O = $("ourteam").value, D = $("theirteam").value;
+  return O && D ? [O, D].sort().join(" vs ") : "Today";
+}
+const cardKey = (title) => title + "|" + new Date().toLocaleDateString("en-CA");
+function loadCard() { try { return JSON.parse(localStorage.getItem("fd-duel")) || null; } catch (e) { return null; } }
+function saveCard(c) { try { localStorage.setItem("fd-duel", JSON.stringify(c)); } catch (e) {} }
+function duelGrade(pick, row) {
+  if (!pick) return "n";
+  if (pick === row.best) return "g";
+  const ranked = CALLS.filter((k) => row.wp[k] !== null).sort((a, b) => row.wp[b] - row.wp[a]);
+  return row.tossup && pick === ranked[1] ? "y" : "b";
+}
+const duelPts = (s) => (s === "g" ? 1 : s === "y" ? 0.5 : 0);
+function addToCard(st, r) {
+  const i = segVal("mycall");
+  if (st.down !== 4 || i < 0) return null;
+  const title = cardTitle();
+  let c = loadCard();
+  if (!c || c.key !== cardKey(title)) c = { key: cardKey(title), title, rows: [] };
+  const sit = [st.qtr, st.half_seconds, st.yardline, st.ydstogo, st.score_diff].join(".");
+  const row = { sit, pick: CALLS[i], best: r.best, tossup: r.tossup, wp: r.wp, coach: null };
+  const last = c.rows[c.rows.length - 1];
+  if (last && last.sit === sit) { row.coach = last.coach; c.rows[c.rows.length - 1] = row; }   // re-submitted the same play
+  else c.rows.push(row);
+  saveCard(c);
+  return row;
+}
+function duelTally(c) {
+  const sc = c.rows.map((x) => ({ me: duelGrade(x.pick, x), coach: duelGrade(x.coach, x) }));
+  const nCoach = c.rows.filter((x) => x.coach).length;
+  return { sc, nCoach, me: sc.reduce((a, x) => a + duelPts(x.me), 0), co: sc.reduce((a, x) => a + duelPts(x.coach), 0) };
+}
+function duelLine(me, co, nCoach, n) {
+  if (!nCoach) return `${me}/${n} on fourth-down calls.`;
+  return me > co ? "Out-coached the coach." : me < co ? "The coach got me this time." : "Dead even with the coach.";
+}
+function drawDuel(row) {
+  const c = loadCard(), box = $("duel");
+  if (!c || !c.rows.length) {
+    box.hidden = lastState && lastState.down === 4 ? false : true;
+    $("duelbody").hidden = true;
+    $("duelempty").hidden = false;
+    return;
+  }
+  box.hidden = false; $("duelbody").hidden = false; $("duelempty").hidden = true;
+  const N = NAMES;
+  if (row) {
+    const s = duelGrade(row.pick, row);
+    $("duelverdict").innerHTML = s === "g" ? `You said <b>${N[row.pick]}</b>. The engine agrees.`
+      : s === "y" ? `You said <b>${N[row.pick]}</b>. Toss-up, the engine leans ${N[row.best].toLowerCase()}. Half credit.`
+      : `You said <b>${N[row.pick]}</b>. The engine says ${N[row.best].toLowerCase()}.`;
+    $("duelverdict").className = "duelverdict v" + s;
+  } else if (!$("duelverdict").textContent) $("duelverdict").className = "duelverdict";
+  const t = duelTally(c), cell = (s) => `<i class="sq s${s}"></i>`;
+  $("duelgrid").innerHTML =
+    `<div class="drow"><span>Me</span><span class="dsq">${t.sc.map((x) => cell(x.me)).join("")}</span><b>${t.me}/${t.sc.length}</b></div>` +
+    `<div class="drow"><span>Coach</span><span class="dsq">${t.sc.map((x) => cell(x.coach)).join("")}</span><b>${t.nCoach ? t.co + "/" + t.nCoach : "\u2014"}</b></div>`;
+  $("dueltitle").textContent = "4th Down Duel \u00b7 " + c.title;
+  const lastRow = c.rows[c.rows.length - 1];
+  [...$("coachcall").children].forEach((b, i) => b.classList.toggle("on", lastRow.coach === CALLS[i]));
+}
+function duelText() {
+  const c = loadCard(), t = duelTally(c);
+  const lines = [`4th Down Duel \u00b7 ${c.title}`, `${t.sc.map((x) => SQ[x.me]).join("")}  Me ${t.me}/${t.sc.length}`];
+  if (t.nCoach) lines.push(`${t.sc.map((x) => SQ[x.coach]).join("")}  Coach ${t.co}/${t.nCoach}`);
+  lines.push(duelLine(t.me, t.co, t.nCoach, t.sc.length), location.origin + location.pathname);
+  return lines.join("\n");
+}
+// your call: tap to pick, tap again to clear
+[...$("mycall").children].forEach((b, i) => b.onclick = () => segSet("mycall", segVal("mycall") === i ? -1 : i));
+[...$("coachcall").children].forEach((b, i) => b.onclick = () => {
+  const c = loadCard(); if (!c || !c.rows.length) return;
+  const last = c.rows[c.rows.length - 1];
+  last.coach = last.coach === CALLS[i] ? null : CALLS[i];
+  saveCard(c); drawDuel(null);
+});
+$("duelsend").onclick = async () => {
+  const c = loadCard(); if (!c || !c.rows.length) return;
+  const text = duelText(), msg = $("duelmsg");
+  msg.textContent = "";
+  if (navigator.share) {
+    try { await navigator.share({ text }); return; } catch (e) { if (e && e.name === "AbortError") return; }
+  }
+  try { await navigator.clipboard.writeText(text); msg.textContent = "Scorecard copied. Paste it in the group chat."; }
+  catch (e) { msg.innerHTML = `<textarea class="sharebox" rows="5" readonly>${esc(text)}</textarea>`; msg.querySelector("textarea").select(); }
+};
+$("duelnew").onclick = () => {
+  try { localStorage.removeItem("fd-duel"); } catch (e) {}
+  $("duelmsg").textContent = ""; $("duelverdict").textContent = ""; drawDuel(null);
+};
 $("go").onclick = submit;
 $("view-form").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT") { e.preventDefault(); submit(); } });
 $("edit").onclick = () => { $("view-result").hidden = true; $("view-form").hidden = false; window.scrollTo(0, 0); };
 refreshForm();
+teamLabels();
 if (loadShared()) submit();
 
 // ---------- confidence models: 8 MB, loaded after the page so the call is never held up

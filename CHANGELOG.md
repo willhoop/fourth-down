@@ -3,6 +3,19 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.2.5] — 2026-10-13
+
+### Removed
+
+- The football emoji from the app header. The site now has no emoji.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.2.4] — 2026-10-13
 
 ### Changed

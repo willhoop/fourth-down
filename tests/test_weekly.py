@@ -25,3 +25,11 @@ def test_weekly_shape_and_order():
         assert all(max(v for k, v in c["wp"].items() if k != "go" and v is not None) >= 0.10 for c in wk["best"])
         # a pick-six is never "converted"
         assert not any(c["converted"] and "INTERCEPTED" in c["what_happened"] for c in wk["best"])
+
+
+def test_site_has_no_emoji():
+    """The app pages carry no emoji (pictographs U+1F000 and up, or U+2600-27BF)."""
+    for name in ("index.html", "engine.js", "live.js"):
+        text = open(os.path.join(ROOT, "app", name), encoding="utf-8").read()
+        bad = [c for c in text if ord(c) >= 0x1F000 or 0x2600 <= ord(c) <= 0x27BF]
+        assert not bad, f"{name}: {bad[:5]}"

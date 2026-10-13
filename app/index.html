@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.3.6 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.3.7 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -60,6 +60,7 @@ main{max-width:1080px;margin:0 auto;padding-block:20px 90px;padding-inline:16px}
 .formgrid>.card+.card{margin-top:0}
 label{display:block;font-size:13px;font-weight:500;color:var(--muted);margin:16px 0 6px}
 .row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
+.teamrow.flip{flex-direction:row-reverse}
 input[type=number],select,input[type=search]{width:100%;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
   background:var(--raise);color:var(--ink);font:500 16px var(--body);min-height:46px}
 input[type=number]{-moz-appearance:textfield;appearance:textfield;text-align:center;font-variant-numeric:tabular-nums}
@@ -291,7 +292,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     </div>
     <div class="note" id="teamnote"></div>
     <div class="note" id="linenote" aria-live="polite"></div>
-    <div class="row">
+    <div class="row teamrow" id="scorerow">
       <div><label for="us" id="lab_us">Offense score</label><input id="us" type="number" min="0" value="17"></div>
       <div><label for="them" id="lab_them">Defense score</label><input id="them" type="number" min="0" value="20"></div>
     </div>
@@ -311,7 +312,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <label for="togo">Yards to go</label><input id="togo" type="number" min="1" max="30" value="3">
     <div id="shortbox" hidden><label>How far is the 1?</label>
       <div class="seg" id="short"><button>Inches</button><button class="on">Not sure</button><button>About a yard</button></div></div>
-    <div class="row">
+    <div class="row teamrow" id="torow">
       <div><label id="lab_pto">Offense timeouts</label><div class="seg" id="pto"><button>0</button><button>1</button><button class="on">2</button><button>3</button></div></div>
       <div><label id="lab_dto">Defense timeouts</label><div class="seg" id="dto"><button>0</button><button>1</button><button>2</button><button class="on">3</button></div></div>
     </div>
@@ -915,7 +916,12 @@ function teamLabels() {
   const k = $("r2h").children; k[0].textContent = on; k[1].textContent = dn;
 }
 // swap which team has the ball: flips every two-sided input
+// each team's score and timeouts stay in the same place on screen when the ball
+// changes hands: the offense/defense inputs swap values, and the row flips
+let teamFlip = false;
+function setFlip(v) { teamFlip = v; ["scorerow", "torow"].forEach((id) => $(id).classList.toggle("flip", v)); }
 function swapSides() {
+  setFlip(!teamFlip);
   [$("ourteam").value, $("theirteam").value] = [$("theirteam").value, $("ourteam").value];
   [$("us").value, $("them").value] = [$("them").value, $("us").value];
   const pto = segVal("pto"); segSet("pto", segVal("dto")); segSet("dto", pto);
@@ -1087,10 +1093,18 @@ function pickGame() {
   // during a game the feed says who has the ball; otherwise start with the away team
   const pos = g.c.situation && g.c.situation.possession;
   segSet("liveside", pos !== undefined && String(pos) === String(comp("home").team.id) ? 1 : 0);
+  setFlip(segVal("liveside") === 1);                    // away team on the left, home on the right
   fillFromLive();
   drawLiveList();
 }
-[...$("liveside").children].forEach((b) => b.addEventListener("click", () => { if ($("livegame").value) fillFromLive(); }));
+// tapping the other team: swap every two-sided input first, so the scores stay with their teams
+[...$("liveside").children].forEach((b, i) => b.addEventListener("click", () => {
+  const g = liveGames.find((x) => x.id === $("livegame").value);
+  if (!g) return;
+  const code = Live.code(g.c.competitors.find((x) => x.homeAway === (i === 1 ? "home" : "away")).team.abbreviation);
+  if ($("ourteam").value && $("ourteam").value !== code) swapSides();
+  fillFromLive();
+}));
 // ---------- the two screens
 let lastState = null, lastTog = null, lastResult = null;
 function summary(st, tog) {

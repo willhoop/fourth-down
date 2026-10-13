@@ -3,6 +3,23 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.7] — 2026-10-13
+
+### Fixed
+
+- **Switching who has the ball no longer moves the scores to the other team.**
+  In a live game, tapping the other team relabelled the score boxes but kept the
+  numbers, so the Bears' 17 became the Packers' 17. Now the scores and timeouts
+  swap with the ball, and each team's boxes stay in the same place on screen
+  (away on the left, home on the right).
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.3.6] — 2026-10-13
 
 ### Changed

@@ -1,0 +1,15 @@
+# Fourth Down Engine
+
+> Go for it, kick or punt? It scores every NFL fourth-down option by the chance to win, on your phone during the game, and grades every head coach and kicker.
+
+Site: https://willhoop.github.io/fourth-down/
+Portfolio: https://willhoop.github.io/
+Keywords: NFL, American football, fourth down, win probability, sports analytics, coaching decisions, kicker ratings, go for it
+
+## Links
+
+- [Open the app](https://willhoop.github.io/fourth-down/)
+- [White paper](https://github.com/willhoop/fourth-down/blob/main/docs/fourth-down-whitepaper.md): method, math, results and sources
+- [Slide deck](https://github.com/willhoop/fourth-down/blob/main/docs/fourth-down-deck.md): the same story in plain English
+- [Technical docs](https://github.com/willhoop/fourth-down/blob/main/docs/README.md): install, run and maintain
+- [Source](https://github.com/willhoop/fourth-down)

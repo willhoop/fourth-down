@@ -226,26 +226,31 @@ def write(d, df):
             "conf_wrong", "realized", "win"]
     d[keep].to_csv(os.path.join(ROOT, "data", "decisions.csv.gz"), index=False, float_format="%.4f")
     rng = np.random.default_rng(0)
-    gm = pd.concat([df[["game_id", "home_coach"]].rename(columns={"home_coach": "coach"}),
-                    df[["game_id", "away_coach"]].rename(columns={"away_coach": "coach"})]).drop_duplicates()
+    gm = pd.concat([df[["game_id", "season", "home_coach"]].rename(columns={"home_coach": "coach"}),
+                    df[["game_id", "season", "away_coach"]].rename(columns={"away_coach": "coach"})]).drop_duplicates()
     gm["coach"] = gm["coach"].replace(CONFIG["coach_aliases"])
-    games_by_coach = gm.groupby("coach").size().to_dict()
-    table = coach_table(d, games_by_coach, rng)
+    cur_coaches = sorted(set(d.loc[d["season"] == CONFIG["current_season"], "coach"]))
 
-    # league reference: every head coach with a full season of games in the data
-    eligible = [v for v in table.values() if v["games"] >= CONFIG["grade_min_games"]]
-    ref = np.array(sorted(v["wp_lost_per_game"] for v in eligible))
-    for v in table.values():
-        if v["games"] >= CONFIG["grade_min_games"]:
-            pct = float((ref < v["wp_lost_per_game"]).mean())     # share of coaches who did better
-            v["percentile_better_than"] = round(1 - pct, 3)
-            v["grade"] = next(L for cut, L in LETTERS if pct < cut)
-        else:
-            v["percentile_better_than"], v["grade"] = None, "Incomplete"
+    def graded(dd, gg):
+        """Coach table for decisions dd, graded against every coach with a full
+        season of games in gg (the same window)."""
+        table = coach_table(dd, gg.groupby("coach").size().to_dict(), rng)
+        eligible = [v for v in table.values() if v["games"] >= CONFIG["grade_min_games"]]
+        ref = np.array(sorted(v["wp_lost_per_game"] for v in eligible))
+        for v in table.values():
+            if v["games"] >= CONFIG["grade_min_games"]:
+                pct = float((ref < v["wp_lost_per_game"]).mean())     # share of coaches who did better
+                v["percentile_better_than"] = round(1 - pct, 3)
+                v["grade"] = next(L for cut, L in LETTERS if pct < cut)
+            else:
+                v["percentile_better_than"], v["grade"] = None, "Incomplete"
+        cur = sorted((table[c] for c in cur_coaches if c in table), key=lambda v: v["wp_lost_per_game"])
+        return cur, len(eligible)
 
-    cur = d[d["season"] == CONFIG["current_season"]]
-    cur_coaches = sorted(set(cur["coach"]))
-    current = sorted((table[c] for c in cur_coaches if c in table), key=lambda v: v["wp_lost_per_game"])
+    current, n_ref = graded(d, gm)
+    rf = CONFIG["recent_from"]
+    current_recent, n_ref_recent = graded(d[d["season"] >= rf], gm[gm["season"] >= rf])
+    eligible = range(n_ref)
 
     league = d.groupby("season").apply(lambda g: pd.Series({
         "decisions": len(g), "go_rate": round(float((g["choice"] == "go").mean()), 3),
@@ -261,6 +266,7 @@ def write(d, df):
            "model_fit_seasons": CONFIG["seasons"], "toggles": CONFIG["grade_toggles"],
            "decisions": int(len(d)), "coaches_in_reference": int(len(eligible)),
            "league_by_season": league, "current": current,
+           "recent_from": rf, "current_recent": current_recent, "coaches_in_reference_recent": n_ref_recent,
            "letters": [{"worse_than_share_below": c, "grade": L} for c, L in LETTERS]}
     with open(os.path.join(ROOT, "data", "coach_grades.json"), "w") as fh:
         json.dump(out, fh, indent=1, default=float)

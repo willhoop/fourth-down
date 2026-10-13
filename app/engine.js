@@ -17,7 +17,11 @@
     }
   }
 
+  // home = 0.5 is a neutral site: the average of the home and away predictions.
   function wpRaw(model, s) {
+    if (s.home === 0.5) {
+      return 0.5 * (wpRaw(model, Object.assign({}, s, { home: 1 })) + wpRaw(model, Object.assign({}, s, { home: 0 })));
+    }
     const e4 = Math.exp(-4 * (3600 - s.game_seconds) / 3600);
     const x = WP_FEATURES.map((k) => s[k]).concat([s.spread * e4, s.score_diff / e4]);
     let z = model.wp.baseline;
@@ -163,7 +167,13 @@
     const s = Object.assign({}, state);
     s.second_half = s.qtr >= 3 ? 1 : 0;
     s.tmw_pending = s.half_seconds > 120 ? 1 : 0;
-    s.spread_used = tog.spread ? (s.spread || 0) : 0;
+    if (tog.spread) s.spread_used = s.spread || 0;
+    else {
+      // even teams: only home-field advantage (carried in the state so the
+      // bootstrap replicates use the same value as the shipped model)
+      const edge = s.home_edge || 0;
+      s.spread_used = s.home === 1 ? edge : (s.home === 0 ? -edge : 0);
+    }
     s.down = s.down === undefined ? 4 : s.down;
     if (s.second_half) s.receive_2h = 0;
     return s;

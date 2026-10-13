@@ -1,63 +1,63 @@
 {
- "version": "1.2.0",
+ "version": "1.3.0",
  "bins": [
   {
    "edge_bin": "(-1.0, 0.0]",
-   "went": 1715,
-   "kicked": 19368,
-   "predicted_gap": -0.2755,
-   "actual_gap": -0.2724,
+   "went": 1723,
+   "kicked": 19454,
+   "predicted_gap": -0.2761,
+   "actual_gap": -0.2734,
    "se": 0.0115,
-   "actual_minus_predicted": 0.0031
+   "actual_minus_predicted": 0.0027
   },
   {
    "edge_bin": "(0.0, 0.01]",
-   "went": 1911,
-   "kicked": 7556,
-   "predicted_gap": -0.234,
-   "actual_gap": -0.2438,
+   "went": 1920,
+   "kicked": 7578,
+   "predicted_gap": -0.2338,
+   "actual_gap": -0.2434,
    "se": 0.011,
-   "actual_minus_predicted": -0.0097
+   "actual_minus_predicted": -0.0096
   },
   {
    "edge_bin": "(0.01, 0.02]",
-   "went": 932,
-   "kicked": 3964,
-   "predicted_gap": -0.0578,
-   "actual_gap": -0.0496,
+   "went": 937,
+   "kicked": 3972,
+   "predicted_gap": -0.0564,
+   "actual_gap": -0.0486,
    "se": 0.0177,
-   "actual_minus_predicted": 0.0082
+   "actual_minus_predicted": 0.0078
   },
   {
    "edge_bin": "(0.02, 0.04]",
-   "went": 1445,
-   "kicked": 3886,
-   "predicted_gap": 0.0042,
-   "actual_gap": -0.0074,
-   "se": 0.0152,
-   "actual_minus_predicted": -0.0115
+   "went": 1457,
+   "kicked": 3908,
+   "predicted_gap": 0.0035,
+   "actual_gap": -0.0079,
+   "se": 0.0151,
+   "actual_minus_predicted": -0.0114
   },
   {
    "edge_bin": "(0.04, 0.08]",
-   "went": 1323,
-   "kicked": 1748,
-   "predicted_gap": 0.0277,
-   "actual_gap": 0.0308,
+   "went": 1332,
+   "kicked": 1758,
+   "predicted_gap": 0.028,
+   "actual_gap": 0.0283,
    "se": 0.0179,
-   "actual_minus_predicted": 0.0032
+   "actual_minus_predicted": 0.0003
   },
   {
    "edge_bin": "(0.08, 1.0]",
-   "went": 662,
+   "went": 665,
    "kicked": 280,
-   "predicted_gap": -0.0017,
-   "actual_gap": -0.0711,
+   "predicted_gap": -0.0016,
+   "actual_gap": -0.0695,
    "se": 0.0344,
-   "actual_minus_predicted": -0.0694
+   "actual_minus_predicted": -0.068
   }
  ],
- "pooled_actual_minus_predicted": -0.0047,
- "pooled_se": 0.0061,
+ "pooled_actual_minus_predicted": -0.0051,
+ "pooled_se": 0.006,
  "reading": "Negative means teams that went did worse, relative to teams that kicked, than the engine predicted (the engine overstates going).",
  "note": "Teams that went often knew something the engine cannot see, which flatters going; a result near zero does not clear the engine."
 }

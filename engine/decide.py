@@ -34,7 +34,12 @@ def tree_value(tree, x):
 
 
 def wp_raw(model, s):
-    """Win probability for the team with the ball in state s."""
+    """Win probability for the team with the ball in state s.
+
+    home = 0.5 means a neutral site: the model only learned home (1) and away
+    (0), so a neutral game is the average of the two."""
+    if s["home"] == 0.5:
+        return 0.5 * (wp_raw(model, dict(s, home=1)) + wp_raw(model, dict(s, home=0)))
     e4 = math.exp(-4.0 * (3600.0 - s["game_seconds"]) / 3600.0)
     x = [s[k] for k in WP_FEATURES] + [s["spread"] * e4, s["score_diff"] / e4]
     z = model["wp"]["baseline"]
@@ -218,7 +223,13 @@ def prepare(st, tog):
     s = dict(st)
     s["second_half"] = 1 if s["qtr"] >= 3 else 0
     s["tmw_pending"] = 1 if s["half_seconds"] > 120 else 0
-    s["spread_used"] = s.get("spread", 0.0) if tog.get("spread") else 0.0
+    if tog.get("spread"):
+        s["spread_used"] = s.get("spread", 0.0)
+    else:
+        # even teams: only home-field advantage (the state may carry it, so the
+        # bootstrap replicates use the same value as the shipped model)
+        edge = s.get("home_edge", 0.0)
+        s["spread_used"] = edge if s["home"] == 1 else (-edge if s["home"] == 0 else 0.0)
     s["down"] = s.get("down", 4)
     if s["second_half"]:
         s["receive_2h"] = 0

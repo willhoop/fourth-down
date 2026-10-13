@@ -33,3 +33,16 @@ def test_site_has_no_emoji():
         text = open(os.path.join(ROOT, "app", name), encoding="utf-8").read()
         bad = [c for c in text if ord(c) >= 0x1F000 or 0x2600 <= ord(c) <= 0x27BF]
         assert not bad, f"{name}: {bad[:5]}"
+
+
+def test_game_grades_follow_the_rule():
+    """A+ exactly when a team made no confident mistakes in the game; a team with
+    a confident mistake can never get A+; every grade is a known letter."""
+    w = load_weekly()
+    assert w["games"], "no games graded"
+    for g in w["games"]:
+        for tm in (g["away"], g["home"]):
+            assert tm["grade"] in {"A+", "A", "B", "C", "D", "F"}
+            assert (tm["grade"] == "A+") == (tm["mistakes"] == 0)
+            assert tm["calls"] == len(tm["list"])
+            assert tm["mistakes"] == sum(c["confident_mistake"] for c in tm["list"])

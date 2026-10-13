@@ -1,6 +1,6 @@
 # Validation report
 
-Model version 1.2.0, built 2026-10-08. Fit on 2014–2023; scored on held-out seasons 2024, 2025 (569 games). Splits are by season, so plays from one game never sit on both sides.
+Model version 1.3.0, built 2026-10-13. Fit on 2014–2023; scored on held-out seasons 2024, 2025 (569 games). Splits are by season, so plays from one game never sit on both sides.
 
 #### Win probability (every held-out snap)
 
@@ -33,9 +33,9 @@ For each held-out 4th down, the engine's win probability for the option the coac
 
 | Coach chose | Plays | Engine predicted | Actual win rate |
 |---|---|---|---|
-| go | 670 | 37.3% | 38.1% |
-| fg | 826 | 56.4% | 55.6% |
-| punt | 1501 | 47.2% | 46.6% |
+| go | 670 | 37.4% | 38.1% |
+| fg | 826 | 56.2% | 55.6% |
+| punt | 1501 | 47.4% | 46.6% |
 
 #### Conversion on 4th down
 
@@ -76,7 +76,7 @@ Mean absolute error of the predicted opponent start: **6.75 yd** (n = 3,714), ag
 
 #### Agreement with coaches (descriptive)
 
-On 3,000 sampled held-out 4th downs the engine's call matched the coach's 62.0% of the time. Where the engine favored going by 2+ points (709 plays), coaches went 46.7% of the time.
+On 3,000 sampled held-out 4th downs the engine's call matched the coach's 61.7% of the time. Where the engine favored going by 2+ points (694 plays), coaches went 46.5% of the time.
 
 #### Clock and rules measured from the data
 
@@ -103,12 +103,12 @@ Graded 4th downs binned by the engine's predicted edge for going. In each bin, t
 
 | Predicted edge for going | Went | Kicked | Predicted gap | Actual gap | Actual − predicted | ± SE |
 |---|---|---|---|---|---|---|
-| (-1.0, 0.0] | 1715 | 19368 | -27.6 pts | -27.2 pts | +0.3 pts | 1.1 |
-| (0.0, 0.01] | 1911 | 7556 | -23.4 pts | -24.4 pts | -1.0 pts | 1.1 |
-| (0.01, 0.02] | 932 | 3964 | -5.8 pts | -5.0 pts | +0.8 pts | 1.8 |
-| (0.02, 0.04] | 1445 | 3886 | +0.4 pts | -0.7 pts | -1.1 pts | 1.5 |
-| (0.04, 0.08] | 1323 | 1748 | +2.8 pts | +3.1 pts | +0.3 pts | 1.8 |
-| (0.08, 1.0] | 662 | 280 | -0.2 pts | -7.1 pts | -6.9 pts | 3.4 |
+| (-1.0, 0.0] | 1723 | 19454 | -27.6 pts | -27.3 pts | +0.3 pts | 1.1 |
+| (0.0, 0.01] | 1920 | 7578 | -23.4 pts | -24.3 pts | -1.0 pts | 1.1 |
+| (0.01, 0.02] | 937 | 3972 | -5.6 pts | -4.9 pts | +0.8 pts | 1.8 |
+| (0.02, 0.04] | 1457 | 3908 | +0.4 pts | -0.8 pts | -1.1 pts | 1.5 |
+| (0.04, 0.08] | 1332 | 1758 | +2.8 pts | +2.8 pts | +0.0 pts | 1.8 |
+| (0.08, 1.0] | 665 | 280 | -0.2 pts | -7.0 pts | -6.8 pts | 3.4 |
 
 Pooled (precision-weighted): actual minus predicted -0.5 ± 0.6 WP points. Games share outcomes, so the true uncertainty is larger.
 

@@ -83,6 +83,21 @@ def test_early_down_kicks_when_time_expires(shipped):
     assert out["best"] == "fg"
 
 
+def test_home_edge_is_plausible(shipped):
+    """Home-field advantage in recent betting lines: about 1 to 3 points."""
+    assert 1.0 < shipped["home_edge"] < 3.0
+
+
+def test_home_beats_away_when_teams_are_even(shipped):
+    """Equal teams, same situation: being at home is worth at least as much as away."""
+    st = dict(MID, qtr=1, half_seconds=1700, home_edge=shipped["home_edge"])
+    s_home = decide.prepare(dict(st, home=1), {})
+    s_away = decide.prepare(dict(st, home=0), {})
+    snap = lambda s: dict(score_diff=0, game_seconds=3500, half_seconds=1700, second_half=0, yardline=75, down=1,
+                          ydstogo=10, pos_to=3, def_to=3, tmw_pending=1, receive_2h=0, spread=s["spread_used"], home=s["home"])
+    assert decide.wp_raw(shipped, snap(s_home)) > decide.wp_raw(shipped, snap(s_away))
+
+
 def test_team_table(shipped):
     """32 teams; Denver plays at altitude; Detroit and New Orleans play under a roof;
     Green Bay does not. Every listed kicker is one the app can select."""
@@ -128,12 +143,13 @@ def test_python_and_js_engines_agree(shipped):
     for _ in range(60):
         st = dict(score_diff=rng.randint(-17, 17), qtr=rng.randint(1, 4), half_seconds=rng.randint(1, 1800),
                   yardline=rng.randint(1, 99), ydstogo=rng.randint(1, 15), pos_to=rng.randint(0, 3),
-                  def_to=rng.randint(0, 3), home=rng.randint(0, 1), receive_2h=rng.randint(0, 1),
+                  def_to=rng.randint(0, 3), home=rng.choice([0, 1, 0.5]), receive_2h=rng.randint(0, 1),
                   spread=rng.uniform(-10, 10), wind=rng.uniform(0, 25), temp=rng.uniform(10, 90),
                   precip=rng.randint(0, 1), indoor=rng.randint(0, 1), altitude_kft=rng.choice([0, 5.28]),
                   kicker_a=rng.uniform(-0.5, 0.5), kicker_b=rng.uniform(-0.2, 0.2))
         st["ydstogo"] = min(st["ydstogo"], st["yardline"])
         st["down"] = rng.randint(1, 4)
+        st["home_edge"] = shipped["home_edge"]
         st["short"] = rng.choice([None, "inches", "full_yard", "went", "kicked"])
         if st["short"] is None:
             del st["short"]

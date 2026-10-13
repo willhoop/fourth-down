@@ -17,6 +17,27 @@ BASE = dict(score_diff=0, qtr=4, half_seconds=600, yardline=20, ydstogo=5,
             pos_to=3, def_to=3, home=1, receive_2h=0)
 
 
+def test_even_matchup_gives_home_field_edge():
+    """Team strength off, home edge 1.75: home -> +1.75, away -> -1.75, neutral -> 0.
+    Team strength on: the entered line is used as is."""
+    for home, want in ((1, 1.75), (0, -1.75), (0.5, 0.0)):
+        st = decide.prepare(dict(BASE, home=home, home_edge=1.75), {})
+        assert st["spread_used"] == pytest.approx(want)
+    st = decide.prepare(dict(BASE, home=1, home_edge=1.75, spread=-3.0), {"spread": True})
+    assert st["spread_used"] == -3.0
+
+
+def test_neutral_site_averages_home_and_away():
+    """Stub WP on home (index 12): home <= 0.5 -> logit -1, else +1. Home: S1;
+    away: S_1; neutral (0.5): the average, (S1 + S_1) / 2 = 0.5."""
+    m = make_stub(12, 0.5, -1.0, 1.0)
+    s = dict(score_diff=0, game_seconds=1800, half_seconds=1800, second_half=1, yardline=50,
+             down=1, ydstogo=10, pos_to=3, def_to=3, tmw_pending=1, receive_2h=0, spread=0)
+    assert decide.wp_raw(m, dict(s, home=1)) == pytest.approx(S1)
+    assert decide.wp_raw(m, dict(s, home=0)) == pytest.approx(S_1)
+    assert decide.wp_raw(m, dict(s, home=0.5)) == pytest.approx(0.5)
+
+
 def test_sigmoid_values():
     assert decide.sigmoid(0) == 0.5
     assert decide.sigmoid(1) == pytest.approx(0.7310585786, abs=1e-10)

@@ -107,11 +107,11 @@ def validation_md(v, m):
 
 
 # ---------------------------------------------------------------- coaches
-def coach_rows(g):
+def coach_rows(g, key="current"):
     return [[c["grade"], c["coach"], ", ".join(c["teams"]), c["games"], c["decisions"], c["confident_mistakes"],
              f"{c['wins_lost_per_17']:.2f} [{17 * c['wp_lost_per_game_ci90'][0]:.2f}–{17 * c['wp_lost_per_game_ci90'][1]:.2f}]",
              f"{c['wins_lost_per_17_all_calls']:.2f}", pct(c["went_when_engine_said_go"], 0),
-             f"{c['luck_total']:+.2f}"] for c in g["current"]]
+             f"{c['luck_total']:+.2f}"] for c in g[key]]
 
 
 COACH_HEAD = ["Grade", "Coach", "Team(s)", "Games", "4th downs", "Confident mistakes",
@@ -128,6 +128,11 @@ def coaches_md(g):
          "with at least 17 games in the data. Luck is what happened after the coach's calls minus what those calls were "
          "expected to produce; it says nothing about decision quality.\n",
          table(COACH_HEAD, coach_rows(g)),
+         f"\n## Recent seasons only ({g['recent_from']}–{g['seasons'][-1]})\n",
+         f"The same grading, using only calls from {g['recent_from']} on and ranking against the "
+         f"{g['coaches_in_reference_recent']} head coaches with a full season in that window, so a long career "
+         "is not judged by an earlier era's norms. The app shows this view by default.\n",
+         table(COACH_HEAD, coach_rows(g, "current_recent")),
          "\n## League trend\n",
          table(["Season", "4th downs", "Coaches went", "Engine clearly says go", "Agreement",
                 "Wins lost / team-season (confident)", "(all disagreements)", "Share of calls confident"],
@@ -208,6 +213,9 @@ def paper_block(v, m, g, k):
          f"- Current head coaches with the lowest confident-mistake cost: " +
          "; ".join(f"{c['coach']} {c['wins_lost_per_17']:.2f} wins/17 games ({c['grade']})" for c in top) + ".",
          f"- Highest: " + "; ".join(f"{c['coach']} {c['wins_lost_per_17']:.2f} ({c['grade']})" for c in bot) + ".",
+         (lambda rec: f"- Recent seasons only ({g['recent_from']} on), lowest cost: " +
+          "; ".join(f"{c['coach']} {c['wins_lost_per_17']:.2f} ({c['grade']})" for c in rec[:3]) + ".")(
+             sorted([c for c in g["current_recent"] if c["grade"] != "Incomplete"], key=lambda c: c["wp_lost_per_game"])),
          (lambda e: f"- Edge check: relative to teams that kicked, teams that went did "
           f"{100 * e['pooled_actual_minus_predicted']:+.1f} ± {100 * e['pooled_se']:.1f} WP points versus the engine's "
           f"prediction (negative = the engine overstates going; selection flatters going, so near zero does not clear it).")(j("edge_check.json")),

@@ -1,6 +1,6 @@
 # Fourth Down Engine: Win-Probability Decisions for Go, Field Goal or Punt
 
-Version: 1.2.0 — 2026-10-08
+Version: 1.3.0 — 2026-10-13
 Author: Will Hooper
 Data: nflverse play-by-play, 2014–2025 (fit) and 2014–2026 (coach grading)
 
@@ -220,7 +220,12 @@ accuracy and range (section 4).
 Each optional factor (weather, stadium, team strength, kicker) can be switched
 off. Off means: the matching field-goal and punt models without that factor's
 terms; a spread of 0 (an even matchup) in the WP and conversion models; a
-league-average kicker. The core inputs (score, clock, field position,
+league-average kicker. With the team-strength factor off the teams are treated
+as equal, so the home team still gets home-field advantage: the average betting
+line for the home team since 2021 (about 1.7 points). Without that, a line of 0
+at home would describe a home team weaker than its opponent, because betting
+lines already include home field. At a neutral site the win model, which only
+learned home and away, is averaged over the two. The core inputs (score, clock, field position,
 distance, timeouts, two-minute warning, second-half receiver, home) are always
 on.
 
@@ -277,6 +282,19 @@ him against every head coach with at least 17 games in the data: the best 10%
 earn A+, then A (to 25%), B+ (40%), B (60%), C+ (75%), C (90%) and D. Coaches
 with fewer than 17 games are listed as Incomplete.
 
+**Game grades.** Each team's fourth downs in one game are summed the same way
+(win chance given up on confident mistakes). A team with no confident mistake
+gets A+. Otherwise its total is ranked against every team-game from 2014 to last
+season that had at least one: smaller than 75% of them is an A, 50% a B, 25% a
+C, 10% a D, and the largest 10% an F.
+
+**Recent view.** The same grading is repeated on calls from 2021 on only
+(`recent_from`), ranked against coaches with a full season in that window. The
+league's approach to fourth down changed fast after 2017 (go rates rose from
+about 13% to 20–24%), so an all-career grade partly measures which era a coach
+worked in. 2021 is late enough to sit in the current era and early enough to
+leave roughly 300 graded calls per established coach.
+
 **This week.** During the season the same grading runs every Tuesday on the
 current season's games (engine/weekly.py, scheduled on GitHub). The app lists
 each week's costliest confident mistakes and its best gutsy calls: the coach
@@ -315,12 +333,13 @@ or that short-yardage conversion is unbiased (section 8).
 **Headline results**
 
 - Win-probability log loss on held-out 2024, 2025: **0.446** (nflfastR `vegas_wp` on the same 81,654 plays: 0.4457).
-- Option values on held-out 4th downs, predicted vs actual win rate: go 37.3% vs 38.1% (n = 670); field goal 56.4% vs 55.6% (n = 826); punt 47.2% vs 46.6% (n = 1501).
+- Option values on held-out 4th downs, predicted vs actual win rate: go 37.4% vs 38.1% (n = 670); field goal 56.2% vs 55.6% (n = 826); punt 47.4% vs 46.6% (n = 1501).
 - League cost of 4th-down calls, confident mistakes only: **0.84** wins per team-season in 2014, **0.62** in 2025. Counting every disagreement: 1.11 and 0.86.
 - Coaches went for it on 12.7% of 4th downs in 2014 and 24.0% in 2025; the engine clearly favored going (edge of 1 point or more) on 30.2% and 34.5%.
-- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 37.9% to 45.2%. Share of calls the bootstrap is confident about: 47.7% to 49.9%.
-- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.34 wins/17 games (A+); Sean McDermott 0.46 wins/17 games (A+); Matt LaFleur 0.46 wins/17 games (A+).
-- Highest: Shane Steichen 0.86 (C); Todd Bowles 0.83 (C+); Sean Payton 0.81 (C+).
+- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 38.0% to 45.2%. Share of calls the bootstrap is confident about: 47.7% to 49.9%.
+- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.32 wins/17 games (A+); Sean McDermott 0.46 wins/17 games (A+); Matt LaFleur 0.46 wins/17 games (A+).
+- Highest: Shane Steichen 0.87 (C); Todd Bowles 0.82 (C+); Sean Payton 0.82 (C+).
+- Recent seasons only (2021 on), lowest cost: Liam Coen 0.32 (A+); Sean McDermott 0.40 (A+); Matt LaFleur 0.46 (A+).
 - Edge check: relative to teams that kicked, teams that went did -0.5 ± 0.6 WP points versus the engine's prediction (negative = the engine overstates going; selection flatters going, so near zero does not clear it).
 - Replacement-level kicker: 76.4% made vs 85.5% expected; 61% from 50 yd vs 77% league average.
 - Top current kickers by points over replacement per 100 kicks: B.Aubrey 44.2; C.Boswell 40.8; W.Reichard 39.5.

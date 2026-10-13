@@ -3,6 +3,71 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.0] — 2026-10-13
+
+### Fixed
+
+- **With team strength switched off, playing at home scored slightly worse than
+  playing away.** "Off" set the spread to 0, but betting lines already include
+  home-field advantage, so a line of 0 at home describes a home team weaker than
+  its opponent. "Off" now means equal teams: the home team gets the measured
+  home-field edge (the average home line since 2021, 1.74 points), the away team
+  the opposite, a neutral site none. Coach grades are unaffected (they use the
+  real line); the validation's agreement figure moves slightly.
+
+### Changed
+
+- Redesign: dark by default, a cleaner layout and a broadcast-style typeface.
+  The results screen leads with the call, the reason, the 100% split, and Share
+  and Edit on the first phone screen.
+- "We are" is now "Where's the game?": Our stadium / Their stadium / Neutral site.
+- Shared links are short: the situation is packed into about 21 digits
+  (`?c=…`), with optional factors appended only when on. A round trip through a
+  browser restores every field. Old long links no longer open a situation.
+- "Wins lost / 17" is now "Wins lost per season", and the Coaches tab defines a
+  confident mistake and wins lost per season in plain words.
+- The map's hover label no longer sticks on phones; the season table keeps the
+  team column on screen.
+- Coach grades and the weekly page now include week 5.
+- Coach grades have a "Since 2021" view (the default) next to "All since 2014".
+  It grades only calls from 2021 on, against coaches with a full season in that
+  window, so long-tenured coaches are not judged by an earlier era's norms
+  (`recent_from` in the config). Why 2021: coaches' go rates had settled near
+  20–24% (13% through 2017), the 17-game season began, and a coach has about
+  300 graded calls since, enough for a stable grade.
+- `llms.txt` describes the project for AI agents, at the repo root and on the site.
+- Games tab (replaces This week): every game of the season with each team's
+  fourth downs, the coach's call against the engine's, and a grade per team per
+  game. A+ = no confident mistakes; otherwise the team-game is ranked against
+  every team-game since 2014 that had one (A beats 75%, B 50%, C 25%, D 10%, F
+  the rest). The week's costliest and gutsiest calls stay on the same tab.
+- Four tabs (Call, Games, Coaches, Kickers) with About as a header link; on a
+  phone they sit in a bottom tab bar that never wraps.
+
+### Record
+
+- **Measured.** Validation agreement with coaches (`data/validation.json`).
+- **Basis.** unchanged — the same question; the fix changes what "even matchup"
+  means when the team-strength factor is off.
+- **Supersedes.** Agreement on held-out 4th downs ~~62.0%~~ 61.7%; held-out plays
+  where the engine favored going by 2+ points ~~709~~ 694.
+- **Owed to the next major.** Nothing new (risk 14 remains).
+
+## [1.2.6] — 2026-10-13
+
+### Added
+
+- Neutral site option (London, Mexico City, the Super Bowl) next to Home and
+  Away. The win model only learned home and away, so a neutral game is scored as
+  the average of the two. Live game mode sets it from ESPN's neutral-site flag.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.2.5] — 2026-10-13
 
 ### Removed

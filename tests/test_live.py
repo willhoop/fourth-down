@@ -33,7 +33,18 @@ def test_pregame_teams_line_and_roof():
     f = run({"1": "away", "2": "away"})["out"]["1"]
     assert f["our"] == "TB" and f["their"] == "DAL" and f["home"] is False
     assert f["line"] == 8.5 and f["indoor"] is True
+    assert "neutral" not in f
     assert "down" not in f and "usScore" not in f
+
+
+def test_neutral_site_flag():
+    """A game marked neutralSite (London, the Super Bowl) comes back neutral."""
+    script = ("const L=require(process.argv[1]+'/app/live.js');"
+              "const g={id:'9',name:'X',state:'pre',c:{neutralSite:true,competitors:["
+              "{homeAway:'home',team:{id:'1',abbreviation:'JAX'}},{homeAway:'away',team:{id:'2',abbreviation:'PHI'}}]}};"
+              "console.log(JSON.stringify(L.fill(g,'away')));")
+    out = json.loads(subprocess.run(["node", "-e", script, ROOT], capture_output=True, text=True, check=True).stdout)
+    assert out["neutral"] is True and out["our"] == "PHI"
 
 
 def test_pregame_favorite_side():

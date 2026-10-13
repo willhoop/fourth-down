@@ -5,7 +5,7 @@
 ## 1. Go for it, kick, or punt?
 
 - A fourth-down decision engine built on every NFL play since 2014
-- Version 1.2.0
+- Version 1.3.0
 
 ## 2. Fourth down is a choice between three gambles
 

@@ -25,6 +25,7 @@
     const ours = code(us.team.abbreviation), theirs = code(them.team.abbreviation);
     const out = { our: ours, their: theirs, home: side === "home", state: game.state };
     if (c.venue && typeof c.venue.indoor === "boolean") out.indoor = c.venue.indoor;
+    if (c.neutralSite === true) out.neutral = true;       // London, Mexico City, the Super Bowl
     // betting line such as "DAL -8.5": the named team is favored by 8.5.
     // Returned in betting convention for us: negative = we are favored.
     const det = ((c.odds || [])[0] || {}).details;

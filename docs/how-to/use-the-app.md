@@ -24,7 +24,9 @@
 7. Set **Yards to go**. On 4th & 1, click how far it is: **Inches**, **Not
    sure** or **About a yard**.
 8. Click the number of timeouts for each team.
-9. Click **Home** or **Away**.
+9. Under **Where's the game?**, click **Our stadium**, **Their stadium** or
+   **Neutral site** (London, Mexico City, the Super Bowl). It sets home-field
+   advantage and, with a matchup picked, the stadium.
 10. In the first half, click who gets the second-half kickoff.
 11. Click **Get the call**. The app shows the results screen. To change the
     situation, click **Edit situation**. Your inputs stay.
@@ -44,7 +46,7 @@ Each factor has a switch. A factor that is off uses a neutral value.
 |---|---|---|
 | Weather | Wind (mph), temperature (°F), rain or snow | No wind, 70 °F, dry |
 | Stadium | Roof (outdoors or dome), altitude | An average stadium |
-| Team strength | Pre-game point spread, as a betting line (−7 = you are 7-point favorites) | An even matchup |
+| Team strength | Pre-game point spread, as a betting line (−7 = you are 7-point favorites) | Equal teams, with the usual home-field edge for the home team |
 | Kicker | A kicker, league average, or replacement level | A league-average kicker |
 
 A dome cancels weather. The kicker list shows kickers with at least 10
@@ -55,7 +57,8 @@ attempts in the last two seasons.
 1. On the results screen, click **Share this call**.
 2. On a phone, pick an app to send it. On a computer, the link is copied; paste
    it in a message.
-3. The link opens the app at the same situation and shows the call.
+3. The link opens the app at the same situation and shows the call. It is
+   short: the situation is packed into about 21 digits.
 
 ## Put the app on your home screen
 
@@ -81,10 +84,26 @@ to 100%.
 - **Decision map**: the call at every spot and distance for the current score,
   clock and factors.
 
+## See every game
+
+1. Click **Games**. Pick a week at the top. The newest week opens first.
+2. Each game shows both teams with a grade: **A+** means no confident mistakes;
+   otherwise the team is ranked against every team-game since 2014 that had one.
+3. Tap a game to see every fourth down: the coach's call, the engine's call, and
+   what happened.
+4. Under the games: the week's costliest calls, the best gutsy calls, and the
+   season so far by team.
+
 ## See the grades
 
-1. Click **Coaches**. Click a column name to sort. Click a coach to see his
-   seasons and costliest calls.
+1. Click **Coaches**. The switch at the top picks the seasons: **Since 2021**
+   (the default) grades only recent calls, so a long career is not judged by an
+   older era's norms; **All since 2014** grades every call. Click a column name
+   or use **Sort by** to sort. Click a coach to see his seasons and costliest
+   calls.
 2. Click **Kickers**. The table shows current kickers and the replacement level.
 
-For what the grades mean, read the white paper, section 5.
+A **confident mistake** is a call where at least 18 of the 20 resampled models
+agree the coach chose wrong. **Wins lost per season** adds up the win chance
+those mistakes gave away, scaled to a 17-game season. For more, read the white
+paper, section 5.

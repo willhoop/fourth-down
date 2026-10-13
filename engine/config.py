@@ -7,7 +7,7 @@ is a single edit here followed by `py engine/fit_models.py`.
 
 CONFIG = {
     # ---- engine version (must equal the newest CHANGELOG entry) ----
-    "version": "1.2.5",
+    "version": "1.3.0",
 
     # ---- data ----
     # nflverse play-by-play, one parquet per season, from
@@ -54,6 +54,11 @@ CONFIG = {
     # an untimed down. The engine lets the opponent take it when this many
     # seconds or fewer remain after the punt (about one play's worth).
     "fair_catch_kick_window": 10,
+    # With the team-strength factor off, "an even matchup" means equal teams, so
+    # the home team still gets home-field advantage: the average betting line for
+    # the home team since this season (it has shrunk from ~2.5 to ~1.75 points).
+    # Without it, a line of 0 at home would mean the home team is the weaker one.
+    "home_edge_seasons_from": 2021,
     # A call whose margin is under this many WP points is shown as a toss-up.
     "tossup_margin": 0.01,
 
@@ -102,6 +107,11 @@ CONFIG = {
     "current_season": 2026,
     # The source misspells one name; display the correct one.
     "coach_aliases": {"Klint Kubliak": "Klint Kubiak"},
+    # "Recent" view of the coach grades: only calls from this season on, so a
+    # long career is not judged by an earlier era's norms. 2021: coaches' go
+    # rates had settled at ~20-24% (13% through 2017), the 17-game season began,
+    # and a coach has ~300 graded calls by now, enough for a stable grade.
+    "recent_from": 2021,
     # No letter grade below this many games as head coach in the data.
     "grade_min_games": 17,
     # The graded engine uses every factor: the coach knows his kicker, the

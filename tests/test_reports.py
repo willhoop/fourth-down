@@ -19,6 +19,16 @@ def test_reports_and_whitepaper_are_current():
         assert on_disk == body, f"{rel} is stale: run py build/render_reports.py"
 
 
+def test_recent_view_present():
+    """The grades carry a recent-seasons view, graded only on calls from recent_from on."""
+    from config import CONFIG
+    g = json.load(open(os.path.join(ROOT, "data", "coach_grades.json")))
+    assert g["recent_from"] == CONFIG["recent_from"]
+    assert len(g["current_recent"]) == len(g["current"])
+    for c in g["current_recent"]:
+        assert c["first_season"] >= CONFIG["recent_from"]
+
+
 def test_versions_agree():
     """CHANGELOG top version = config version exactly. The white paper and the
     data files must match MAJOR.MINOR: a PATCH moves no published figure, so

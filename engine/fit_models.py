@@ -357,6 +357,8 @@ def build(df, s, kicker_prior=None, ko_df=None, fg_era="trend", wp=True):
                       direction="forward", suffixes=("", "_next"))
     m = m[m["posteam"] == m["posteam_next"]]
     out["kickoff_start"] = round(float(m["yardline_100"].mean()), 1)
+    hg = ko_df[(ko_df["location"] == "Home") & (ko_df["season"] >= CONFIG["home_edge_seasons_from"])]
+    out["home_edge"] = round(float(hg.drop_duplicates("game_id")["spread_line"].mean()), 2)
     # every season's spot, so past decisions are judged under their own rules
     ka = ko_df[ko_df["play_type"] == "kickoff"].sort_values(["game_id", "play_id"])
     sa = snaps(ko_df)[["game_id", "play_id", "posteam", "yardline_100"]]
@@ -534,6 +536,7 @@ def coach_agreement(mdl, te_s, n=3000):
     chosen = {"go": [], "fg": [], "punt": []}
     for _, r in rows.iterrows():
         st = {"kickoff_start": mdl["kickoff_by_season"].get(str(int(r["season"])), mdl["kickoff_start"]),
+              "home_edge": mdl["home_edge"],
               "score_diff": r["score_diff"], "qtr": r["qtr"], "half_seconds": r["half_seconds_remaining"],
               "yardline": r["yardline_100"], "ydstogo": r["ydstogo"],
               "pos_to": r["posteam_timeouts_remaining"], "def_to": r["defteam_timeouts_remaining"],

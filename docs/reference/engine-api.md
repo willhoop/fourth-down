@@ -18,7 +18,7 @@ Returns the win probability of each option and the call.
 | `ydstogo` | Yards to go (1 or more, not more than `yardline`). |
 | `down` | 1–4. Default 4. On 1–3 the options are a play (`go`) and a field goal; `punt` is null. |
 | `pos_to`, `def_to` | Our timeouts, their timeouts (0–3). |
-| `home` | 1 if we are the home team. |
+| `home` | 1 if we are the home team, 0 if away, 0.5 at a neutral site. |
 | `receive_2h` | 1 if we receive the second-half kickoff (first half only). |
 | `spread` | Points we are favored by (team-strength factor). |
 | `wind`, `temp`, `precip` | mph, °F, 0 or 1 (weather factor). |

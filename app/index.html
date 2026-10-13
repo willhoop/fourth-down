@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.3.2 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.3.3 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -27,7 +27,7 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html,body{overflow-x:hidden}
+html{overflow-x:hidden}body{overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
 a{color:var(--punt)}
 p{max-width:68ch}
@@ -79,7 +79,9 @@ input[type=range]{width:100%;accent-color:var(--go)}
 .seg button.on{background:var(--ink);color:var(--panel-ink)}
 .toggle{border-top:1px solid var(--line);padding-top:14px;margin-top:16px}
 .toggle>.head{display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:15px}
-.toggle .body{display:none}.toggle.on .body{display:block}
+.toggle .body{display:none}.toggle.open .body{display:block;padding-bottom:4px}
+.tname{flex:1;cursor:pointer;user-select:none}
+.tsum{display:block;font-weight:500;font-size:13px;color:var(--muted)}
 .switch{position:relative;width:44px;height:26px;flex:none}
 .switch input{opacity:0;width:0;height:0}
 .switch span{position:absolute;inset:0;background:var(--line);border-radius:26px;cursor:pointer;transition:.15s}
@@ -224,6 +226,21 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
 .dsq{display:flex;flex-wrap:wrap;gap:4px}
 .sq{display:inline-block;width:22px;height:22px;border-radius:4px}
 .sg{background:#538d4e}.sy{background:#c9b458}.sb{background:#4a5059}.sn{border:2px solid #4a5059}
+#view-form>.submit{max-width:980px;margin:16px auto 0}
+@media (max-width:640px){#view-form>.submit{position:sticky;bottom:calc(58px + env(safe-area-inset-bottom,0px));z-index:4;
+  box-shadow:0 -10px 20px var(--bg)}}
+.pprog{display:flex;gap:4px;margin-bottom:16px}
+.pnum{font-size:13px;color:var(--muted)}
+.psit{font:700 34px/1.1 var(--display);letter-spacing:.02em;margin:6px 0 2px}
+.psub{font-size:16px;color:var(--ink)}
+.pask{margin:22px 0 8px;font-weight:600}
+.pbtns{display:grid;gap:8px}
+.pbtns button{padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--raise);color:var(--ink);font:600 18px var(--body);cursor:pointer}
+.pbtns button:disabled{opacity:.35;cursor:default}
+.pcall{font:700 40px/1 var(--display);text-transform:uppercase;letter-spacing:.04em;margin:4px 0 6px}
+.pwp{font-size:14px;color:var(--muted);margin-bottom:14px}
+.pres{display:flex;align-items:center;gap:10px;font-size:17px;margin:8px 0}
+.pfinal{font:700 30px/1.1 var(--display);text-transform:uppercase;margin-bottom:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -233,6 +250,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <button class="aboutlink" data-tab="about" type="button">About</button></div>
   <nav aria-label="Sections">
     <button data-tab="decide" class="on">Call</button>
+    <button data-tab="play">Play</button>
     <button data-tab="games">Games</button>
     <button data-tab="coaches">Coaches</button>
     <button data-tab="kickers">Kickers</button>
@@ -257,7 +275,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
       <div class="note" id="livemsg" aria-live="polite"></div>
     </div>
     <div id="matchupbox">
-      <label for="ourteam">Who has the ball? <span class="note">(optional, then the defense)</span></label>
+      <label for="ourteam">Who has the ball?</label>
       <div class="row"><div><select id="ourteam" aria-label="Who has the ball"></select></div>
         <div><select id="theirteam" aria-label="Defense"></select></div>
         <button id="swapteams" class="ghost swapbtn" type="button" aria-label="Swap which team has the ball" title="Swap which team has the ball">&#8644;</button></div>
@@ -277,7 +295,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <div class="note" id="tmwnote"></div>
     <label>Ball on</label>
     <div class="seg" id="side" style="margin-bottom:6px"><button>Offense side</button><button class="on">Defense side</button></div>
-    <input id="yd" type="number" min="1" max="50" value="34" aria-label="yard line" data-big="5">
+    <input id="yd" type="number" min="1" max="50" value="40" aria-label="yard line" data-big="5">
     <label>Down</label>
     <div class="seg" id="down"><button>1st</button><button>2nd</button><button>3rd</button><button class="on">4th</button></div>
     <div class="note" id="downnote"></div>
@@ -292,11 +310,14 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <div class="seg" id="home"><button class="on">Offense home</button><button>Defense home</button><button>Neutral site</button></div>
     <div id="r2hbox"><label>Second-half kickoff goes to</label>
       <div class="seg" id="r2h"><button class="on">Offense</button><button>Defense</button></div></div>
+    <div id="mybox" class="mybox">
+      <label>Your call</label>
+      <div class="seg" id="mycall"><button type="button">Go for it</button><button type="button">Field goal</button><button type="button">Punt</button></div>
+    </div>
   </div>
 
   <div class="card">
     <h2>Optional factors</h2>
-    <div class="note">Each one is off unless you switch it on. Off means an average situation.</div>
     <div class="toggle" id="t-weather">
       <div class="head">Weather <label class="switch"><input type="checkbox" aria-label="Weather"><span></span></label></div>
       <div class="body">
@@ -319,8 +340,6 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
         <label for="spread">Favored before kickoff: <b id="spreadv">Even</b></label>
         <input id="spread" type="range" min="-17" max="17" step="0.5" value="0">
         <div class="spreadends"><span id="lab_sl">Offense</span><span id="lab_sr">Defense</span></div>
-        <div class="note">Slide toward the team that was favored, by the pre-game point spread.
-          With this off, the teams are treated as equal and the home team gets the usual home-field edge.</div>
       </div>
     </div>
     <div class="toggle" id="t-kicker">
@@ -330,18 +349,13 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
         <input id="ksearch" type="search" placeholder="Search a name or team (Aubrey, DAL)" autocomplete="off" enterkeyhint="done">
         <div class="note" id="kcount" aria-live="polite"></div>
         <div class="note" id="kpicked" style="margin-top:6px"></div>
-        <div class="note" style="margin-top:8px">Ranked by make % from 50 yards in neutral conditions. Tap a bar to choose.</div>
         <div class="kchart" id="kchart" role="listbox" aria-label="Kickers ranked by make percentage from 50 yards"></div>
         <div class="note" id="kickernote"></div>
       </div>
     </div>
-    <div id="mybox" class="mybox">
-      <label>Your call <span class="note">(optional) · play the Duel against the engine</span></label>
-      <div class="seg" id="mycall"><button type="button">Go for it</button><button type="button">Field goal</button><button type="button">Punt</button></div>
-    </div>
-    <button id="go" class="submit" type="button">Get the call →</button>
   </div>
 </div>
+<button id="go" class="submit" type="button">Get the call →</button>
 </div>
 
 <!-- Screen 2: the results for the situation that was submitted. -->
@@ -362,7 +376,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
   </div>
   <div class="card duel" id="duel" hidden>
     <h2 id="dueltitle">4th Down Duel</h2>
-    <p class="note" id="duelempty">Pick <b>Your call</b> before you tap Get the call. Every fourth down adds a square: green for a match with the engine, yellow for half credit on a toss-up, black for a miss. Then send the card to your friends.</p>
+    <p class="note" id="duelempty">Pick <b>Your call</b> before Get the call to score this play.</p>
     <div id="duelbody" hidden>
       <div class="duelverdict" id="duelverdict" aria-live="polite"></div>
       <div class="duelgrid" id="duelgrid"></div>
@@ -384,6 +398,14 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <div class="legend" id="maplegend"></div>
   </div>
 </div>
+</section>
+
+<!-- ======================= WEEKLY GAME ======================= -->
+<section class="tab" id="tab-play">
+  <div class="card play">
+    <h2 id="playtitle">Weekly game</h2>
+    <div id="playbox"></div>
+  </div>
 </section>
 
 <!-- ======================= GAMES ======================= -->
@@ -451,6 +473,17 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <p>Overtime gives both teams the ball, so a tie at the end of regulation is worth about half a win, plus the
       better team's edge. After a touchdown the engine assumes the scoring team picks the extra point or the 2-point
       try, whichever helps it more. On 4th &amp; 1 you can say if it is inches or a full yard.</p>
+    <h2 style="margin-top:22px">Reading the screens</h2>
+    <p><b>Optional factors</b> are off unless switched on. Off means an average situation; with team strength off,
+      the teams are equal and the home team gets the usual home-field edge. Tap a factor's name to change it.</p>
+    <p><b>Team strength</b> is the pre-game point spread: slide toward the team that was favored. Picking two teams
+      fills it from ESPN; if no line is found, the teams are set even.</p>
+    <p><b>Kickers</b> are ranked by make % from 50 yards in neutral conditions.</p>
+    <p><b>Win chance after each choice</b>: separate "what ifs". Only the split at the top adds to 100%.</p>
+    <p><b>4th Down Duel</b>: pick your call before Get the call. Green = you matched the engine, yellow = half
+      credit on a toss-up, black = a miss. Log the coach's call and send the card.</p>
+    <p><b>Weekly game</b>: five of last week's fourth downs. Call each one before the reveal. You score when you
+      match the engine; the coach scores when his real call matched it.</p>
     <p>Live game mode reads ESPN's public scoreboard. It is unofficial and can lag, so check the form before you
       get the call.</p>
     <p>Full method, results and sources: <a href="../docs/fourth-down-whitepaper.md">white paper</a> ·
@@ -617,17 +650,28 @@ function kickerAB() {
 drawKickers();
 
 // ---------- form helpers (cheap: labels and notes only)
+// one line per factor in its header, so a closed factor still shows its value
+function factorSummaries() {
+  const on = (id) => $(id).querySelector("input[type=checkbox]").checked;
+  const set = (id, s) => { const e = $(id).querySelector(".tsum"); if (e) e.textContent = on(id) ? s : "Off"; };
+  set("t-weather", `${$("wind").value} mph \u00b7 ${$("temp").value}\u00b0F`);
+  set("t-stadium", ($("roof").children[segVal("roof")] || {}).textContent + ($("alt").value !== "0" ? " \u00b7 altitude" : ""));
+  set("t-spread", favTxt(+$("spread").value));
+  let k = null; try { k = KLIST.find((x) => x.id === kickerSel); } catch (e) {}   // declared later in the page
+  set("t-kicker", k ? k.name : "League average");
+}
 function refreshForm() {
   document.querySelectorAll(".toggle").forEach((t) => t.classList.toggle("on", t.querySelector("input[type=checkbox]").checked));
+  factorSummaries();
   $("windv").textContent = $("wind").value; $("tempv").textContent = $("temp").value;
   const line = +$("spread").value;
   $("spreadv").textContent = favTxt(line);
   const st = readState();
   $("r2hbox").style.display = st.qtr <= 2 ? "" : "none";
-  $("tmwnote").textContent = (st.qtr === 2 || st.qtr === 4) ? (st.half_seconds > 120 ? "Two-minute warning still to come." : "Two-minute warning already used.") : "";
+  $("tmwnote").textContent = (st.qtr === 2 || st.qtr === 4) ? (st.half_seconds > 120 ? "2-minute warning to come" : "2-minute warning used") : "";
   $("shortbox").hidden = !(st.down === 4 && st.ydstogo === 1);
   $("mybox").hidden = st.down !== 4;
-  $("downnote").textContent = st.down < 4 ? "Early down: the engine compares running a play with kicking a field goal now." : "";
+  $("downnote").textContent = st.down < 4 ? "Early down: play vs. field goal now" : "";
   const k = kickerSel;
   $("kickernote").textContent = k === "repl" ? `A replacement kicker makes ${pct(MODEL.fg.replacement.made_pct, 0)} of his kicks against ${pct(MODEL.fg.replacement.expected_pct, 0)} expected.` : "";
 }
@@ -676,7 +720,7 @@ function renderCall(st, tog) {
   renderConfidence(st, tog, r);
   $("why").textContent = whyText(st, r);
   const best = r.wp[r.best];
-  $("bars").innerHTML = `<div class="note" style="margin-bottom:6px">How often you win the game if you choose each option. These are separate \u201cwhat ifs\u201d; the split above is the one that adds to 100%.</div>` +
+  $("bars").innerHTML = 
     ["go", "fg", "punt"].map((k) => {
       const v = r.wp[k];
       if (v === null) {
@@ -766,7 +810,7 @@ const TEAM_NAMES = { ARI: "Cardinals", ATL: "Falcons", BAL: "Ravens", BUF: "Bill
   SEA: "Seahawks", SF: "49ers", TB: "Buccaneers", TEN: "Titans", WAS: "Commanders" };
 (function () {
   const opts = (lab) => `<option value="">${lab}</option>` + Object.keys(TEAM_NAMES).sort((a, b) => TEAM_NAMES[a].localeCompare(TEAM_NAMES[b]))
-    .map((t) => `<option value="${t}">${TEAM_NAMES[t]} (${t})</option>`).join("");
+    .map((t) => `<option value="${t}">${TEAM_NAMES[t]}</option>`).join("");
   $("ourteam").innerHTML = opts("Who has the ball");
   $("theirteam").innerHTML = opts("Defense");
 })();
@@ -789,7 +833,7 @@ function applyTeams() {
     drawKickers();
     bits.push(`kicker ${KLIST.find((k) => k.id === kickerSel).name}`);
   }
-  $("teamnote").textContent = bits.length ? "Filled in: " + bits.join(" · ") + ". You can still change them below." : "";
+  $("teamnote").textContent = "";
   teamLabels();
   refreshForm();
   autoLine();
@@ -805,7 +849,7 @@ async function autoLine() {
   const tok = ++lineToken, key = O + "|" + D;
   let line = lineCache[key];
   if (line === undefined) {
-    note.className = "note"; note.textContent = "Looking up the betting line\u2026";
+    note.className = "note"; note.textContent = "";
     try {
       if (!liveGames.length) {
         const r = await fetch(Live.ESPN_URL, { cache: "no-store" });
@@ -827,11 +871,10 @@ async function autoLine() {
   if (line === undefined) {
     $("spread").value = 0; setToggle("t-spread", false);
     note.className = "note warn";
-    note.textContent = `No betting line found for ${O} vs ${D}, so the teams are set even. You can set it under Team strength.`;
+    note.textContent = "No betting line found. Teams set even.";
   } else {
     $("spread").value = line; setToggle("t-spread", true);
-    note.className = "note";
-    note.textContent = `Betting line from ESPN: ${favTxt(line)}.`;
+    note.className = "note"; note.textContent = "";
   }
   refreshForm();
 }
@@ -968,7 +1011,7 @@ async function loadLive() {
     liveGames = Live.games(await r.json());
     $("livegame").innerHTML = `<option value="">Pick a game</option>` + liveGames.map((g) =>
       `<option value="${esc(g.id)}">${g.state === "in" ? "LIVE \u00b7 " : ""}${esc(g.name)} \u00b7 ${esc(g.detail || "")}</option>`).join("");
-    msg.textContent = liveGames.length ? "Pick a game." : "No games on the schedule right now.";
+    msg.textContent = liveGames.length ? "" : "No games on the schedule right now.";
   } catch (e) {
     msg.textContent = "Live games are not available here (the feed could not be reached).";
   }
@@ -996,7 +1039,7 @@ function fillFromLive() {
   }
   refreshForm();
   $("matchupbox").hidden = true;
-  $("livemsg").textContent = "Filled: " + filled.join(", ") + ". Check it, then get the call.";
+  $("livemsg").textContent = "";
 }
 $("liveload").onclick = () => { $("livepick").hidden = false; loadLive(); };
 $("livegame").onchange = () => {
@@ -1140,6 +1183,16 @@ $("duelnew").onclick = () => {
   try { localStorage.removeItem("fd-duel"); } catch (e) {}
   $("duelmsg").textContent = ""; $("duelverdict").textContent = ""; drawDuel(null);
 };
+document.querySelectorAll(".toggle").forEach((t) => {
+  const head = t.querySelector(".head"), name = head.firstChild;
+  const wrap = document.createElement("span");
+  wrap.className = "tname"; wrap.textContent = name.textContent.trim();
+  wrap.insertAdjacentHTML("beforeend", '<span class="tsum"></span>');
+  head.replaceChild(wrap, name);
+  wrap.onclick = () => t.classList.toggle("open");
+  t.querySelector("input[type=checkbox]").addEventListener("change", (e) => t.classList.toggle("open", e.target.checked));
+});
+factorSummaries();
 $("go").onclick = submit;
 $("view-form").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT") { e.preventDefault(); submit(); } });
 $("edit").onclick = () => { $("view-result").hidden = true; $("view-form").hidden = false; window.scrollTo(0, 0); };
@@ -1156,6 +1209,78 @@ if (loadShared()) submit();
   setTimeout(() => document.body.appendChild(sc), 200);
 })();
 
+
+// ---------- the weekly game: last week's five biggest calls. Call what the engine
+// says; you score when you match it, the coach scores when his real call did.
+(function () {
+  if (typeof WEEKLY === "undefined" || !WEEKLY.weeks.length || !(WEEKLY.weeks[0].quiz || []).length) {
+    $("playbox").innerHTML = `<p class="note">No game this week yet.</p>`;
+    return;
+  }
+  const wk = WEEKLY.weeks[0], Q = wk.quiz, key = `fd-play-${WEEKLY.season}-${wk.week}`;
+  const did = { go: "went for it", fg: "kicked a FG", punt: "punted" };
+  let picks = [];
+  try { picks = JSON.parse(localStorage.getItem(key)) || []; } catch (e) {}
+  let revealed = false;
+  $("playtitle").textContent = `Weekly game \u00b7 Week ${wk.week}`;
+  const mark = (ok) => (ok ? "g" : "b");
+  const squares = (arr) => arr.map((s) => `<i class="sq s${s}"></i>`).join("");
+  const mine = () => picks.map((p, i) => mark(p === Q[i].engine_call));
+  const coach = () => picks.map((p, i) => mark(Q[i].coach_call === Q[i].engine_call));
+  const score = (arr) => arr.filter((s) => s === "g").length;
+  function draw() {
+    const i = picks.length, box = $("playbox");
+    const progress = `<div class="pprog">${squares(mine())}${Array(Math.max(0, Q.length - i - (revealed ? 0 : 0))).fill('<i class="sq sn"></i>').join("")}</div>`;
+    if (revealed) {
+      const q = Q[i - 1], me = picks[i - 1] === q.engine_call, co = q.coach_call === q.engine_call;
+      const wp = CALLS.filter((k) => q.wp[k] !== null).map((k) => `${NAMES[k]} ${Math.round(q.wp[k] * 100)}%`).join(" \u00b7 ");
+      box.innerHTML = progress + `
+        <div class="pcall" style="color:${COLORS[q.engine_call]}">${NAMES[q.engine_call]}</div>
+        <div class="pwp">${wp}</div>
+        <div class="pres"><span class="sq s${mark(me)}"></span>You: ${me ? "right" : "wrong"}</div>
+        <div class="pres"><span class="sq s${mark(co)}"></span>${esc(q.coach || q.team)} ${did[q.coach_call]}</div>
+        <button class="submit" id="pnext" type="button">${i < Q.length ? "Next play" : "See your score"}</button>`;
+      $("pnext").onclick = () => { revealed = false; draw(); };
+      return;
+    }
+    if (i < Q.length) {
+      const q = Q[i], [clock, sc, down] = q.situation.split(" \u00b7 ");
+      box.innerHTML = progress + `
+        <div class="pnum">Play ${i + 1} of ${Q.length} \u00b7 ${esc(q.team)} vs ${esc(q.opp)}</div>
+        <div class="psit">${esc(down)}</div>
+        <div class="psub">${esc(clock)} \u00b7 ${esc(sc)}</div>
+        <div class="pask">What does the engine say?</div>
+        <div class="pbtns">${CALLS.map((k) => `<button type="button" data-k="${k}"${q.wp[k] === null ? " disabled" : ""}>${NAMES[k]}</button>`).join("")}</div>`;
+      box.querySelectorAll(".pbtns button").forEach((b) => b.onclick = () => {
+        picks.push(b.dataset.k);
+        try { localStorage.setItem(key, JSON.stringify(picks)); } catch (e) {}
+        revealed = true; draw();
+      });
+      return;
+    }
+    const m = score(mine()), c = score(coach());
+    box.innerHTML = `
+      <div class="pfinal">${m > c ? "You beat the coaches" : m < c ? "The coaches win" : "Dead even"}</div>
+      <div class="duelgrid">
+        <div class="drow"><span>You</span><span class="dsq">${squares(mine())}</span><b>${m}/${Q.length}</b></div>
+        <div class="drow"><span>Coaches</span><span class="dsq">${squares(coach())}</span><b>${c}/${Q.length}</b></div>
+      </div>
+      <div class="actions"><button id="psend" class="primary" type="button">Send</button></div>
+      <div class="note" id="pmsg" aria-live="polite"></div>
+      <p class="note">New plays every Tuesday.</p>`;
+    $("psend").onclick = async () => {
+      const text = [`4th Down Duel \u00b7 Week ${wk.week}`,
+        `${mine().map((s) => SQ[s]).join("")}  Me ${m}/${Q.length}`,
+        `${coach().map((s) => SQ[s]).join("")}  Coaches ${c}/${Q.length}`,
+        location.origin + location.pathname + "?play"].join("\n");
+      if (navigator.share) { try { await navigator.share({ text }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+      try { await navigator.clipboard.writeText(text); $("pmsg").textContent = "Copied. Paste it in the group chat."; }
+      catch (e) { $("pmsg").innerHTML = `<textarea class="sharebox" rows="5" readonly>${esc(text)}</textarea>`; }
+    };
+  }
+  draw();
+  if (new URLSearchParams(location.search).has("play")) document.querySelector('nav button[data-tab="play"]').click();
+})();
 
 // ---------- this week
 (function () {

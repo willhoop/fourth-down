@@ -8,6 +8,8 @@ shipped model and bootstrap, then lists, for each week played so far:
   >= 90% of replicates agree, and kicking was a real option (the kick left a
   10%+ win chance, outside the final two minutes)
 
+- the weekly game: five of the week's plays to call before the reveal (see quiz())
+
 Run:  py engine/weekly.py [--download]   (--download refreshes the season's parquet first)
 Out:  data/weekly.json, app/weekly.js
 
@@ -26,6 +28,10 @@ from load_data import ROOT                                 # noqa: E402
 from grade_coaches import fmt_clock, fmt_spot, score       # noqa: E402
 
 TOP_WORST, TOP_BEST, BEST_MARGIN, MIN_KICK_WP = 10, 5, 0.03, 0.10
+# The weekly game: 5 plays. 2 costliest confident mistakes, 1 best gutsy go,
+# 2 kicks that were right but close (smallest edge of at least QUIZ_MIN_EDGE).
+# The mix keeps "always say go" from winning and gives coaches a fair score.
+QUIZ_MIX, QUIZ_MIN_EDGE = (("mistake", 2), ("gutsy", 1), ("kick", 2)), 0.01
 # Game grade: A+ = no confident mistakes. Otherwise the team-game is ranked
 # against every team-game since 2014 that had one, by win chance given up:
 # better than 75% of them = A, 50% = B, 25% = C, 10% = D, else F.
@@ -61,6 +67,43 @@ def call_row(r):
             "confident_mistake": bool(r["confident_mistake"]),
             "sure": round(float(1 - r["conf_wrong"]), 2) if r["choice"] == r["best"] else round(float(r["conf_wrong"]), 2),
             "what_happened": str(r["desc"])[:160]}
+
+
+def team_situation(r):
+    """The quiz situation in team terms: "Q1 10:30 · BAL down 4 · 4th & 3 at ATL 3"."""
+    sd, tm, op, yl = int(r["score_diff"]), r["posteam"], r["defteam"], int(r["yardline_100"])
+    score_txt = "tied" if sd == 0 else (f"{tm} up {sd}" if sd > 0 else f"{tm} down {-sd}")
+    spot = "midfield" if yl == 50 else (f"{op} {yl}" if yl < 50 else f"{tm} {100 - yl}")
+    return f"{fmt_clock(r['qtr'], r['half_seconds_remaining'])} · {score_txt} · 4th & {int(r['ydstogo'])} at {spot}"
+
+
+def quiz(g):
+    """Five plays from one week for the weekly game, in a fixed shuffled order.
+    Every play is a confident engine call (>= 90% of replicates), so each has one answer."""
+    import numpy as np
+    sure = np.where(g["choice"] == g["best"], 1 - g["conf_wrong"], g["conf_wrong"])
+    forced = (g["qtr"] == 4) & (g["half_seconds_remaining"] <= 120)
+    ok = g[(sure >= CONFIG["confident_share"]) & ~forced]
+    kick = ok[["wp_fg", "wp_punt"]].max(axis=1)
+    pools = {
+        "mistake": ok[ok["choice"] != ok["best"]].sort_values("cost", ascending=False),
+        "gutsy": ok[(ok["choice"] == "go") & (ok["best"] == "go") & (ok["margin"] >= BEST_MARGIN)
+                    & (kick >= MIN_KICK_WP)].sort_values("margin", ascending=False),
+        "kick": ok[(ok["choice"] == ok["best"]) & ok["best"].isin(["fg", "punt"]) & ok["wp_go"].notna()
+                   & (ok["margin"] >= QUIZ_MIN_EDGE)].sort_values("margin"),
+    }
+    picked = []
+    for name, n in QUIZ_MIX:
+        picked += [i for i in pools[name].index if i not in picked][:n]
+    for name, _ in QUIZ_MIX:                       # a thin week: fill from the pools in order
+        picked += [i for i in pools[name].index if i not in picked][:5 - len(picked)]
+    rows = g.loc[picked]
+    rows = rows.assign(k=[(int(b) * 7919) % 997 for b in rows["play_id"]]).sort_values(["k", "game_id"])
+    return [{"team": r["posteam"], "opp": r["defteam"], "coach": r["coach"], "situation": team_situation(r),
+             "coach_call": r["choice"], "engine_call": r["best"],
+             "wp": {k: (None if r["wp_" + k] != r["wp_" + k] else round(float(r["wp_" + k]), 3))
+                    for k in ("go", "fg", "punt")},
+             "what_happened": str(r["desc"])[:160]} for _, r in rows.iterrows()]
 
 
 def games_summary(d, df):
@@ -129,7 +172,8 @@ def main(download=False):
                       "confident_mistakes": int(g["confident_mistake"].sum()),
                       "wp_lost": round(float(g["cost_confident"].sum()), 3),
                       "worst": [row(r, "worst") for _, r in worst.iterrows()],
-                      "best": [row(r, "best") for _, r in best.iterrows()]})
+                      "best": [row(r, "best") for _, r in best.iterrows()],
+                      "quiz": quiz(g)})
     teams = (d.groupby("posteam").agg(games=("game_id", "nunique"), lost=("cost_confident", "sum"),
                                        mistakes=("confident_mistake", "sum"), calls=("id", "size"))
               .reset_index())

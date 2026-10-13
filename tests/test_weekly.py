@@ -46,3 +46,19 @@ def test_game_grades_follow_the_rule():
             assert (tm["grade"] == "A+") == (tm["mistakes"] == 0)
             assert tm["calls"] == len(tm["list"])
             assert tm["mistakes"] == sum(c["confident_mistake"] for c in tm["list"])
+
+
+def test_weekly_game_has_one_answer_per_play():
+    """The weekly game: at most 5 plays a week, no repeats; each answer is the
+    option with the highest win chance, and only available options count."""
+    w = load_weekly()
+    assert w["weeks"][0]["quiz"], "newest week has no game"
+    for wk in w["weeks"]:
+        q = wk["quiz"]
+        assert len(q) <= 5
+        assert len({x["situation"] + x["team"] for x in q}) == len(q)
+        for x in q:
+            wp = {k: v for k, v in x["wp"].items() if v is not None}
+            assert x["engine_call"] == max(wp, key=wp.get)
+            assert x["coach_call"] in ("go", "fg", "punt")
+            assert x["situation"].count(" · ") == 2 and "4th & " in x["situation"]

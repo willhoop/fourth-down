@@ -3,6 +3,33 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.3] — 2026-10-13
+
+### Added
+
+- **Weekly game (Play tab).** Five of last week's fourth downs: call what the
+  engine says, then see its call and the coach's. You score for matching the
+  engine; the coach scores when his real call matched it. Everyone gets the same
+  five plays, and Send shares a square scorecard. The plays (`quiz()` in
+  `engine/weekly.py`): the two costliest confident mistakes, the best gutsy go,
+  and two correct but close kicks, so "always go" does not win.
+
+### Changed
+
+- **Less text on the form.** Explanations moved to About. The optional factors
+  stay closed, even when autofill switches them on, and show their value in one
+  line. Get the call stays pinned at the bottom of a phone screen.
+- The ball starts at the opponent's 40.
+- Team pickers show the team name only, so they fit next to the swap button.
+
+### Record
+
+- **Measured.** No figure changed. The weekly game reuses the shipped grades.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Deck: the weekly game and the Duel. White paper:
+  a short note on how the weekly plays are chosen.
+
 ## [1.3.2] — 2026-10-13
 
 ### Added

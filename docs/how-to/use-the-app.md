@@ -45,7 +45,9 @@ Use this when the clock is about to run out.
 
 ## Set the factors
 
-Each factor has a switch. A factor that is off uses a neutral value.
+Each factor has a switch. A factor that is off uses a neutral value. The
+factors stay closed, and each one shows its value under its name. Tap the name
+to open it. **Get the call** stays at the bottom of the phone screen.
 
 | Factor | When on, set | When off, the engine uses |
 |---|---|---|
@@ -69,6 +71,22 @@ attempts in the last two seasons.
    it in a message.
 3. The link opens the app at the same situation and shows the call. It is
    short: the situation is packed into about 21 digits.
+
+## Play the weekly game
+
+1. Click **Play**. The game has five fourth downs from last week.
+2. For each play, click what you think the engine says: **Go for it**,
+   **Field goal** or **Punt**.
+3. The app shows the engine's call and what the coach did. You get a green
+   square when you match the engine. The coach gets a green square when his
+   real call matched the engine.
+4. After play 5, click **Send**. Everyone plays the same five plays, so friends
+   can compare cards. New plays come every Tuesday.
+
+The five plays are the two costliest confident mistakes of the week, the best
+call to go for it, and two kicks that were correct but close. Every play is a
+confident call (at least 18 of the 20 resampled models agree), so each play has
+one answer. The code is `quiz()` in `engine/weekly.py`.
 
 ## Play the 4th Down Duel
 

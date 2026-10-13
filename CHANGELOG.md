@@ -3,6 +3,30 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.3.8] — 2026-10-13
+
+### Changed
+
+- **Teams are picked as Away and Home, then who has the ball.** The old pickers
+  asked for "who has the ball" and "defense" before any game was chosen, which
+  read as if a defense could have the ball. Manual entry now matches live mode:
+  Away, Home, then a "Who has the ball?" switch with the two team names, and a
+  Home field / Neutral site switch.
+- **Away on the left, home on the right** for the scores, timeouts, field side
+  and second-half kickoff. Switching the ball moves the offense, not the numbers.
+
+### Removed
+
+- The swap button and the "Where's the game?" row (both now follow from Away,
+  Home and who has the ball).
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.3.7] — 2026-10-13
 
 ### Fixed

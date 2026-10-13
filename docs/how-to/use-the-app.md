@@ -15,12 +15,12 @@
 
 ## Set the situation
 
-1. Optional: under **Who has the ball?**, pick the offense, then the defense.
-   The engine grades the offense's fourth-down decision only.
-   The app sets the stadium (roof, altitude) from the home team, the kicker of
-   the team with the ball, and the betting line from ESPN. All labels then use
-   the team names. Click **⇄** to give the ball to the other team: the app
-   swaps the scores, timeouts, field side, home side and line.
+1. Pick the **Away** and **Home** teams (optional). Under **Who has the ball?**,
+   click the team that has the ball. Every two-team input shows the away team on
+   the left and the home team on the right. When the ball changes hands, the
+   scores, timeouts and field side stay with their teams. The app sets the
+   stadium, the kicker of the team with the ball, and the betting line from ESPN.
+   For London, Mexico City or the Super Bowl, click **Neutral site**.
 2. Enter the score for each team.
 3. Click the **Quarter**.
 4. Enter the **Clock** (minutes and seconds left in the quarter). The app shows
@@ -31,8 +31,7 @@
 7. Set **Yards to go**. On 4th & 1, click how far it is: **Inches**, **Not
    sure** or **About a yard**.
 8. Click the number of timeouts for each team.
-9. Under **Where's the game?**, click the home team or **Neutral site** (London, Mexico City, the Super Bowl). It sets home-field
-   advantage and, with a matchup picked, the stadium.
+9. Home field is set by the Away and Home teams.
 10. In the first half, click who gets the second-half kickoff.
 11. Click **Get the call**. The app shows the results screen. To change the
     situation, click **Edit situation**. Your inputs stay.

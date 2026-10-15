@@ -22,7 +22,13 @@
    stadium, the kicker of the team with the ball, and the betting line from ESPN.
    For London, Mexico City or the Super Bowl, click **Neutral site**.
 2. Enter the score for each team.
-3. Click the **Quarter**.
+3. Click the **Quarter**. For overtime, click **OT**. Three short rows appear:
+   - **Regular season** or **Playoffs**. Playoff overtime cannot end tied.
+   - When the score is tied: **First drive of OT** (nobody has had the ball yet)
+     or **Next score wins** (both teams have had it).
+   - Regular season only: **If it ends tied**: **Half a win** (normal), **A
+     loss** (you must win) or **A win** (a tie is enough).
+   A live game fills in overtime and the playoffs from the feed.
 4. Enter the **Clock** (minutes and seconds left in the quarter). The app shows
    if the two-minute warning is still to come.
 5. Click the side of the field (for example **HOU side**) and set the yard

@@ -7,7 +7,7 @@ is a single edit here followed by `py engine/fit_models.py`.
 
 CONFIG = {
     # ---- engine version (must equal the newest CHANGELOG entry) ----
-    "version": "1.3.9",
+    "version": "1.4.0",
 
     # ---- data ----
     # nflverse play-by-play, one parquet per season, from
@@ -52,6 +52,8 @@ CONFIG = {
     # Longest attempt in the 2014-2025 data (70 yd). The make curve is not
     # trusted past the data, so longer kicks are "out of range".
     "fg_max_distance": 70,
+    "fg_long_from": 55,          # past this distance the make curve bends down faster (hinge term, 1.4.0)
+    "ot_max_possessions": 12,    # playoff overtime cannot end in a tie: value up to this many possessions
     # Fair-catch kick (NFL Rule 11-4-3): after a fair catch the receiving team
     # may try a free-kick field goal from the catch spot (place or drop kick,
     # no rush, kick distance = spot + 10). If time expires during the punt, it is

@@ -1,5 +1,5 @@
 {
- "version": "1.3.9",
+ "version": "1.4.0",
  "plays": {
   "ours": 45145,
   "nfl4th": 50594,
@@ -7,76 +7,76 @@
   "seasons": "2014-2026"
  },
  "agreement": {
-  "all": 0.713,
-  "clear_calls": 0.878,
-  "clear_n": 18989,
-  "confident_calls": 0.932,
-  "confident_n": 14376
+  "all": 0.721,
+  "clear_calls": 0.887,
+  "clear_n": 19186,
+  "confident_calls": 0.938,
+  "confident_n": 14733
  },
  "table": {
   "go": {
-   "go": 16454,
-   "fg": 3767,
-   "punt": 5654
+   "go": 16496,
+   "fg": 3694,
+   "punt": 5847
   },
   "fg": {
-   "go": 1255,
-   "fg": 5546,
-   "punt": 872
+   "go": 1167,
+   "fg": 5607,
+   "punt": 388
   },
   "punt": {
-   "go": 1186,
-   "fg": 153,
-   "punt": 9949
+   "go": 1232,
+   "fg": 165,
+   "punt": 10240
   }
  },
  "disagreements_clear": {
-  "n": 2315,
-  "we_go_they_kick": 1817,
-  "they_go_we_kick": 295,
-  "fg_vs_punt": 203
+  "n": 2169,
+  "we_go_they_kick": 1838,
+  "they_go_we_kick": 273,
+  "fg_vs_punt": 58
  },
  "go_advantage": {
-  "correlation": 0.762,
-  "mean_ours_minus_theirs_pts": 0.7,
-  "median_ours_minus_theirs_pts": 0.42,
-  "share_go_ours": 0.577,
+  "correlation": 0.774,
+  "mean_ours_minus_theirs_pts": 0.75,
+  "median_ours_minus_theirs_pts": 0.46,
+  "share_go_ours": 0.581,
   "share_go_nfl4th": 0.421
  },
  "by_yards_to_go": {
   "1": {
    "plays": 5128.0,
-   "agree": 0.899,
-   "we_go_they_kick": 196.0,
-   "they_go_we_kick": 323.0
+   "agree": 0.896,
+   "we_go_they_kick": 192.0,
+   "they_go_we_kick": 339.0
   },
   "2-3": {
    "plays": 6932.0,
-   "agree": 0.76,
-   "we_go_they_kick": 1165.0,
-   "they_go_we_kick": 492.0
+   "agree": 0.759,
+   "we_go_they_kick": 1163.0,
+   "they_go_we_kick": 507.0
   },
   "4-6": {
    "plays": 10159.0,
-   "agree": 0.636,
-   "we_go_they_kick": 2904.0,
-   "they_go_we_kick": 767.0
+   "agree": 0.64,
+   "we_go_they_kick": 2898.0,
+   "they_go_we_kick": 747.0
   },
   "7-10": {
    "plays": 11487.0,
-   "agree": 0.631,
-   "we_go_they_kick": 3262.0,
-   "they_go_we_kick": 696.0
+   "agree": 0.642,
+   "we_go_they_kick": 3331.0,
+   "they_go_we_kick": 652.0
   },
   "11+": {
    "plays": 11130.0,
-   "agree": 0.752,
-   "we_go_they_kick": 1894.0,
-   "they_go_we_kick": 163.0
+   "agree": 0.774,
+   "we_go_they_kick": 1957.0,
+   "they_go_we_kick": 154.0
   }
  },
  "coaches": {
-  "agree_with_us": 0.529,
+  "agree_with_us": 0.537,
   "agree_with_nfl4th": 0.693
  },
  "wp_accuracy_held_out": {
@@ -101,31 +101,13 @@
  },
  "biggest_disagreements": [
   {
-   "game_id": "2016_04_OAK_BAL",
-   "situation": "Q4 0:48, down 1, 4th & 10 at opp 50",
-   "ours": "fg",
+   "game_id": "2020_15_LAC_LV",
+   "situation": "Q4 0:18, tied, 4th & 1 at opp 50",
+   "ours": "punt",
    "nfl4th": "go",
    "coach": "go",
-   "our_margin_pts": 16.4,
-   "nfl4th_margin_pts": 18.5
-  },
-  {
-   "game_id": "2018_15_CLE_DEN",
-   "situation": "Q4 0:43, down 1, 4th & 10 at opp 50",
-   "ours": "fg",
-   "nfl4th": "go",
-   "coach": "go",
-   "our_margin_pts": 11.8,
-   "nfl4th_margin_pts": 15.9
-  },
-  {
-   "game_id": "2017_19_NO_MIN",
-   "situation": "Q4 0:45, down 2, 4th & 10 at opp 46",
-   "ours": "fg",
-   "nfl4th": "go",
-   "coach": "go",
-   "our_margin_pts": 9.6,
-   "nfl4th_margin_pts": 15.1
+   "our_margin_pts": 13.9,
+   "nfl4th_margin_pts": 14.3
   },
   {
    "game_id": "2025_18_IND_HOU",
@@ -155,13 +137,13 @@
    "nfl4th_margin_pts": 7.8
   },
   {
-   "game_id": "2025_18_BAL_PIT",
-   "situation": "Q4 0:21, down 2, 4th & 7 at opp 50",
+   "game_id": "2016_03_BAL_JAX",
+   "situation": "Q4 1:07, down 1, 4th & 1 at opp 35",
    "ours": "fg",
    "nfl4th": "go",
-   "coach": "go",
-   "our_margin_pts": 7.6,
-   "nfl4th_margin_pts": 11.4
+   "coach": "fg",
+   "our_margin_pts": 7.2,
+   "nfl4th_margin_pts": 7.9
   },
   {
    "game_id": "2022_12_BAL_JAX",
@@ -169,26 +151,44 @@
    "ours": "go",
    "nfl4th": "fg",
    "coach": "fg",
-   "our_margin_pts": 6.8,
+   "our_margin_pts": 6.7,
    "nfl4th_margin_pts": 9.3
   },
   {
-   "game_id": "2016_03_BAL_JAX",
-   "situation": "Q4 1:07, down 1, 4th & 1 at opp 35",
-   "ours": "fg",
-   "nfl4th": "go",
+   "game_id": "2015_06_DEN_CLE",
+   "situation": "Q4 1:32, down 3, 4th & 7 at opp 8",
+   "ours": "go",
+   "nfl4th": "fg",
    "coach": "fg",
-   "our_margin_pts": 6.8,
-   "nfl4th_margin_pts": 7.9
+   "our_margin_pts": 5.6,
+   "nfl4th_margin_pts": 6.3
   },
   {
-   "game_id": "2016_06_JAX_CHI",
-   "situation": "Q4 1:03, down 1, 4th & 10 at opp 48",
-   "ours": "fg",
-   "nfl4th": "go",
-   "coach": "go",
-   "our_margin_pts": 5.8,
-   "nfl4th_margin_pts": 6.1
+   "game_id": "2025_14_NO_TB",
+   "situation": "Q4 4:58, down 7, 4th & 12 at opp 19",
+   "ours": "go",
+   "nfl4th": "fg",
+   "coach": "fg",
+   "our_margin_pts": 5.5,
+   "nfl4th_margin_pts": 7.3
+  },
+  {
+   "game_id": "2016_10_SEA_NE",
+   "situation": "Q4 8:59, down 2, 4th & 5 at opp 5",
+   "ours": "go",
+   "nfl4th": "fg",
+   "coach": "fg",
+   "our_margin_pts": 7.8,
+   "nfl4th_margin_pts": 5.3
+  },
+  {
+   "game_id": "2018_13_ARI_GB",
+   "situation": "Q4 1:45, tied, 4th & 3 at opp 26",
+   "ours": "go",
+   "nfl4th": "fg",
+   "coach": "fg",
+   "our_margin_pts": 5.4,
+   "nfl4th_margin_pts": 5.3
   }
  ]
 }

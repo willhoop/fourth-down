@@ -1,6 +1,6 @@
 # Fourth Down Engine: Win-Probability Decisions for Go, Field Goal or Punt
 
-Version: 1.3.0 — 2026-10-13
+Version: 1.4.0 — 2026-10-15
 Author: Will Hooper
 Data: nflverse play-by-play, 2014–2025 (fit) and 2014–2026 (coach grading)
 
@@ -334,15 +334,15 @@ or that short-yardage conversion is unbiased (section 8).
 
 - Win-probability log loss on held-out 2024, 2025: **0.446** (nflfastR `vegas_wp` on the same 81,654 plays: 0.4457).
 - Option values on held-out 4th downs, predicted vs actual win rate: go 37.4% vs 38.1% (n = 670); field goal 56.2% vs 55.6% (n = 826); punt 47.4% vs 46.6% (n = 1501).
-- League cost of 4th-down calls, confident mistakes only: **0.84** wins per team-season in 2014, **0.62** in 2025. Counting every disagreement: 1.11 and 0.86.
-- Coaches went for it on 12.7% of 4th downs in 2014 and 24.0% in 2025; the engine clearly favored going (edge of 1 point or more) on 30.2% and 34.5%.
-- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 38.0% to 45.2%. Share of calls the bootstrap is confident about: 47.7% to 49.9%.
-- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.32 wins/17 games (A+); Sean McDermott 0.46 wins/17 games (A+); Matt LaFleur 0.46 wins/17 games (A+).
-- Highest: Shane Steichen 0.87 (C); Todd Bowles 0.82 (C+); Sean Payton 0.82 (C+).
-- Recent seasons only (2021 on), lowest cost: Liam Coen 0.32 (A+); Sean McDermott 0.40 (A+); Matt LaFleur 0.46 (A+).
+- League cost of 4th-down calls, confident mistakes only: **0.82** wins per team-season in 2014, **0.61** in 2025. Counting every disagreement: 1.07 and 0.84.
+- Coaches went for it on 12.7% of 4th downs in 2014 and 24.0% in 2025; the engine clearly favored going (edge of 1 point or more) on 30.9% and 35.0%.
+- Share of 4th downs that are toss-ups (edge under 1 WP point), 2014–2026: 37.2% to 44.7%. Share of calls the bootstrap is confident about: 48.7% to 50.6%.
+- Current head coaches with the lowest confident-mistake cost: Liam Coen 0.32 wins/17 games (A+); Sean McDermott 0.43 wins/17 games (A+); Matt LaFleur 0.44 wins/17 games (A+).
+- Highest: Shane Steichen 0.88 (C); Todd Bowles 0.81 (C+); Sean Payton 0.80 (C+).
+- Recent seasons only (2021 on), lowest cost: Liam Coen 0.32 (A+); Sean McDermott 0.37 (A+); Matt LaFleur 0.43 (A+).
 - Edge check: relative to teams that kicked, teams that went did -0.5 ± 0.6 WP points versus the engine's prediction (negative = the engine overstates going; selection flatters going, so near zero does not clear it).
-- Replacement-level kicker: 76.4% made vs 85.5% expected; 61% from 50 yd vs 77% league average.
-- Top current kickers by points over replacement per 100 kicks: B.Aubrey 44.2; C.Boswell 40.8; W.Reichard 39.5.
+- Replacement-level kicker: 76.4% made vs 85.5% expected; 62% from 50 yd vs 77% league average.
+- Top current kickers by points over replacement per 100 kicks: B.Aubrey 46.9; C.Boswell 41.0; W.Reichard 40.5.
 
 Full tables: `docs/reports/validation-report.md`, `docs/reports/coach-grades.md`, `docs/reports/kicker-grades.md`.
 <!-- END GENERATED RESULTS -->

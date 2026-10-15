@@ -25,7 +25,7 @@ from config import CONFIG                               # noqa: E402
 from load_data import ROOT, fill_outdoor_weather, load  # noqa: E402
 from fit_models import build, snaps                      # noqa: E402
 
-KEEP = ["wp", "conv", "gain", "play", "fg", "punt", "clock", "kickoff_start", "rules"]
+KEEP = ["wp", "conv", "gain", "play", "fg", "punt", "clock", "kickoff_start", "rules", "ot", "tries"]
 
 
 def main():
@@ -47,6 +47,7 @@ def main():
         m = build(df_b, s_b, kicker_prior=prior, ko_df=df, fg_era=era)
         rep = {k: m[k] for k in KEEP}
         rep["fg"] = {"models": m["fg"]["models"]}     # kicker skill comes from the shipped model
+        rep["ot_drive"], rep["onside"] = shipped["ot_drive"], shipped["onside"]   # measured tables, not resampled
         reps.append(rep)
         print(f"replicate {b + 1}/{CONFIG['bootstrap_models']} in {time.time() - t0:.0f}s", flush=True)
     with open(os.path.join(ROOT, "app", "bootstrap.js"), "w") as fh:

@@ -75,7 +75,8 @@
     const f = { dist: d / 10, dist2: (d / 10) ** 2, year: (model.rules.season - 2014) / 10,
       era20: model.rules.season >= 2020 ? 1 : 0,
       wind: e.wind, wind_x_dist: e.wind * d / 10, cold: e.cold, precip: e.precip,
-      indoor: e.indoor, altitude: e.altitude };
+      indoor: e.indoor, altitude: e.altitude,
+      long: Math.max(0, d - (model.rules.fg_long_from !== undefined ? model.rules.fg_long_from : 999)) / 10 };
     const m = model.fg.models[comboKey(tog)];
     let z = m.intercept;
     m.names.forEach((n, i) => { z += m.coef[i] * f[n]; });
@@ -110,6 +111,7 @@
   const elapsed = (model, kind, hs) => model.clock[kind][hs <= 120 ? 1 : 0];
 
   function valueAfter(model, st, usBall, sdUs, yardline, secs, togo, down, posTo) {
+    if (st.ot) return otValueAfter(model, st, usBall, sdUs, yardline, secs);
     const ourTo = posTo === undefined ? st.pos_to : posTo;
     const hs = st.half_seconds, tmw = st.tmw_pending;
     let hsNew, tmwNew;
@@ -143,11 +145,81 @@
   const kickoffSpot = (model, st) => (st.kickoff_start !== undefined ? st.kickoff_start : model.kickoff_start);
 
   // Our chance from a tie at the end of regulation: both teams get the ball in
-  // overtime, so 0.5 plus the better team's measured edge; a tied OT is half a win.
+  // overtime, so 0.5 plus the better team's measured edge. A tied overtime
+  // (regular season only) is worth st.tie_value (default half a win).
   function otValue(model, st) {
     const ot = model.ot;
     if (!ot) return 0.5;
-    return 0.5 + (1 - ot.p_tie) * (sigmoid(ot.slope * st.spread_used / 10) - 0.5);
+    const edge = sigmoid(ot.slope * st.spread_used / 10) - 0.5;
+    const pTie = st.playoffs ? 0 : ot.p_tie;
+    return (1 - pTie) * (0.5 + edge) + pTie * (st.tie_value !== undefined ? st.tie_value : 0.5);
+  }
+
+  // After a score the scorer kicks off. A trailing kicker may declare an onside
+  // kick, recovered at its season's measured rate; it takes whichever is better
+  // for it. Not in overtime: a team that scores there leads or is tied.
+  function kickAfter(model, st, kickerUs, sdUs, secs) {
+    const normal = valueAfter(model, st, !kickerUs, sdUs, kickoffSpot(model, st), secs);
+    const o = model.onside;
+    const trailing = kickerUs ? sdUs < 0 : sdUs > 0;
+    if (!o || !trailing || st.ot) return normal;
+    const p = st.onside_rate !== undefined ? st.onside_rate : o.rate;
+    const onside = p * valueAfter(model, st, kickerUs, sdUs, o.recovered_yl, secs)
+      + (1 - p) * valueAfter(model, st, !kickerUs, sdUs, o.lost_yl, secs);
+    return kickerUs ? Math.max(normal, onside) : Math.min(normal, onside);
+  }
+
+  // ---------- overtime (mirrors engine/decide.py): both teams get the ball; the
+  // first team plays for a lead, the other answers once, then the next score
+  // wins. Each function returns the value for the team with the ball.
+  const otTie = (st, us) => { const u = st.tie_value !== undefined ? st.tie_value : 0.5; return us ? u : 1 - u; };
+  function otPossessions(model, st, secsLeft) {
+    const t = model.ot_drive;
+    if (st.playoffs) return t.max_possessions;
+    return secsLeft <= 0 ? 0 : Math.min(t.max_possessions, Math.floor(secsLeft / t.poss_secs) + 1);
+  }
+  function otDrive(model, yl) {
+    const t = model.ot_drive;
+    const i = Math.min(t.td.length - 1, Math.max(0, Math.floor((yl - 1) / t.bin)));
+    return [t.td[i], t.fg[i]];
+  }
+  function otSudden(model, st, us, yl, k) {
+    if (k <= 0) return otTie(st, us);
+    const [td, fg] = otDrive(model, yl);
+    return td + fg + (1 - td - fg) * (1 - otSudden(model, st, !us, model.ot_drive.next_start, k - 1));
+  }
+  function otAnswer(model, st, us, m, yl, k) {
+    if (k <= 0) return 0;
+    const [td, fg] = otDrive(model, yl);
+    const tries = model.tries || { pat: 1, two: 0 };
+    const tied = 1 - otSudden(model, st, !us, kickoffSpot(model, st), k - 1);
+    const vTd = m <= 6 ? 1 : (m === 7 ? Math.max(tries.two, tries.pat * tied) : tries.two * tied);
+    const vFg = m < 3 ? 1 : (m === 3 ? tied : 0);
+    return td * vTd + fg * vFg;
+  }
+  function otFirst(model, st, us, yl, k) {
+    if (k <= 0) return otTie(st, us);
+    const [td, fg] = otDrive(model, yl);
+    const ko = kickoffSpot(model, st);
+    return td * (1 - otAnswer(model, st, !us, 7, ko, k - 1))
+      + fg * (1 - otAnswer(model, st, !us, 3, ko, k - 1))
+      + (1 - td - fg) * (1 - otSudden(model, st, !us, model.ot_drive.next_start, k - 1));
+  }
+  function otValueAfter(model, st, usBall, sdUs, yardline, secs) {
+    const k = otPossessions(model, st, st.half_seconds - secs);
+    const yl = Math.min(99, Math.max(1, yardline));
+    if (k <= 0 || (sdUs !== 0 && st.ot_phase === "sudden")) return sdUs > 0 ? 1 : (sdUs < 0 ? 0 : otTie(st, true));
+    if (st.ot_phase === "answer") {
+      if (sdUs > 0) return 1;
+      if (sdUs < 0) return usBall ? otAnswer(model, st, true, -sdUs, yl, k) : 0;
+      return usBall ? otSudden(model, st, true, yl, k) : 1 - otSudden(model, st, false, yl, k);
+    }
+    if (st.ot_phase === "first") {
+      if (sdUs > 0) return usBall ? 1 : 1 - otAnswer(model, st, false, sdUs, yl, k);
+      if (sdUs < 0) return 0;
+      return usBall ? otFirst(model, st, true, yl, k) : 1 - otSudden(model, st, false, yl, k);
+    }
+    return usBall ? otSudden(model, st, true, yl, k) : 1 - otSudden(model, st, false, yl, k);
   }
 
   // After a touchdown: 6 points, then the scorer takes the extra point or the
@@ -155,8 +227,7 @@
   function touchdownValue(model, st, usScored, sdBefore, secs) {
     const tries = model.tries || { pat: 1, two: 0 };
     const sign = usScored ? 1 : -1;
-    const after = (extra) => valueAfter(model, st, !usScored, sdBefore + sign * (model.rules.td_points + extra),
-      kickoffSpot(model, st), secs);
+    const after = (extra) => kickAfter(model, st, usScored, sdBefore + sign * (model.rules.td_points + extra), secs);
     const v0 = after(0), v1 = after(1), v2 = after(2);
     const pat = tries.pat * v1 + (1 - tries.pat) * v0;
     const two = tries.two * v2 + (1 - tries.two) * v0;
@@ -176,6 +247,13 @@
     }
     s.down = s.down === undefined ? 4 : s.down;
     if (s.second_half) s.receive_2h = 0;
+    if (s.qtr >= 5) {
+      // overtime: our phase follows from the score and whether this is the
+      // first possession (state.ot_first, asked only when tied)
+      s.ot = 1;
+      s.tmw_pending = 0;
+      s.ot_phase = s.score_diff < 0 ? "answer" : (s.score_diff === 0 && s.ot_first ? "first" : "sudden");
+    }
     return s;
   }
 
@@ -241,7 +319,7 @@
       return [null, { p_make: 0, distance: yl + r.fg_distance_add, out_of_range: true }];
     }
     const pm = pFieldGoal(model, st, tog);
-    const make = valueAfter(model, st, false, sd + 3, kickoffSpot(model, st), elapsed(model, "fg", hs));
+    const make = kickAfter(model, st, true, sd + 3, elapsed(model, "fg", hs));
     const spot = yl + r.fg_snap_to_spot;
     const oppYl = spot <= r.missed_fg_min_spot ? 80 : 100 - spot;
     const miss = valueAfter(model, st, false, sd, oppYl, elapsed(model, "fg", hs));

@@ -1,6 +1,6 @@
 # Validation report
 
-Model version 1.3.0, built 2026-10-13. Fit on 2014–2023; scored on held-out seasons 2024, 2025 (569 games). Splits are by season, so plays from one game never sit on both sides.
+Model version 1.4.0, built 2026-10-15. Fit on 2014–2023; scored on held-out seasons 2024, 2025 (569 games). Splits are by season, so plays from one game never sit on both sides.
 
 #### Win probability (every held-out snap)
 
@@ -53,22 +53,22 @@ Log loss 0.6424 (n = 1849); with team strength 0.6406.
 
 | Factors | Kicks | Log loss | Brier |
 |---|---|---|---|
-| base | 2306 | 0.3688 | 0.1147 |
-| weather | 2306 | 0.3671 | 0.114 |
-| stadium | 2306 | 0.3676 | 0.1142 |
-| weather+stadium | 2306 | 0.3673 | 0.114 |
+| base | 2306 | 0.3693 | 0.1149 |
+| weather | 2306 | 0.3676 | 0.1142 |
+| stadium | 2306 | 0.3682 | 0.1145 |
+| weather+stadium | 2306 | 0.3678 | 0.1143 |
 
 | Distance | Kicks | Predicted | Actual |
 |---|---|---|---|
-| 18-29 | 469 | 98.0% | 97.7% |
-| 30-39 | 632 | 93.3% | 93.7% |
-| 40-49 | 640 | 81.8% | 80.8% |
-| 50-54 | 354 | 69.3% | 74.0% |
-| 55-70 | 211 | 59.3% | 61.1% |
+| 18-29 | 469 | 98.3% | 97.7% |
+| 30-39 | 632 | 93.1% | 93.7% |
+| 40-49 | 640 | 81.3% | 80.8% |
+| 50-54 | 354 | 71.4% | 74.0% |
+| 55-70 | 211 | 55.4% | 61.1% |
 
-Kicking-era term chosen on the hold-out: **trend** (log loss: trend 0.3688, era2020 0.3694, both 0.3697).
+Kicking-era term chosen on the hold-out: **trend** (log loss: trend 0.3693, era2020 0.37, both 0.3704).
 
-Kicker skill priors chosen on the hold-out: accuracy sd 0.4, range sd 0.1. Log loss 0.3673 with no kicker effect, 0.3665 with it (accuracy only: 0.3666).
+Kicker skill priors chosen on the hold-out: accuracy sd 0.4, range sd 0.2. Log loss 0.3678 with no kicker effect, 0.3666 with it (accuracy only: 0.367).
 
 #### Punts
 
@@ -76,7 +76,7 @@ Mean absolute error of the predicted opponent start: **6.75 yd** (n = 3,714), ag
 
 #### Agreement with coaches (descriptive)
 
-On 3,000 sampled held-out 4th downs the engine's call matched the coach's 61.7% of the time. Where the engine favored going by 2+ points (694 plays), coaches went 46.5% of the time.
+On 3,000 sampled held-out 4th downs the engine's call matched the coach's 62.6% of the time. Where the engine favored going by 2+ points (700 plays), coaches went 46.9% of the time.
 
 #### Clock and rules measured from the data
 

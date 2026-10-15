@@ -155,6 +155,22 @@ def test_python_and_js_engines_agree(shipped):
             del st["short"]
         tog = {k: rng.random() < 0.5 for k in ALL}
         cases.append({"state": st, "tog": tog})
+    # overtime (every phase, both game types, any tie value) and late trailing
+    # spots where an onside kick can matter
+    for _ in range(40):
+        st = dict(score_diff=rng.choice([0, 0, -3, -7, -8, 3]), qtr=5, half_seconds=rng.randint(5, 900),
+                  yardline=rng.randint(1, 99), ydstogo=rng.randint(1, 12), pos_to=rng.randint(0, 2),
+                  def_to=rng.randint(0, 2), home=rng.choice([0, 1]), receive_2h=0, down=4,
+                  ot_first=rng.random() < 0.5, playoffs=int(rng.random() < 0.5), tie_value=rng.choice([0.0, 0.5, 1.0]),
+                  home_edge=shipped["home_edge"])
+        st["ydstogo"] = min(st["ydstogo"], st["yardline"])
+        cases.append({"state": st, "tog": {k: rng.random() < 0.5 for k in ALL}})
+    for _ in range(20):
+        st = dict(score_diff=rng.randint(-16, -4), qtr=4, half_seconds=rng.randint(20, 300),
+                  yardline=rng.randint(1, 40), ydstogo=rng.randint(1, 10), pos_to=rng.randint(0, 3),
+                  def_to=rng.randint(0, 3), home=1, receive_2h=0, down=4, home_edge=shipped["home_edge"])
+        st["ydstogo"] = min(st["ydstogo"], st["yardline"])
+        cases.append({"state": st, "tog": {}})
     script = (
         "const M=require(process.argv[1]+'/app/model.js'),E=require(process.argv[1]+'/app/engine.js');"
         "const c=JSON.parse(require('fs').readFileSync(0,'utf8'));"

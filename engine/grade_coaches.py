@@ -25,6 +25,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import CONFIG                              # noqa: E402
+import fit_ot                                              # noqa: E402
 from load_data import ROOT, fill_outdoor_weather, load  # noqa: E402
 from fit_models import snaps                           # noqa: E402
 
@@ -74,6 +75,7 @@ def prepare(seasons=None):
     d["coach"] = np.where(d["posteam"] == d["home_team"], d["home_coach"], d["away_coach"]) \
         if "home_coach" in d else None
     d.attrs["kickoff"] = (shipped["kickoff_by_season"], shipped["kickoff_start"])
+    d.attrs["onside"] = shipped["onside"]
     return df, d, ab, by_game, by_season
 
 
@@ -92,6 +94,8 @@ def score(seasons=None):
         ka, kb = ab.get(kid, (0.0, 0.0))
         ko_map, ko_now = d.attrs["kickoff"]
         st = {"kickoff_start": ko_map.get(str(int(r["season"])), ko_now),
+              "onside_rate": fit_ot.onside_rate(d.attrs["onside"], int(r["season"])),
+              "playoffs": int(r.get("season_type") == "POST"),
               "score_diff": float(r["score_diff"]), "qtr": int(r["qtr"]),
               "half_seconds": float(r["half_seconds_remaining"]), "yardline": float(r["yardline_100"]),
               "ydstogo": float(r["ydstogo"]), "pos_to": float(r["posteam_timeouts_remaining"]),

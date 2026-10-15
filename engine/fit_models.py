@@ -22,6 +22,7 @@ from sklearn.metrics import brier_score_loss, log_loss
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import CONFIG                      # noqa: E402
 from load_data import ROOT, fill_outdoor_weather, load   # noqa: E402
+import fit_ot                                              # noqa: E402
 import decide                                  # noqa: E402
 import kickers                                 # noqa: E402
 
@@ -153,6 +154,9 @@ def fg_frame(df):
     d = f["kick_distance"]
     f["dist"] = d / 10.0
     f["dist2"] = (d / 10.0) ** 2
+    # past fg_long_from the make rate falls faster than a quadratic allows (1.4.0:
+    # without this term a 67-yard try was rated 48%, against about 25% made)
+    f["long"] = (d - CONFIG["fg_long_from"]).clip(lower=0) / 10.0
     f["year"] = (f["season"] - 2014) / 10.0
     f["era20"] = (f["season"] >= 2020).astype(int)
     f["wind"] = f["wind_mph"] / 10.0
@@ -213,7 +217,7 @@ def build(df, s, kicker_prior=None, ko_df=None, fg_era="trend", wp=True):
     # field goals
     f = fg_frame(df)
     out["fg"] = {"models": {}, "era": fg_era}
-    base_names = ["dist", "dist2"] + FG_ERA_CANDIDATES[fg_era]
+    base_names = ["dist", "dist2", "long"] + FG_ERA_CANDIDATES[fg_era]
     for key, extra in COMBOS.items():
         out["fg"]["models"][key] = logit_fit(f, f["made"].values, base_names + extra)[1]
 
@@ -383,7 +387,8 @@ def build(df, s, kicker_prior=None, ko_df=None, fg_era="trend", wp=True):
     out["rules"] = {"season": CONFIG["rules_season"], "td_points": CONFIG["touchdown_points"],
                     "fg_distance_add": CONFIG["fg_distance_add"], "fg_snap_to_spot": CONFIG["fg_snap_to_spot"],
                     "missed_fg_min_spot": CONFIG["missed_fg_min_spot"],
-                    "fg_max_distance": CONFIG["fg_max_distance"], "tossup_margin": CONFIG["tossup_margin"],
+                    "fg_max_distance": CONFIG["fg_max_distance"], "fg_long_from": CONFIG["fg_long_from"],
+                    "tossup_margin": CONFIG["tossup_margin"],
                     "fair_catch_kick_window": CONFIG["fair_catch_kick_window"],
                     "short_yardage": CONFIG["short_yardage"]}
     return out
@@ -575,6 +580,10 @@ def main():
     print(json.dumps({k: v[k] for k in ("wp", "conv", "fg", "punt", "coach_agreement")}, indent=1, default=str)[:4000])
 
     mdl = build(df, s, kicker_prior=prior, fg_era=fg_era)
+    # overtime drive tables and onside kicks (engine/fit_ot.py)
+    ot_drive, onside = fit_ot.tables()
+    mdl["ot_drive"] = ot_drive
+    mdl["onside"] = dict(onside, rate=fit_ot.onside_rate(onside, CONFIG["rules_season"]))
     write_kicker_grades(mdl)
     for k in [k for k in mdl if k.startswith("_")]:
         mdl.pop(k)

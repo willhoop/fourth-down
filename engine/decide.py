@@ -104,7 +104,8 @@ def p_field_goal(model, st, tog):
          "era20": 1 if model["rules"]["season"] >= 2020 else 0,
          "wind": e["wind"], "wind_x_dist": e["wind"] * d / 10.0,
          "cold": e["cold"], "precip": e["precip"],
-         "indoor": e["indoor"], "altitude": e["altitude"]}
+         "indoor": e["indoor"], "altitude": e["altitude"],
+         "long": max(0.0, d - model["rules"].get("fg_long_from", 999)) / 10.0}
     m = model["fg"]["models"][combo_key(tog)]
     z = m["intercept"] + sum(c * f[n] for n, c in zip(m["names"], m["coef"]))
     if tog.get("kicker"):
@@ -153,6 +154,8 @@ def value_after(model, st, us_ball, sd_us, yardline, secs, togo=None, down=1, po
     st holds the clock and timeouts at the snap. Timeouts carry over, unless
     pos_to overrides ours (a timeout we just used).
     """
+    if st.get("ot"):
+        return ot_value_after(model, st, us_ball, sd_us, yardline, secs)
     our_to = st["pos_to"] if pos_to is None else pos_to
     hs = st["half_seconds"]
     tmw = st["tmw_pending"]
@@ -196,13 +199,14 @@ def kickoff_spot(model, st):
 
 def ot_value(model, st):
     """Our chance to win from a tie at the end of regulation. Both teams get the
-    ball in overtime, so it is 0.5 plus the better team's measured edge; a tied
-    overtime counts as half a win."""
+    ball in overtime, so it is 0.5 plus the better team's measured edge. A tied
+    overtime (regular season only) is worth st["tie_value"] (default half a win)."""
     ot = model.get("ot")
     if not ot:
         return 0.5
     edge = sigmoid(ot["slope"] * st["spread_used"] / 10.0) - 0.5
-    return 0.5 + (1.0 - ot["p_tie"]) * edge
+    p_tie = 0.0 if st.get("playoffs") else ot["p_tie"]
+    return (1.0 - p_tie) * (0.5 + edge) + p_tie * st.get("tie_value", 0.5)
 
 
 def touchdown_value(model, st, us_scored, sd_before, secs):
@@ -210,12 +214,105 @@ def touchdown_value(model, st, us_scored, sd_before, secs):
     point or the 2-point try, whichever is better for the scorer."""
     tries = model.get("tries", {"pat": 1.0, "two": 0.0})
     sign = 1 if us_scored else -1
-    after = lambda extra: value_after(model, st, not us_scored, sd_before + sign * (model["rules"]["td_points"] + extra),
-                                      kickoff_spot(model, st), secs)
+    after = lambda extra: kick_after(model, st, us_scored, sd_before + sign * (model["rules"]["td_points"] + extra), secs)
     v0, v1, v2 = after(0), after(1), after(2)
     pat = tries["pat"] * v1 + (1 - tries["pat"]) * v0
     two = tries["two"] * v2 + (1 - tries["two"]) * v0
     return max(pat, two) if us_scored else min(pat, two)
+
+
+def kick_after(model, st, kicker_us, sd_us, secs):
+    """After a score the scorer kicks off. A trailing kicker may declare an
+    onside kick, recovered at its season's measured rate; it takes whichever is
+    better for it. Not in overtime: a team that scores there leads or is tied."""
+    normal = value_after(model, st, not kicker_us, sd_us, kickoff_spot(model, st), secs)
+    o = model.get("onside")
+    trailing = sd_us < 0 if kicker_us else sd_us > 0
+    if not o or not trailing or st.get("ot"):
+        return normal
+    p = st.get("onside_rate", o["rate"])
+    onside = (p * value_after(model, st, kicker_us, sd_us, o["recovered_yl"], secs)
+              + (1 - p) * value_after(model, st, not kicker_us, sd_us, o["lost_yl"], secs))
+    return max(normal, onside) if kicker_us else min(normal, onside)
+
+
+# ---------------------------------------------------------------- overtime
+# Both teams get the ball (playoffs since 2022, regular season since 2025). The
+# first team plays for a lead, the other team answers once, and then the next
+# score wins. Regular-season overtime is 10 minutes and can end tied; playoff
+# overtime cannot. A drive is valued from measured results of drives with a
+# first down at that spot (model["ot_drive"]). Every function returns the value
+# for the team with the ball; "us" says whether that team is us (for the tie).
+def ot_tie(st, us):
+    u = st.get("tie_value", 0.5)
+    return u if us else 1.0 - u
+
+
+def ot_possessions(model, st, secs_left):
+    """Possessions left, counting the current one."""
+    t = model["ot_drive"]
+    if st.get("playoffs"):
+        return t["max_possessions"]
+    return 0 if secs_left <= 0 else min(t["max_possessions"], int(secs_left // t["poss_secs"]) + 1)
+
+
+def ot_drive(model, yl):
+    t = model["ot_drive"]
+    i = min(len(t["td"]) - 1, max(0, int((yl - 1) // t["bin"])))
+    return t["td"][i], t["fg"][i]
+
+
+def ot_sudden(model, st, us, yl, k):
+    """Next score wins."""
+    if k <= 0:
+        return ot_tie(st, us)
+    td, fg = ot_drive(model, yl)
+    return td + fg + (1 - td - fg) * (1 - ot_sudden(model, st, not us, model["ot_drive"]["next_start"], k - 1))
+
+
+def ot_answer(model, st, us, m, yl, k):
+    """The team with the ball trails by m and has its one answering possession."""
+    if k <= 0:
+        return 0.0
+    td, fg = ot_drive(model, yl)
+    tries = model.get("tries", {"pat": 1.0, "two": 0.0})
+    tied = 1 - ot_sudden(model, st, not us, kickoff_spot(model, st), k - 1)   # tie it, then they receive
+    v_td = 1.0 if m <= 6 else (max(tries["two"], tries["pat"] * tied) if m == 7 else tries["two"] * tied)
+    v_fg = 1.0 if m < 3 else (tied if m == 3 else 0.0)
+    return td * v_td + fg * v_fg
+
+
+def ot_first(model, st, us, yl, k):
+    """Tied, and the team with the ball has overtime's first possession."""
+    if k <= 0:
+        return ot_tie(st, us)
+    td, fg = ot_drive(model, yl)
+    ko = kickoff_spot(model, st)
+    return (td * (1 - ot_answer(model, st, not us, 7, ko, k - 1))
+            + fg * (1 - ot_answer(model, st, not us, 3, ko, k - 1))
+            + (1 - td - fg) * (1 - ot_sudden(model, st, not us, model["ot_drive"]["next_start"], k - 1)))
+
+
+def ot_value_after(model, st, us_ball, sd_us, yl, secs):
+    """WP for us after an overtime event. st["ot_phase"] is our phase at the snap:
+    "first" (tied, our first possession), "answer" (we trail), "sudden" (next score wins)."""
+    k = ot_possessions(model, st, st["half_seconds"] - secs)
+    yl = min(99.0, max(1.0, yl))
+    if k <= 0 or sd_us != 0 and st["ot_phase"] == "sudden":
+        return 1.0 if sd_us > 0 else (0.0 if sd_us < 0 else ot_tie(st, True))
+    if st["ot_phase"] == "answer":
+        if sd_us > 0:
+            return 1.0
+        if sd_us < 0:
+            return ot_answer(model, st, True, -sd_us, yl, k) if us_ball else 0.0
+        return ot_sudden(model, st, True, yl, k) if us_ball else 1 - ot_sudden(model, st, False, yl, k)
+    if st["ot_phase"] == "first":
+        if sd_us > 0:
+            return 1.0 if us_ball else 1 - ot_answer(model, st, False, sd_us, yl, k)
+        if sd_us < 0:
+            return 0.0
+        return ot_first(model, st, True, yl, k) if us_ball else 1 - ot_sudden(model, st, False, yl, k)
+    return ot_sudden(model, st, True, yl, k) if us_ball else 1 - ot_sudden(model, st, False, yl, k)
 
 
 def prepare(st, tog):
@@ -233,6 +330,13 @@ def prepare(st, tog):
     s["down"] = s.get("down", 4)
     if s["second_half"]:
         s["receive_2h"] = 0
+    if s["qtr"] >= 5:
+        # overtime: our phase follows from the score and whether this is the
+        # first possession (st["ot_first"], asked only when tied)
+        s["ot"] = 1
+        s["tmw_pending"] = 0
+        s["ot_phase"] = ("answer" if s["score_diff"] < 0 else
+                         "first" if s["score_diff"] == 0 and s.get("ot_first") else "sudden")
     return s
 
 
@@ -304,7 +408,7 @@ def wp_fg(model, st, tog):
     if yl + r["fg_distance_add"] > r["fg_max_distance"]:
         return None, {"p_make": 0.0, "distance": yl + r["fg_distance_add"], "out_of_range": True}
     pm = p_field_goal(model, st, tog)
-    make = value_after(model, st, False, sd + 3, kickoff_spot(model, st), elapsed(model, "fg", hs))
+    make = kick_after(model, st, True, sd + 3, elapsed(model, "fg", hs))
     spot = yl + r["fg_snap_to_spot"]
     opp_yl = 80.0 if spot <= r["missed_fg_min_spot"] else 100.0 - spot
     miss = value_after(model, st, False, sd, opp_yl, elapsed(model, "fg", hs))

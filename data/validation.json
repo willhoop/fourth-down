@@ -19,18 +19,18 @@
   "candidates": {
    "trend": {
     "n": 2306,
-    "log_loss": 0.3688,
-    "brier": 0.1147
+    "log_loss": 0.3693,
+    "brier": 0.1149
    },
    "era2020": {
     "n": 2306,
-    "log_loss": 0.3694,
-    "brier": 0.115
+    "log_loss": 0.37,
+    "brier": 0.1152
    },
    "both": {
     "n": 2306,
-    "log_loss": 0.3697,
-    "brier": 0.1151
+    "log_loss": 0.3704,
+    "brier": 0.1154
    }
   },
   "chosen": "trend"
@@ -41,22 +41,22 @@
     "sa": 0.0,
     "sb": 0.0,
     "n": 2306,
-    "log_loss": 0.3673,
-    "brier": 0.114
+    "log_loss": 0.3678,
+    "brier": 0.1143
    },
    {
     "sa": 0.0,
     "sb": 0.05,
     "n": 2306,
-    "log_loss": 0.3672,
-    "brier": 0.114
+    "log_loss": 0.3677,
+    "brier": 0.1143
    },
    {
     "sa": 0.0,
     "sb": 0.1,
     "n": 2306,
-    "log_loss": 0.3671,
-    "brier": 0.114
+    "log_loss": 0.3675,
+    "brier": 0.1142
    },
    {
     "sa": 0.0,
@@ -69,195 +69,195 @@
     "sa": 0.0,
     "sb": 0.3,
     "n": 2306,
-    "log_loss": 0.3674,
-    "brier": 0.1141
+    "log_loss": 0.367,
+    "brier": 0.114
    },
    {
     "sa": 0.1,
     "sb": 0.0,
     "n": 2306,
-    "log_loss": 0.3671,
-    "brier": 0.114
+    "log_loss": 0.3676,
+    "brier": 0.1143
    },
    {
     "sa": 0.1,
     "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.3675,
+    "brier": 0.1142
+   },
+   {
+    "sa": 0.1,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3673,
+    "brier": 0.1142
+   },
+   {
+    "sa": 0.1,
+    "sb": 0.2,
     "n": 2306,
     "log_loss": 0.367,
     "brier": 0.114
    },
    {
     "sa": 0.1,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3669,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3673,
+    "brier": 0.1142
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.3672,
+    "brier": 0.1141
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.1,
+    "n": 2306,
+    "log_loss": 0.3671,
+    "brier": 0.1141
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.2,
+    "sb": 0.3,
+    "n": 2306,
+    "log_loss": 0.3668,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.3,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.3671,
+    "brier": 0.1141
+   },
+   {
+    "sa": 0.3,
+    "sb": 0.05,
+    "n": 2306,
+    "log_loss": 0.367,
+    "brier": 0.1141
+   },
+   {
+    "sa": 0.3,
     "sb": 0.1,
     "n": 2306,
     "log_loss": 0.3669,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.1,
-    "sb": 0.2,
-    "n": 2306,
-    "log_loss": 0.367,
     "brier": 0.114
    },
    {
-    "sa": 0.1,
+    "sa": 0.3,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3667,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.3,
     "sb": 0.3,
     "n": 2306,
-    "log_loss": 0.3673,
+    "log_loss": 0.3667,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.4,
+    "sb": 0.0,
+    "n": 2306,
+    "log_loss": 0.367,
     "brier": 0.1141
    },
    {
-    "sa": 0.2,
-    "sb": 0.0,
-    "n": 2306,
-    "log_loss": 0.3668,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.2,
+    "sa": 0.4,
     "sb": 0.05,
     "n": 2306,
-    "log_loss": 0.3668,
-    "brier": 0.1139
+    "log_loss": 0.3669,
+    "brier": 0.114
    },
    {
-    "sa": 0.2,
+    "sa": 0.4,
     "sb": 0.1,
-    "n": 2306,
-    "log_loss": 0.3667,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.2,
-    "sb": 0.2,
     "n": 2306,
     "log_loss": 0.3668,
     "brier": 0.114
    },
    {
-    "sa": 0.2,
-    "sb": 0.3,
-    "n": 2306,
-    "log_loss": 0.3672,
-    "brier": 0.1142
-   },
-   {
-    "sa": 0.3,
-    "sb": 0.0,
-    "n": 2306,
-    "log_loss": 0.3666,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.3,
-    "sb": 0.05,
-    "n": 2306,
-    "log_loss": 0.3666,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.3,
-    "sb": 0.1,
-    "n": 2306,
-    "log_loss": 0.3666,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.3,
+    "sa": 0.4,
     "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3666,
+    "brier": 0.114
+   },
+   {
+    "sa": 0.4,
+    "sb": 0.3,
     "n": 2306,
     "log_loss": 0.3667,
     "brier": 0.114
    },
    {
-    "sa": 0.3,
-    "sb": 0.3,
+    "sa": 0.6,
+    "sb": 0.0,
     "n": 2306,
     "log_loss": 0.3671,
-    "brier": 0.1142
+    "brier": 0.1141
    },
    {
-    "sa": 0.4,
-    "sb": 0.0,
-    "n": 2306,
-    "log_loss": 0.3666,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.4,
+    "sa": 0.6,
     "sb": 0.05,
-    "n": 2306,
-    "log_loss": 0.3666,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.4,
-    "sb": 0.1,
-    "n": 2306,
-    "log_loss": 0.3665,
-    "brier": 0.1139
-   },
-   {
-    "sa": 0.4,
-    "sb": 0.2,
-    "n": 2306,
-    "log_loss": 0.3667,
-    "brier": 0.114
-   },
-   {
-    "sa": 0.4,
-    "sb": 0.3,
     "n": 2306,
     "log_loss": 0.3671,
-    "brier": 0.1142
-   },
-   {
-    "sa": 0.6,
-    "sb": 0.0,
-    "n": 2306,
-    "log_loss": 0.3668,
-    "brier": 0.114
-   },
-   {
-    "sa": 0.6,
-    "sb": 0.05,
-    "n": 2306,
-    "log_loss": 0.3668,
-    "brier": 0.114
+    "brier": 0.1141
    },
    {
     "sa": 0.6,
     "sb": 0.1,
-    "n": 2306,
-    "log_loss": 0.3668,
-    "brier": 0.114
-   },
-   {
-    "sa": 0.6,
-    "sb": 0.2,
     "n": 2306,
     "log_loss": 0.367,
-    "brier": 0.1142
+    "brier": 0.1141
+   },
+   {
+    "sa": 0.6,
+    "sb": 0.2,
+    "n": 2306,
+    "log_loss": 0.3669,
+    "brier": 0.1141
    },
    {
     "sa": 0.6,
     "sb": 0.3,
     "n": 2306,
-    "log_loss": 0.3674,
-    "brier": 0.1144
+    "log_loss": 0.367,
+    "brier": 0.1141
    }
   ],
   "chosen": [
    0.4,
-   0.1
+   0.2
   ],
   "best_accuracy_only": {
-   "sa": 0.3,
+   "sa": 0.4,
    "sb": 0.0,
    "n": 2306,
-   "log_loss": 0.3666,
-   "brier": 0.1139
+   "log_loss": 0.367,
+   "brier": 0.1141
   }
  },
  "wp": {
@@ -402,53 +402,53 @@
  "fg": {
   "base": {
    "n": 2306,
-   "log_loss": 0.3688,
-   "brier": 0.1147
+   "log_loss": 0.3693,
+   "brier": 0.1149
   },
   "weather": {
-   "n": 2306,
-   "log_loss": 0.3671,
-   "brier": 0.114
-  },
-  "stadium": {
    "n": 2306,
    "log_loss": 0.3676,
    "brier": 0.1142
   },
+  "stadium": {
+   "n": 2306,
+   "log_loss": 0.3682,
+   "brier": 0.1145
+  },
   "weather+stadium": {
    "n": 2306,
-   "log_loss": 0.3673,
-   "brier": 0.114
+   "log_loss": 0.3678,
+   "brier": 0.1143
   },
   "by_distance": [
    {
     "distance": "18-29",
     "n": 469,
-    "predicted": 0.98,
+    "predicted": 0.983,
     "actual": 0.977
    },
    {
     "distance": "30-39",
     "n": 632,
-    "predicted": 0.933,
+    "predicted": 0.931,
     "actual": 0.937
    },
    {
     "distance": "40-49",
     "n": 640,
-    "predicted": 0.818,
+    "predicted": 0.813,
     "actual": 0.808
    },
    {
     "distance": "50-54",
     "n": 354,
-    "predicted": 0.693,
+    "predicted": 0.714,
     "actual": 0.74
    },
    {
     "distance": "55-70",
     "n": 211,
-    "predicted": 0.593,
+    "predicted": 0.554,
     "actual": 0.611
    }
   ]
@@ -460,22 +460,22 @@
  },
  "coach_agreement": {
   "n": 3000,
-  "agreement": 0.617,
+  "agreement": 0.626,
   "matrix_engine_by_coach": {
    "go": {
-    "go": 573,
-    "fg": 416,
-    "punt": 565
-   },
-   "fg": {
-    "punt": 49,
-    "fg": 389,
-    "go": 56
+    "go": 576,
+    "fg": 413,
+    "punt": 577
    },
    "punt": {
-    "punt": 890,
-    "go": 41,
-    "fg": 21
+    "punt": 908,
+    "go": 42,
+    "fg": 20
+   },
+   "fg": {
+    "fg": 393,
+    "punt": 19,
+    "go": 52
    }
   },
   "option_calibration": {
@@ -495,10 +495,10 @@
     "actual": 0.466
    }
   },
-  "strong_go_n": 694,
-  "strong_go_coach_went": 0.465
+  "strong_go_n": 700,
+  "strong_go_coach_went": 0.469
  },
  "imputed_weather_plays": 1425,
- "version": "1.3.0",
- "built": "2026-10-13"
+ "version": "1.4.0",
+ "built": "2026-10-15"
 }

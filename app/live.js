@@ -31,7 +31,8 @@
     const order = { in: 0, pre: 1, post: 2 };
     return (feed.events || []).map((e) => {
       const c = e.competitions[0], st = (c.status || {}).type || {};
-      return { id: e.id, name: e.shortName, state: st.state, detail: st.shortDetail, c };
+      return { id: e.id, name: e.shortName, state: st.state, detail: st.shortDetail, c,
+        playoffs: ((e.season || {}).type === 3) };      // ESPN season type 3 = postseason
     }).sort((a, b) => (order[a.state] ?? 3) - (order[b.state] ?? 3));
   }
 
@@ -41,7 +42,7 @@
     const us = c.competitors.find((x) => x.homeAway === side);
     const them = c.competitors.find((x) => x.homeAway === other);
     const ours = code(us.team.abbreviation), theirs = code(them.team.abbreviation);
-    const out = { our: ours, their: theirs, home: side === "home", state: game.state };
+    const out = { our: ours, their: theirs, home: side === "home", state: game.state, playoffs: !!game.playoffs };
     if (c.venue && typeof c.venue.indoor === "boolean") out.indoor = c.venue.indoor;
     if (c.neutralSite === true) out.neutral = true;       // London, Mexico City, the Super Bowl
     // betting line such as "DAL -8.5": the named team is favored by 8.5.
@@ -52,7 +53,7 @@
     out.usScore = +us.score || 0;
     out.themScore = +them.score || 0;
     const per = c.status.period, clk = String(c.status.displayClock || "").split(":");
-    if (per >= 1 && per <= 4) out.qtr = per;
+    if (per >= 1) out.qtr = Math.min(per, 5);           // 5 = overtime (any OT period)
     if (clk.length === 2) { out.mm = +clk[0]; out.ss = +clk[1]; }
     const s = c.situation || {};
     if (s.down >= 1 && s.down <= 4) out.down = s.down;

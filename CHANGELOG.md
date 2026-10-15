@@ -3,6 +3,61 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.0] — 2026-10-15
+
+### Added
+
+- **Overtime.** Quarter has an OT button. Overtime is valued from its rules:
+  both teams get the ball, the first team plays for a lead, the other answers
+  once, then the next score wins. Regular-season overtime (10 minutes) can end
+  tied; playoff overtime cannot. Drives are valued from measured results of
+  drives with a first down at each spot (`engine/fit_ot.py`). Three rows show
+  only in OT: Regular season / Playoffs, First drive of OT / Next score wins
+  (only when tied), and If it ends tied: Half a win / A loss / A win (regular
+  season only). A live game fills overtime and the playoffs from the feed.
+- **Onside kicks.** After a score, a trailing kicker may declare an onside
+  kick, recovered at its era's measured rate (14.2% in 2014-17, 8.6% in
+  2018-23, 7.5% since 2024). The kicker takes whichever is better. This makes
+  "kick the field goal, then onside" a real option when trailing late (for
+  example down 9 with 1:30 left and no timeouts). Not in overtime: a team that
+  scores there leads or is tied, and only a trailing team may onside kick.
+- The value of reaching overtime now follows the game type (no tie in the
+  playoffs) and the value of a tie.
+
+### Fixed
+
+- **Long field goals were overvalued** (risk 17, found by the nfl4th
+  comparison). The make curve flattened past the data: 48% at 67 yards against
+  about 25% made. A hinge term past 55 yards fixes it: 60 yards 49.5% (46%
+  made in 2020-25), 65 yards 32% (27%), 67 yards 27% (25%).
+- With no teams picked, labels say Away and Home, not Offense and Defense.
+- The confidence models now carry the overtime and extra-point tables, so
+  their votes use the same rules as the shipped model.
+
+### Notes
+
+- "Win and advance" games need no different logic: the engine already
+  maximises the chance of winning. Only two things change, and both are
+  inputs: playoff overtime cannot end tied, and a tie can be worth more or less
+  than half a win.
+
+### Record
+
+- **Measured.** Coach grades regraded (`data/coach_grades.json`). Field-goal
+  calls from 58+ yards: 1,318 to 599; confident mistakes there: 587 to 253.
+  League wins lost per team-season on confident mistakes: 2025 0.617 to 0.613,
+  2014 0.842 to 0.818. Letter grades: one current coach moved (John Harbaugh
+  B to B+). nfl4th comparison: same call on clear plays
+  88.7% (was 87.8%); we recommend going for it on
+  58.1% of plays (was 57.7%).
+- **Basis.** unchanged
+- **Supersedes.** Coach grades and wins-lost figures from 1.3.x are replaced
+  in every report and the app; the white paper's generated figures are
+  regenerated.
+- **Owed to the next major.** White paper: method sections for overtime,
+  onside kicks and the field-goal hinge; the nfl4th comparison. Deck: overtime
+  and the comparison. Technical docs: `fit_ot.py` in the reference.
+
 ## [1.3.9] — 2026-10-13
 
 ### Added

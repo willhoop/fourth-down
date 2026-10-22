@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.4.0 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.4.1 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -250,6 +250,45 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
 .lrow .note{margin:0 0 0 auto}
 .lrow.on{border-color:var(--go)}
 .lbadge{font-size:11px;font-weight:700;color:var(--bad);letter-spacing:.06em}
+.livestate{font-size:14px;color:var(--muted);margin-top:8px}
+.livestate.down{color:var(--fg)}
+.linkbtn{background:none;border:0;color:var(--punt);font:600 14px var(--body);padding:0 4px;cursor:pointer;text-decoration:underline}
+.liverow{gap:8px}.liverow>button{flex:1;width:auto}
+body.noscroll{overflow:hidden}
+.scan{position:fixed;inset:0;z-index:50;background:#000;display:flex;flex-direction:column}
+.scan video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scanframe{position:absolute;left:4%;right:4%;top:35%;height:30%;border:3px solid #fff;border-radius:14px;
+  box-shadow:0 0 0 100vmax rgba(0,0,0,.45);display:flex;align-items:flex-start;justify-content:center}
+.scanframe span{margin-top:-30px;color:#fff;font-weight:600;font-size:14px;text-shadow:0 1px 3px #000}
+.scanstatus{position:absolute;left:16px;right:16px;top:calc(18px + env(safe-area-inset-top,0px));color:#fff;font-weight:600;
+  font-size:16px;text-align:center;text-shadow:0 1px 3px #000}
+.scanpick{position:absolute;left:12px;right:12px;top:calc(56px + env(safe-area-inset-top,0px));bottom:120px;overflow-y:auto;
+  display:grid;gap:6px;align-content:start;background:rgba(6,8,10,.92);border-radius:14px;padding:10px}
+.scanbar{position:absolute;left:0;right:0;bottom:0;padding:18px 20px calc(18px + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;justify-content:space-between}
+.scanalt{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(0,0,0,.35);min-width:78px;text-align:center}
+.shutter{width:76px;height:76px;border-radius:50%;border:5px solid #fff;background:rgba(255,255,255,.25);cursor:pointer}
+.shutter:active{background:#fff}
+.slam{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px 20px calc(24px + env(safe-area-inset-bottom,0px));color:#06080a;text-align:center}
+.slam.s-go{background:var(--go)}.slam.s-fg{background:var(--fg)}.slam.s-punt{background:var(--punt)}.slam.s-toss{background:#aab4bf}
+.slamsit{font:600 18px var(--body);opacity:.85}
+.slamword{font:700 min(34vw,190px)/0.95 var(--display);letter-spacing:.02em;margin:10px 0 4px}
+.slam.s-toss .slamword{font-size:min(20vw,120px)}
+.slam.in .slamword{animation:slamin .42s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes slamin{0%{transform:scale(2.6);opacity:0}60%{opacity:1}100%{transform:scale(1)}}
+.slamnote{font-size:15px;min-height:20px;margin-bottom:14px}
+.slamwp{width:100%;max-width:420px;display:grid;gap:8px;margin-bottom:22px}
+.swrow{display:grid;grid-template-columns:56px 1fr 48px;align-items:center;gap:10px;font:600 15px var(--body)}
+.swrow span{text-align:left}.swrow b{text-align:right}
+.swtrack{height:14px;border-radius:7px;background:rgba(6,8,10,.18);overflow:hidden}
+.swfill{height:100%;background:rgba(6,8,10,.45)}.swrow.best .swfill{background:#06080a}
+.swcap{font-size:13px;opacity:.75}
+.slambtns{display:flex;gap:8px;width:100%;max-width:420px}
+.slambtns button{flex:1;padding:14px 8px;border-radius:12px;border:2px solid #06080a;background:transparent;color:#06080a;font:700 15px var(--body);cursor:pointer}
+.slambtns button:first-child{background:#06080a;color:#fff}
+.slamx{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:14px;background:none;border:0;font-size:38px;color:#06080a;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.slam.in .slamword{animation:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -275,7 +314,8 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
   <div class="card">
     <h2>Situation</h2>
     <div id="livebox">
-      <button id="liveload" class="ghost" type="button" style="width:100%">Fill from a live game</button>
+      <div class="row liverow"><button id="scanbtn" class="primary" type="button">Scan the TV</button>
+        <button id="liveload" class="ghost" type="button">Live game</button></div>
       <div id="livepick" hidden>
         <input type="hidden" id="livegame">
         <div class="livelist" id="livelist" role="listbox" aria-label="Games"></div>
@@ -352,7 +392,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <div class="toggle" id="t-spread">
       <div class="head">Team strength <label class="switch"><input type="checkbox" aria-label="Team strength"><span></span></label></div>
       <div class="body">
-        <label for="spread">Favored before kickoff: <b id="spreadv">Even</b></label>
+        <label for="spread">Stronger team: <b id="spreadv">Even</b></label>
         <input id="spread" type="range" min="-17" max="17" step="0.5" value="0">
         <div class="spreadends"><span id="lab_sl">Offense</span><span id="lab_sr">Defense</span></div>
       </div>
@@ -491,8 +531,8 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
     <h2 style="margin-top:22px">Reading the screens</h2>
     <p><b>Optional factors</b> are off unless switched on. Off means an average situation; with team strength off,
       the teams are equal and the home team gets the usual home-field edge. Tap a factor's name to change it.</p>
-    <p><b>Team strength</b> is the pre-game point spread: slide toward the team that was favored. Picking two teams
-      fills it from ESPN; if no line is found, the teams are set even.</p>
+    <p><b>Team strength</b>: slide toward the stronger team. Picking two teams fills it in from ESPN; if that
+      fails, the teams are set even. The app shows no betting lines or odds.</p>
     <p><b>Kickers</b> are ranked by make % from 50 yards in neutral conditions.</p>
     <p><b>Win chance after each choice</b>: separate "what ifs". Only the split at the top adds to 100%.</p>
     <p><b>4th Down Duel</b>: pick your call before Get the call. Green = you matched the engine, yellow = half
@@ -508,6 +548,28 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
 </section>
 </main>
 <div class="tip" id="tip"></div>
+
+<!-- Scan the TV: camera, read the score bar, find the game, show the call -->
+<div id="scan" class="scan" hidden>
+  <video id="scanvideo" playsinline muted autoplay></video>
+  <div class="scanframe"><span>Fill the box with the score bar</span></div>
+  <div class="scanstatus" id="scanstatus" aria-live="polite"></div>
+  <div class="scanpick" id="scanpick" hidden></div>
+  <div class="scanbar">
+    <label class="ghost scanalt">Photo<input type="file" id="scanfile" accept="image/*" capture="environment" hidden></label>
+    <button id="scanshot" class="shutter" type="button" aria-label="Snap the TV"></button>
+    <button id="scanclose" class="ghost scanalt" type="button">Close</button>
+  </div>
+</div>
+<div id="slam" class="slam" hidden>
+  <div class="slamsit" id="slamsit"></div>
+  <div class="slamword" id="slamword">GO</div>
+  <div class="slamnote" id="slamnote"></div>
+  <div class="slamwp" id="slamwp"></div>
+  <div class="slambtns"><button id="slamshare" type="button">Share</button><button id="slamdetail" type="button">Details</button>
+    <button id="slamagain" type="button">Scan again</button></div>
+  <button id="slamclose" class="slamx" type="button" aria-label="Close">&times;</button>
+</div>
 
 <script src="model.js"></script>
 <script src="engine.js"></script>
@@ -893,7 +955,7 @@ async function autoLine() {
   if (line === undefined) {
     $("spread").value = 0; setToggle("t-spread", false);
     note.className = "note warn";
-    note.textContent = "No betting line found. Teams set even.";
+    note.textContent = "Team strength unavailable. Teams set even.";
   } else {
     $("spread").value = line; setToggle("t-spread", true);
     note.className = "note"; note.textContent = "";
@@ -929,10 +991,12 @@ $("hometeam").addEventListener("change", teamsChanged);
 
 // the spread in team terms only: "Bills by 3", "Even"
 function favTxt(line) {
+  // in words, never as a number: the app shows no betting lines or odds
   if (line === 0) return "Even";
   const O = $("ourteam").value, D = $("theirteam").value;
   const fav = line < 0 ? (O ? TEAM_NAMES[O] || O : "Offense") : (D ? TEAM_NAMES[D] || D : "Defense");
-  return `${fav} by ${Math.abs(line)}`;
+  const a = Math.abs(line);
+  return `${fav} ${a < 3 ? "slightly stronger" : a < 7 ? "stronger" : "much stronger"}`;
 }
 // labels follow the teams: "Texans score", "HOU side", "Titans home"...
 function teamLabels() {
@@ -946,7 +1010,7 @@ function teamLabels() {
   $("lab_pto").textContent = on + " timeouts";
   $("lab_dto").textContent = dn + " timeouts";
   $("lab_kick").textContent = on + " kicker";
-  $("lab_sl").textContent = on + " favored"; $("lab_sr").textContent = dn + " favored";
+  $("lab_sl").textContent = on + " stronger"; $("lab_sr").textContent = dn + " stronger";
   $("spreadv").textContent = favTxt(+$("spread").value);
   const s = $("side").children; s[0].textContent = oc + " side"; s[1].textContent = dc + " side";
   const k = $("r2h").children; k[0].textContent = on; k[1].textContent = dn;
@@ -1060,9 +1124,27 @@ let liveGames = [];
 // the games show as a tappable list (a <select> cannot be opened from a script);
 // the scoreboard is fetched when the page loads, so the list appears at once
 function fetchLive() {
-  return fetch(Live.ESPN_URL, { cache: "no-store" })
+  // 8-second limit, then the shape check: a changed feed is treated as down,
+  // never half-read (Live.validate names what is missing)
+  const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 8000);
+  return fetch(Live.ESPN_URL, { cache: "no-store", signal: ctl.signal })
     .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-    .then((j) => { liveGames = Live.games(j); return liveGames; });
+    .then((j) => {
+      const bad = Live.validate(j);
+      if (bad.length) { console.warn("ESPN scoreboard changed shape:", bad); throw new Error("feed shape changed"); }
+      liveGames = Live.games(j);
+      return liveGames;
+    })
+    .finally(() => clearTimeout(timer));
+}
+// one place for every live screen's state: loading, no games, or unavailable
+function liveState(box, kind, retry) {
+  const txt = { loading: "Loading games\u2026", empty: "No NFL games right now. Enter the situation by hand.",
+                down: "Live data unavailable. Enter the situation by hand." }[kind] || "";
+  box.className = "livestate " + (kind || "");
+  box.innerHTML = txt ? esc(txt) + (kind === "down" && retry ? ' <button type="button" class="linkbtn">Try again</button>' : "") : "";
+  const btn = box.querySelector("button");
+  if (btn) btn.onclick = retry;
 }
 function drawLiveList() {
   $("livelist").innerHTML = liveGames.map((g) =>
@@ -1077,13 +1159,15 @@ function drawLiveList() {
 async function loadLive() {
   const msg = $("livemsg");
   $("livepick").classList.remove("picked");
-  if (liveGames.length) drawLiveList(); else msg.textContent = "Loading games\u2026";
+  if (liveGames.length) drawLiveList(); else liveState(msg, "loading");
   try {
     await fetchLive();                                   // refresh: scores and clocks move
     drawLiveList();
-    msg.textContent = liveGames.length ? "" : "No games on the schedule right now.";
+    liveState(msg, liveGames.length ? "" : "empty");
   } catch (e) {
-    if (!liveGames.length) msg.textContent = "Live games are not available here (the feed could not be reached).";
+    liveGames = [];
+    drawLiveList();
+    liveState(msg, "down", loadLive);
   }
 }
 fetchLive().catch(() => {});
@@ -1267,6 +1351,165 @@ document.querySelectorAll(".toggle").forEach((t) => {
   t.querySelector("input[type=checkbox]").addEventListener("change", (e) => t.classList.toggle("open", e.target.checked));
 });
 factorSummaries();
+
+// ---------- Scan the TV. The camera only has to tell WHICH game is on: the
+// score bar's team abbreviations or nicknames are read on the phone with
+// Tesseract.js (no image leaves the phone), matched to ESPN's live games
+// (Live.matchGame), and the existing engine makes the call from ESPN's data.
+const TESSERACT_URL = "https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
+let scanStream = null, ocrWorker = null;
+function loadScript(src) {
+  return new Promise((ok, bad) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = bad; document.head.appendChild(s); });
+}
+async function ocrReady() {
+  if (ocrWorker) return ocrWorker;
+  if (typeof Tesseract === "undefined") await loadScript(TESSERACT_URL);
+  ocrWorker = await Tesseract.createWorker("eng");
+  await ocrWorker.setParameters({ tessedit_char_whitelist: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&: " });
+  return ocrWorker;
+}
+function scanStatus(txt) { $("scanstatus").textContent = txt || ""; }
+async function openScan() {
+  $("scan").hidden = false; $("scanpick").hidden = true; scanStatus("");
+  document.body.classList.add("noscroll");
+  ocrReady().catch(() => {});                              // start loading the reader now
+  fetchLive().catch(() => {});                              // and the games
+  try {
+    scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", width: { ideal: 1920 } }, audio: false });
+    $("scanvideo").srcObject = scanStream;
+  } catch (e) {
+    scanStatus("No camera here. Use Photo, or pick the game:");
+    showScanPicks(liveGames);
+  }
+}
+function closeScan() {
+  if (scanStream) scanStream.getTracks().forEach((tr) => tr.stop());
+  scanStream = null; $("scan").hidden = true; document.body.classList.remove("noscroll");
+}
+// the score bar sits in the framed band: crop to it, enlarge, grey + contrast for OCR
+function cropBand(src, w, h, binarize) {
+  const bw = w * 0.92, bh = h * 0.30, x = (w - bw) / 2, y = (h - bh) / 2;
+  const c = document.createElement("canvas"), scale = Math.min(2, 1600 / bw);
+  c.width = Math.round(bw * scale); c.height = Math.round(bh * scale);
+  const g = c.getContext("2d");
+  g.filter = "grayscale(1)";
+  g.drawImage(src, x, y, bw, bh, 0, 0, c.width, c.height);
+  if (!binarize) return c;
+  // score bars are light text on a dark bar; the reader wants dark text on light.
+  // Otsu threshold on brightness, then make the minority (the text) black.
+  const im = g.getImageData(0, 0, c.width, c.height), d = im.data, hist = new Array(256).fill(0);
+  for (let i = 0; i < d.length; i += 4) hist[d[i]]++;
+  const n = d.length / 4; let sum = 0; for (let v = 0; v < 256; v++) sum += v * hist[v];
+  let wB = 0, sB = 0, best = 0, thr = 128;
+  for (let v = 0; v < 256; v++) {
+    wB += hist[v]; if (!wB || wB === n) continue;
+    sB += v * hist[v];
+    const mB = sB / wB, mF = (sum - sB) / (n - wB), between = wB * (n - wB) * (mB - mF) ** 2;
+    if (between > best) { best = between; thr = v; }
+  }
+  let bright = 0; for (let v = thr + 1; v < 256; v++) bright += hist[v];
+  const textIsBright = bright < n / 2;
+  for (let i = 0; i < d.length; i += 4) {
+    const on = textIsBright ? d[i] > thr : d[i] <= thr;
+    d[i] = d[i + 1] = d[i + 2] = on ? 0 : 255;
+  }
+  g.putImageData(im, 0, 0);
+  return c;
+}
+async function readImage(src, w, h) {
+  scanStatus(ocrWorker ? "Reading the score bar\u2026" : "Loading the reader (first time only)\u2026");
+  let text = "";
+  try {
+    const worker = await ocrReady();
+    scanStatus("Reading the score bar\u2026");
+    // two readings of the band (plain grey and black-on-white); the matcher uses both
+    text = (await worker.recognize(cropBand(src, w, h, true))).data.text + " " +
+           (await worker.recognize(cropBand(src, w, h, false))).data.text;
+    if (!/[A-Z]{2}/.test(text)) {                           // nothing in the band: try the whole picture
+      const full = document.createElement("canvas"); full.width = w; full.height = h;
+      full.getContext("2d").drawImage(src, 0, 0, w, h);
+      text = (await worker.recognize(full)).data.text;
+    }
+  } catch (e) {
+    scanStatus("The reader could not load. Pick the game:");
+    return showScanPicks(liveGames);
+  }
+  await matchAndCall(text);
+}
+async function matchAndCall(text) {
+  try { if (!liveGames.length) await fetchLive(); } catch (e) {
+    scanStatus("Live data unavailable. Enter the situation by hand.");
+    return;
+  }
+  if (!liveGames.length) { scanStatus("No NFL games right now."); return; }
+  const m = Live.matchGame(text, liveGames, TEAM_NAMES);
+  if (m && m.sure) return callForGame(m.game);
+  scanStatus(m ? "Which one is it?" : "Couldn't read the teams. Pick the game:");
+  showScanPicks(m ? m.candidates : liveGames);
+}
+function showScanPicks(list) {
+  const box = $("scanpick");
+  const order = [...list].sort((a, b) => (a.state === "in" ? 0 : 1) - (b.state === "in" ? 0 : 1));
+  box.innerHTML = order.length ? order.map((g) => `<button type="button" class="lrow" data-id="${esc(g.id)}">` +
+    `${g.state === "in" ? '<span class="lbadge">LIVE</span>' : ""}<b>${esc(g.name)}</b><span class="note">${esc(g.detail || "")}</span></button>`).join("")
+    : `<div class="livestate">No games to pick.</div>`;
+  box.hidden = false;
+  box.querySelectorAll(".lrow").forEach((b) => b.onclick = () => callForGame(liveGames.find((g) => g.id === b.dataset.id)));
+}
+// fill the form from ESPN for that game, then slam the call
+function callForGame(g) {
+  if (!g) return;
+  closeScan();
+  $("livepick").hidden = false;
+  $("livegame").value = g.id;
+  $("livepick").classList.add("picked");
+  pickGame();
+  let st = readState();
+  let note = "";
+  if (g.state !== "in") note = "Not live yet: this is the form's situation.";
+  else if (st.down !== 4) {                                 // judge it as if it were 4th down now
+    note = `It's ${ORD[st.down - 1]} down. If it's 4th & ${st.ydstogo} here:`;
+    st = Object.assign({}, st, { down: 4 });
+  }
+  showSlam(st, note);
+}
+const SLAM_WORD = { go: "GO", fg: "KICK", punt: "PUNT" };
+function showSlam(st, note) {
+  const tog = toggles(), r = FourthDown.decide(MODEL, st, tog);
+  lastState = st; lastTog = tog; lastResult = r;
+  const clock = st.half_seconds - (st.qtr === 1 || st.qtr === 3 ? 900 : 0);
+  const O = $("ourteam").value;
+  $("slamsit").textContent = `${O ? O + " \u00b7 " : ""}4th & ${st.ydstogo} \u00b7 ${spotTxt(st.yardline)} \u00b7 ${st.qtr === 5 ? "OT" : "Q" + st.qtr} ${Math.floor(clock / 60)}:${String(clock % 60).padStart(2, "0")}`;
+  $("slamword").textContent = r.tossup ? "TOSS-UP" : SLAM_WORD[r.best];
+  $("slamnote").textContent = note;
+  const opts = CALLS.filter((k) => r.wp[k] !== null);
+  $("slamwp").innerHTML = opts.map((k) => `<div class="swrow${k === r.best ? " best" : ""}"><span>${SLAM_WORD[k]}</span>` +
+    `<div class="swtrack"><div class="swfill" style="width:${(r.wp[k] * 100).toFixed(1)}%"></div></div><b>${Math.round(r.wp[k] * 100)}%</b></div>`).join("") +
+    `<div class="swcap">Chance to win after each choice</div>`;
+  const s = $("slam");
+  s.className = "slam " + (r.tossup ? "s-toss" : "s-" + r.best);
+  s.hidden = false;
+  void s.offsetWidth; s.classList.add("in");                // restart the slam animation
+  try { if (navigator.vibrate) navigator.vibrate(r.tossup ? [40] : [70, 50, 140]); } catch (e) {}
+}
+$("scanbtn").onclick = openScan;
+$("scanclose").onclick = closeScan;
+$("scanshot").onclick = () => {
+  const v = $("scanvideo");
+  if (!v.videoWidth) { scanStatus("Camera not ready. Use Photo, or pick the game:"); return showScanPicks(liveGames); }
+  readImage(v, v.videoWidth, v.videoHeight);
+};
+$("scanfile").onchange = (e) => {
+  const f = e.target.files && e.target.files[0];
+  if (!f) return;
+  const img = new Image();
+  img.onload = () => { readImage(img, img.naturalWidth, img.naturalHeight); URL.revokeObjectURL(img.src); };
+  img.src = URL.createObjectURL(f);
+};
+$("slamclose").onclick = () => { $("slam").hidden = true; };
+$("slamagain").onclick = () => { $("slam").hidden = true; openScan(); };
+$("slamdetail").onclick = () => { $("slam").hidden = true; segSet("down", lastState.down - 1); submit(); };
+$("slamshare").onclick = () => { $("slam").hidden = true; segSet("down", lastState.down - 1); submit(); $("share").click(); };
 $("go").onclick = submit;
 $("view-form").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT") { e.preventDefault(); submit(); } });
 $("edit").onclick = () => { $("view-result").hidden = true; $("view-form").hidden = false; window.scrollTo(0, 0); };

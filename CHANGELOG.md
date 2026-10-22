@@ -3,6 +3,53 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.1] — 2026-10-22
+
+### Added
+
+- **Scan the TV.** Point the phone at the game: the score bar is read on the
+  phone with Tesseract.js (the photo never leaves it), matched to ESPN's live
+  games, and the call slams full screen (GO / PUNT / KICK) with the win chance
+  after each choice and a vibration (Android; iPhones do not vibrate from web
+  pages). Not sure which game? The list appears; one tap. No camera: use a
+  photo or the list. Before 4th down it shows the call for 4th down at the same
+  distance.
+- **ESPN resilience.** `Live.validate()` checks every field the app reads; a
+  changed feed shows "Live data unavailable" with Try again, never a half-read
+  game. Live requests time out after 8 seconds. Tests run the check on a saved
+  real scoreboard (2026-10-22) and on deliberately broken copies. A scheduled
+  workflow ("ESPN and site check") fetches ESPN daily and fails loudly when the
+  shape changes, and checks the live site answers.
+
+### Changed
+
+- No betting lines or odds on screen: team strength reads "Texans stronger",
+  "much stronger" and so on, never a point spread. The engine still uses team
+  strength as an input.
+- "Fill from a live game" is now two buttons: Scan the TV and Live game.
+
+### Notes
+
+- Scan accuracy, measured on synthetic score bars only (15 images, today's real
+  game list): clean text 5/5; broadcast style with logo blobs 3/5; blurred,
+  skewed TV-photo style 0/5. Every miss falls back to the game list; no wrong
+  game was ever chosen after the fix that treats digit-for-letter guesses
+  ("T8" for "TB") as never sure. No real broadcast photo was tested, and live
+  in-game fields are still verified only against fixtures, not a live game.
+- A Claude vision fallback would cost about $0.0003 a scan on Claude Haiku 5.5
+  (about 1,600 image tokens + 200 prompt tokens at $0.10/M, ~100 output
+  tokens at $0.50/M) or about $0.01 on Opus 5.5. It needs a server to hold the
+  API key (GitHub Pages cannot), so it is not built.
+
+### Record
+
+- **Measured.** No published figure changed. New: scan matching 8/15 on
+  synthetic score bars (above).
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Deck: Scan the TV. Technical docs: `Live.validate`,
+  `Live.matchGame` and the ESPN check workflow in the reference.
+
 ## [1.4.0] — 2026-10-15
 
 ### Added

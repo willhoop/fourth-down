@@ -92,3 +92,108 @@ def test_no_line_is_undefined():
     out = node("console.log(JSON.stringify([L.lineFromSummary({},'HOU')===undefined,L.parseLine('OFF','HOU')===undefined,"
                "L.parseLine('EVEN','HOU'),L.parseLine('WSH -3','WAS')]))")
     assert out == [True, True, 0, -3]
+
+
+# ---------- shape check: a saved real ESPN scoreboard (week 8 of 2026, fetched
+# 2026-10-22) must pass, and each kind of break must be named, not ignored.
+REAL = os.path.join(ROOT, "tests", "fixtures", "espn_scoreboard_real.json")
+
+
+def validate(feed):
+    res = subprocess.run(["node", "-e", "const L=require(process.argv[1]+'/app/live.js');"
+                          "console.log(JSON.stringify(L.validate(JSON.parse(require('fs').readFileSync(0,'utf8')))))", ROOT],
+                         input=json.dumps(feed), capture_output=True, text=True, check=True)
+    return json.loads(res.stdout)
+
+
+def test_real_feed_has_the_shape_we_read():
+    feed = json.load(open(REAL, encoding="utf-8"))
+    assert len(feed["events"]) == 14
+    assert validate(feed) == [], "ESPN's scoreboard shape changed: update app/live.js before the app breaks"
+
+
+def test_handmade_fixture_also_passes():
+    assert validate(json.load(open(os.path.join(ROOT, "tests", "fixtures", "espn_scoreboard.json")))) == []
+
+
+def test_each_break_is_named():
+    feed = json.load(open(REAL, encoding="utf-8"))
+    assert validate({}) == ["events: missing or not a list"]
+    b = json.loads(json.dumps(feed))
+    del b["events"][0]["competitions"][0]["competitors"][0]["team"]["abbreviation"]
+    assert validate(b) == ["events[0].competitors[0].team: needs abbreviation and id"]
+    b = json.loads(json.dumps(feed))
+    b["events"][1]["competitions"][0]["status"]["type"]["state"] = "halftime"
+    assert validate(b) == ["events[1].status.type.state: missing or unknown"]
+    b = json.loads(json.dumps(feed))
+    b["events"][2]["competitions"][0]["competitors"].pop()
+    assert validate(b) == ["events[2].competitors: need one home and one away"]
+    b = json.loads(json.dumps(feed))
+    c = b["events"][3]["competitions"][0]
+    c["status"]["type"]["state"] = "in"
+    del c["status"]["period"]
+    assert validate(b) == ["events[3].status.period: missing in a live game"]
+
+
+@pytest.mark.skipif(os.environ.get("FD_LIVE_CHECK") != "1", reason="network check; runs in the scheduled ESPN workflow")
+def test_live_espn_feed_shape():
+    """Fetches ESPN now. Fails loudly (red workflow, email) when the shape changes."""
+    import urllib.request
+    url = "https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+    feed = json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "fourth-down-check"}), timeout=20))
+    assert validate(feed) == [], "ESPN's scoreboard shape changed"
+
+
+# ---------- which game is on the TV (text read off a score bar)
+NAMES = {"NE": "Patriots", "CHI": "Bears", "PIT": "Steelers", "NO": "Saints", "SF": "49ers", "ATL": "Falcons"}
+
+
+def match(text):
+    script = ("const L=require(process.argv[1]+'/app/live.js');"
+              "const f=JSON.parse(require('fs').readFileSync(process.argv[2],'utf8'));"
+              "const m=L.matchGame(process.argv[3],L.games(f),JSON.parse(process.argv[4]));"
+              "console.log(JSON.stringify(m?{name:m.game.name,teams:m.teams,sure:m.sure}:null));")
+    res = subprocess.run(["node", "-e", script, ROOT, REAL, text, json.dumps(NAMES)], capture_output=True, text=True, check=True)
+    return json.loads(res.stdout)
+
+
+def test_both_abbreviations_find_the_game():
+    m = match("NE 14 CHI 10 3RD & 4 12:41")
+    assert m["name"] == "NE @ CHI" and sorted(m["teams"]) == ["CHI", "NE"] and m["sure"]
+
+
+def test_digit_read_as_letter_is_only_a_guess():
+    """'N0' could be NO and '5F' SF (0->O, 5->S): the guess ranks the game, the
+    exact team makes it sure. A guess alone ('T8' -> TB) is never sure."""
+    m = match("PIT 7 N0 3")
+    assert m["name"] == "PIT VS NO" and m["teams"] == ["PIT"] and m["sure"]
+    m = match("5F 21 ATL 17")
+    assert m["name"] == "SF @ ATL" and m["teams"] == ["ATL"] and m["sure"]
+    m = match("T8 10")
+    assert m["name"] == "TB @ CAR" and m["sure"] is False
+
+
+def test_nickname_alone_counts():
+    assert match("STEELERS 7  SAINTS 3")["name"] == "PIT VS NO"
+
+
+def test_one_team_is_enough_when_no_other_game_is_close():
+    m = match("BEARS 10  2ND & 7")
+    assert m == {"name": "NE @ CHI", "teams": ["CHI"], "sure": True}
+
+
+def test_nothing_readable_is_no_match():
+    assert match("4TH & 2  12:41  FOX") is None
+
+
+def test_team_glued_to_score_is_split():
+    """OCR often drops the space: 'NE14 CHI10'."""
+    m = match("NE14 CHI10 3RD &4")
+    assert m["name"] == "NE @ CHI" and m["sure"]
+
+
+def test_logo_read_as_letter_is_close_not_sure():
+    """'QCHI' (a logo read as Q) is one letter from CHI: it ranks the game but is
+    never 'sure' on its own, so the app asks which game it is."""
+    m = match("QCHI 10")
+    assert m["name"] == "NE @ CHI" and m["sure"] is False

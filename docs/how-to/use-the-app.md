@@ -1,10 +1,29 @@
 # How to use the app
 
+## Scan the TV (website only)
+
+1. Click **Scan the TV**. Allow the camera.
+2. Point the phone at the TV and fill the white box with the score bar. Click
+   the round button.
+3. The phone reads the team names on the score bar (the photo stays on the
+   phone) and finds the game in ESPN's live games. If it is not sure, it shows
+   the list of games: tap yours.
+4. The call fills the screen: GO, PUNT or KICK, with the win chance after each
+   choice. If it is not 4th down yet, it shows the call for 4th down at the same
+   distance.
+5. Click **Details** for the full result, **Share** to send it, or **Scan
+   again**.
+
+No camera, or no permission: click **Photo** to use a picture, or tap the game
+in the list. iPhones do not vibrate from web pages.
+
 ## Fill from a live game (website only)
 
-1. Click **Fill from a live game**. The app loads this week's games from ESPN.
+1. Click **Live game**. The app loads this week's games from ESPN. If ESPN
+   cannot be reached, or its data changed, the app says **Live data
+   unavailable**: click **Try again** or enter the situation by hand.
 2. Tap the game in the list. Games in progress are at the top, marked LIVE.
-   To pick a different game, click **Fill from a live game** again.
+   To pick a different game, click **Live game** again.
 3. In a live game, the app selects the team with the ball. Before kickoff, it
    selects the away team. To change it, tap the other team under **Who has the
    ball?**.
@@ -59,13 +78,11 @@ to open it. **Get the call** stays at the bottom of the phone screen.
 |---|---|---|
 | Weather | Wind (mph), temperature (°F), rain or snow | No wind, 70 °F, dry |
 | Stadium | Roof (outdoors or dome), altitude | An average stadium |
-| Team strength | Which team was favored before kickoff, and by how many points (for example "Texans by 6.5") | Equal teams, with the usual home-field edge for the home team |
+| Team strength | Which team is stronger (Even, slightly stronger, stronger, much stronger). The app shows no betting lines or odds. | Equal teams, with the usual home-field edge for the home team |
 | Kicker | A kicker, league average, or replacement level | A league-average kicker |
 
-When you pick two teams, the app looks up the pre-game line on ESPN (the
-scoreboard, then the game summary, which keeps the line after kickoff). If no
-line is found, the app says so, sets the teams even and switches Team strength
-off.
+When you pick two teams, the app fills in team strength from ESPN. If it
+cannot, it says so, sets the teams even and switches Team strength off.
 
 A dome cancels weather. The kicker list shows kickers with at least 10
 attempts in the last two seasons.

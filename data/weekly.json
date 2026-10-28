@@ -1,7 +1,7 @@
 {
  "version": "1.4.1",
  "season": 2026,
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "weeks": [
   {
    "week": 7,
@@ -5432,7 +5432,7 @@
       "cost": 0.0,
       "confident_mistake": false,
       "sure": 0.95,
-      "what_happened": "(6:52) (Shotgun) 10-J.Love pass short left to 85-T.Kraft to DAL 30 for 14 yards (13-C.Downs)."
+      "what_happened": "(6:52) (Shotgun) 10-J.Love pass short left to 85-T.Kraft to DAL 30 for 14 yards (13-C.Downs) [92-Q.Williams]."
      },
      {
       "when": "Q3 5:06, up 10, 4th & 6 at opp 26",

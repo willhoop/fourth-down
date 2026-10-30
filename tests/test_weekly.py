@@ -64,14 +64,27 @@ def test_weekly_game_has_one_answer_per_play():
             assert x["situation"].count(" · ") == 2 and "4th & " in x["situation"]
 
 
+def weekly_rules():
+    """The QUIZ_* constants and bins() from the shipped engine/weekly.py, read
+    without importing it (importing pulls in scikit-learn, which CI does not install)."""
+    import ast
+    src = open(os.path.join(ROOT, "engine", "weekly.py"), encoding="utf-8").read()
+    keep = [n for n in ast.parse(src).body
+            if (isinstance(n, ast.Assign) and any(isinstance(x, ast.Name) and x.id.startswith("QUIZ") or
+                                                  isinstance(x, ast.Tuple) and any(getattr(e, "id", "").startswith("QUIZ") for e in x.elts)
+                                                  for x in n.targets))
+            or (isinstance(n, ast.FunctionDef) and n.name == "bins")]
+    ns = {}
+    exec(compile(ast.Module(body=keep, type_ignores=[]), "weekly_rules", "exec"), ns)
+    return type("Rules", (), ns)
+
+
 def test_weekly_game_skips_obvious_calls():
     """Read the rule from the shipped engine/weekly.py: no pick is a spot where
     QUIZ_OBVIOUS or more of past coaches already made the engine's call (checked on
     the newest week; a thin week may fall back to obvious ones), at most QUIZ_SAME_CALL picks share an answer, and
     at most one pick per team."""
-    import sys
-    sys.path.insert(0, os.path.join(ROOT, "engine"))
-    import weekly
+    weekly = weekly_rules()
     w = load_weekly()
     for wk in w["weeks"]:
         q = wk["quiz"]
@@ -87,9 +100,7 @@ def test_weekly_game_skips_obvious_calls():
 def test_coach_share_bins_by_hand():
     """4th & 1 at the opponent 15 -> togo bin 0 (1 yard), zone bin 0 (1-20).
     4th & 7 at own 30 (yardline_100 70) -> togo bin 3 (7-10), zone bin 3 (61-80)."""
-    import sys
-    sys.path.insert(0, os.path.join(ROOT, "engine"))
-    import weekly
+    weekly = weekly_rules()
     assert weekly.bins(1, 15) == (0, 0)
     assert weekly.bins(7, 70) == (3, 3)
     assert weekly.bins(11, 99) == (4, 4)

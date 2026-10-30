@@ -3,6 +3,31 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.4] — 2026-10-30
+
+### Added
+
+- **"Rebuild model" workflow on GitHub** (`.github/workflows/rebuild.yml`,
+  manual "Run workflow"). It downloads the play-by-play into the runner, refits
+  the models, rebuilds the confidence models, regrades every coach, updates the
+  weekly game, the nfl4th comparison and the reports, runs the tests, commits
+  and redeploys. Reason: the owner wants no data stored on, and no work that
+  depends on, his PC.
+
+### Removed
+
+- Reading play-by-play from the local NFL data store (`store_dir`). The store
+  no longer keeps files on the PC; `data/raw/` is filled only inside a GitHub
+  runner (Weekly calls and Rebuild model).
+
+### Record
+
+- **Measured.** No figure changed. The rebuild workflow was added, not run.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Technical docs: the two GitHub workflows as the
+  only way to rebuild (the how-to is updated now).
+
 ## [1.4.3] — 2026-10-30
 
 ### Fixed

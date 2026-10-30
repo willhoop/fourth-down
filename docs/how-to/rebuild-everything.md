@@ -1,5 +1,23 @@
 # How to rebuild everything from raw data
 
+## On GitHub (the normal way)
+
+The rebuild runs on GitHub's machines. It downloads the play-by-play into the
+runner, refits, regrades every coach, runs the tests, commits the results and
+redeploys the site. Nothing is stored on your PC.
+
+1. Open https://github.com/willhoop/fourth-down/actions/workflows/rebuild.yml.
+2. Click **Run workflow**. A run takes about 30-60 minutes.
+3. A green run commits "Rebuild model: <date>". A red run changes nothing.
+
+Coach grades and other figures can move after a rebuild. Write the changelog
+entry (with its Record) for the figures that moved.
+
+## On a computer (only if needed)
+
+The steps below keep about 250 MB of play-by-play in `data/raw/` until you
+delete it.
+
 You need Python 3.12 and Node.js 20 or later.
 
 1. Install the Python packages:

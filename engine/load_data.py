@@ -61,10 +61,8 @@ def _stadium(df):
 
 
 def pbp_path(season):
-    """The season's play-by-play: from the shared store if it has the file, else raw_dir."""
-    name = f"play_by_play_{season}.parquet"
-    store = os.path.normpath(os.path.join(ROOT, CONFIG["store_dir"], name))
-    return store if os.path.exists(store) else os.path.join(ROOT, CONFIG["raw_dir"], name)
+    """The season's play-by-play in raw_dir (downloaded by engine/download_data.py)."""
+    return os.path.join(ROOT, CONFIG["raw_dir"], f"play_by_play_{season}.parquet")
 
 
 def load(seasons=None):

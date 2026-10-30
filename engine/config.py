@@ -7,17 +7,15 @@ is a single edit here followed by `py engine/fit_models.py`.
 
 CONFIG = {
     # ---- engine version (must equal the newest CHANGELOG entry) ----
-    "version": "1.4.3",
+    "version": "1.4.4",
 
     # ---- data ----
     # nflverse play-by-play, one parquet per season, from
     # https://github.com/nflverse/nflverse-data/releases/tag/pbp
     "seasons": list(range(2014, 2026)),
     "raw_dir": "data/raw",
-    # The shared NFL data store (Projects/nfl-data). When it is present, play-by-play
-    # is read from there, so this machine keeps one copy; CI and fresh clones fall
-    # back to raw_dir (filled by engine/download_data.py).
-    "store_dir": "../nfl-data/data/raw/pbp",
+    # raw_dir is filled by engine/download_data.py inside a GitHub runner (the
+    # "Rebuild model" and "Weekly calls" workflows). Nothing is kept on the owner's PC.
     "pbp_url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_{season}.parquet",
 
     # Validation: fit on these seasons, score on the rest. The shipped model is

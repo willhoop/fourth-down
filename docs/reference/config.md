@@ -8,7 +8,7 @@ All settings that change over time are in one block: `CONFIG` in
 |---|---|
 | `version` | Engine version. It must equal the newest CHANGELOG entry. |
 | `seasons` | Seasons used to fit the models. |
-| `raw_dir`, `store_dir` | Where play-by-play is read: the shared store (`../nfl-data/data/raw/pbp`) if present, else `data/raw`. |
+| `raw_dir` | Where play-by-play is read: `data/raw`, filled by `engine/download_data.py` inside a GitHub runner. Nothing is kept on the owner's PC. |
 | `holdout_seasons` | Seasons held out for validation. |
 | `rules_season` | Season that sets the kickoff spot (current kickoff rules). |
 | `touchdown_points` | Points for a touchdown before the try (6). |

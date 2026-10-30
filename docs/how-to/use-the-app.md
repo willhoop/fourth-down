@@ -100,7 +100,7 @@ attempts in the last two seasons.
 To rebuild the preview images, run `py build/og_images.py` (needs Edge and
 Node). It writes `app/og/` and `app/s/`.
 
-## Play the weekly game
+## Play 4th & You (weekly)
 
 1. Click **Play**. The game has five fourth downs from last week. To play an
    earlier 2026 week, pick it in the week menu; each week keeps its progress.
@@ -112,7 +112,9 @@ Node). It writes `app/og/` and `app/s/`.
    square when you match the engine. The coach gets a green square when his
    real call matched the engine.
 4. After play 5, click **Send**. Everyone plays the same five plays, so friends
-   can compare cards. New plays come every Tuesday.
+   can compare cards. The link's preview shows your score and the coaches'
+   ("Me 3/5 · Coaches 2/5") and opens the same week. New plays come every
+   Tuesday.
 
 The app scores every fourth down of the week and keeps the five least
 obvious: edge x (1 - the share of past coaches who made the engine's call in
@@ -123,7 +125,7 @@ how often coaches make the right call in spots like it. Every play is a
 confident call (at least 18 of the 20 resampled models agree), so each play has
 one answer. The code is `quiz()` in `engine/weekly.py`.
 
-## Play the 4th Down Duel
+## Play 4th & You (live, during a game)
 
 The Duel is a game for your group chat. You call each fourth down before the
 engine does.

@@ -4,7 +4,7 @@ iMessage, WhatsApp and Android show a large preview when a page names a large
 og:image. GitHub Pages is static, so a shared link points at app/s/<call>-<yards to go>/
 (a tiny page with that image) and the page forwards to the app.
 
-Run:  py build/og_images.py      Out: app/og/<slug>.png, app/s/<slug>/index.html
+Run:  py build/og_images.py      Out: app/og/<slug>.png, app/s/<slug>/index.html, app/y/<me>-<coaches>/index.html
 Needs Microsoft Edge (headless) for the PNGs.
 """
 import os
@@ -32,7 +32,7 @@ body{{display:flex;flex-direction:column;justify-content:center;align-items:cent
 PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>{text}</title>
 <meta property="og:title" content="{text}">
-<meta property="og:description" content="Fourth Down Engine">
+<meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <meta property="og:image" content="{site}og/{slug}.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -55,6 +55,31 @@ def cards():
             yield f"{slug}-{d}", f"4TH &amp; {d.upper()}", text, color
 
 
+# 4th & You (the weekly game): one card per score pair, so a shared scorecard
+# shows "Me 3/5 · Coaches 2/5" in the link preview. Links: app/y/<me>-<coaches>/.
+GAME_CARD = """<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+<style>html,body{{margin:0;width:1200px;height:630px;background:#06080a;overflow:hidden;font-family:"Barlow Condensed",sans-serif}}
+body{{display:flex;flex-direction:column;justify-content:center;padding:0 90px;box-sizing:border-box}}
+.t{{color:#3ccf7e;font-size:92px;letter-spacing:.04em;line-height:1}}
+.r{{display:flex;align-items:center;gap:26px;margin-top:34px}}
+.who{{color:#aab4bf;font-size:52px;width:250px}}
+.sq{{display:flex;gap:12px}}.sq i{{width:62px;height:62px;border-radius:9px;background:#2b3138}}.sq i.g{{background:#538d4e}}
+.n{{color:#f4f6f8;font-size:76px;margin-left:18px}}
+.q{{color:#f4f6f8;font-size:56px;margin-top:44px}}</style></head>
+<body><div class="t">4TH &amp; YOU</div>
+<div class="r"><div class="who">ME</div><div class="sq">{me_sq}</div><div class="n">{me}/5</div></div>
+<div class="r"><div class="who">COACHES</div><div class="sq">{co_sq}</div><div class="n">{co}/5</div></div>
+<div class="q">{line}</div></body></html>"""
+
+
+def game_cards():
+    for me in range(6):
+        for co in range(6):
+            line = "Can you beat me?" if me >= co else "Can you beat the coaches?"
+            yield me, co, line
+
+
 def main():
     tmp = tempfile.mkdtemp()
     pairs = []
@@ -69,7 +94,18 @@ def main():
         os.makedirs(page_dir, exist_ok=True)
         title = (dd.replace("&amp;", "&").title().replace("Th &", "th &") + ": " if dd else "") + text
         open(os.path.join(page_dir, "index.html"), "w", encoding="utf-8", newline=chr(10)).write(
-            PAGE.format(text=title, site=SITE, slug=slug, up="../../"))
+            PAGE.format(text=title, site=SITE, slug=slug, up="../../", desc="Fourth Down Engine"))
+    for me, co, line in game_cards():
+        slug = f"y-{me}-{co}"
+        html = os.path.join(tmp, slug + ".html")
+        sq = lambda n: "".join('<i class="g"></i>' if i < n else "<i></i>" for i in range(5))
+        open(html, "w", encoding="utf-8").write(GAME_CARD.format(me=me, co=co, me_sq=sq(me), co_sq=sq(co), line=line))
+        pairs += [html, os.path.join(ROOT, "app", "og", slug + ".png")]
+        page_dir = os.path.join(ROOT, "app", "y", f"{me}-{co}")
+        os.makedirs(page_dir, exist_ok=True)
+        open(os.path.join(page_dir, "index.html"), "w", encoding="utf-8", newline=chr(10)).write(
+            PAGE.format(text=f"4th & You: I went {me}/5", site=SITE, slug=slug, up="../../",
+                        desc=f"The coaches went {co}/5. Make the call on this week's toughest 4th downs."))
     edge = subprocess.Popen([EDGE, "--headless=new", "--remote-debugging-port=9351",
                              "--user-data-dir=" + os.path.join(tmp, "prof"), "about:blank"])
     try:

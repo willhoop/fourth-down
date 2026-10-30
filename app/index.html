@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.4.4 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.4.5 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -442,7 +442,7 @@ body.noscroll{overflow:hidden}
     <div class="note" id="sharemsg" aria-live="polite"></div>
   </div>
   <div class="card duel" id="duel" hidden>
-    <h2 id="dueltitle">4th Down Duel</h2>
+    <h2 id="dueltitle">4th &amp; You</h2>
     <p class="note" id="duelempty">Pick <b>Your call</b> before Get the call to score this play.</p>
     <div id="duelbody" hidden>
       <div class="duelverdict" id="duelverdict" aria-live="polite"></div>
@@ -470,7 +470,7 @@ body.noscroll{overflow:hidden}
 <!-- ======================= WEEKLY GAME ======================= -->
 <section class="tab" id="tab-play">
   <div class="card play">
-    <div class="playhead"><h2 id="playtitle">Weekly game</h2>
+    <div class="playhead"><h2 id="playtitle">4th &amp; You</h2>
       <select id="playweek" aria-label="Week"></select></div>
     <div id="playbox"></div>
   </div>
@@ -548,9 +548,9 @@ body.noscroll{overflow:hidden}
       fails, the teams are set even. The app shows no betting lines or odds.</p>
     <p><b>Kickers</b> are ranked by make % from 50 yards in neutral conditions.</p>
     <p><b>Win chance after each choice</b>: separate "what ifs". Only the split at the top adds to 100%.</p>
-    <p><b>4th Down Duel</b>: pick your call before Get the call. Green = you matched the engine, yellow = half
+    <p><b>4th &amp; You, live</b>: pick your call before Get the call. Green = you matched the engine, yellow = half
       credit on a toss-up, black = a miss. Log the coach's call and send the card.</p>
-    <p><b>Weekly game</b>: five of last week's fourth downs. Call each one before the reveal. You score when you
+    <p><b>4th &amp; You, weekly</b> (Play tab): five of last week's fourth downs. Call each one before the reveal. You score when you
       match the engine; the coach scores when his real call matched it.</p>
     <p>Live game mode reads ESPN's public scoreboard. It is unofficial and can lag, so check the form before you
       get the call.</p>
@@ -1321,13 +1321,13 @@ function drawDuel(row) {
   $("duelgrid").innerHTML =
     `<div class="drow"><span>Me</span><span class="dsq">${t.sc.map((x) => cell(x.me)).join("")}</span><b>${t.me}/${t.sc.length}</b></div>` +
     `<div class="drow"><span>Coach</span><span class="dsq">${t.sc.map((x) => cell(x.coach)).join("")}</span><b>${t.nCoach ? t.co + "/" + t.nCoach : "\u2014"}</b></div>`;
-  $("dueltitle").textContent = "4th Down Duel \u00b7 " + c.title;
+  $("dueltitle").textContent = "4th & You \u00b7 " + c.title;
   const lastRow = c.rows[c.rows.length - 1];
   [...$("coachcall").children].forEach((b, i) => b.classList.toggle("on", lastRow.coach === CALLS[i]));
 }
 function duelText() {
   const c = loadCard(), t = duelTally(c);
-  const lines = [`4th Down Duel \u00b7 ${c.title}`, `${t.sc.map((x) => SQ[x.me]).join("")}  Me ${t.me}/${t.sc.length}`];
+  const lines = [`4th & You \u00b7 ${c.title}`, `${t.sc.map((x) => SQ[x.me]).join("")}  Me ${t.me}/${t.sc.length}`];
   if (t.nCoach) lines.push(`${t.sc.map((x) => SQ[x.coach]).join("")}  Coach ${t.co}/${t.nCoach}`);
   lines.push(duelLine(t.me, t.co, t.nCoach, t.sc.length), location.origin + location.pathname);
   return lines.join("\n");
@@ -1563,7 +1563,7 @@ if (loadShared()) submit();
   const fillWeeks = () => { $("playweek").innerHTML = playable.map((w) => `<option value="${w.week}">Week ${w.week}${status(w)}</option>`).join(""); };
   fillWeeks();
   $("playweek").onchange = () => startWeek(+$("playweek").value);
-  $("playtitle").textContent = "Weekly game";
+  $("playtitle").textContent = "4th & You";
   const mark = (ok) => (ok ? "g" : "b");
   const squares = (arr) => arr.map((s) => `<i class="sq s${s}"></i>`).join("");
   const mine = () => picks.map((p, i) => mark(p === Q[i].engine_call));
@@ -1633,10 +1633,12 @@ if (loadShared()) submit();
       <div class="note" id="pmsg" aria-live="polite"></div>
       <p class="note">New plays every Tuesday. Earlier weeks are in the menu above.</p>`;
     $("psend").onclick = async () => {
-      const text = [`4th Down Duel \u00b7 Week ${wk.week}`,
+      // the link carries the score, so its preview card reads "Me 3/5 \u00b7 Coaches 2/5"
+      const text = [`4th & You \u00b7 Week ${wk.week}`,
         `${mine().map((s) => SQ[s]).join("")}  Me ${m}/${Q.length}`,
         `${coach().map((s) => SQ[s]).join("")}  Coaches ${c}/${Q.length}`,
-        location.origin + location.pathname + "?play=" + wk.week].join("\n");
+        m > c ? "I beat the coaches." : m < c ? "The coaches got me." : "Dead even with the coaches.",
+        SITE + "y/" + m + "-" + c + "/?play=" + wk.week].join("\n");
       if (navigator.share) { try { await navigator.share({ text }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
       try { await navigator.clipboard.writeText(text); $("pmsg").textContent = "Copied. Paste it in the group chat."; }
       catch (e) { $("pmsg").innerHTML = `<textarea class="sharebox" rows="5" readonly>${esc(text)}</textarea>`; }

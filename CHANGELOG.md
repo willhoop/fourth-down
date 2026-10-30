@@ -3,6 +3,27 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.5] — 2026-10-30
+
+### Changed
+
+- **The game is called "4th & You"** (was "4th Down Duel" and "Weekly game"),
+  on the Play tab, the live card under a call, the share text and About.
+  Reason: the owner wanted a snappier name.
+- **The shared scorecard's link shows the score.** It points to
+  `y/<me>-<coaches>/?play=<week>`, a small page whose large preview image reads
+  "4TH & YOU · Me 3/5 · Coaches 2/5 · Can you beat me?" (36 images, one per
+  score pair, made by `build/og_images.py`), then opens that week's game. The
+  share text gains a verdict line ("I beat the coaches."). Reason: the old
+  preview was a small "Fourth Down Engine" bubble.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Deck: the game's name and its share card.
+
 ## [1.4.4] — 2026-10-30
 
 ### Added

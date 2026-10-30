@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.4.5 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.4.6 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -1629,9 +1629,15 @@ if (loadShared()) submit();
         <div class="drow"><span>You</span><span class="dsq">${squares(mine())}</span><b>${m}/${Q.length}</b></div>
         <div class="drow"><span>Coaches</span><span class="dsq">${squares(coach())}</span><b>${c}/${Q.length}</b></div>
       </div>
-      <div class="actions"><button id="psend" class="primary" type="button">Send</button></div>
+      <div class="actions"><button id="psend" class="primary" type="button">Send</button>
+        <button id="pagain" class="ghost" type="button">Play again</button></div>
       <div class="note" id="pmsg" aria-live="polite"></div>
       <p class="note">New plays every Tuesday. Earlier weeks are in the menu above.</p>`;
+    // replay this week from the start (only this week's saved picks are cleared)
+    $("pagain").onclick = () => {
+      try { localStorage.removeItem(key); } catch (e) {}
+      picks = []; revealed = false; draw(); fillWeeks(); $("playweek").value = String(wk.week);
+    };
     $("psend").onclick = async () => {
       // the link carries the score, so its preview card reads "Me 3/5 \u00b7 Coaches 2/5"
       const text = [`4th & You \u00b7 Week ${wk.week}`,

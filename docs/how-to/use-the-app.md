@@ -115,6 +115,7 @@ Node). It writes `app/og/` and `app/s/`.
    can compare cards. The link's preview shows your score and the coaches'
    ("Me 3/5 · Coaches 2/5") and opens the same week. New plays come every
    Tuesday.
+5. To play the same week again, click **Play again** on the score screen.
 
 The app scores every fourth down of the week and keeps the five least
 obvious: edge x (1 - the share of past coaches who made the engine's call in

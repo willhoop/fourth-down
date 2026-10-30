@@ -28,10 +28,15 @@ from load_data import ROOT                                 # noqa: E402
 from grade_coaches import fmt_clock, fmt_spot, score       # noqa: E402
 
 TOP_WORST, TOP_BEST, BEST_MARGIN, MIN_KICK_WP = 10, 5, 0.03, 0.10
-# The weekly game: 5 plays. 2 costliest confident mistakes, 1 best gutsy go,
-# 2 kicks that were right but close (smallest edge of at least QUIZ_MIN_EDGE).
-# The mix keeps "always say go" from winning and gives coaches a fair score.
-QUIZ_MIX, QUIZ_MIN_EDGE = (("mistake", 2), ("gutsy", 1), ("kick", 2)), 0.01
+# The weekly game: the 5 least obvious plays of the week that still have a clear
+# answer. "Obvious" = coaches since 2014 made the engine's call in at least
+# QUIZ_OBVIOUS of similar spots (same yards-to-go bin and field zone). Among the
+# rest, rank by edge x (1 - that share): a clear edge that coaches usually miss.
+# At most QUIZ_SAME_CALL plays share an answer, so "always say go" cannot win,
+# and at most one play per team in a game.
+QUIZ_MIN_EDGE, QUIZ_OBVIOUS, QUIZ_SAME_CALL = 0.01, 0.80, 3
+QUIZ_TOGO_BINS = [0, 1, 3, 6, 10, 99]                    # 1 / 2-3 / 4-6 / 7-10 / 11+
+QUIZ_ZONE_BINS = [0, 20, 40, 60, 80, 100]                # yardline_100: red zone ... own 20
 # Game grade: A+ = no confident mistakes. Otherwise the team-game is ranked
 # against every team-game since 2014 that had one, by win chance given up:
 # better than 75% of them = A, 50% = B, 25% = C, 10% = D, else F.
@@ -77,32 +82,53 @@ def team_situation(r):
     return f"{fmt_clock(r['qtr'], r['half_seconds_remaining'])} · {score_txt} · 4th & {int(r['ydstogo'])} at {spot}"
 
 
-def quiz(g):
-    """Five plays from one week for the weekly game, in a fixed shuffled order.
+def coach_shares():
+    """Share of past coach decisions (seasons before the current one) that made
+    each call, by yards-to-go bin and field zone: {(togo_bin, zone_bin, call): share}."""
+    import pandas as pd
+    h = pd.read_csv(os.path.join(ROOT, "data", "decisions.csv.gz"))
+    h = h[h["season"] < CONFIG["current_season"]]
+    h = h.assign(tb=pd.cut(h["ydstogo"], QUIZ_TOGO_BINS, labels=False),
+                 zb=pd.cut(h["yardline_100"], QUIZ_ZONE_BINS, labels=False))
+    out = {}
+    for (tb, zb), grp in h.groupby(["tb", "zb"]):
+        for call, share in grp["choice"].value_counts(normalize=True).items():
+            out[(int(tb), int(zb), call)] = float(share)
+    return out
+
+
+def bins(togo, yl):
+    import numpy as np
+    return int(np.digitize(togo, QUIZ_TOGO_BINS[1:-1], right=True)), int(np.digitize(yl, QUIZ_ZONE_BINS[1:-1], right=True))
+
+
+def quiz(g, shares):
+    """The weekly game's five plays (see QUIZ_* above), in a fixed shuffled order.
     Every play is a confident engine call (>= 90% of replicates), so each has one answer."""
     import numpy as np
     sure = np.where(g["choice"] == g["best"], 1 - g["conf_wrong"], g["conf_wrong"])
     forced = (g["qtr"] == 4) & (g["half_seconds_remaining"] <= 120)
-    ok = g[(sure >= CONFIG["confident_share"]) & ~forced]
-    kick = ok[["wp_fg", "wp_punt"]].max(axis=1)
-    pools = {
-        "mistake": ok[ok["choice"] != ok["best"]].sort_values("cost", ascending=False),
-        "gutsy": ok[(ok["choice"] == "go") & (ok["best"] == "go") & (ok["margin"] >= BEST_MARGIN)
-                    & (kick >= MIN_KICK_WP)].sort_values("margin", ascending=False),
-        "kick": ok[(ok["choice"] == ok["best"]) & ok["best"].isin(["fg", "punt"]) & ok["wp_go"].notna()
-                   & (ok["margin"] >= QUIZ_MIN_EDGE)].sort_values("margin"),
-    }
-    picked = []
-    for name, n in QUIZ_MIX:
-        picked += [i for i in pools[name].index if i not in picked][:n]
-    for name, _ in QUIZ_MIX:                       # a thin week: fill from the pools in order
-        picked += [i for i in pools[name].index if i not in picked][:5 - len(picked)]
-    rows = g.loc[picked]
+    ok = g[(sure >= CONFIG["confident_share"]) & ~forced & (g["margin"] >= QUIZ_MIN_EDGE)].copy()
+    ok["share"] = [shares.get((*bins(r.ydstogo, r.yardline_100), r.best), 0.5) for r in ok.itertuples()]
+    ok["interest"] = ok["margin"] * (1 - ok["share"])
+    picked, calls, teams = [], {}, set()
+    for limit in (QUIZ_OBVIOUS, 1.01):                    # a thin week: allow obvious plays last
+        for i, r in ok[ok["share"] < limit].sort_values("interest", ascending=False).iterrows():
+            if len(picked) == 5:
+                break
+            key = (r["game_id"], r["posteam"])
+            if i in picked or key in teams or calls.get(r["best"], 0) >= QUIZ_SAME_CALL:
+                continue
+            picked.append(i)
+            teams.add(key)
+            calls[r["best"]] = calls.get(r["best"], 0) + 1
+    rows = ok.loc[picked]
     rows = rows.assign(k=[(int(b) * 7919) % 997 for b in rows["play_id"]]).sort_values(["k", "game_id"])
     return [{"team": r["posteam"], "opp": r["defteam"], "coach": r["coach"], "situation": team_situation(r),
              "coach_call": r["choice"], "engine_call": r["best"],
              "wp": {k: (None if r["wp_" + k] != r["wp_" + k] else round(float(r["wp_" + k]), 3))
                     for k in ("go", "fg", "punt")},
+             "league_share": round(float(r["share"]), 2),
              "what_happened": str(r["desc"])[:160]} for _, r in rows.iterrows()]
 
 
@@ -159,6 +185,7 @@ def main(download=False):
         urllib.request.urlretrieve(CONFIG["pbp_url"].format(season=season), path)
     d, df = score([season])
     weeks = []
+    shares = coach_shares()
     for wk, g in sorted(d.groupby("week"), key=lambda x: -x[0]):
         worst = g[g["confident_mistake"]].sort_values("cost", ascending=False).head(TOP_WORST)
         # "gutsy" = kicking was a real option: the kick still left a 10%+ chance and
@@ -173,7 +200,7 @@ def main(download=False):
                       "wp_lost": round(float(g["cost_confident"].sum()), 3),
                       "worst": [row(r, "worst") for _, r in worst.iterrows()],
                       "best": [row(r, "best") for _, r in best.iterrows()],
-                      "quiz": quiz(g)})
+                      "quiz": quiz(g, shares)})
     teams = (d.groupby("posteam").agg(games=("game_id", "nunique"), lost=("cost_confident", "sum"),
                                        mistakes=("confident_mistake", "sum"), calls=("id", "size"))
               .reset_index())

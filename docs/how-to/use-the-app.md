@@ -102,17 +102,24 @@ Node). It writes `app/og/` and `app/s/`.
 
 ## Play the weekly game
 
-1. Click **Play**. The game has five fourth downs from last week.
+1. Click **Play**. The game has five fourth downs from last week. To play an
+   earlier 2026 week, pick it in the week menu; each week keeps its progress.
 2. For each play, click what you think the engine says: **Go for it**,
    **Field goal** or **Punt**.
-3. The app shows the engine's call and what the coach did. You get a green
+3. The play shows which team you are ("You're the Ravens") and the spot in
+   your terms ("on your own 16"). Then the app shows the engine's call, each
+   choice's chance to win the game, and what the real coach did. You get a green
    square when you match the engine. The coach gets a green square when his
    real call matched the engine.
 4. After play 5, click **Send**. Everyone plays the same five plays, so friends
    can compare cards. New plays come every Tuesday.
 
-The five plays are the two costliest confident mistakes of the week, the best
-call to go for it, and two kicks that were correct but close. Every play is a
+The app scores every fourth down of the week and keeps the five least
+obvious: edge x (1 - the share of past coaches who made the engine's call in
+similar spots). It skips spots where 80% or more of coaches already make that
+call, plays under a 1-point edge, and the last two minutes. At most three
+plays share an answer, and one play per team. After each play, the app shows
+how often coaches make the right call in spots like it. Every play is a
 confident call (at least 18 of the 20 resampled models agree), so each play has
 one answer. The code is `quiz()` in `engine/weekly.py`.
 

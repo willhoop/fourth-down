@@ -1,7 +1,7 @@
 {
  "version": "1.4.1",
  "season": 2026,
- "updated": "2026-10-28",
+ "updated": "2026-10-30",
  "weeks": [
   {
    "week": 7,
@@ -269,32 +269,34 @@
    ],
    "quiz": [
     {
-     "team": "MIA",
-     "opp": "NYJ",
-     "coach": "Jeff Hafley",
-     "situation": "Q1 1:46 \u00b7 tied \u00b7 4th & 1 at NYJ 2",
+     "team": "DET",
+     "opp": "GB",
+     "coach": "Dan Campbell",
+     "situation": "Q4 4:53 \u00b7 tied \u00b7 4th & 1 at DET 24",
      "coach_call": "go",
      "engine_call": "go",
      "wp": {
-      "go": 0.516,
-      "fg": 0.414,
-      "punt": 0.381
+      "go": 0.568,
+      "fg": null,
+      "punt": 0.483
      },
-     "what_happened": "(1:46) 0-O.Gordon up the middle to NYJ 1 for 1 yard (91-J.Briggs; 44-J.Sherwood)."
+     "league_share": 0.29,
+     "what_happened": "(4:53) 0-J.Gibbs up the middle to DET 22 for -2 yards (25-K.Nixon)."
     },
     {
-     "team": "BAL",
-     "opp": "CIN",
-     "coach": "Jesse Minter",
-     "situation": "Q1 6:53 \u00b7 BAL up 7 \u00b7 4th & 12 at BAL 16",
-     "coach_call": "punt",
-     "engine_call": "punt",
+     "team": "NYG",
+     "opp": "HOU",
+     "coach": "John Harbaugh",
+     "situation": "Q4 11:37 \u00b7 tied \u00b7 4th & 1 at HOU 32",
+     "coach_call": "go",
+     "engine_call": "fg",
      "wp": {
-      "go": 0.516,
-      "fg": null,
-      "punt": 0.53
+      "go": 0.267,
+      "fg": 0.305,
+      "punt": 0.233
      },
-     "what_happened": "(6:53) 30-R.Eckley punts 49 yards to CIN 35, Center-46-N.Moore. 81-D.Meyers to CIN 35 for no gain (24-M.Starks)."
+     "league_share": 0.18,
+     "what_happened": "(11:37) 19-J.Winston up the middle to HOU 31 for 1 yard (98-S.Rankins). (Virtual Measurement)."
     },
     {
      "team": "HOU",
@@ -308,35 +310,38 @@
       "fg": null,
       "punt": 0.181
      },
+     "league_share": 0.06,
      "what_happened": "(6:51) 38-K.Kroeger punts 42 yards to NYG 24, Center-40-A.Brinkman, out of bounds."
     },
     {
-     "team": "IND",
-     "opp": "MIN",
-     "coach": "Shane Steichen",
-     "situation": "Q4 4:27 \u00b7 IND down 3 \u00b7 4th & 2 at MIN 30",
+     "team": "TEN",
+     "opp": "CLE",
+     "coach": "Robert Saleh",
+     "situation": "Q4 8:44 \u00b7 TEN down 3 \u00b7 4th & 4 at CLE 11",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.313,
-      "fg": 0.213,
-      "punt": 0.179
+      "go": 0.44,
+      "fg": 0.362,
+      "punt": 0.255
      },
-     "what_happened": "(4:27) 3-S.Shrader 48 yard field goal is No Good, Wide Right, Center-46-L.Rhodes, Holder-8-R.Sanchez."
+     "league_share": 0.14,
+     "what_happened": "(8:44) 6-J.Slye 29 yard field goal is GOOD, Center-46-M.Cox, Holder-3-T.Townsend. ** Injury Update: TEN-3-T.Townsend has returned to the game."
     },
     {
-     "team": "GB",
-     "opp": "DET",
-     "coach": "Matt LaFleur",
-     "situation": "Q3 5:33 \u00b7 GB down 3 \u00b7 4th & 8 at GB 26",
-     "coach_call": "punt",
-     "engine_call": "punt",
+     "team": "ATL",
+     "opp": "SF",
+     "coach": "Raheem Morris",
+     "situation": "Q2 0:02 \u00b7 ATL down 5 \u00b7 4th & 1 at SF 15",
+     "coach_call": "fg",
+     "engine_call": "fg",
      "wp": {
-      "go": 0.276,
-      "fg": null,
-      "punt": 0.29
+      "go": 0.256,
+      "fg": 0.327,
+      "punt": 0.237
      },
-     "what_happened": "(5:33) 19-D.Whelan punts 40 yards to DET 34, Center-42-M.Orzech, fair catch by 86-D.Carter."
+     "league_share": 0.23,
+     "what_happened": "(:02) 6-N.Folk 33 yard field goal is GOOD, Center-49-L.McCullough, Holder-16-J.Bailey."
     }
    ]
   },
@@ -589,74 +594,79 @@
    ],
    "quiz": [
     {
+     "team": "LV",
+     "opp": "BUF",
+     "coach": "Klint Kubiak",
+     "situation": "Q2 13:15 \u00b7 LV up 1 \u00b7 4th & 4 at LV 37",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.418,
+      "fg": null,
+      "punt": 0.364
+     },
+     "league_share": 0.07,
+     "what_happened": "(13:15) 6-A.Cole punts 52 yards to BUF 11, Center-47-A.Ward. 19-G.Dortch to BUF 15 for 4 yards (25-D.Luter; 20-I.Pola-Mao)."
+    },
+    {
+     "team": "ARI",
+     "opp": "LA",
+     "coach": "Jonathan Gannon",
+     "situation": "Q4 7:06 \u00b7 ARI up 6 \u00b7 4th & 6 at ARI 29",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.492,
+      "fg": null,
+      "punt": 0.438
+     },
+     "league_share": 0.07,
+     "what_happened": "(7:06) 12-B.Gillikin punts 47 yards to LA 24, Center-59-C.Kreiter. 11-A.Bachman to LA 28 for 4 yards (42-D.Taylor-Demerson)."
+    },
+    {
      "team": "CLE",
      "opp": "BAL",
      "coach": "Todd Monken",
-     "situation": "Q2 1:19 \u00b7 CLE down 10 \u00b7 4th & 15 at CLE 24",
-     "coach_call": "punt",
-     "engine_call": "punt",
-     "wp": {
-      "go": 0.105,
-      "fg": null,
-      "punt": 0.119
-     },
-     "what_happened": "(1:19) 13-C.Bojorquez punts 44 yards to BAL 32, Center-50-R.Sunahara, out of bounds."
-    },
-    {
-     "team": "HOU",
-     "opp": "JAX",
-     "coach": "DeMeco Ryans",
-     "situation": "Q2 4:18 \u00b7 tied \u00b7 4th & 1 at JAX 7",
+     "situation": "Q4 3:44 \u00b7 tied \u00b7 4th & 8 at BAL 29",
      "coach_call": "fg",
-     "engine_call": "go",
+     "engine_call": "fg",
      "wp": {
-      "go": 0.626,
-      "fg": 0.535,
-      "punt": 0.483
+      "go": 0.494,
+      "fg": 0.553,
+      "punt": 0.423
      },
-     "what_happened": "(4:18) 15-K.Fairbairn 25 yard field goal is GOOD, Center-40-A.Brinkman, Holder-38-K.Kroeger."
+     "league_share": 0.74,
+     "what_happened": "(3:44) 25-A.Szmyt 48 yard field goal is No Good, Wide Left, Center-50-R.Sunahara, Holder-13-C.Bojorquez."
     },
     {
-     "team": "NO",
-     "opp": "NYG",
-     "coach": "Kellen Moore",
-     "situation": "Q2 0:05 \u00b7 NO down 7 \u00b7 4th & 2 at NYG 2",
+     "team": "LA",
+     "opp": "ARI",
+     "coach": "Sean McVay",
+     "situation": "Q4 3:23 \u00b7 LA down 6 \u00b7 4th & 8 at ARI 44",
      "coach_call": "go",
      "engine_call": "go",
      "wp": {
-      "go": 0.513,
-      "fg": 0.442,
-      "punt": 0.334
+      "go": 0.413,
+      "fg": 0.344,
+      "punt": 0.288
      },
-     "what_happened": "(:05) (Shotgun) 6-T.Shough pass short middle to 18-B.Lance for 2 yards, TOUCHDOWN."
+     "league_share": 0.1,
+     "what_happened": "(3:23) (Shotgun) 9-M.Stafford pass incomplete short left to 23-K.Williams."
     },
     {
-     "team": "PIT",
-     "opp": "TB",
-     "coach": "Mike McCarthy",
-     "situation": "Q2 7:15 \u00b7 PIT down 10 \u00b7 4th & 3 at TB 30",
-     "coach_call": "fg",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.323,
-      "fg": 0.261,
-      "punt": 0.229
-     },
-     "what_happened": "(7:15) 9-C.Boswell 48 yard field goal is No Good, Wide Left, Center-46-C.Kuntz, Holder-19-C.Johnston."
-    },
-    {
-     "team": "DEN",
-     "opp": "SEA",
-     "coach": "Sean Payton",
-     "situation": "Q3 12:51 \u00b7 DEN up 11 \u00b7 4th & 11 at DEN 44",
+     "team": "CHI",
+     "opp": "ATL",
+     "coach": "Ben Johnson",
+     "situation": "Q2 1:52 \u00b7 CHI up 7 \u00b7 4th & 1 at CHI 40",
      "coach_call": "punt",
      "engine_call": "punt",
      "wp": {
-      "go": 0.842,
+      "go": 0.797,
       "fg": null,
-      "punt": 0.856
+      "punt": 0.819
      },
-     "what_happened": "(12:51) 16-J.Crawshaw punts 40 yards to SEA 16, Center-48-M.Fraboni, fair catch by 22-R.Shaheed."
+     "league_share": 0.32,
+     "what_happened": "(1:52) 19-T.Taylor punts 50 yards to ATL 10, Center-46-S.Daly. 17-Z.Branch MUFFS catch, RECOVERED by CHI-39-J.Blackwell at ATL 10."
     }
    ]
   },
@@ -926,6 +936,21 @@
    ],
    "quiz": [
     {
+     "team": "MIN",
+     "opp": "NO",
+     "coach": "Kevin O'Connell",
+     "situation": "Q2 0:03 \u00b7 MIN down 4 \u00b7 4th & 7 at NO 36",
+     "coach_call": "fg",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.378,
+      "fg": 0.475,
+      "punt": 0.37
+     },
+     "league_share": 0.74,
+     "what_happened": "(:03) 16-W.Reichard 54 yard field goal is GOOD, Center-42-A.DePaola, Holder-19-B.Thorson."
+    },
+    {
      "team": "JAX",
      "opp": "PHI",
      "coach": "Liam Coen",
@@ -937,6 +962,7 @@
       "fg": 0.413,
       "punt": 0.3
      },
+     "league_share": 0.14,
      "what_happened": "(6:40) (Shotgun) 16-T.Lawrence pass incomplete short left to 3-J.Meyers [17-A.Ebiketie]."
     },
     {
@@ -951,49 +977,38 @@
       "fg": 0.265,
       "punt": 0.262
      },
+     "league_share": 0.14,
      "what_happened": "(3:30) 25-A.Szmyt 25 yard field goal is GOOD, Center-50-R.Sunahara, Holder-13-C.Bojorquez."
     },
     {
-     "team": "NYG",
-     "opp": "WAS",
-     "coach": "John Harbaugh",
-     "situation": "Q1 7:15 \u00b7 NYG down 6 \u00b7 4th & 12 at WAS 32",
+     "team": "SEA",
+     "opp": "SF",
+     "coach": "Mike Macdonald",
+     "situation": "Q4 6:59 \u00b7 SEA down 3 \u00b7 4th & 10 at SF 22",
      "coach_call": "fg",
      "engine_call": "fg",
      "wp": {
-      "go": 0.278,
-      "fg": 0.291,
-      "punt": 0.244
+      "go": 0.4,
+      "fg": 0.466,
+      "punt": 0.301
      },
-     "what_happened": "(7:15) 34-D.Zvada 50 yard field goal is No Good, Wide Right, Center-58-B.Mann, Holder-15-J.Stout."
+     "league_share": 0.74,
+     "what_happened": "(6:59) 5-J.Myers 40 yard field goal is GOOD, Center-41-C.Stoll, Holder-4-M.Dickson."
     },
     {
-     "team": "DEN",
-     "opp": "LAC",
-     "coach": "Sean Payton",
-     "situation": "Q4 5:10 \u00b7 tied \u00b7 4th & 1 at LAC 1",
-     "coach_call": "fg",
+     "team": "DAL",
+     "opp": "TB",
+     "coach": "Brian Schottenheimer",
+     "situation": "Q3 1:49 \u00b7 DAL down 14 \u00b7 4th & 3 at DAL 43",
+     "coach_call": "go",
      "engine_call": "go",
      "wp": {
-      "go": 0.78,
-      "fg": 0.716,
-      "punt": 0.609
-     },
-     "what_happened": "(5:10) 3-W.Lutz 19 yard field goal is GOOD, Center-48-M.Fraboni, Holder-16-J.Crawshaw."
-    },
-    {
-     "team": "NYG",
-     "opp": "WAS",
-     "coach": "John Harbaugh",
-     "situation": "Q2 5:07 \u00b7 NYG down 6 \u00b7 4th & 23 at NYG 25",
-     "coach_call": "punt",
-     "engine_call": "punt",
-     "wp": {
-      "go": 0.21,
+      "go": 0.238,
       "fg": null,
-      "punt": 0.222
+      "punt": 0.156
      },
-     "what_happened": "(5:07) 15-J.Stout punts 59 yards to WAS 16, Center-58-B.Mann, fair catch by 14-A.Williams."
+     "league_share": 0.31,
+     "what_happened": "(1:49) (Shotgun) 4-D.Prescott pass incomplete short left to 87-J.Ferguson."
     }
    ]
   },
@@ -1274,35 +1289,8 @@
       "fg": null,
       "punt": 0.301
      },
+     "league_share": 0.16,
      "what_happened": "(6:45) 19-M.Wishnowsky punts 58 yards to end zone, Center-47-J.Ashby, Touchback."
-    },
-    {
-     "team": "NO",
-     "opp": "ATL",
-     "coach": "Kellen Moore",
-     "situation": "Q1 12:50 \u00b7 NO down 7 \u00b7 4th & 18 at NO 19",
-     "coach_call": "punt",
-     "engine_call": "punt",
-     "wp": {
-      "go": 0.282,
-      "fg": null,
-      "punt": 0.293
-     },
-     "what_happened": "(12:50) 17-R.Wright punts 57 yards to ATL 24, Center-46-C.Adomitis. 17-Z.Branch to ATL 49 for 25 yards (4-O.Delp)."
-    },
-    {
-     "team": "TB",
-     "opp": "GB",
-     "coach": "Todd Bowles",
-     "situation": "Q2 6:45 \u00b7 TB down 7 \u00b7 4th & 1 at GB 19",
-     "coach_call": "go",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.332,
-      "fg": 0.235,
-      "punt": 0.233
-     },
-     "what_happened": "(6:45) 44-S.Tucker up the middle to GB 11 for 8 yards (29-X.McKinney; 25-K.Nixon)."
     },
     {
      "team": "DEN",
@@ -1316,21 +1304,53 @@
       "fg": 0.206,
       "punt": 0.175
      },
+     "league_share": 0.41,
      "what_happened": "(14:12) 3-W.Lutz 40 yard field goal is GOOD, Center-48-M.Fraboni, Holder-16-J.Crawshaw."
     },
     {
-     "team": "ARI",
-     "opp": "NYG",
-     "coach": "Jonathan Gannon",
-     "situation": "Q2 8:35 \u00b7 ARI up 8 \u00b7 4th & 8 at ARI 19",
-     "coach_call": "punt",
-     "engine_call": "punt",
+     "team": "HOU",
+     "opp": "DAL",
+     "coach": "DeMeco Ryans",
+     "situation": "Q2 0:02 \u00b7 HOU up 7 \u00b7 4th & 1 at DAL 36",
+     "coach_call": "fg",
+     "engine_call": "fg",
      "wp": {
-      "go": 0.757,
-      "fg": null,
-      "punt": 0.774
+      "go": 0.751,
+      "fg": 0.79,
+      "punt": 0.751
      },
-     "what_happened": "(8:35) 12-B.Gillikin punts 37 yards to NYG 44, Center-59-C.Kreiter. 87-B.Berrios to NYG 44 for no gain (86-J.Brooks)."
+     "league_share": 0.18,
+     "what_happened": "(:02) 15-K.Fairbairn 54 yard field goal is GOOD, Center-40-A.Brinkman, Holder-38-K.Kroeger."
+    },
+    {
+     "team": "NYG",
+     "opp": "ARI",
+     "coach": "John Harbaugh",
+     "situation": "Q1 6:40 \u00b7 NYG down 7 \u00b7 4th & 4 at ARI 21",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.317,
+      "fg": 0.24,
+      "punt": 0.244
+     },
+     "league_share": 0.24,
+     "what_happened": "(6:40) 34-D.Zvada 39 yard field goal is GOOD, Center-58-B.Mann, Holder-15-J.Stout."
+    },
+    {
+     "team": "ATL",
+     "opp": "NO",
+     "coach": "Raheem Morris",
+     "situation": "Q1 10:25 \u00b7 ATL up 7 \u00b7 4th & 12 at NO 41",
+     "coach_call": "punt",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.638,
+      "fg": 0.67,
+      "punt": 0.627
+     },
+     "league_share": 0.01,
+     "what_happened": "(10:25) 16-J.Bailey punts 28 yards to NO 13, Center-49-L.McCullough, fair catch by 19-B.Brown."
     }
    ]
   },
@@ -1611,63 +1631,68 @@
       "fg": 0.407,
       "punt": 0.435
      },
+     "league_share": 0.31,
      "what_happened": "(4:40) 8-R.Rehkow punts 41 yards to PIT 10, Center-46-W.Wagner. 10-K.Wetjen pushed ob at PIT 15 for 5 yards (42-O.Burks)."
     },
     {
-     "team": "SF",
-     "opp": "ARI",
-     "coach": "Kyle Shanahan",
-     "situation": "Q2 1:41 \u00b7 SF up 11 \u00b7 4th & 10 at SF 47",
-     "coach_call": "punt",
-     "engine_call": "punt",
+     "team": "LA",
+     "opp": "DEN",
+     "coach": "Sean McVay",
+     "situation": "Q4 8:44 \u00b7 tied \u00b7 4th & 15 at DEN 30",
+     "coach_call": "fg",
+     "engine_call": "fg",
      "wp": {
-      "go": 0.93,
-      "fg": 0.924,
-      "punt": 0.943
+      "go": 0.485,
+      "fg": 0.583,
+      "punt": 0.465
      },
-     "what_happened": "(1:41) 15-C.Waitman punts 35 yards to ARI 18, Center-46-J.Weeks, downed by SF-53-J.Dugger."
+     "league_share": 0.77,
+     "what_happened": "(8:44) 92-H.Mevis 48 yard field goal is GOOD, Center-49-J.Cardona, Holder-42-E.Evans."
     },
     {
-     "team": "DET",
-     "opp": "NYJ",
-     "coach": "Dan Campbell",
-     "situation": "Q2 1:47 \u00b7 DET down 4 \u00b7 4th & 2 at NYJ 9",
-     "coach_call": "go",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.756,
-      "fg": 0.665,
-      "punt": 0.676
-     },
-     "what_happened": "(1:47) (Shotgun) 16-J.Goff pass short left to 18-I.TeSlaa to NYJ 4 for 5 yards (8-A.Cisco)."
-    },
-    {
-     "team": "CAR",
-     "opp": "CLE",
-     "coach": "Dave Canales",
-     "situation": "Q3 13:26 \u00b7 CAR down 7 \u00b7 4th & 2 at CLE 22",
+     "team": "LAC",
+     "opp": "BUF",
+     "coach": "Jim Harbaugh",
+     "situation": "Q3 6:15 \u00b7 tied \u00b7 4th & 3 at BUF 3",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.426,
-      "fg": 0.327,
-      "punt": 0.288
+      "go": 0.439,
+      "fg": 0.344,
+      "punt": 0.297
      },
-     "what_happened": "(13:26) 10-R.Fitzgerald 41 yard field goal is GOOD, Center-44-J.Jansen, Holder-6-S.Martin."
+     "league_share": 0.3,
+     "what_happened": "(6:15) 11-C.Dicker 21 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott."
     },
     {
-     "team": "DET",
-     "opp": "NYJ",
-     "coach": "Dan Campbell",
-     "situation": "Q1 8:21 \u00b7 tied \u00b7 4th & 17 at DET 48",
+     "team": "DEN",
+     "opp": "LA",
+     "coach": "Sean Payton",
+     "situation": "Q4 7:10 \u00b7 DEN down 3 \u00b7 4th & 2 at DEN 38",
      "coach_call": "punt",
-     "engine_call": "punt",
+     "engine_call": "go",
      "wp": {
-      "go": 0.756,
-      "fg": 0.749,
-      "punt": 0.768
+      "go": 0.333,
+      "fg": null,
+      "punt": 0.243
      },
-     "what_happened": "(8:21) 3-J.Fox punts 43 yards to NYJ 9, Center-49-H.Hatten, downed by DET-17-T.Martin."
+     "league_share": 0.09,
+     "what_happened": "(7:10) 16-J.Crawshaw punts 53 yards to LA 9, Center-48-M.Fraboni, out of bounds."
+    },
+    {
+     "team": "WAS",
+     "opp": "SEA",
+     "coach": "Dan Quinn",
+     "situation": "Q2 0:03 \u00b7 WAS up 4 \u00b7 4th & 2 at SEA 39",
+     "coach_call": "fg",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.412,
+      "fg": 0.49,
+      "punt": 0.412
+     },
+     "league_share": 0.55,
+     "what_happened": "(:03) 19-D.Stevens 57 yard field goal is GOOD, Center-69-T.Ott, Holder-10-T.Way."
     }
    ]
   },
@@ -1937,6 +1962,21 @@
    ],
    "quiz": [
     {
+     "team": "JAX",
+     "opp": "DEN",
+     "coach": "Liam Coen",
+     "situation": "Q4 9:45 \u00b7 tied \u00b7 4th & 8 at DEN 36",
+     "coach_call": "fg",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.498,
+      "fg": 0.557,
+      "punt": 0.468
+     },
+     "league_share": 0.74,
+     "what_happened": "(9:45) 39-C.Little 54 yard field goal is No Good, Wide Left, Center-46-R.Matiscik, Holder-9-L.Cooke."
+    },
+    {
      "team": "LAC",
      "opp": "LV",
      "coach": "Jim Harbaugh",
@@ -1948,35 +1988,8 @@
       "fg": null,
       "punt": 0.353
      },
+     "league_share": 0.09,
      "what_happened": "(8:26) 16-J.Scott punts 55 yards to LV 17, Center-47-J.Harris, fair catch by 23-D.Laube."
-    },
-    {
-     "team": "LV",
-     "opp": "LAC",
-     "coach": "Klint Kubiak",
-     "situation": "Q1 0:40 \u00b7 tied \u00b7 4th & 1 at LAC 1",
-     "coach_call": "go",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.442,
-      "fg": 0.349,
-      "punt": 0.297
-     },
-     "what_happened": "(:40) Direct snap to 2-A.Jeanty. 2-A.Jeanty up the middle to LAC 1 for no gain (53-D.Phillips; 23-T.Jefferson)."
-    },
-    {
-     "team": "BAL",
-     "opp": "NO",
-     "coach": "Jesse Minter",
-     "situation": "Q3 3:28 \u00b7 BAL up 5 \u00b7 4th & 22 at NO 31",
-     "coach_call": "fg",
-     "engine_call": "fg",
-     "wp": {
-      "go": 0.851,
-      "fg": 0.879,
-      "punt": 0.863
-     },
-     "what_happened": "(3:28) 33-T.Loop 49 yard field goal is GOOD, Center-46-N.Moore, Holder-30-R.Eckley."
     },
     {
      "team": "LV",
@@ -1990,21 +2003,38 @@
       "fg": null,
       "punt": 0.472
      },
+     "league_share": 0.29,
      "what_happened": "(6:54) 6-A.Cole punts 50 yards to LAC 24, Center-47-A.Ward, fair catch by 12-D.Davis."
     },
     {
-     "team": "ARI",
-     "opp": "SEA",
-     "coach": "Jonathan Gannon",
-     "situation": "Q1 7:52 \u00b7 ARI down 7 \u00b7 4th & 12 at ARI 40",
-     "coach_call": "punt",
-     "engine_call": "punt",
+     "team": "DEN",
+     "opp": "JAX",
+     "coach": "Sean Payton",
+     "situation": "Q2 7:03 \u00b7 DEN down 7 \u00b7 4th & 2 at JAX 2",
+     "coach_call": "fg",
+     "engine_call": "go",
      "wp": {
-      "go": 0.186,
-      "fg": null,
-      "punt": 0.199
+      "go": 0.436,
+      "fg": 0.365,
+      "punt": 0.283
      },
-     "what_happened": "(7:52) 12-B.Gillikin punts 48 yards to SEA 12, Center-59-C.Kreiter, fair catch by 22-R.Shaheed."
+     "league_share": 0.3,
+     "what_happened": "(7:03) 3-W.Lutz 20 yard field goal is GOOD, Center-48-M.Fraboni, Holder-16-J.Crawshaw."
+    },
+    {
+     "team": "SEA",
+     "opp": "ARI",
+     "coach": "Mike Macdonald",
+     "situation": "Q2 0:01 \u00b7 tied \u00b7 4th & 1 at ARI 49",
+     "coach_call": "go",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.68,
+      "fg": 0.709,
+      "punt": 0.68
+     },
+     "league_share": 0.0,
+     "what_happened": "(:01) (Shotgun) 2-D.Lock sacked at SEA 35 for -16 yards (3-B.Baker)."
     }
    ]
   },
@@ -2285,63 +2315,68 @@
       "fg": 0.464,
       "punt": 0.403
      },
+     "league_share": 0.3,
      "what_happened": "(6:17) 18-E.Pineiro 20 yard field goal is GOOD, Center-46-J.Weeks, Holder-15-C.Waitman."
     },
     {
-     "team": "ARI",
-     "opp": "LAC",
-     "coach": "Jonathan Gannon",
-     "situation": "Q4 14:04 \u00b7 ARI up 2 \u00b7 4th & 1 at ARI 40",
-     "coach_call": "punt",
-     "engine_call": "go",
+     "team": "ATL",
+     "opp": "PIT",
+     "coach": "Raheem Morris",
+     "situation": "Q3 1:55 \u00b7 ATL down 6 \u00b7 4th & 14 at PIT 32",
+     "coach_call": "fg",
+     "engine_call": "fg",
      "wp": {
-      "go": 0.466,
-      "fg": null,
-      "punt": 0.376
+      "go": 0.146,
+      "fg": 0.174,
+      "punt": 0.136
      },
-     "what_happened": "(14:04) 12-B.Gillikin punts 60 yards to end zone, Center-59-C.Kreiter, Touchback."
+     "league_share": 0.77,
+     "what_happened": "(1:55) 6-N.Folk 51 yard field goal is GOOD, Center-49-L.McCullough, Holder-16-J.Bailey."
     },
     {
-     "team": "SEA",
-     "opp": "NE",
-     "coach": "Mike Macdonald",
-     "situation": "Q4 11:38 \u00b7 SEA down 7 \u00b7 4th & 1 at NE 45",
-     "coach_call": "go",
-     "engine_call": "go",
+     "team": "GB",
+     "opp": "MIN",
+     "coach": "Matt LaFleur",
+     "situation": "Q2 13:56 \u00b7 GB up 6 \u00b7 4th & 8 at MIN 25",
+     "coach_call": "fg",
+     "engine_call": "fg",
      "wp": {
-      "go": 0.26,
-      "fg": 0.171,
-      "punt": 0.184
+      "go": 0.721,
+      "fg": 0.749,
+      "punt": 0.688
      },
-     "what_happened": "(11:38) 2-D.Lock pass short left to 11-J.Smith-Njigba for 45 yards, TOUCHDOWN."
-    },
-    {
-     "team": "MIN",
-     "opp": "GB",
-     "coach": "Kevin O'Connell",
-     "situation": "Q1 8:13 \u00b7 MIN down 3 \u00b7 4th & 10 at MIN 45",
-     "coach_call": "punt",
-     "engine_call": "punt",
-     "wp": {
-      "go": 0.433,
-      "fg": null,
-      "punt": 0.444
-     },
-     "what_happened": "(8:13) 19-B.Thorson punts 36 yards to GB 19, Center-42-A.DePaola, fair catch by 23-S.Moore."
+     "league_share": 0.74,
+     "what_happened": "(13:56) 28-T.Smack 43 yard field goal is GOOD, Center-42-M.Orzech, Holder-19-D.Whelan."
     },
     {
      "team": "NO",
      "opp": "DET",
      "coach": "Kellen Moore",
-     "situation": "Q2 7:57 \u00b7 NO down 7 \u00b7 4th & 23 at NO 13",
-     "coach_call": "punt",
-     "engine_call": "punt",
+     "situation": "Q4 7:45 \u00b7 NO down 7 \u00b7 4th & 4 at DET 10",
+     "coach_call": "fg",
+     "engine_call": "go",
      "wp": {
-      "go": 0.112,
-      "fg": null,
-      "punt": 0.123
+      "go": 0.175,
+      "fg": 0.111,
+      "punt": 0.069
      },
-     "what_happened": "(7:57) 17-R.Wright punts 48 yards to DET 39, Center-49-Z.Wood. 85-T.Kennedy to NO 44 for 17 yards (33-A.Jennings; 25-D.Richardson)."
+     "league_share": 0.14,
+     "what_happened": "(7:45) 10-D.Carlson 28 yard field goal is GOOD, Center-49-Z.Wood, Holder-17-R.Wright."
+    },
+    {
+     "team": "NE",
+     "opp": "SEA",
+     "coach": "Mike Vrabel",
+     "situation": "Q4 3:49 \u00b7 NE down 3 \u00b7 4th & 2 at NE 35",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.304,
+      "fg": null,
+      "punt": 0.239
+     },
+     "league_share": 0.09,
+     "what_happened": "(3:49) (Shotgun) 10-D.Maye scrambles right end ran ob at NE 40 for 5 yards (32-D.Thomas)."
     }
    ]
   }

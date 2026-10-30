@@ -3,6 +3,44 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.2] — 2026-10-30
+
+### Changed
+
+- **Weekly game: you always know which team you are.** Each play opens with
+  "You're the Ravens" in large type, then "vs Bengals · Q1 6:53 · Up 7" and the
+  spot in your terms ("4th & 12 on your own 16", "on the Jets' 2"). Reason:
+  "BAL 16" did not say whose side of the field it was or whose ball.
+- **The reveal explains its numbers.** Labelled bars: "Ravens' chance to win
+  the game if they..." go for it / kick / punt, the gap in points of win chance
+  ("Go for it adds 11 points", or "a close call"), and "In spots like this,
+  coaches go for it 6% of the time". Reason: "Go for it 52% · Punt 53%" read
+  like two halves of a coin flip.
+- **Every 2026 week is playable.** A week menu sits at the top of Play; each
+  week keeps its own progress ("Week 5 · 3/5", "done"), and a shared scorecard
+  links to its week (`?play=6`).
+- **The five weekly plays are now the least obvious ones.** Every fourth down
+  of the week is scored: edge x (1 - share of past coaches, 2014-2025, who made
+  the engine's call in the same yards-to-go bin and field zone). Spots where 80%
+  or more of coaches already make that call are skipped, as are edges under 1
+  point and the last two minutes. At most three plays share an answer and one
+  per team. The old mix (two costliest mistakes, one gutsy go, two close kicks)
+  allowed obvious plays.
+
+### Notes
+
+- nflverse's play-by-play ended at week 7 when this was built, so the game is
+  week 7. The local data store was 31 files behind because its scheduled task
+  does not start (see the NFL data store changelog); it was updated by hand.
+
+### Record
+
+- **Measured.** No published figure changed. The weekly game's plays changed
+  (`data/weekly.json`).
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** White paper and deck: how weekly plays are chosen.
+
 ## [1.4.1] — 2026-10-22
 
 ### Added

@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.4.2 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.4.3 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -253,7 +253,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
 .pwtrack{height:12px;border-radius:6px;background:var(--raise);overflow:hidden}
 .pwfill{height:100%;opacity:.55}.pwrow.best .pwfill{opacity:1}
 .pwedge{font-size:14px;margin:8px 0 14px}
-.pres{display:flex;align-items:center;gap:10px;font-size:17px;margin:8px 0}
+.pres{display:flex;align-items:center;gap:10px;font-size:16px;margin:8px 0}
 .pfinal{font:700 30px/1.1 var(--display);text-transform:uppercase;margin-bottom:14px}
 .livelist{display:grid;gap:6px;margin-top:8px;max-height:330px;overflow-y:auto}
 #livepick.picked .lrow:not(.on){display:none}
@@ -1599,7 +1599,7 @@ if (loadShared()) submit();
         <div class="pwedge">${esc(edge)}</div>
         ${q.league_share !== undefined ? `<div class="pwedge">In spots like this, coaches ${verbs(4)[q.engine_call]} ${Math.round(q.league_share * 100)}% of the time.</div>` : ""}
         <div class="pres"><span class="sq s${mark(me)}"></span>You: ${me ? "right" : "wrong"}</div>
-        <div class="pres"><span class="sq s${mark(co)}"></span>Real ${esc(TEAM_NAMES[q.team] || q.team)} coach${q.coach ? " " + esc(q.coach) : ""} ${did[q.coach_call]}</div>
+        <div class="pres"><span class="sq s${mark(co)}"></span>Coach ${esc(q.coach ? q.coach.split(" ").slice(-1)[0] : (TEAM_NAMES[q.team] || q.team))} ${did[q.coach_call]}</div>
         <button class="submit" id="pnext" type="button">${i < Q.length ? "Next play" : "See your score"}</button>`;
       $("pnext").onclick = () => { revealed = false; draw(); };
       return;

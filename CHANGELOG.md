@@ -3,6 +3,20 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.3] — 2026-10-30
+
+### Fixed
+
+- Weekly game: the coach line wrapped onto two lines on a phone ("Real Lions
+  coach Dan Campbell went for it"). It now reads "Coach Campbell went for it".
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.4.2] — 2026-10-30
 
 ### Changed

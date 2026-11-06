@@ -35,6 +35,15 @@ TOP_WORST, TOP_BEST, BEST_MARGIN, MIN_KICK_WP = 10, 5, 0.03, 0.10
 # At most QUIZ_SAME_CALL plays share an answer, so "always say go" cannot win,
 # and at most one play per team in a game.
 QUIZ_MIN_EDGE, QUIZ_OBVIOUS, QUIZ_SAME_CALL = 0.01, 0.80, 3
+# "Bold": the engine says go from the team's own side of the field with 4+ yards
+# to go. Some are kept (they are the engine's real view and make a good debate),
+# but at most QUIZ_BOLD_MAX a week, so the game is not a parade of them.
+QUIZ_BOLD_MAX = 2
+# 1.4.7: skip plays where the game is all but decided (every option under 10% or
+# over 90% to win), and plays whose answer depends on what the player cannot
+# see: with team strength, weather and kicker off, the call must be the same and
+# still lead by QUIZ_MIN_EDGE. A week with fewer good plays has fewer plays.
+QUIZ_WP_RANGE = (0.10, 0.90)
 QUIZ_TOGO_BINS = [0, 1, 3, 6, 10, 99]                    # 1 / 2-3 / 4-6 / 7-10 / 11+
 QUIZ_ZONE_BINS = [0, 20, 40, 60, 80, 100]                # yardline_100: red zone ... own 20
 # Game grade: A+ = no confident mistakes. Otherwise the team-game is ranked
@@ -102,7 +111,20 @@ def bins(togo, yl):
     return int(np.digitize(togo, QUIZ_TOGO_BINS[1:-1], right=True)), int(np.digitize(yl, QUIZ_ZONE_BINS[1:-1], right=True))
 
 
-def quiz(g, shares):
+def neutral_best(r, model):
+    """The engine's call for this play with every optional factor off: even teams
+    (home-field edge only), average weather and stadium, a league-average kicker."""
+    import decide
+    st = {"score_diff": float(r["score_diff"]), "qtr": int(r["qtr"]),
+          "half_seconds": float(r["half_seconds_remaining"]), "yardline": float(r["yardline_100"]),
+          "ydstogo": float(r["ydstogo"]), "down": 4, "pos_to": float(r["posteam_timeouts_remaining"]),
+          "def_to": float(r["defteam_timeouts_remaining"]), "home": int(r["home"]),
+          "receive_2h": int(r["receive_2h"]), "home_edge": model.get("home_edge", 0.0)}
+    r2 = decide.decide(model, st, {})
+    return r2["best"], r2["margin"]
+
+
+def quiz(g, shares, model=None):
     """The weekly game's five plays (see QUIZ_* above), in a fixed shuffled order.
     Every play is a confident engine call (>= 90% of replicates), so each has one answer."""
     import numpy as np
@@ -111,15 +133,26 @@ def quiz(g, shares):
     ok = g[(sure >= CONFIG["confident_share"]) & ~forced & (g["margin"] >= QUIZ_MIN_EDGE)].copy()
     ok["share"] = [shares.get((*bins(r.ydstogo, r.yardline_100), r.best), 0.5) for r in ok.itertuples()]
     ok["interest"] = ok["margin"] * (1 - ok["share"])
-    picked, calls, teams = [], {}, set()
-    for limit in (QUIZ_OBVIOUS, 1.01):                    # a thin week: allow obvious plays last
+    lo, hi = QUIZ_WP_RANGE
+    best_wp = ok[["wp_go", "wp_fg", "wp_punt"]].max(axis=1)
+    ok = ok[(best_wp >= lo) & (best_wp <= hi)]
+    picked, calls, teams, bold = [], {}, set(), 0
+    for limit in (QUIZ_OBVIOUS,):                         # never fall back to obvious plays: a thin week has fewer
         for i, r in ok[ok["share"] < limit].sort_values("interest", ascending=False).iterrows():
             if len(picked) == 5:
                 break
             key = (r["game_id"], r["posteam"])
             if i in picked or key in teams or calls.get(r["best"], 0) >= QUIZ_SAME_CALL:
                 continue
+            is_bold = r["best"] == "go" and r["yardline_100"] > 50 and r["ydstogo"] >= 4
+            if is_bold and bold >= QUIZ_BOLD_MAX:
+                continue
+            if model is not None:
+                nb, nm = neutral_best(r, model)
+                if nb != r["best"] or nm < QUIZ_MIN_EDGE:
+                    continue                               # the answer hinges on hidden factors
             picked.append(i)
+            bold += is_bold
             teams.add(key)
             calls[r["best"]] = calls.get(r["best"], 0) + 1
     rows = ok.loc[picked]
@@ -129,6 +162,8 @@ def quiz(g, shares):
              "wp": {k: (None if r["wp_" + k] != r["wp_" + k] else round(float(r["wp_" + k]), 3))
                     for k in ("go", "fg", "punt")},
              "league_share": round(float(r["share"]), 2),
+             "score": [int(r["posteam_score"]), int(r["defteam_score"])] if r.get("posteam_score") == r.get("posteam_score")
+                      and r.get("posteam_score") is not None else None,
              "what_happened": str(r["desc"])[:160]} for _, r in rows.iterrows()]
 
 
@@ -186,6 +221,7 @@ def main(download=False):
     d, df = score([season])
     weeks = []
     shares = coach_shares()
+    model = json.load(open(os.path.join(ROOT, "data", "model.json")))
     for wk, g in sorted(d.groupby("week"), key=lambda x: -x[0]):
         worst = g[g["confident_mistake"]].sort_values("cost", ascending=False).head(TOP_WORST)
         # "gutsy" = kicking was a real option: the kick still left a 10%+ chance and
@@ -200,7 +236,7 @@ def main(download=False):
                       "wp_lost": round(float(g["cost_confident"].sum()), 3),
                       "worst": [row(r, "worst") for _, r in worst.iterrows()],
                       "best": [row(r, "best") for _, r in best.iterrows()],
-                      "quiz": quiz(g, shares)})
+                      "quiz": quiz(g, shares, model)})
     teams = (d.groupby("posteam").agg(games=("game_id", "nunique"), lost=("cost_confident", "sum"),
                                        mistakes=("confident_mistake", "sum"), calls=("id", "size"))
               .reset_index())

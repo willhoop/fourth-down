@@ -25,6 +25,7 @@ COLS = [
     "vegas_wp", "penalty_team", "first_down_penalty",
     "punt_fair_catch", "interception", "fumble_lost", "timeout", "timeout_team",
     "extra_point_result", "two_point_conv_result", "home_score", "away_score",
+    "posteam_score", "defteam_score",
 ]
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.4.6 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.4.7 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -238,7 +238,10 @@ tr.click{cursor:pointer}tr.click:hover td{background:var(--raise)}
 .psit{font:700 34px/1.1 var(--display);letter-spacing:.02em;margin:6px 0 2px}
 .psub{font-size:16px;color:var(--ink)}
 .pyou{margin-top:10px;font:600 13px var(--body);text-transform:uppercase;letter-spacing:.14em;color:var(--go)}
-.pteam{font:700 46px/1 var(--display);text-transform:uppercase;letter-spacing:.03em;margin:2px 0 6px}
+.pteam{font:700 46px/1 var(--display);text-transform:uppercase;letter-spacing:.03em;margin:2px 0 8px}
+.pball{display:inline-block;vertical-align:middle;margin-left:6px;padding:5px 10px;border-radius:999px;background:var(--go);
+  color:var(--panel-ink);font:700 14px/1 var(--body);letter-spacing:.06em;text-transform:uppercase}
+.pscore{font:700 27px/1.15 var(--display);letter-spacing:.02em;color:var(--ink)}
 .psit{margin-top:14px}
 .pask{margin:22px 0 8px;font-weight:600}
 .pbtns{display:grid;gap:8px}
@@ -1548,7 +1551,8 @@ if (loadShared()) submit();
     return;
   }
   // every week of the season is playable; each keeps its own progress
-  const playable = WEEKLY.weeks.filter((w) => (w.quiz || []).length);
+  // a week in progress (only Thursday played) or with too few good plays is not offered
+  const playable = WEEKLY.weeks.filter((w) => (w.quiz || []).length >= 3);
   const did = { go: "went for it", fg: "kicked a FG", punt: "punted" };
   let wk, Q, key, picks = [], revealed = false;
   function startWeek(n) {
@@ -1573,7 +1577,9 @@ if (loadShared()) submit();
   function youView(q) {
     const [clock, sc, down] = q.situation.split(" \u00b7 ");
     const us = TEAM_NAMES[q.team] || q.team, them = TEAM_NAMES[q.opp] || q.opp;
-    const score = sc === "tied" ? "Tied" : sc.replace(q.team + " up ", "Up ").replace(q.team + " down ", "Down ");
+    // the real score reads better than "Up 6" (13-7 and 36-30 feel different)
+    const score = q.score ? `${us} ${q.score[0]}, ${them} ${q.score[1]}`
+      : sc === "tied" ? "Tied" : sc.replace(q.team + " up ", "Up ").replace(q.team + " down ", "Down ");
     const spot = down.replace(new RegExp(" at " + q.team + " (\\d+)$"), " on your own $1")
       .replace(new RegExp(" at " + q.opp + " (\\d+)$"), ` on the ${them}' $1`);
     return { us, them, clock, score, down: spot };
@@ -1609,8 +1615,8 @@ if (loadShared()) submit();
       box.innerHTML = progress + `
         <div class="pnum">Play ${i + 1} of ${Q.length}</div>
         <div class="pyou">You're the</div>
-        <div class="pteam">${esc(v.us)}</div>
-        <div class="psub">vs ${esc(v.them)} \u00b7 ${esc(v.clock)} \u00b7 <b>${esc(v.score)}</b></div>
+        <div class="pteam">${esc(v.us)} <span class="pball">Your ball</span></div>
+        <div class="pscore">${esc(v.clock)} \u00b7 ${esc(v.score)}</div>
         <div class="psit">${esc(v.down)}</div>
         <div class="pask">What does the engine say?</div>
         <div class="pbtns">${CALLS.map((k) => `<button type="button" data-k="${k}"${q.wp[k] === null ? " disabled" : ""}>${NAMES[k]}</button>`).join("")}</div>`;
@@ -1644,7 +1650,7 @@ if (loadShared()) submit();
         `${mine().map((s) => SQ[s]).join("")}  Me ${m}/${Q.length}`,
         `${coach().map((s) => SQ[s]).join("")}  Coaches ${c}/${Q.length}`,
         m > c ? "I beat the coaches." : m < c ? "The coaches got me." : "Dead even with the coaches.",
-        SITE + "y/" + m + "-" + c + "/?play=" + wk.week].join("\n");
+        (Q.length === 5 ? SITE + "y/" + m + "-" + c + "/" : SITE) + "?play=" + wk.week].join("\n");
       if (navigator.share) { try { await navigator.share({ text }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
       try { await navigator.clipboard.writeText(text); $("pmsg").textContent = "Copied. Paste it in the group chat."; }
       catch (e) { $("pmsg").innerHTML = `<textarea class="sharebox" rows="5" readonly>${esc(text)}</textarea>`; }

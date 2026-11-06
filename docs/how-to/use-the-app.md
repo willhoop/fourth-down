@@ -106,8 +106,9 @@ Node). It writes `app/og/` and `app/s/`.
    earlier 2026 week, pick it in the week menu; each week keeps its progress.
 2. For each play, click what you think the engine says: **Go for it**,
    **Field goal** or **Punt**.
-3. The play shows which team you are ("You're the Ravens") and the spot in
-   your terms ("on your own 16"). Then the app shows the engine's call, each
+3. The play shows which team you are ("You're the Ravens", tagged **Your
+   ball**), the clock and the real score ("Q2 2:19 · Ravens 13, Bengals 7"), and
+   the spot in your terms ("on your own 16"). Then the app shows the engine's call, each
    choice's chance to win the game, and what the real coach did. You get a green
    square when you match the engine. The coach gets a green square when his
    real call matched the engine.
@@ -120,8 +121,12 @@ Node). It writes `app/og/` and `app/s/`.
 The app scores every fourth down of the week and keeps the five least
 obvious: edge x (1 - the share of past coaches who made the engine's call in
 similar spots). It skips spots where 80% or more of coaches already make that
-call, plays under a 1-point edge, and the last two minutes. At most three
-plays share an answer, and one play per team. After each play, the app shows
+call, plays under a 1-point edge, the last two minutes, and games that are all
+but decided (every option under 10% or over 90% to win). The call must stay the
+same with team strength, weather and kicker off, because the player cannot see
+those. At most three plays share an answer, at most two are "bold" (go from
+your own side with 4+ yards to go), and one play per team. A week with fewer
+good plays has fewer plays; a week with under three is not offered. After each play, the app shows
 how often coaches make the right call in spots like it. Every play is a
 confident call (at least 18 of the 20 resampled models agree), so each play has
 one answer. The code is `quiz()` in `engine/weekly.py`.

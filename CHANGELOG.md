@@ -3,6 +3,41 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.7] — 2026-11-06
+
+### Changed
+
+- **4th & You picks fairer plays.** Reasons: a tester found two plays "insane".
+  One (Titans up 6, 4th & 5 on their own 25) turned on the Titans being
+  13.5-point underdogs, which the game never shows; the other (Panthers down 17,
+  4th & 17) was a game already decided, with every option at 2-4% to win.
+  - Skips games all but decided: the best option must be 10%-90% to win.
+  - The call must be the same, and still lead by 1+ point, with team strength,
+    weather and kicker off (what the player cannot see).
+  - At most two "bold" plays a week: go from your own side with 4+ yards to go.
+  - No fallback to obvious plays: a thin week has fewer plays; weeks with under
+    three (such as a week with only Thursday played) are not offered.
+- **The play header says who you are, who has the ball, and the real score.**
+  "BRONCOS [YOUR BALL]", then "Q3 7:11 · Broncos 13, Chiefs 17" in large type,
+  replacing a small "Up 6". Reason: testers said time and score are what they
+  need most, and that 13-7 and 36-30 feel different.
+
+### Notes
+
+- Checked that the engine's win chances are not the problem: on 12,000 plays
+  from 2024-25, 10+-point underdogs were given 8.3% and won 9.1%; Brier score
+  0.1469 (ours) vs 0.1485 (nflverse's own model). Big underdogs leading early
+  are rare (19 plays): not enough to judge that corner.
+
+### Record
+
+- **Measured.** No published figure changed. The weekly game's plays changed
+  (`data/weekly.json`). New check figures in Notes (not published elsewhere).
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** White paper: how weekly plays are chosen (with
+  the 1.4.2 entry).
+
 ## [1.4.6] — 2026-10-30
 
 ### Added

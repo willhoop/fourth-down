@@ -104,3 +104,30 @@ def test_coach_share_bins_by_hand():
     assert weekly.bins(1, 15) == (0, 0)
     assert weekly.bins(7, 70) == (3, 3)
     assert weekly.bins(11, 99) == (4, 4)
+
+
+def test_weekly_game_skips_decided_games_and_limits_bold_calls():
+    """Every pick has a best option inside QUIZ_WP_RANGE (the game is not
+    decided), and at most QUIZ_BOLD_MAX picks a week are bold: go from the team's
+    own side of the field with 4+ yards to go ("at <own team> N")."""
+    rules = weekly_rules()
+    lo, hi = rules.QUIZ_WP_RANGE
+    for wk in load_weekly()["weeks"]:
+        bold = 0
+        for x in wk["quiz"]:
+            best = max(v for v in x["wp"].values() if v is not None)
+            assert lo <= best <= hi, (wk["week"], x["situation"])
+            togo = int(x["situation"].split("4th & ")[1].split(" ")[0])
+            bold += x["engine_call"] == "go" and (" at " + x["team"] + " ") in x["situation"] and togo >= 4
+        assert bold <= rules.QUIZ_BOLD_MAX, wk["week"]
+
+
+def test_weekly_game_carries_the_real_score():
+    """The score shown is the real one: offense score minus defense score equals
+    the situation's up/down/tied text."""
+    for wk in load_weekly()["weeks"]:
+        for x in wk["quiz"]:
+            a, b = x["score"]
+            sc = x["situation"].split(" " + chr(183) + " ")[1]
+            want = "tied" if a == b else (f"{x['team']} up {a - b}" if a > b else f"{x['team']} down {b - a}")
+            assert sc == want, (sc, want)

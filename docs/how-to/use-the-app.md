@@ -106,8 +106,7 @@ Node). It writes `app/og/` and `app/s/`.
    earlier 2026 week, pick it in the week menu; each week keeps its progress.
 2. For each play, click what you think the engine says: **Go for it**,
    **Field goal** or **Punt**.
-3. The play shows which team you are ("You're the Ravens", tagged **Your
-   ball**), the clock and the real score ("Q2 2:19 · Ravens 13, Bengals 7"), and
+3. The play shows which team you are ("You're the Ravens"), the clock and the real score ("Q2 2:19 · Ravens 13, Bengals 7"), and
    the spot in your terms ("on your own 16"). Then the app shows the engine's call, each
    choice's chance to win the game, and what the real coach did. You get a green
    square when you match the engine. The coach gets a green square when his

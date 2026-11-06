@@ -3,6 +3,20 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.8] — 2026-11-06
+
+### Removed
+
+- The "Your ball" tag next to the team name in 4th & You. Reason: "You're the
+  Broncos" already says it.
+
+### Record
+
+- **Measured.** No figure changed.
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** Nothing new.
+
 ## [1.4.7] — 2026-11-06
 
 ### Changed

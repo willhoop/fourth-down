@@ -73,3 +73,15 @@ def test_onside_only_when_the_kicker_trails(monkeypatch):
     assert D.kick_after(m, {}, True, -6, 5) == pytest.approx(0.16)
     assert D.kick_after(m, {}, True, 3, 5) == pytest.approx(0.1)
     assert D.kick_after(m, {"ot": 1}, True, -6, 5) == pytest.approx(0.1)
+
+
+def test_clock_running_snap_choices():
+    """3:00 left in the 4th, running: hurry leaves 180 - 7 = 173; burn 180 - 38
+    = 142; with a timeout, 180 and one fewer timeout. At 2:30 a burn stops at the
+    two-minute warning (120), and with no timeouts there is no timeout choice."""
+    m = {"rules": {"presnap_runoff": [7, 38]}}
+    v = dict(D.snap_variants(m, {"qtr": 4, "half_seconds": 180, "pos_to": 2}))
+    assert v["hurry"]["half_seconds"] == 173 and v["burn"]["half_seconds"] == 142
+    assert v["timeout"]["half_seconds"] == 180 and v["timeout"]["pos_to"] == 1
+    v = dict(D.snap_variants(m, {"qtr": 4, "half_seconds": 150, "pos_to": 0}))
+    assert v["burn"]["half_seconds"] == 120 and "timeout" not in v

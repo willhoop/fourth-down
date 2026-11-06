@@ -39,10 +39,16 @@ QUIZ_MIN_EDGE, QUIZ_OBVIOUS, QUIZ_SAME_CALL = 0.01, 0.80, 3
 # to go. Some are kept (they are the engine's real view and make a good debate),
 # but at most QUIZ_BOLD_MAX a week, so the game is not a parade of them.
 QUIZ_BOLD_MAX = 2
+# Always five plays: if the rules above leave fewer, later passes relax them in
+# order: (obvious-share limit, bold max, same-answer max, call must hold with the
+# hidden factors off). Decided games stay out in every pass.
+QUIZ_PASSES = [(QUIZ_OBVIOUS, QUIZ_BOLD_MAX, QUIZ_SAME_CALL, True),
+               (0.90, 3, 4, True),
+               (1.01, 3, 4, False)]
 # 1.4.7: skip plays where the game is all but decided (every option under 10% or
 # over 90% to win), and plays whose answer depends on what the player cannot
 # see: with team strength, weather and kicker off, the call must be the same and
-# still lead by QUIZ_MIN_EDGE. A week with fewer good plays has fewer plays.
+# still lead by QUIZ_MIN_EDGE.
 QUIZ_WP_RANGE = (0.10, 0.90)
 QUIZ_TOGO_BINS = [0, 1, 3, 6, 10, 99]                    # 1 / 2-3 / 4-6 / 7-10 / 11+
 QUIZ_ZONE_BINS = [0, 20, 40, 60, 80, 100]                # yardline_100: red zone ... own 20
@@ -91,6 +97,19 @@ def team_situation(r):
     return f"{fmt_clock(r['qtr'], r['half_seconds_remaining'])} · {score_txt} · 4th & {int(r['ydstogo'])} at {spot}"
 
 
+SCHEDULE_URL = "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.parquet"
+
+
+def finished_weeks(season):
+    """Weeks whose every game has a final score (nflverse schedule, read in memory).
+    The game for a week is made only then: on the Tuesday after Monday night."""
+    import pandas as pd
+    g = pd.read_parquet(SCHEDULE_URL, columns=["season", "week", "result"])
+    g = g[g["season"] == season]
+    done = g.groupby("week")["result"].apply(lambda r: r.notna().all())
+    return {int(w) for w, ok in done.items() if ok}
+
+
 def coach_shares():
     """Share of past coach decisions (seasons before the current one) that made
     each call, by yards-to-go bin and field zone: {(togo_bin, zone_bin, call): share}."""
@@ -137,17 +156,17 @@ def quiz(g, shares, model=None):
     best_wp = ok[["wp_go", "wp_fg", "wp_punt"]].max(axis=1)
     ok = ok[(best_wp >= lo) & (best_wp <= hi)]
     picked, calls, teams, bold = [], {}, set(), 0
-    for limit in (QUIZ_OBVIOUS,):                         # never fall back to obvious plays: a thin week has fewer
+    for limit, bold_max, same_max, need_neutral in QUIZ_PASSES:
         for i, r in ok[ok["share"] < limit].sort_values("interest", ascending=False).iterrows():
             if len(picked) == 5:
                 break
             key = (r["game_id"], r["posteam"])
-            if i in picked or key in teams or calls.get(r["best"], 0) >= QUIZ_SAME_CALL:
+            if i in picked or key in teams or calls.get(r["best"], 0) >= same_max:
                 continue
             is_bold = r["best"] == "go" and r["yardline_100"] > 50 and r["ydstogo"] >= 4
-            if is_bold and bold >= QUIZ_BOLD_MAX:
+            if is_bold and bold >= bold_max:
                 continue
-            if model is not None:
+            if model is not None and need_neutral:
                 nb, nm = neutral_best(r, model)
                 if nb != r["best"] or nm < QUIZ_MIN_EDGE:
                     continue                               # the answer hinges on hidden factors
@@ -221,6 +240,7 @@ def main(download=False):
     d, df = score([season])
     weeks = []
     shares = coach_shares()
+    finished = finished_weeks(season)
     model = json.load(open(os.path.join(ROOT, "data", "model.json")))
     for wk, g in sorted(d.groupby("week"), key=lambda x: -x[0]):
         worst = g[g["confident_mistake"]].sort_values("cost", ascending=False).head(TOP_WORST)
@@ -236,7 +256,7 @@ def main(download=False):
                       "wp_lost": round(float(g["cost_confident"].sum()), 3),
                       "worst": [row(r, "worst") for _, r in worst.iterrows()],
                       "best": [row(r, "best") for _, r in best.iterrows()],
-                      "quiz": quiz(g, shares, model)})
+                      "quiz": quiz(g, shares, model) if int(wk) in finished else []})
     teams = (d.groupby("posteam").agg(games=("game_id", "nunique"), lost=("cost_confident", "sum"),
                                        mistakes=("confident_mistake", "sum"), calls=("id", "size"))
               .reset_index())

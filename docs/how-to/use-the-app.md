@@ -50,6 +50,11 @@ in the list. iPhones do not vibrate from web pages.
    A live game fills in overtime and the playoffs from the feed.
 4. Enter the **Clock** (minutes and seconds left in the quarter). The app shows
    if the two-minute warning is still to come.
+   In the last three minutes of a half, a **Clock** row appears: **Stopped**
+   (the default) or **Running**. With **Running**, the engine lets the offense
+   choose how to snap for each option: hurry (7 seconds run off), burn the play
+   clock (38 seconds), or call a timeout first. The times are measured from
+   2023-2025 plays.
 5. Click the side of the field (for example **HOU side**) and set the yard
    line (1–50).
 6. Click the **Down**. The app starts on 4th down.
@@ -124,8 +129,10 @@ call, plays under a 1-point edge, the last two minutes, and games that are all
 but decided (every option under 10% or over 90% to win). The call must stay the
 same with team strength, weather and kicker off, because the player cannot see
 those. At most three plays share an answer, at most two are "bold" (go from
-your own side with 4+ yards to go), and one play per team. A week with fewer
-good plays has fewer plays; a week with under three is not offered. After each play, the app shows
+your own side with 4+ yards to go), and one play per team. Every week has five
+plays: if the rules leave fewer, the app loosens them in steps (more common
+calls, then one more bold play), but never uses a decided game. A week's game
+appears only when all its games are played: on the Tuesday after Monday night. After each play, the app shows
 how often coaches make the right call in spots like it. Every play is a
 confident call (at least 18 of the 20 resampled models agree), so each play has
 one answer. The code is `quiz()` in `engine/weekly.py`.

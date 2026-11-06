@@ -364,8 +364,44 @@
       p_return_td: b.p_td, p_muff: b.p_muff, fair_catch_kick_risk: fckRisk }];
   }
 
+  // With the clock running, the offense picks how the snap happens: hurry, burn
+  // the play clock, or call a timeout (if it has one). Mirrors snap_variants().
+  function snapVariants(model, state) {
+    const hs = state.half_seconds;
+    const [fast, slow] = model.rules.presnap_runoff || [7, 38];
+    const out = [];
+    for (const [name, secs] of [["hurry", fast], ["burn", slow]]) {
+      let n = Math.max(1, hs - secs);
+      if (hs > 120 && 120 >= n && (state.qtr === 2 || state.qtr === 4)) n = 120;
+      out.push([name, Object.assign({}, state, { half_seconds: n, clock_running: false })]);
+    }
+    if ((state.pos_to || 0) > 0) out.push(["timeout", Object.assign({}, state, { pos_to: state.pos_to - 1, clock_running: false })]);
+    return out;
+  }
+
   function decide(model, state, toggles) {
     const tog = toggles || {};
+    if (state.clock_running) {
+      const runs = snapVariants(model, state).map(([name, s]) => [name, decide(model, s, tog)]);
+      const wp = {}, how = {};
+      for (const k of ["go", "fg", "punt"]) {
+        let best = null;
+        for (const [name, r] of runs) {
+          const v = r.wp[k];
+          if (v === null) continue;
+          // same tie-break as Python's max over (value, name)
+          if (best === null || v > best[0] || (v === best[0] && name > best[1])) best = [v, name];
+        }
+        if (best) { wp[k] = best[0]; how[k] = best[1]; } else wp[k] = null;
+      }
+      const ranked = Object.keys(wp).filter((k) => wp[k] !== null).sort((a, b) => wp[b] - wp[a]);
+      const margin = ranked.length > 1 ? wp[ranked[0]] - wp[ranked[1]] : 1;
+      const detail = {};
+      for (const k of ["go", "fg", "punt"]) {
+        detail[k] = how[k] ? Object.assign({}, runs.find(([n]) => n === how[k])[1].detail[k], { snap: how[k] }) : {};
+      }
+      return { wp, best: ranked[0], margin, tossup: margin < model.rules.tossup_margin, detail };
+    }
     const st = prepare(state, tog);
     let go, gd, pu, pd;
     if (st.down < 4) { [go, gd] = wpPlay(model, st, tog); pu = null; pd = {}; }   // early down: play or kick; nobody punts

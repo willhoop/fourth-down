@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.4.8 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.4.9 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -361,6 +361,8 @@ body.noscroll{overflow:hidden}
       <div><label for="ss">(sec)</label><input id="ss" type="number" min="0" max="59" value="30" data-big="5"></div>
     </div>
     <div class="note" id="tmwnote"></div>
+    <div id="clockrunbox" hidden><label>Clock</label>
+      <div class="seg" id="clockrun"><button class="on">Stopped</button><button>Running</button></div></div>
     <label>Ball on</label>
     <div class="seg" id="side" style="margin-bottom:6px"><button>Offense side</button><button class="on">Defense side</button></div>
     <input id="yd" type="number" min="1" max="50" value="40" aria-label="yard line" data-big="5">
@@ -652,6 +654,8 @@ function toggles() {
   const on = (id) => $(id).querySelector("input[type=checkbox]").checked;
   return { weather: on("t-weather"), stadium: on("t-stadium"), spread: on("t-spread"), kicker: on("t-kicker") };
 }
+// the "Clock running" option only matters in the last 3 minutes of a half
+const lateInHalf = (qtr, half) => (qtr === 2 || qtr === 4 || qtr === 5) && half <= 180;
 function readState() {
   const qtr = segVal("qtr") + 1;
   const clock = Math.min(900, Math.max(0, (+$("mm").value || 0) * 60 + (+$("ss").value || 0)));
@@ -668,6 +672,8 @@ function readState() {
     receive_2h: segVal("r2h") === 0 ? 1 : 0, spread: -(+$("spread").value),   // betting line: favorite is negative
     wind: +$("wind").value, temp: +$("temp").value, precip: $("precip").checked ? 1 : 0,
     indoor: segVal("roof") === 1 ? 1 : 0, altitude_kft: +$("alt").value, kicker_a: ka, kicker_b: kb,
+    // only late in a half: the engine then picks hurry, burn or a timeout before the snap
+    clock_running: segVal("clockrun") === 1 && lateInHalf(qtr, half),
     playoffs: segVal("gametype"), ot_first: ot && segVal("otfirst") === 0,
     tie_value: [0.5, 0, 1][segVal("tieval")],
   };
@@ -766,6 +772,7 @@ function refreshForm() {
   $("otbox").hidden = st.qtr !== 5;
   $("otfirst").hidden = st.score_diff !== 0;
   $("tiebox").hidden = segVal("gametype") === 1;
+  $("clockrunbox").hidden = !lateInHalf(st.qtr, st.half_seconds);
   $("tmwnote").textContent = (st.qtr === 2 || st.qtr === 4) ? (st.half_seconds > 120 ? "2-minute warning to come" : "2-minute warning used") : "";
   $("shortbox").hidden = !(st.down === 4 && st.ydstogo === 1);
   $("mybox").hidden = st.down !== 4;

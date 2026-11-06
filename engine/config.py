@@ -7,7 +7,7 @@ is a single edit here followed by `py engine/fit_models.py`.
 
 CONFIG = {
     # ---- engine version (must equal the newest CHANGELOG entry) ----
-    "version": "1.4.8",
+    "version": "1.4.9",
 
     # ---- data ----
     # nflverse play-by-play, one parquet per season, from
@@ -58,6 +58,10 @@ CONFIG = {
     # an untimed down. The engine lets the opponent take it when this many
     # seconds or fewer remain after the punt (about one play's worth).
     "fair_catch_kick_window": 10,
+    # "Clock running" (Call tab option): seconds from the 3rd-down snap to the
+    # 4th-down snap with the clock running, last 3 minutes of a half, 2023-2025
+    # (n = 654): 25th percentile (hurry) and 75th (burn). Median outside: 40 s.
+    "presnap_runoff": [7, 38],
     # With the team-strength factor off, "an even matchup" means equal teams, so
     # the home team still gets home-field advantage: the average betting line for
     # the home team since this season (it has shrunk from ~2.5 to ~1.75 points).

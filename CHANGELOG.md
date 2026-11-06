@@ -3,6 +3,39 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.9] — 2026-11-06
+
+### Added
+
+- **Clock running (Call tab, optional, off by default).** Shown only in the last
+  3 minutes of a half. When on, each option gets the snap that suits it best:
+  hurry (7 s run off), burn the play clock (38 s), or a timeout first. The
+  two-minute warning stops a running clock at 2:00. The 7 s and 38 s are the
+  25th and 75th percentiles of 3rd-to-4th-down snap gaps with the clock running
+  in the last 3 minutes of a half, 2023-2025 (n = 654; median outside that
+  window 40 s). They are snap to snap, so they include the 3rd-down play itself
+  (a few seconds). Reason: the engine took the entered clock as the snap clock,
+  which runs late when the clock is running. Not used by 4th & You: its plays
+  carry the real snap clock.
+
+### Changed
+
+- **4th & You: five plays every week, and a week's game appears only when the
+  week is finished** (every game has a final score in nflverse's schedule:
+  the Tuesday after Monday night). If the strict rules leave fewer than five
+  plays, later passes loosen them in steps (more common calls, a third bold
+  play, then without the hidden-factor check); decided games stay out. Reason:
+  the owner wants five plays each week.
+
+### Record
+
+- **Measured.** No published figure changed. New engine input constant:
+  `presnap_runoff` = [7, 38] seconds (method above).
+- **Basis.** unchanged
+- **Supersedes.** Nothing.
+- **Owed to the next major.** White paper: the clock-running option and its
+  measurement; how weekly plays are chosen.
+
 ## [1.4.8] — 2026-11-06
 
 ### Removed

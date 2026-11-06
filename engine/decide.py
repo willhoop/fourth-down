@@ -455,11 +455,46 @@ def wp_punt(model, st, tog):
                "fair_catch_kick_risk": fck_risk}
 
 
+def snap_variants(model, state):
+    """With the clock running, the offense picks how the snap happens: hurry,
+    burn the play clock, or call a timeout (if it has one). The two-minute
+    warning stops a running clock at 2:00."""
+    hs = state["half_seconds"]
+    fast, slow = model["rules"].get("presnap_runoff", [7, 38])
+    out = []
+    for name, secs in (("hurry", fast), ("burn", slow)):
+        new = max(1.0, hs - secs)
+        if hs > 120 >= new and state.get("qtr") in (2, 4):
+            new = 120.0
+        out.append((name, dict(state, half_seconds=new, clock_running=False)))
+    if state.get("pos_to", 0) > 0:
+        out.append(("timeout", dict(state, pos_to=state["pos_to"] - 1, clock_running=False)))
+    return out
+
+
 def decide(model, state, toggles=None):
     """state keys: score_diff, qtr, half_seconds, yardline, ydstogo, pos_to, down (default 4),
     def_to, home, receive_2h, and optional spread, wind, temp, precip, indoor,
-    altitude_kft, kicker_a, kicker_b. Returns WP of each option and the call."""
+    altitude_kft, kicker_a, kicker_b, clock_running. Returns WP of each option and the call."""
     tog = toggles or {}
+    if state.get("clock_running"):
+        # each option gets the snap that suits it best
+        runs = [(name, decide(model, s, tog)) for name, s in snap_variants(model, state)]
+        wp, how = {}, {}
+        for k in ("go", "fg", "punt"):
+            vals = [(r["wp"][k], name) for name, r in runs if r["wp"][k] is not None]
+            if vals:
+                wp[k], how[k] = max(vals)
+            else:
+                wp[k] = None
+        avail = {k: v for k, v in wp.items() if v is not None}
+        ranked = sorted(avail, key=avail.get, reverse=True)
+        margin = avail[ranked[0]] - avail[ranked[1]] if len(ranked) > 1 else 1.0
+        base = dict(runs[0][1])
+        details = {k: dict(next(r for name, r in runs if name == how[k])["detail"][k], snap=how[k]) if k in how else {}
+                   for k in ("go", "fg", "punt")}
+        return dict(base, wp=wp, best=ranked[0], margin=margin,
+                    tossup=margin < model["rules"]["tossup_margin"], detail=details)
     st = prepare(state, tog)
     if st["down"] < 4:          # early down: run a play or kick now; nobody punts
         go, gd = wp_play(model, st, tog)

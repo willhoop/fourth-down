@@ -390,6 +390,7 @@ def build(df, s, kicker_prior=None, ko_df=None, fg_era="trend", wp=True):
                     "fg_max_distance": CONFIG["fg_max_distance"], "fg_long_from": CONFIG["fg_long_from"],
                     "tossup_margin": CONFIG["tossup_margin"],
                     "fair_catch_kick_window": CONFIG["fair_catch_kick_window"],
+                    "presnap_runoff": CONFIG["presnap_runoff"],
                     "short_yardage": CONFIG["short_yardage"]}
     return out
 

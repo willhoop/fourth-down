@@ -165,6 +165,14 @@ def test_python_and_js_engines_agree(shipped):
                   home_edge=shipped["home_edge"])
         st["ydstogo"] = min(st["ydstogo"], st["yardline"])
         cases.append({"state": st, "tog": {k: rng.random() < 0.5 for k in ALL}})
+    # "Clock running" late in a half: hurry, burn or timeout, best per option
+    for _ in range(20):
+        st = dict(score_diff=rng.randint(-10, 10), qtr=rng.choice([2, 4]), half_seconds=rng.randint(5, 180),
+                  yardline=rng.randint(1, 99), ydstogo=rng.randint(1, 10), pos_to=rng.randint(0, 3),
+                  def_to=rng.randint(0, 3), home=rng.choice([0, 1]), receive_2h=rng.randint(0, 1), down=4,
+                  clock_running=True, home_edge=shipped["home_edge"])
+        st["ydstogo"] = min(st["ydstogo"], st["yardline"])
+        cases.append({"state": st, "tog": {}})
     for _ in range(20):
         st = dict(score_diff=rng.randint(-16, -4), qtr=4, half_seconds=rng.randint(20, 300),
                   yardline=rng.randint(1, 40), ydstogo=rng.randint(1, 10), pos_to=rng.randint(0, 3),

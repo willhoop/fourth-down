@@ -52,7 +52,7 @@ def test_weekly_game_has_one_answer_per_play():
     """The weekly game: at most 5 plays a week, no repeats; each answer is the
     option with the highest win chance, and only available options count."""
     w = load_weekly()
-    assert w["weeks"][0]["quiz"], "newest week has no game"
+    assert any(wk["quiz"] for wk in w["weeks"]), "no week has a game"
     for wk in w["weeks"]:
         q = wk["quiz"]
         assert len(q) <= 5
@@ -90,11 +90,14 @@ def test_weekly_game_skips_obvious_calls():
         q = wk["quiz"]
         shares = [x["league_share"] for x in q]
         assert all(0 <= s <= 1 for s in shares)
+        if not q:
+            continue                                     # a week still being played has no game
         calls = [x["engine_call"] for x in q]
-        assert max(calls.count(c) for c in set(calls)) <= weekly.QUIZ_SAME_CALL
+        assert max(calls.count(c) for c in set(calls)) <= max(s for _, _, s, _ in weekly.QUIZ_PASSES)
         teams = [x["team"] + x["opp"] for x in q]
         assert len(set(teams)) == len(teams)
-    assert all(x["league_share"] < weekly.QUIZ_OBVIOUS for x in w["weeks"][0]["quiz"])
+    newest = next(wk for wk in w["weeks"] if wk["quiz"])
+    assert sum(x["league_share"] < weekly.QUIZ_OBVIOUS for x in newest["quiz"]) >= 3   # most picks pass the strict rule
 
 
 def test_coach_share_bins_by_hand():
@@ -108,7 +111,7 @@ def test_coach_share_bins_by_hand():
 
 def test_weekly_game_skips_decided_games_and_limits_bold_calls():
     """Every pick has a best option inside QUIZ_WP_RANGE (the game is not
-    decided), and at most QUIZ_BOLD_MAX picks a week are bold: go from the team's
+    decided), and no week has more bold picks than the loosest pass allows: go from the team's
     own side of the field with 4+ yards to go ("at <own team> N")."""
     rules = weekly_rules()
     lo, hi = rules.QUIZ_WP_RANGE
@@ -119,7 +122,7 @@ def test_weekly_game_skips_decided_games_and_limits_bold_calls():
             assert lo <= best <= hi, (wk["week"], x["situation"])
             togo = int(x["situation"].split("4th & ")[1].split(" ")[0])
             bold += x["engine_call"] == "go" and (" at " + x["team"] + " ") in x["situation"] and togo >= 4
-        assert bold <= rules.QUIZ_BOLD_MAX, wk["week"]
+        assert bold <= max(b for _, b, _, _ in rules.QUIZ_PASSES), wk["week"]
 
 
 def test_weekly_game_carries_the_real_score():
@@ -131,3 +134,10 @@ def test_weekly_game_carries_the_real_score():
             sc = x["situation"].split(" " + chr(183) + " ")[1]
             want = "tied" if a == b else (f"{x['team']} up {a - b}" if a > b else f"{x['team']} down {b - a}")
             assert sc == want, (sc, want)
+
+
+def test_every_finished_week_has_five_plays():
+    """A week has no game until every game is played (shown Tuesday), then five plays."""
+    weeks = load_weekly()["weeks"]
+    assert all(len(w["quiz"]) in (0, 5) for w in weeks)
+    assert all(len(w["quiz"]) == 5 for w in weeks[1:])

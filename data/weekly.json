@@ -1,5 +1,5 @@
 {
- "version": "1.4.6",
+ "version": "1.4.8",
  "season": 2026,
  "updated": "2026-11-06",
  "weeks": [
@@ -45,27 +45,7 @@
     }
    ],
    "best": [],
-   "quiz": [
-    {
-     "team": "BAL",
-     "opp": "JAX",
-     "coach": "Jesse Minter",
-     "situation": "Q2 4:37 \u00b7 BAL down 7 \u00b7 4th & 1 at BAL 29",
-     "coach_call": "go",
-     "engine_call": "go",
-     "wp": {
-      "go": 0.126,
-      "fg": null,
-      "punt": 0.098
-     },
-     "league_share": 0.29,
-     "score": [
-      3,
-      10
-     ],
-     "what_happened": "(4:37) 76-C.Vinson reported in as eligible. 22-D.Henry right end to BAL 33 for 4 yards (25-R.Lane)."
-    }
-   ]
+   "quiz": []
   },
   {
    "week": 8,
@@ -332,6 +312,44 @@
     }
    ],
    "quiz": [
+    {
+     "team": "GB",
+     "opp": "CAR",
+     "coach": "Matt LaFleur",
+     "situation": "Q2 0:39 \u00b7 GB up 10 \u00b7 4th & 10 at midfield",
+     "coach_call": "punt",
+     "engine_call": "punt",
+     "wp": {
+      "go": 0.825,
+      "fg": 0.8,
+      "punt": 0.841
+     },
+     "league_share": 0.89,
+     "score": [
+      20,
+      10
+     ],
+     "what_happened": "(:39) 19-D.Whelan punts 39 yards to CAR 11, Center-42-M.Orzech, fair catch by 83-D.Moore."
+    },
+    {
+     "team": "CHI",
+     "opp": "SEA",
+     "coach": "Ben Johnson",
+     "situation": "Q2 6:11 \u00b7 CHI up 4 \u00b7 4th & 4 at SEA 25",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.686,
+      "fg": 0.635,
+      "punt": 0.633
+     },
+     "league_share": 0.24,
+     "score": [
+      7,
+      3
+     ],
+     "what_happened": "(6:11) 8-C.Santos 44 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
+    },
     {
      "team": "DEN",
      "opp": "KC",

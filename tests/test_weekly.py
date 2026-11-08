@@ -141,3 +141,16 @@ def test_every_finished_week_has_five_plays():
     weeks = load_weekly()["weeks"]
     assert all(len(w["quiz"]) in (0, 5) for w in weeks)
     assert all(len(w["quiz"]) == 5 for w in weeks[1:])
+
+
+def test_week_in_progress_does_not_hide_finished_weeks():
+    """1.4.9 bug: the newest week has no plays until Tuesday, and the app showed
+    "No game this week yet" for the whole Play tab because it checked only
+    weeks[0]. The empty message must depend on the playable weeks."""
+    html = open(os.path.join(ROOT, "app", "index.html"), encoding="utf-8").read()
+    start = html.index("// ---------- the weekly game")
+    block = html[start:html.index("No game this week yet", start)]
+    assert "weeks[0].quiz" not in block
+    assert "if (!playable.length)" in block
+    data = load_weekly()
+    assert any(len(w["quiz"]) == 5 for w in data["weeks"])

@@ -53,26 +53,32 @@ You need Python 3.12 and Node.js 20 or later.
    py engine/grade_coaches.py
    ```
 
-6. Make the weekly page and the edge check:
+6. Fit the fear-of-failing figures:
+
+   ```bash
+   py engine/fit_prospect.py
+   ```
+
+7. Make the weekly page and the edge check:
 
    ```bash
    py engine/weekly.py
    py engine/edge_check.py
    ```
 
-7. Render the reports and the results block in the white paper:
+8. Render the reports and the results block in the white paper:
 
    ```bash
    py build/render_reports.py
    ```
 
-8. Build the PDFs and the deck:
+9. Build the PDFs and the deck:
 
    ```bash
    py build/build_docs.py
    ```
 
-9. Run the tests. All tests must pass:
+10. Run the tests. All tests must pass:
 
    ```bash
    py -m pytest tests -v

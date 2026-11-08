@@ -28,7 +28,7 @@ def main():
     # the artifact host blocks outside data, so the live-game box cannot work there
     t = t.replace('<div id="livebox">', '<div id="livebox" hidden>')
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8", newline="\n").write(t)
-    for f in ("model.js", "engine.js", "live.js", "grades.js", "bootstrap.js", "weekly.js"):
+    for f in ("model.js", "engine.js", "live.js", "grades.js", "bootstrap.js", "weekly.js", "prospect.js"):
         shutil.copy(os.path.join(ROOT, "app", f), os.path.join(OUT, f))
     print("wrote", os.path.relpath(OUT, ROOT))
 

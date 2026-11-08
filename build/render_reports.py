@@ -4,6 +4,7 @@ Run:  py build/render_reports.py      (after fit_models.py, bootstrap.py, grade_
 Out:  docs/reports/validation-report.md
       docs/reports/coach-grades.md
       docs/reports/kicker-grades.md
+      docs/reports/prospect-theory.md
       the generated block inside docs/fourth-down-whitepaper.md
 
 tests/test_reports.py re-renders and fails if any committed file is stale.
@@ -229,6 +230,73 @@ def paper_block(v, m, g, k):
     return "\n".join(s)
 
 
+def prospect_md(p):
+    L, h, r = p["league"], p["holdout"], p["readouts"]
+    ci = L["ci95"]
+    rows = [[f"{e['from']}-{e['to']}", f"{e['n']:,}", e["gamma"], e["lambda"], e["alpha"]] for e in p["eras"]]
+    last = max(x["last_season"] for x in p["coaches"])
+    cur = [c for c in p["coaches"] if c["last_season"] == last]
+    crow = [[c["coach"], c["decisions"], f"{c['lambda']:.2f}", f"{c['lo']:.2f}-{c['hi']:.2f}", f"{c['raw_lambda']:.2f}",
+             "few calls" if c["few_calls"] else ""] for c in cur]
+    hm = lambda name, key: [name, pct(h[key]["accuracy"]), h[key]["log_loss"]]
+    return "\n".join([
+        "# Prospect-theory fit: fear of failing",
+        "",
+        "<!-- Rendered by build/render_reports.py from data/prospect.json. Do not edit by hand. -->",
+        "",
+        "## Method",
+        "",
+        f"Every 4th down {p['seasons'][0]}-{p['seasons'][1]} without overtime (n = {p['n']:,} in {p['games']:,} games). "
+        "The engine prices each option as a gamble: going for it converts with chance p (WP after success, WP after "
+        "failure); a field goal is made with chance p; a punt is a sure thing. Outcomes are measured from "
+        f"the {p['reference']}, in units of {round(p['unit_wp'] * 100)} WP points. A logit choice model with "
+        "Prelec weighting w(p) = exp(-(-ln p)^gamma) and value x^alpha (gains), -lambda(-x)^alpha (losses) is fit by "
+        "maximum likelihood (Tversky & Kahneman 1992; Whittaker 2026). gamma = lambda = alpha = 1 is the computer.",
+        "",
+        "Each coach: lambda only, with the league's gamma, alpha and tau; standard error clustered by game; shrunk "
+        f"toward the league by empirical Bayes (prior sd of log lambda {p['shrinkage']['prior_sd_log_lambda']}, "
+        f"from {p['shrinkage']['coaches_used']} coaches with 100+ calls).",
+        "",
+        "## League",
+        "",
+        table(["Parameter", "Fit", f"95% range ({L['bootstrap_reps']} game-resampled refits)", "Computer"], [
+            ["gamma (calibration)", L["gamma"], f"{ci['gamma'][0]}-{ci['gamma'][1]}", 1],
+            ["lambda (fear of failing)", L["lambda"], f"{ci['lambda'][0]}-{ci['lambda'][1]}", 1],
+            ["alpha (value of big gains)", L["alpha"], f"{ci['alpha'][0]}-{ci['alpha'][1]}", 1]]),
+        "",
+        f"Read as: a 51% chance feels like {pct(r['feels_51'], 0)}, 85% like {pct(r['feels_85'], 0)}, 10% like "
+        f"{pct(r['feels_10'], 0)}. A failed 4th down weighs {L['lambda']:.1f} times a conversion of the same size "
+        f"(lab median for people: {r['lab_lambda']}). A gain 4 times as big feels {r['gain_4_vs_1']} times as good.",
+        "",
+        "## By era",
+        "",
+        table(["Seasons", "Decisions", "gamma", "lambda", "alpha"], rows),
+        "",
+        "## Hold-out test",
+        "",
+        f"Fit on {h['fit_seasons'][0]}-{h['fit_seasons'][1]}, scored on {h['test_seasons'][0]}-{h['test_seasons'][1]} "
+        f"(n = {h['n']:,}). The second model adds a constant preference for each kick, so prospect theory cannot win "
+        "only by learning that coaches like to kick.",
+        "",
+        table(["Model", "Calls predicted", "Log loss"], [hm("Computer (expected WP)", "computer"),
+              hm("Computer that likes kicking", "computer_likes_kicking"), hm("Prospect theory", "prospect")]),
+        "",
+        f"## Coaches in {last}",
+        "",
+        table(["Coach", "Calls", "Fear of failing", "95% range", "Own calls only", ""], crow),
+        "",
+        "## What these numbers do not prove",
+        "",
+        "- That coaches feel fear. The fit describes choices, not beliefs or motives.",
+        "- That the engine is right. lambda grows when coaches pass on the engine's go calls; if the engine "
+        "overrates going for it, that error is counted as fear (risk 21).",
+        "- That the reference point is right. Another reference (the WP before the snap) would move lambda (ADR-0004).",
+        "- That the figures match Whittaker (2026): another WP model, reference point and estimator. That study "
+        "reports gamma 0.34, lambda 1.42, alpha 0.30 with no error ranges.",
+        "- That one coach differs from another unless their 95% ranges do not overlap.",
+    ]) + "\n"
+
+
 def render_all(write=True):
     v, m, g, k = j("validation.json"), j("model.json"), j("coach_grades.json"), j("kickers.json")
     files = {
@@ -241,6 +309,7 @@ def render_all(write=True):
         "- That short-yardage conversion is unbiased. Yards to go is a whole number (Lopez 2020; risk 1).\n",
         "docs/reports/coach-grades.md": coaches_md(g) + "\n",
         "docs/reports/kicker-grades.md": kickers_md(k) + "\n",
+        "docs/reports/prospect-theory.md": prospect_md(j("prospect.json")),
     }
     paper = os.path.join(ROOT, "docs", "fourth-down-whitepaper.md")
     text = open(paper, encoding="utf-8").read()

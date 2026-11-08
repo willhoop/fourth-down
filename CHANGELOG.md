@@ -3,6 +3,62 @@
 All notable changes are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/),
 [Semantic Versioning](https://semver.org/). Newest first. Dates are ISO 8601.
 
+## [1.4.10] — 2026-11-07
+
+### Added
+
+- **Fear of failing (prospect theory).** `engine/fit_prospect.py` fits coaches'
+  4th-down calls to prospect theory (Tversky & Kahneman 1992), with the engine
+  as the "computer", after Whittaker (2026). Each option is a gamble the engine
+  prices, measured from the punt's win chance (ADR-0004). The league fit gives
+  three numbers with 95% ranges from 100 game-resampled refits; each coach gets
+  his own fear-of-failing figure (lambda), shrunk toward the league so a coach
+  with few calls stays near it. Full method, figures and limits:
+  `docs/reports/prospect-theory.md`. Reason: the owner asked how the study
+  applies here, and whether coaches misread the odds or fear failing.
+- **App:** the 4th & You reveal shows the coach's fear of failing when the
+  engine says go for it; each coach's page on the Coaches tab shows it with its
+  95% range.
+- Risk 21 (the figure mixes coach bias with engine error) and ADR-0004 (the
+  reference point).
+
+### Fixed
+
+- **The Play tab showed "No game this week yet" with weeks 1-8 ready** (live
+  since 1.4.9). The newest week has no plays until Tuesday, and the app checked
+  only the newest week. It now checks every playable week. A test guards it.
+
+### Changed
+
+- `pbp_path` reads the nflverse URL into memory when `data/raw` is absent, so
+  the fit can run on this PC without saving data. `grade_coaches.decision_state`
+  now builds the engine state for one decision (shared by grading and the fit;
+  no change to grades).
+- CI installs scipy.
+
+### Notes
+
+- The fit does not agree with Whittaker (2026), who reports gamma 0.34,
+  lambda 1.42, alpha 0.30 with no error ranges. Here coaches read the odds
+  nearly right (gamma near 1) and fear failing more (lambda 2.70). Another WP
+  model, another reference point and another estimator: the figures answer
+  different questions and are not compared as better or worse.
+
+### Record
+
+- **Measured.** New figures, from `data/prospect.json` (n = 45,730 4th downs,
+  2014-2026, no overtime): league gamma 1.191 (1.158-1.230), lambda 2.701
+  (2.646-2.760), alpha 0.463 (0.453-0.474); lambda by era 2.94 (2014-17), 2.75
+  (2018-21), 2.49 (2022-25). Hold-out 2024-25 (n = 7,568): calls predicted
+  79.8% against 74.7% for a computer that likes kicking and 57.5% for plain
+  expected win chance. Current coaches 2.05 (Schottenheimer) to 2.92 (Reid).
+- **Basis.** unchanged. No existing figure moves.
+- **Supersedes.** Nothing.
+- **Owed to the next major.** White paper: a prospect-theory section (method,
+  league table, hold-out test, ADR-0004, risk 21). Deck: one slide, "coaches
+  read the odds fine; they fear failing". Technical docs: Explanation page for
+  the fit; Reference entry for `data/prospect.json`.
+
 ## [1.4.9] — 2026-11-06
 
 ### Added

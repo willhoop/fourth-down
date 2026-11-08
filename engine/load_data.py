@@ -62,8 +62,11 @@ def _stadium(df):
 
 
 def pbp_path(season):
-    """The season's play-by-play in raw_dir (downloaded by engine/download_data.py)."""
-    return os.path.join(ROOT, CONFIG["raw_dir"], f"play_by_play_{season}.parquet")
+    """The season's play-by-play in raw_dir (downloaded by engine/download_data.py
+    inside a GitHub runner). Without it, the nflverse URL: pandas then reads the
+    file into memory and nothing is saved on this computer."""
+    local = os.path.join(ROOT, CONFIG["raw_dir"], f"play_by_play_{season}.parquet")
+    return local if os.path.exists(local) else CONFIG["pbp_url"].format(season=season)
 
 
 def load(seasons=None):

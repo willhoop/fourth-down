@@ -7,7 +7,7 @@ is a single edit here followed by `py engine/fit_models.py`.
 
 CONFIG = {
     # ---- engine version (must equal the newest CHANGELOG entry) ----
-    "version": "1.4.9",
+    "version": "1.4.10",
 
     # ---- data ----
     # nflverse play-by-play, one parquet per season, from
@@ -133,6 +133,22 @@ CONFIG = {
     # A call counts as a confident mistake only when at least this share of
     # replicates rank another option above the coach's.
     "confident_share": 0.9,
+
+    # ---- prospect theory (engine/fit_prospect.py) ----
+    # Fits coaches' calls to prospect theory (Tversky & Kahneman 1992) with the
+    # engine as the "computer", after Whittaker (2026). Each option is a gamble
+    # measured from the punt's WP (the field goal's when there is no punt), in
+    # units of 5 WP points. Overtime is left out.
+    "prospect": {
+        "seasons": list(range(2014, 2027)),
+        "unit_wp": 0.05,
+        "holdout": [2024, 2025],       # scored, never fit, in the hold-out test
+        "eras": [[2014, 2017], [2018, 2021], [2022, 2025]],
+        "bootstrap_reps": 100,         # game-resampled refits for the league CI
+        "seed": 2026,
+        "min_decisions": 100,          # fewer: shown, marked "few calls"
+        "lab_lambda": 2.25,            # Tversky & Kahneman (1992) median
+    },
 
     # ---- heatmap ----
     "map_max_togo": 15,

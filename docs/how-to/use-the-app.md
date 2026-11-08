@@ -115,7 +115,8 @@ Node). It writes `app/og/` and `app/s/`.
    the spot in your terms ("on your own 16"). Then the app shows the engine's call, each
    choice's chance to win the game, and what the real coach did. You get a green
    square when you match the engine. The coach gets a green square when his
-   real call matched the engine.
+   real call matched the engine. When the engine says go for it, a line shows
+   the coach's fear of failing (see below).
 4. After play 5, click **Send**. Everyone plays the same five plays, so friends
    can compare cards. The link's preview shows your score and the coaches'
    ("Me 3/5 · Coaches 2/5") and opens the same week. New plays come every
@@ -198,11 +199,16 @@ to 100%.
 1. Click **Coaches**. The switch at the top picks the seasons: **Since 2021**
    (the default) grades only recent calls, so a long career is not judged by an
    older era's norms; **All since 2014** grades every call. Click a column name
-   or use **Sort by** to sort. Click a coach to see his seasons and costliest
-   calls.
+   or use **Sort by** to sort. Click a coach to see his seasons, costliest
+   calls and fear of failing.
 2. Click **Kickers**. The table shows current kickers and the replacement level.
 
 A **confident mistake** is a call where at least 18 of the 20 resampled models
 agree the coach chose wrong. **Wins lost per season** adds up the win chance
 those mistakes gave away, scaled to a 17-game season. For more, read the white
 paper, section 5.
+
+**Fear of failing** is how much more a failed 4th down weighs on the coach than
+a conversion of the same size, judged from his calls. 1× is pure math. A coach
+with few calls stays close to the league. The method, the ranges and what the
+figure does not prove are in `docs/reports/prospect-theory.md`.

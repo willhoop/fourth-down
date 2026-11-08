@@ -15,6 +15,7 @@ double-click over commands.
 2. `py engine/fit_models.py` — `app/model.js`, `data/model.json`, `data/validation.json`, `data/kickers.json`.
 3. `py engine/bootstrap.py` — `app/bootstrap.js` (20 replicates).
 4. `py engine/grade_coaches.py` — `data/coach_grades.json`, `app/grades.js` (uses node + `build/grade.js`).
+   Then `py engine/fit_prospect.py` — `data/prospect.json`, `app/prospect.js` (fear of failing; node + `build/prospect.js`).
 5. `py build/render_reports.py` — `docs/reports/*.md` and the generated block in the white paper.
 6. `py build/build_docs.py` — PDFs and deck in `build/` (headless Edge; WeasyPrint has no GTK here).
 7. `py -m pytest tests -v`.

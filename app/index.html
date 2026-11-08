@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<!-- FOURTH-DOWN ENGINE VERSION: 1.4.9 -->
+<!-- FOURTH-DOWN ENGINE VERSION: 1.4.10 -->
 <style>
 /* Layout: one calm column on a phone; the call is the first thing you see.
    Night-game palette: a deep field-at-night ground, one color per option. */
@@ -592,6 +592,7 @@ body.noscroll{overflow:hidden}
 <script src="live.js"></script>
 <script src="grades.js"></script>
 <script src="weekly.js"></script>
+<script src="prospect.js"></script>
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
@@ -653,6 +654,16 @@ document.querySelectorAll("input[type=number]").forEach((inp) => {
 function toggles() {
   const on = (id) => $(id).querySelector("input[type=checkbox]").checked;
   return { weather: on("t-weather"), stadium: on("t-stadium"), spread: on("t-spread"), kicker: on("t-kicker") };
+}
+// Fear of failing (prospect theory, engine/fit_prospect.py): how much more a
+// failed 4th down weighs on a coach than a conversion. 1x is pure math.
+const coachFear = (name) => (typeof PROSPECT !== "undefined" && name && PROSPECT.coaches[name]) || null;
+function fearLine(q) {
+  // only where going for it was the call: that is the gamble fear argues against
+  const f = coachFear(q.coach);
+  if (!f || q.engine_call !== "go") return "";
+  const last = q.coach.split(" ").slice(-1)[0];
+  return `<div class="pwedge">Coach ${esc(last)} feels a failed 4th down about ${f[0].toFixed(1)}× as much as a conversion (league: ${PROSPECT.league.toFixed(1)}×).</div>`;
 }
 // the "Clock running" option only matters in the last 3 minutes of a half
 const lateInHalf = (qtr, half) => (qtr === 2 || qtr === 4 || qtr === 5) && half <= 180;
@@ -1551,13 +1562,14 @@ if (loadShared()) submit();
 // ---------- the weekly game: last week's five biggest calls. Call what the engine
 // says; you score when you match it, the coach scores when his real call did.
 (function () {
-  if (typeof WEEKLY === "undefined" || !WEEKLY.weeks.length || !(WEEKLY.weeks[0].quiz || []).length) {
+  // every finished week is playable; each keeps its own progress. The week in
+  // progress has no plays until Tuesday, so it is not offered (and must not hide
+  // the earlier weeks).
+  const playable = typeof WEEKLY === "undefined" ? [] : WEEKLY.weeks.filter((w) => (w.quiz || []).length >= 3);
+  if (!playable.length) {
     $("playbox").innerHTML = `<p class="note">No game this week yet.</p>`;
     return;
   }
-  // every week of the season is playable; each keeps its own progress
-  // a week in progress (only Thursday played) or with too few good plays is not offered
-  const playable = WEEKLY.weeks.filter((w) => (w.quiz || []).length >= 3);
   const did = { go: "went for it", fg: "kicked a FG", punt: "punted" };
   let wk, Q, key, picks = [], revealed = false;
   function startWeek(n) {
@@ -1609,6 +1621,7 @@ if (loadShared()) submit();
         <div class="pwbars">${bars}</div>
         <div class="pwedge">${esc(edge)}</div>
         ${q.league_share !== undefined ? `<div class="pwedge">In spots like this, coaches ${verbs(4)[q.engine_call]} ${Math.round(q.league_share * 100)}% of the time.</div>` : ""}
+        ${fearLine(q)}
         <div class="pres"><span class="sq s${mark(me)}"></span>You: ${me ? "right" : "wrong"}</div>
         <div class="pres"><span class="sq s${mark(co)}"></span>Coach ${esc(q.coach ? q.coach.split(" ").slice(-1)[0] : (TEAM_NAMES[q.team] || q.team))} ${did[q.coach_call]}</div>
         <button class="submit" id="pnext" type="button">${i < Q.length ? "Next play" : "See your score"}</button>`;
@@ -1793,8 +1806,12 @@ const CALL = { go: "went for it", fg: "kicked a FG", punt: "punted" };
     const worst = c.worst_calls.map((w) => `<div class="worst"><b>${w.season} wk ${w.week} ${w.team} vs ${w.opp}</b> — ${esc(w.situation)}<br>
       Coach ${CALL[w.coach_call]}; engine says <b>${NAMES[w.engine_call].toLowerCase()}</b>. Cost ${(w.cost * 100).toFixed(1)} win-prob pts (${Math.round(w.confidence * 100)}% of models agree).<br>
       <span class="note">What happened: ${esc(w.what_happened)}</span></div>`).join("");
+    const fear = coachFear(c.coach);
     el.innerHTML = `<h2>${esc(c.coach)} — ${c.grade}</h2>
       <p><b>Biggest habit:</b> ${esc(c.habit)}.</p>
+      ${fear ? `<p><b>Fear of failing: ${fear[0].toFixed(1)}×.</b> He weighs a failed 4th down about ${fear[0].toFixed(1)} times as heavily as a conversion
+      (95% range ${fear[1].toFixed(1)}–${fear[2].toFixed(1)}; league ${PROSPECT.league.toFixed(1)}×; 1× is pure math).
+      ${fear[3] < 100 ? "Few calls so far, so this sits close to the league." : ""}</p>` : ""}
       <p>${c.decisions} fourth downs in ${c.games} games (${c.first_season}–${c.last_season}). He went for it ${pct(c.go_rate, 0)} of the time; the engine would have gone ${pct(c.engine_go_rate, 0)}.
       He agreed with the engine on ${pct(c.agree, 0)} of calls. ${c.confident_mistakes} calls were confident mistakes, costing ${c.wins_lost_per_17.toFixed(2)} wins per 17 games
       (counting every disagreement, sure or not: ${c.wins_lost_per_17_all_calls.toFixed(2)}).</p>

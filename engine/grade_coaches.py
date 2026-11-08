@@ -79,6 +79,28 @@ def prepare(seasons=None):
     return df, d, ab, by_game, by_season
 
 
+def decision_state(r, attrs, ab, by_game, by_season):
+    """The engine state for one graded 4th down (row of prepare()'s frame)."""
+    kid = by_game.get((r["game_id"], r["posteam"])) or by_season.get((r["season"], r["posteam"]))
+    ka, kb = ab.get(kid, (0.0, 0.0))
+    ko_map, ko_now = attrs["kickoff"]
+    st = {"kickoff_start": ko_map.get(str(int(r["season"])), ko_now),
+          "onside_rate": fit_ot.onside_rate(attrs["onside"], int(r["season"])),
+          "playoffs": int(r.get("season_type") == "POST"),
+          "score_diff": float(r["score_diff"]), "qtr": int(r["qtr"]),
+          "half_seconds": float(r["half_seconds_remaining"]), "yardline": float(r["yardline_100"]),
+          "ydstogo": float(r["ydstogo"]), "pos_to": float(r["posteam_timeouts_remaining"]),
+          "def_to": float(r["defteam_timeouts_remaining"]), "home": int(r["home"]),
+          "receive_2h": int(r["receive_2h"]), "spread": float(r["spread"]),
+          "wind": float(r["wind_mph"]), "temp": float(r["temp_f"]), "precip": int(r["precip"]),
+          "indoor": int(r["indoor"]), "altitude_kft": float(r["altitude_kft"]),
+          "kicker_a": ka, "kicker_b": kb,
+          # Lopez (2020): on a recorded 4th & 1, teams that went were closer to
+          # the line than teams that kicked. Judge each call at its group's distance.
+          "short": "went" if CHOICE[r["play_type"]] == "go" else "kicked"}
+    return st
+
+
 def score(seasons=None):
     """Play every 4th down in `seasons` twice; return (decisions frame, plays)."""
     df, d, ab, by_game, by_season = prepare(seasons)
@@ -90,23 +112,7 @@ def score(seasons=None):
 
     rows = []
     for _, r in d.iterrows():
-        kid = by_game.get((r["game_id"], r["posteam"])) or by_season.get((r["season"], r["posteam"]))
-        ka, kb = ab.get(kid, (0.0, 0.0))
-        ko_map, ko_now = d.attrs["kickoff"]
-        st = {"kickoff_start": ko_map.get(str(int(r["season"])), ko_now),
-              "onside_rate": fit_ot.onside_rate(d.attrs["onside"], int(r["season"])),
-              "playoffs": int(r.get("season_type") == "POST"),
-              "score_diff": float(r["score_diff"]), "qtr": int(r["qtr"]),
-              "half_seconds": float(r["half_seconds_remaining"]), "yardline": float(r["yardline_100"]),
-              "ydstogo": float(r["ydstogo"]), "pos_to": float(r["posteam_timeouts_remaining"]),
-              "def_to": float(r["defteam_timeouts_remaining"]), "home": int(r["home"]),
-              "receive_2h": int(r["receive_2h"]), "spread": float(r["spread"]),
-              "wind": float(r["wind_mph"]), "temp": float(r["temp_f"]), "precip": int(r["precip"]),
-              "indoor": int(r["indoor"]), "altitude_kft": float(r["altitude_kft"]),
-              "kicker_a": ka, "kicker_b": kb,
-              # Lopez (2020): on a recorded 4th & 1, teams that went were closer to
-              # the line than teams that kicked. Judge each call at its group's distance.
-              "short": "went" if CHOICE[r["play_type"]] == "go" else "kicked"}
+        st = decision_state(r, d.attrs, ab, by_game, by_season)
         # The next regulation snap, or the final result when there is none
         # (game over, or the game went to overtime).
         nxt = None

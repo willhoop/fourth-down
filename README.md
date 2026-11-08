@@ -27,6 +27,7 @@ Version 1.4.9. Results and figures: [white paper](docs/fourth-down-whitepaper.md
 | [engine/bootstrap.py](engine/bootstrap.py) | Refits everything on 20 resampled sets of games, for confidence. |
 | [engine/grade_coaches.py](engine/grade_coaches.py) | Plays every fourth down twice and grades head coaches. |
 | [engine/kickers.py](engine/kickers.py) | Kicker accuracy, range and replacement level. |
+| [engine/fit_prospect.py](engine/fit_prospect.py) | Fits coaches' calls to prospect theory: each coach's fear of failing, with a 95% range. |
 | [engine/weekly.py](engine/weekly.py) | This season's games with every 4th down graded per team, plus each week's costliest and best calls (updated every Tuesday by a GitHub Action). |
 | [engine/edge_check.py](engine/edge_check.py) | Checks whether teams that followed the engine won as much more as it predicted. |
 | [build/render_reports.py](build/render_reports.py) | Renders every published figure from the pipeline output. |

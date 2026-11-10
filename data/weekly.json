@@ -1,51 +1,369 @@
 {
- "version": "1.4.8",
+ "version": "1.4.10",
  "season": 2026,
- "updated": "2026-11-06",
+ "updated": "2026-11-10",
  "weeks": [
   {
    "week": 9,
-   "decisions": 15,
-   "confident_mistakes": 2,
-   "wp_lost": 0.023,
+   "decisions": 211,
+   "confident_mistakes": 30,
+   "wp_lost": 0.904,
    "worst": [
     {
      "week": 9,
-     "team": "BAL",
-     "opp": "JAX",
-     "coach": "Jesse Minter",
-     "situation": "Q1 6:36, down 7, 4th & 6 at opp 35",
-     "coach_call": "fg",
+     "team": "KC",
+     "opp": "NYJ",
+     "coach": "Andy Reid",
+     "situation": "Q2 6:42, down 2, 4th & 2 at own 39",
+     "coach_call": "punt",
      "engine_call": "go",
      "wp": {
-      "go": 0.142,
-      "fg": 0.121,
-      "punt": 0.128
+      "go": 0.862,
+      "fg": null,
+      "punt": 0.77
      },
-     "what_happened": "(6:36) 45-J.Moody 53 yard field goal is GOOD, Center-46-N.Moore, Holder-30-R.Eckley.",
-     "cost": 0.021,
-     "confidence": 0.95
+     "what_happened": "(6:42) 14-M.Araiza punts 58 yards to NYJ 3, Center-41-J.Winchester. 18-I.Williams to NYJ 21 for 18 yards (43-J.Cochrane).",
+     "cost": 0.092,
+     "confidence": 1.0
     },
     {
      "week": 9,
-     "team": "JAX",
-     "opp": "BAL",
-     "coach": "Liam Coen",
-     "situation": "Q4 13:39, up 17, 4th & 2 at opp 29",
+     "team": "MIN",
+     "opp": "BUF",
+     "coach": "Kevin O'Connell",
+     "situation": "Q2 4:06, down 3, 4th & 1 at opp 25",
      "coach_call": "fg",
      "engine_call": "go",
      "wp": {
-      "go": 0.991,
-      "fg": 0.988,
-      "punt": 0.986
+      "go": 0.445,
+      "fg": 0.356,
+      "punt": 0.333
      },
-     "what_happened": "(13:39) 39-C.Little 47 yard field goal is GOOD, Center-46-R.Matiscik, Holder-9-L.Cooke.",
-     "cost": 0.003,
+     "what_happened": "(4:06) 16-W.Reichard 43 yard field goal is GOOD, Center-42-A.DePaola, Holder-19-B.Thorson.",
+     "cost": 0.089,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "NO",
+     "opp": "CLE",
+     "coach": "Kellen Moore",
+     "situation": "Q4 4:23, down 4, 4th & 3 at own 37",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.255,
+      "fg": null,
+      "punt": 0.179
+     },
+     "what_happened": "(4:23) 17-R.Wright punts 46 yards to CLE 17, Center-49-Z.Wood, fair catch by 1-K.Concepcion.",
+     "cost": 0.076,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "IND",
+     "opp": "DAL",
+     "coach": "Shane Steichen",
+     "situation": "Q4 6:01, down 3, 4th & 4 at opp 41",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.297,
+      "fg": 0.224,
+      "punt": 0.214
+     },
+     "what_happened": "(6:01) 3-S.Shrader 59 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez.",
+     "cost": 0.073,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "LA",
+     "opp": "WAS",
+     "coach": "Sean McVay",
+     "situation": "Q2 9:13, down 7, 4th & 2 at own 28",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.5,
+      "fg": null,
+      "punt": 0.432
+     },
+     "what_happened": "(9:13) 42-E.Evans punts 53 yards to WAS 19, Center-43-J.McQuaide. 11-L.McCaffrey to WAS 29 for 10 yards (5-K.Kinchens; 48-O.Speights).",
+     "cost": 0.068,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "LA",
+     "opp": "WAS",
+     "coach": "Sean McVay",
+     "situation": "Q2 0:05, down 7, 4th & 2 at opp 2",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.591,
+      "fg": 0.535,
+      "punt": 0.432
+     },
+     "what_happened": "(:05) 19-B.McManus 20 yard field goal is GOOD, Center-43-J.McQuaide, Holder-42-E.Evans.",
+     "cost": 0.057,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "CLE",
+     "opp": "NO",
+     "coach": "Todd Monken",
+     "situation": "Q2 10:34, down 3, 4th & 2 at opp 23",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.364,
+      "fg": 0.312,
+      "punt": 0.285
+     },
+     "what_happened": "(10:34) 25-A.Szmyt 41 yard field goal is GOOD, Center-50-R.Sunahara, Holder-13-C.Bojorquez.",
+     "cost": 0.052,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "SEA",
+     "opp": "ARI",
+     "coach": "Mike Macdonald",
+     "situation": "Q1 6:23, down 3, 4th & 4 at opp 49",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.643,
+      "fg": 0.594,
+      "punt": 0.603
+     },
+     "what_happened": "(6:23) 4-M.Dickson punts 36 yards to ARI 13, Center-41-C.Stoll. 81-D.Duvernay ran ob at ARI 20 for 7 yards (44-C.Surratt).",
+     "cost": 0.04,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "DAL",
+     "opp": "IND",
+     "coach": "Brian Schottenheimer",
+     "situation": "Q4 7:50, up 3, 4th & 1 at own 39",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.786,
+      "fg": null,
+      "punt": 0.749
+     },
+     "what_happened": "(7:50) 5-B.Anger punts 44 yards to IND 17, Center-44-T.Sieg, fair catch by 6-A.Gould.",
+     "cost": 0.037,
+     "confidence": 1.0
+    },
+    {
+     "week": 9,
+     "team": "LA",
+     "opp": "WAS",
+     "coach": "Sean McVay",
+     "situation": "Q2 12:33, down 7, 4th & 6 at own 24",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.458,
+      "fg": null,
+      "punt": 0.429
+     },
+     "what_happened": "(12:33) 42-E.Evans punts 58 yards to WAS 18, Center-43-J.McQuaide, downed by LA-88-J.Whittington.",
+     "cost": 0.029,
      "confidence": 0.9
     }
    ],
-   "best": [],
-   "quiz": []
+   "best": [
+    {
+     "week": 9,
+     "team": "LA",
+     "opp": "WAS",
+     "coach": "Sean McVay",
+     "situation": "Q2 4:39, down 7, 4th & 2 at own 44",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.472,
+      "fg": null,
+      "punt": 0.354
+     },
+     "what_happened": "(4:39) 9-M.Stafford pass short middle to 12-P.Nacua to WAS 44 for 12 yards (20-Q.Martin).",
+     "edge": 0.118,
+     "converted": true
+    },
+    {
+     "week": 9,
+     "team": "CLE",
+     "opp": "NO",
+     "coach": "Todd Monken",
+     "situation": "Q2 1:42, tied, 4th & 1 at opp 1",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.598,
+      "fg": 0.511,
+      "punt": 0.451
+     },
+     "what_happened": "(1:42) 70-Z.Zinter reported in as eligible. 10-Q.Judkins left guard to NO 1 for no gain (55-K.Elliss).",
+     "edge": 0.087,
+     "converted": false
+    },
+    {
+     "week": 9,
+     "team": "NYG",
+     "opp": "PHI",
+     "coach": "John Harbaugh",
+     "situation": "Q3 7:10, down 2, 4th & 1 at own 44",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.535,
+      "fg": null,
+      "punt": 0.466
+     },
+     "what_happened": "(7:10) 19-J.Winston left guard to NYG 45 for 1 yard (29-M.Epps).",
+     "edge": 0.069,
+     "converted": true
+    },
+    {
+     "week": 9,
+     "team": "CAR",
+     "opp": "DEN",
+     "coach": "Dave Canales",
+     "situation": "Q2 1:49, down 10, 4th & 1 at opp 35",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.231,
+      "fg": 0.171,
+      "punt": 0.16
+     },
+     "what_happened": "(1:49) (Shotgun) 30-C.Hubbard left end to DEN 12 for 23 yards (30-T.Rapp).",
+     "edge": 0.06,
+     "converted": true
+    },
+    {
+     "week": 9,
+     "team": "LA",
+     "opp": "WAS",
+     "coach": "Sean McVay",
+     "situation": "Q2 1:33, down 7, 4th & 3 at opp 38",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.513,
+      "fg": 0.465,
+      "punt": 0.421
+     },
+     "what_happened": "(1:33) (No Huddle, Shotgun) 9-M.Stafford pass short right to 12-P.Nacua to WAS 23 for 15 yards (39-J.Reaves; 23-T.Amos).",
+     "edge": 0.048,
+     "converted": true
+    }
+   ],
+   "quiz": [
+    {
+     "team": "KC",
+     "opp": "NYJ",
+     "coach": "Andy Reid",
+     "situation": "Q2 6:42 \u00b7 KC down 2 \u00b7 4th & 2 at KC 39",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.862,
+      "fg": null,
+      "punt": 0.77
+     },
+     "league_share": 0.09,
+     "score": [
+      7,
+      9
+     ],
+     "what_happened": "(6:42) 14-M.Araiza punts 58 yards to NYJ 3, Center-41-J.Winchester. 18-I.Williams to NYJ 21 for 18 yards (43-J.Cochrane)."
+    },
+    {
+     "team": "NO",
+     "opp": "CLE",
+     "coach": "Kellen Moore",
+     "situation": "Q4 4:23 \u00b7 NO down 4 \u00b7 4th & 3 at NO 37",
+     "coach_call": "punt",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.255,
+      "fg": null,
+      "punt": 0.179
+     },
+     "league_share": 0.09,
+     "score": [
+      9,
+      13
+     ],
+     "what_happened": "(4:23) 17-R.Wright punts 46 yards to CLE 17, Center-49-Z.Wood, fair catch by 1-K.Concepcion."
+    },
+    {
+     "team": "LA",
+     "opp": "WAS",
+     "coach": "Sean McVay",
+     "situation": "Q2 4:39 \u00b7 LA down 7 \u00b7 4th & 2 at LA 44",
+     "coach_call": "go",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.472,
+      "fg": null,
+      "punt": 0.354
+     },
+     "league_share": 0.31,
+     "score": [
+      3,
+      10
+     ],
+     "what_happened": "(4:39) 9-M.Stafford pass short middle to 12-P.Nacua to WAS 44 for 12 yards (20-Q.Martin)."
+    },
+    {
+     "team": "IND",
+     "opp": "DAL",
+     "coach": "Shane Steichen",
+     "situation": "Q4 6:01 \u00b7 IND down 3 \u00b7 4th & 4 at DAL 41",
+     "coach_call": "fg",
+     "engine_call": "go",
+     "wp": {
+      "go": 0.297,
+      "fg": 0.224,
+      "punt": 0.214
+     },
+     "league_share": 0.16,
+     "score": [
+      17,
+      20
+     ],
+     "what_happened": "(6:01) 3-S.Shrader 59 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
+    },
+    {
+     "team": "NYG",
+     "opp": "PHI",
+     "coach": "John Harbaugh",
+     "situation": "Q1 5:35 \u00b7 NYG up 3 \u00b7 4th & 14 at PHI 31",
+     "coach_call": "fg",
+     "engine_call": "fg",
+     "wp": {
+      "go": 0.696,
+      "fg": 0.724,
+      "punt": 0.702
+     },
+     "league_share": 0.77,
+     "score": [
+      3,
+      0
+     ],
+     "what_happened": "(5:35) 34-D.Zvada 49 yard field goal is GOOD, Center-58-B.Mann, Holder-15-J.Stout."
+    }
+   ]
   },
   {
    "week": 8,
@@ -176,7 +494,7 @@
      "week": 8,
      "team": "ATL",
      "opp": "TB",
-     "coach": "Raheem Morris",
+     "coach": "Kevin Stefanski",
      "situation": "Q3 11:24, down 9, 4th & 1 at own 16",
      "coach_call": "punt",
      "engine_call": "go",
@@ -246,7 +564,7 @@
      "week": 8,
      "team": "ARI",
      "opp": "DAL",
-     "coach": "Jonathan Gannon",
+     "coach": "Mike LaFleur",
      "situation": "Q1 6:17, tied, 4th & 1 at opp 1",
      "coach_call": "go",
      "engine_call": "go",
@@ -297,7 +615,7 @@
      "week": 8,
      "team": "BUF",
      "opp": "BAL",
-     "coach": "Sean McDermott",
+     "coach": "Joe Brady",
      "situation": "Q1 10:12, tied, 4th & 1 at opp 1",
      "coach_call": "go",
      "engine_call": "go",
@@ -504,7 +822,7 @@
      "week": 7,
      "team": "ATL",
      "opp": "SF",
-     "coach": "Raheem Morris",
+     "coach": "Kevin Stefanski",
      "situation": "Q1 7:10, down 7, 4th & 7 at opp 21",
      "coach_call": "fg",
      "engine_call": "go",
@@ -659,7 +977,7 @@
      "week": 7,
      "team": "ARI",
      "opp": "DEN",
-     "coach": "Jonathan Gannon",
+     "coach": "Mike LaFleur",
      "situation": "Q2 8:40, down 3, 4th & 1 at opp 20",
      "coach_call": "go",
      "engine_call": "go",
@@ -734,7 +1052,7 @@
     {
      "team": "ATL",
      "opp": "SF",
-     "coach": "Raheem Morris",
+     "coach": "Kevin Stefanski",
      "situation": "Q2 0:02 \u00b7 ATL down 5 \u00b7 4th & 1 at SF 15",
      "coach_call": "fg",
      "engine_call": "fg",
@@ -849,7 +1167,7 @@
      "week": 6,
      "team": "ARI",
      "opp": "LA",
-     "coach": "Jonathan Gannon",
+     "coach": "Mike LaFleur",
      "situation": "Q4 7:06, up 6, 4th & 6 at own 29",
      "coach_call": "punt",
      "engine_call": "go",
@@ -1590,7 +1908,7 @@
      "week": 4,
      "team": "ARI",
      "opp": "NYG",
-     "coach": "Jonathan Gannon",
+     "coach": "Mike LaFleur",
      "situation": "Q4 9:34, down 3, 4th & 7 at own 45",
      "coach_call": "punt",
      "engine_call": "go",
@@ -1607,7 +1925,7 @@
      "week": 4,
      "team": "ARI",
      "opp": "NYG",
-     "coach": "Jonathan Gannon",
+     "coach": "Mike LaFleur",
      "situation": "Q4 4:53, down 3, 4th & 7 at own 6",
      "coach_call": "punt",
      "engine_call": "go",
@@ -1822,7 +2140,7 @@
     {
      "team": "ATL",
      "opp": "NO",
-     "coach": "Raheem Morris",
+     "coach": "Kevin Stefanski",
      "situation": "Q1 10:25 \u00b7 ATL up 7 \u00b7 4th & 12 at NO 41",
      "coach_call": "punt",
      "engine_call": "fg",
@@ -2574,7 +2892,7 @@
      "week": 1,
      "team": "ARI",
      "opp": "LAC",
-     "coach": "Jonathan Gannon",
+     "coach": "Mike LaFleur",
      "situation": "Q4 14:04, up 2, 4th & 1 at own 40",
      "coach_call": "punt",
      "engine_call": "go",
@@ -2659,7 +2977,7 @@
      "week": 1,
      "team": "ARI",
      "opp": "LAC",
-     "coach": "Jonathan Gannon",
+     "coach": "Mike LaFleur",
      "situation": "Q2 6:54, tied, 4th & 3 at opp 9",
      "coach_call": "fg",
      "engine_call": "go",
@@ -2851,7 +3169,7 @@
     {
      "team": "ATL",
      "opp": "PIT",
-     "coach": "Raheem Morris",
+     "coach": "Kevin Stefanski",
      "situation": "Q3 1:55 \u00b7 ATL down 6 \u00b7 4th & 14 at PIT 32",
      "coach_call": "fg",
      "engine_call": "fg",
@@ -2928,6 +3246,1510 @@
   }
  ],
  "games": [
+  {
+   "id": "2026_09_ARI_SEA",
+   "week": 9,
+   "away": {
+    "team": "ARI",
+    "coach": "Mike LaFleur",
+    "score": 3,
+    "calls": 7,
+    "mistakes": 1,
+    "wp_lost": 0.013,
+    "grade": "A",
+    "list": [
+     {
+      "when": "Q1 9:26, tied, 4th & 6 at opp 10",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.015,
+      "cost": 0.015,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(9:26) 38-C.Ryland 28 yard field goal is GOOD, Center-59-C.Kreiter, Holder-12-B.Gillikin."
+     },
+     {
+      "when": "Q1 4:46, up 3, 4th & 13 at own 17",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.01,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(4:46) 12-B.Gillikin punts 41 yards to SEA 42, Center-59-C.Kreiter, fair catch by 15-T.Horton."
+     },
+     {
+      "when": "Q2 5:36, down 4, 4th & 14 at opp 43",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.007,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(5:36) 12-B.Gillikin punts 34 yards to SEA 9, Center-59-C.Kreiter, fair catch by 15-T.Horton."
+     },
+     {
+      "when": "Q2 1:55, down 4, 4th & 9 at own 29",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.002,
+      "cost": 0.002,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(1:55) 12-B.Gillikin punts 54 yards to SEA 17, Center-59-C.Kreiter. 15-T.Horton to SEA 19 for 2 yards (80-S.Fehoko)."
+     },
+     {
+      "when": "Q3 11:32, down 11, 4th & 8 at own 34",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.002,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(11:32) 12-B.Gillikin punts 50 yards to SEA 16, Center-59-C.Kreiter, fair catch by 15-T.Horton."
+     },
+     {
+      "when": "Q3 0:14, down 14, 4th & 8 at opp 47",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.013,
+      "cost": 0.013,
+      "confident_mistake": true,
+      "sure": 0.9,
+      "what_happened": "(:14) 12-B.Gillikin punts 35 yards to SEA 12, Center-59-C.Kreiter, fair catch by 15-T.Horton."
+     },
+     {
+      "when": "Q4 7:47, down 14, 4th & 1 at opp 32",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.01,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(7:47) (Shotgun) 15-G.Minshew pass short right to 85-T.McBride ran ob at SEA 17 for 15 yards."
+     }
+    ]
+   },
+   "home": {
+    "team": "SEA",
+    "coach": "Mike Macdonald",
+    "score": 17,
+    "calls": 5,
+    "mistakes": 2,
+    "wp_lost": 0.047,
+    "grade": "C",
+    "list": [
+     {
+      "when": "Q1 14:26, tied, 4th & 5 at own 42",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.022,
+      "cost": 0.022,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(14:26) 4-M.Dickson punts 57 yards to ARI 1, Center-41-C.Stoll, downed by SEA-44-C.Surratt."
+     },
+     {
+      "when": "Q1 6:23, down 3, 4th & 4 at opp 49",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.04,
+      "cost": 0.04,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(6:23) 4-M.Dickson punts 36 yards to ARI 13, Center-41-C.Stoll. 81-D.Duvernay ran ob at ARI 20 for 7 yards (44-C.Surratt)."
+     },
+     {
+      "when": "Q2 3:22, up 4, 4th & 6 at own 30",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.012,
+      "cost": 0.012,
+      "confident_mistake": false,
+      "sure": 0.5,
+      "what_happened": "(3:22) 4-M.Dickson punts 42 yards to ARI 28, Center-41-C.Stoll, downed by SEA-81-E.Saubert."
+     },
+     {
+      "when": "Q3 3:54, up 11, 4th & 8 at opp 27",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.004,
+      "cost": 0.007,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(3:54) 5-J.Myers 45 yard field goal is GOOD, Center-41-C.Stoll, Holder-4-M.Dickson."
+     },
+     {
+      "when": "Q4 10:53, up 14, 4th & 20 at own 38",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.01,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(10:53) 4-M.Dickson punts 53 yards to ARI 9, Center-41-C.Stoll. 81-D.Duvernay to ARI 23 for 14 yards (28-N.Pritchett)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_BUF_MIN",
+   "week": 9,
+   "away": {
+    "team": "BUF",
+    "coach": "Joe Brady",
+    "score": 23,
+    "calls": 9,
+    "mistakes": 1,
+    "wp_lost": 0.027,
+    "grade": "B",
+    "list": [
+     {
+      "when": "Q1 13:11, tied, 4th & 21 at opp 47",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.021,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(13:11) 39-T.Doman punts 47 yards to end zone, Center-69-R.Ferguson, Touchback."
+     },
+     {
+      "when": "Q1 2:00, tied, 4th & 4 at opp 21",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.009,
+      "cost": 0.009,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(2:00) 16-T.Bass 39 yard field goal is GOOD, Center-69-R.Ferguson, Holder-39-T.Doman."
+     },
+     {
+      "when": "Q1 0:03, up 3, 4th & 11 at own 12",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.067,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:03) 39-T.Doman punts 43 yards to MIN 45, Center-69-R.Ferguson, downed by BUF-83-K.Latu."
+     },
+     {
+      "when": "Q2 12:02, up 3, 4th & 13 at own 10",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.095,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(12:02) 39-T.Doman punts 48 yards to MIN 42, Center-69-R.Ferguson, fair catch by 4-M.Price."
+     },
+     {
+      "when": "Q2 5:46, up 3, 4th & 23 at own 2",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.125,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(5:46) 39-T.Doman punts 44 yards to BUF 46, Center-69-R.Ferguson. 4-M.Price to BUF 34 for 12 yards (55-M.Hoecht)."
+     },
+     {
+      "when": "Q3 6:06, up 4, 4th & 6 at opp 6",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.027,
+      "cost": 0.027,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(6:06) 16-T.Bass 25 yard field goal is GOOD, Center-69-R.Ferguson, Holder-39-T.Doman."
+     },
+     {
+      "when": "Q3 0:40, up 7, 4th & 17 at opp 46",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.024,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:40) 39-T.Doman punts 46 yards to end zone, Center-69-R.Ferguson, Touchback."
+     },
+     {
+      "when": "Q4 10:15, up 7, 4th & 1 at opp 38",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.03,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(10:15) 17-J.Allen left guard to MIN 38 for no gain (97-D.Orange). The Replay Official reviewed the short of the line to gain ruling, and the play was REVERSED."
+     },
+     {
+      "when": "Q4 4:45, up 14, 4th & 3 at opp 34",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(4:45) 16-T.Bass 52 yard field goal is GOOD, Center-69-R.Ferguson, Holder-39-T.Doman."
+     }
+    ]
+   },
+   "home": {
+    "team": "MIN",
+    "coach": "Kevin O'Connell",
+    "score": 6,
+    "calls": 8,
+    "mistakes": 1,
+    "wp_lost": 0.089,
+    "grade": "D",
+    "list": [
+     {
+      "when": "Q1 11:42, tied, 4th & 4 at own 26",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.011,
+      "cost": 0.011,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(11:42) 19-B.Thorson punts 46 yards to BUF 28, Center-42-A.DePaola. 19-G.Dortch to BUF 33 for 5 yards (31-D.Dallas)."
+     },
+     {
+      "when": "Q1 1:08, down 3, 4th & 5 at 50",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.017,
+      "cost": 0.017,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(1:08) 19-B.Thorson punts 37 yards to BUF 13, impetus ends at BUF 11, Center-42-A.DePaola, downed by MIN-29-Jac.Thomas."
+     },
+     {
+      "when": "Q2 13:32, down 3, 4th & 10 at own 45",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.014,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(13:32) 19-B.Thorson punts 42 yards to BUF 13, Center-42-A.DePaola, fair catch by 19-G.Dortch."
+     },
+     {
+      "when": "Q2 8:53, down 3, 4th & 21 at opp 48",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.015,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(8:53) 19-B.Thorson punts 47 yards to BUF 1, Center-42-A.DePaola, downed by MIN-13-T.Felton."
+     },
+     {
+      "when": "Q2 4:06, down 3, 4th & 1 at opp 25",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.089,
+      "cost": 0.089,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(4:06) 16-W.Reichard 43 yard field goal is GOOD, Center-42-A.DePaola, Holder-19-B.Thorson."
+     },
+     {
+      "when": "Q4 15:00, down 7, 4th & 6 at own 24",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.005,
+      "cost": 0.005,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(15:00) 19-B.Thorson punts 66 yards to BUF 10, Center-42-A.DePaola. 19-G.Dortch to BUF 16 for 6 yards (98-B.Richter)."
+     },
+     {
+      "when": "Q4 5:41, down 14, 4th & 4 at own 42",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.011,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(5:41) (Shotgun) 11-C.Wentz pass incomplete short middle to 18-J.Jefferson."
+     },
+     {
+      "when": "Q4 2:00, down 17, 4th & 9 at opp 21",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(2:00) (Shotgun) 12-M.Brosmer pass short middle to 87-T.Hockenson to BUF 13 for 8 yards (8-T.Bernard; 21-D.Igbinosun)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_CIN_ATL",
+   "week": 9,
+   "away": {
+    "team": "CIN",
+    "coach": "Zac Taylor",
+    "score": 34,
+    "calls": 3,
+    "mistakes": 1,
+    "wp_lost": 0.024,
+    "grade": "B",
+    "list": [
+     {
+      "when": "Q2 0:29, up 11, 4th & 7 at opp 38",
+      "coach_call": "fg",
+      "engine_call": "punt",
+      "edge": 0.011,
+      "cost": 0.024,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(:29) 2-E.McPherson 57 yard field goal is GOOD, Center-46-W.Wagner, Holder-8-R.Rehkow."
+     },
+     {
+      "when": "Q3 13:34, up 14, 4th & 8 at own 22",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.012,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(13:34) 8-R.Rehkow punts 51 yards to ATL 27, Center-46-W.Wagner. 14-O.Zaccheaus to ATL 24 for -3 yards (25-T.Brooks; 46-W.Wagner)."
+     },
+     {
+      "when": "Q4 4:41, up 14, 4th & 5 at opp 25",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.004,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(4:41) 2-E.McPherson 43 yard field goal is GOOD, Center-46-W.Wagner, Holder-8-R.Rehkow."
+     }
+    ]
+   },
+   "home": {
+    "team": "ATL",
+    "coach": "Kevin Stefanski",
+    "score": 17,
+    "calls": 5,
+    "mistakes": 1,
+    "wp_lost": 0.002,
+    "grade": "A",
+    "list": [
+     {
+      "when": "Q1 3:00, tied, 4th & 13 at opp 13",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.005,
+      "cost": 0.005,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(3:00) 6-N.Folk 31 yard field goal is GOOD, Center-49-L.McCullough, Holder-16-J.Bailey."
+     },
+     {
+      "when": "Q2 10:53, down 4, 4th & 6 at own 35",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.003,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(10:53) 16-J.Bailey punts 53 yards to CIN 12, Center-49-L.McCullough, fair catch by 81-D.Meyers."
+     },
+     {
+      "when": "Q2 1:05, down 11, 4th & 5 at own 46",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.016,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(1:05) 16-J.Bailey punts 37 yards to CIN 17, Center-49-L.McCullough, out of bounds."
+     },
+     {
+      "when": "Q4 11:31, down 14, 4th & 12 at opp 20",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.001,
+      "cost": 0.001,
+      "confident_mistake": false,
+      "sure": 0.65,
+      "what_happened": "(11:31) 6-N.Folk 38 yard field goal is No Good, Wide Left, Center-49-L.McCullough, Holder-16-J.Bailey."
+     },
+     {
+      "when": "Q4 7:57, down 14, 4th & 15 at own 2",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.002,
+      "cost": 0.002,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(7:57) 16-J.Bailey punts 46 yards to ATL 48, Center-49-L.McCullough, fair catch by 81-D.Meyers."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_CLE_NO",
+   "week": 9,
+   "away": {
+    "team": "CLE",
+    "coach": "Todd Monken",
+    "score": 22,
+    "calls": 10,
+    "mistakes": 1,
+    "wp_lost": 0.052,
+    "grade": "C",
+    "list": [
+     {
+      "when": "Q1 12:39, tied, 4th & 14 at own 26",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.045,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(12:39) 13-C.Bojorquez punts 48 yards to NO 26, Center-50-R.Sunahara. 19-B.Brown to NO 37 for 11 yards (31-D.McMillon)."
+     },
+     {
+      "when": "Q1 4:14, down 3, 4th & 7 at own 40",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.008,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(4:14) 13-C.Bojorquez punts 46 yards to NO 14, Center-50-R.Sunahara. 19-B.Brown to NO 37 for 23 yards (59-W.Reid)."
+     },
+     {
+      "when": "Q2 10:34, down 3, 4th & 2 at opp 23",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.052,
+      "cost": 0.052,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(10:34) 25-A.Szmyt 41 yard field goal is GOOD, Center-50-R.Sunahara, Holder-13-C.Bojorquez."
+     },
+     {
+      "when": "Q2 4:12, tied, 4th & 5 at own 20",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.3,
+      "what_happened": "(4:12) 13-C.Bojorquez punts 57 yards to NO 23, Center-50-R.Sunahara. 19-B.Brown to NO 20 for -3 yards (98-A.Huntington). FUMBLES (98-A.Huntington), RECOVERED by"
+     },
+     {
+      "when": "Q2 1:42, tied, 4th & 1 at opp 1",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.087,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(1:42) 70-Z.Zinter reported in as eligible. 10-Q.Judkins left guard to NO 1 for no gain (55-K.Elliss)."
+     },
+     {
+      "when": "Q3 9:04, tied, 4th & 12 at opp 12",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.007,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(9:04) 25-A.Szmyt 30 yard field goal is GOOD, Center-50-R.Sunahara, Holder-13-C.Bojorquez."
+     },
+     {
+      "when": "Q3 1:20, tied, 4th & 17 at own 24",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.048,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(1:20) 13-C.Bojorquez punts 57 yards to NO 19, Center-50-R.Sunahara. 19-B.Brown ran ob at NO 37 for 18 yards (31-D.McMillon)."
+     },
+     {
+      "when": "Q4 10:39, tied, 4th & 2 at opp 42",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.006,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(10:39) (Shotgun) 2-S.Sanders pass incomplete short left to 22-D.Sampson (96-C.Granderson)."
+     },
+     {
+      "when": "Q4 2:00, up 4, 4th & 22 at own 16",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.178,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(2:00) 13-C.Bojorquez punts 59 yards to NO 25, Center-50-R.Sunahara. 19-B.Brown pushed ob at NO 45 for 20 yards (11-M.Corley)."
+     },
+     {
+      "when": "Q4 0:12, down 3, 4th & 3 at opp 33",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.303,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:12) 25-A.Szmyt 51 yard field goal is GOOD, Center-50-R.Sunahara, Holder-13-C.Bojorquez."
+     }
+    ]
+   },
+   "home": {
+    "team": "NO",
+    "coach": "Kellen Moore",
+    "score": 23,
+    "calls": 8,
+    "mistakes": 1,
+    "wp_lost": 0.076,
+    "grade": "D",
+    "list": [
+     {
+      "when": "Q1 7:24, tied, 4th & 10 at opp 12",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.004,
+      "cost": 0.004,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(7:24) 39-C.Smyth 30 yard field goal is GOOD, Center-49-Z.Wood, Holder-17-R.Wright."
+     },
+     {
+      "when": "Q1 0:13, up 3, 4th & 14 at opp 34",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.033,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:13) 39-C.Smyth 52 yard field goal is No Good, Wide Right, Center-49-Z.Wood, Holder-17-R.Wright."
+     },
+     {
+      "when": "Q2 0:27, tied, 4th & 9 at own 45",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.069,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(:27) 17-R.Wright punts 45 yards to CLE 10, Center-49-Z.Wood, fair catch by 1-K.Concepcion."
+     },
+     {
+      "when": "Q3 13:29, tied, 4th & 4 at own 42",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.002,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(13:29) 17-R.Wright punts 36 yards to CLE 22, Center-49-Z.Wood, out of bounds."
+     },
+     {
+      "when": "Q3 2:29, down 3, 4th & 8 at opp 9",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.015,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(2:29) 39-C.Smyth 27 yard field goal is GOOD, Center-49-Z.Wood, Holder-17-R.Wright."
+     },
+     {
+      "when": "Q4 15:00, tied, 4th & 18 at own 29",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.063,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(15:00) 17-R.Wright punts 48 yards to CLE 23, Center-49-Z.Wood, out of bounds. ** Injury Update: CLE-1-K.Concepcion has returned to the game."
+     },
+     {
+      "when": "Q4 5:44, tied, 4th & 8 at opp 30",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.025,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(5:44) 39-C.Smyth 48 yard field goal is GOOD, Center-49-Z.Wood, Holder-17-R.Wright."
+     },
+     {
+      "when": "Q4 4:23, down 4, 4th & 3 at own 37",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.076,
+      "cost": 0.076,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(4:23) 17-R.Wright punts 46 yards to CLE 17, Center-49-Z.Wood, fair catch by 1-K.Concepcion."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_DAL_IND",
+   "week": 9,
+   "away": {
+    "team": "DAL",
+    "coach": "Brian Schottenheimer",
+    "score": 27,
+    "calls": 9,
+    "mistakes": 3,
+    "wp_lost": 0.071,
+    "grade": "C",
+    "list": [
+     {
+      "when": "Q1 11:49, tied, 4th & 6 at opp 26",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.007,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.5,
+      "what_happened": "(11:49) 17-B.Aubrey 45 yard field goal is GOOD, Center-44-T.Sieg, Holder-5-B.Anger."
+     },
+     {
+      "when": "Q2 14:13, down 4, 4th & 2 at opp 10",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.038,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(14:13) (Shotgun) 4-D.Prescott pass short right to 87-J.Ferguson for 10 yards, TOUCHDOWN."
+     },
+     {
+      "when": "Q2 11:31, up 3, 4th & 9 at own 14",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.044,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(11:31) 5-B.Anger punts 52 yards to IND 34, Center-44-T.Sieg. 6-A.Gould to IND 34 for no gain (23-A.Speed)."
+     },
+     {
+      "when": "Q2 7:23, up 3, 4th & 4 at opp 46",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.014,
+      "cost": 0.015,
+      "confident_mistake": true,
+      "sure": 0.9,
+      "what_happened": "(7:23) 5-B.Anger punts 35 yards to IND 11, Center-44-T.Sieg, fair catch by 6-A.Gould."
+     },
+     {
+      "when": "Q2 2:17, up 3, 4th & 18 at own 38",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.067,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(2:17) 5-B.Anger punts 47 yards to IND 15, Center-44-T.Sieg, fair catch by 6-A.Gould."
+     },
+     {
+      "when": "Q3 11:34, up 10, 4th & 5 at own 17",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.007,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.7,
+      "what_happened": "(11:34) 5-B.Anger punts 46 yards to IND 37, Center-44-T.Sieg. 6-A.Gould to IND 42 for 5 yards (89-B.Spann-Ford)."
+     },
+     {
+      "when": "Q3 2:14, up 7, 4th & 8 at opp 9",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.003,
+      "cost": 0.003,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(2:14) 17-B.Aubrey 28 yard field goal is GOOD, Center-44-T.Sieg, Holder-5-B.Anger."
+     },
+     {
+      "when": "Q4 7:50, up 3, 4th & 1 at own 39",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.037,
+      "cost": 0.037,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(7:50) 5-B.Anger punts 44 yards to IND 17, Center-44-T.Sieg, fair catch by 6-A.Gould."
+     },
+     {
+      "when": "Q4 3:34, tied, 4th & 3 at opp 32",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.019,
+      "cost": 0.019,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(3:34) 17-B.Aubrey 50 yard field goal is No Good, Wide Left, Center-44-T.Sieg, Holder-5-B.Anger."
+     }
+    ]
+   },
+   "home": {
+    "team": "IND",
+    "coach": "Shane Steichen",
+    "score": 23,
+    "calls": 9,
+    "mistakes": 1,
+    "wp_lost": 0.073,
+    "grade": "C",
+    "list": [
+     {
+      "when": "Q1 9:48, down 3, 4th & 2 at own 28",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.02,
+      "cost": 0.02,
+      "confident_mistake": false,
+      "sure": 0.65,
+      "what_happened": "(9:48) 8-R.Sanchez punts 53 yards to DAL 19, Center-46-L.Rhodes, fair catch by 18-J.Mingo."
+     },
+     {
+      "when": "Q2 13:08, down 3, 4th & 8 at own 40",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.003,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(13:08) 8-R.Sanchez punts 47 yards to DAL 13, Center-46-L.Rhodes, fair catch by 18-J.Mingo."
+     },
+     {
+      "when": "Q2 9:31, down 3, 4th & 18 at own 26",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.024,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(9:31) 8-R.Sanchez punts 48 yards to DAL 26, Center-46-L.Rhodes. 18-J.Mingo to DAL 36 for 10 yards (38-J.Owens; 16-A.Dulin)."
+     },
+     {
+      "when": "Q2 6:02, down 3, 4th & 1 at own 20",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.006,
+      "cost": 0.006,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(6:02) 8-R.Sanchez punts 48 yards to DAL 32, Center-46-L.Rhodes, fair catch by 18-J.Mingo."
+     },
+     {
+      "when": "Q2 1:00, down 3, 4th & 13 at own 37",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.051,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(1:00) 8-R.Sanchez punts 50 yards to DAL 13, Center-46-L.Rhodes. 18-J.Mingo pushed ob at DAL 25 for 12 yards (95-A.Adebawore)."
+     },
+     {
+      "when": "Q3 14:02, down 10, 4th & 4 at own 37",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.007,
+      "cost": 0.007,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(14:02) 8-R.Sanchez punts 51 yards to DAL 12, Center-46-L.Rhodes, fair catch by 18-J.Mingo."
+     },
+     {
+      "when": "Q3 6:16, down 10, 4th & 16 at opp 29",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.009,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.7,
+      "what_happened": "(6:16) 3-S.Shrader 47 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
+     },
+     {
+      "when": "Q4 6:01, down 3, 4th & 4 at opp 41",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.073,
+      "cost": 0.073,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(6:01) 3-S.Shrader 59 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
+     },
+     {
+      "when": "Q4 1:41, tied, 4th & 8 at opp 32",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.109,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(1:41) 3-S.Shrader 50 yard field goal is GOOD, Center-46-L.Rhodes, Holder-8-R.Sanchez."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_DEN_CAR",
+   "week": 9,
+   "away": {
+    "team": "DEN",
+    "coach": "Sean Payton",
+    "score": 26,
+    "calls": 4,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 11:11, tied, 4th & 8 at opp 8",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.004,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(11:11) 3-W.Lutz 26 yard field goal is GOOD, Center-48-M.Fraboni, Holder-16-J.Crawshaw."
+     },
+     {
+      "when": "Q2 14:19, up 10, 4th & 6 at own 43",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.002,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.4,
+      "what_happened": "(14:19) 16-J.Crawshaw punts 46 yards to CAR 11, Center-48-M.Fraboni. 83-D.Moore pushed ob at CAR 28 for 17 yards (26-D.Key)."
+     },
+     {
+      "when": "Q3 8:54, down 1, 4th & 18 at own 24",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.061,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(8:54) 16-J.Crawshaw punts 64 yards to CAR 12, Center-48-M.Fraboni, out of bounds."
+     },
+     {
+      "when": "Q4 2:00, up 5, 4th & 20 at own 14",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.165,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(2:00) 16-J.Crawshaw punts 51 yards to CAR 35, Center-48-M.Fraboni. 23-T.Etienne to CAR 44 for 9 yards (45-N.Adkins)."
+     }
+    ]
+   },
+   "home": {
+    "team": "CAR",
+    "coach": "Dave Canales",
+    "score": 21,
+    "calls": 6,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 8:17, down 3, 4th & 7 at own 34",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(8:17) 6-S.Martin punts 56 yards to DEN 10, Center-44-J.Jansen. 19-M.Mims to DEN 19 for 9 yards (54-B.Martin-Scott)."
+     },
+     {
+      "when": "Q1 0:31, down 10, 4th & 9 at own 27",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.005,
+      "cost": 0.005,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(:31) 6-S.Martin punts 51 yards to DEN 22, Center-44-J.Jansen. 19-M.Mims to DEN 24 for 2 yards (54-B.Martin-Scott)."
+     },
+     {
+      "when": "Q2 11:49, down 10, 4th & 6 at opp 25",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.013,
+      "cost": 0.013,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(11:49) 10-R.Fitzgerald 43 yard field goal is No Good, Wide Right, Center-44-J.Jansen, Holder-6-S.Martin."
+     },
+     {
+      "when": "Q2 1:49, down 10, 4th & 1 at opp 35",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.06,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(1:49) (Shotgun) 30-C.Hubbard left end to DEN 12 for 23 yards (30-T.Rapp)."
+     },
+     {
+      "when": "Q4 8:53, down 5, 4th & 18 at own 19",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.01,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(8:53) 6-S.Martin punts 53 yards to DEN 28, Center-44-J.Jansen. 19-M.Mims pushed ob at DEN 39 for 11 yards (46-J.Kuwatch). ** Injury Update: DEN-26-D.Key has re"
+     },
+     {
+      "when": "Q4 4:21, down 12, 4th & 1 at opp 40",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.008,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.7,
+      "what_happened": "(4:21) (Shotgun) 9-B.Young pass short left to 30-C.Hubbard to DEN 37 for 3 yards (23-J.Barron)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_DET_MIA",
+   "week": 9,
+   "away": {
+    "team": "DET",
+    "coach": "Dan Campbell",
+    "score": 19,
+    "calls": 8,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 11:36, tied, 4th & 3 at opp 31",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.02,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(11:36) (Shotgun) 16-J.Goff pass short left to 18-I.TeSlaa to MIA 22 for 9 yards (9-J.Uche)."
+     },
+     {
+      "when": "Q1 8:25, tied, 4th & 10 at opp 10",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.008,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.7,
+      "what_happened": "(8:25) 39-J.Bates 28 yard field goal is GOOD, Center-49-H.Hatten, Holder-3-J.Fox."
+     },
+     {
+      "when": "Q2 14:55, tied, 4th & 7 at own 30",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(14:55) (Punt formation) 3-J.Fox pass short left to 17-T.Martin to DET 41 for 11 yards (4-J.Marshall)."
+     },
+     {
+      "when": "Q2 3:33, tied, 4th & 10 at opp 22",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.006,
+      "cost": 0.006,
+      "confident_mistake": false,
+      "sure": 0.3,
+      "what_happened": "(3:33) 39-J.Bates 40 yard field goal is GOOD, Center-49-H.Hatten, Holder-3-J.Fox."
+     },
+     {
+      "when": "Q3 9:17, up 3, 4th & 10 at opp 14",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.028,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(9:17) 39-J.Bates 33 yard field goal is GOOD, Center-49-H.Hatten, Holder-3-J.Fox."
+     },
+     {
+      "when": "Q3 1:25, up 3, 4th & 1 at opp 8",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.015,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(1:25) 79-L.Borom reported in as eligible. 0-J.Gibbs right end for 8 yards, TOUCHDOWN."
+     },
+     {
+      "when": "Q4 4:31, up 7, 4th & 7 at opp 25",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(4:31) 39-J.Bates 43 yard field goal is GOOD, Center-49-H.Hatten, Holder-3-J.Fox."
+     },
+     {
+      "when": "Q4 1:53, up 10, 4th & 1 at opp 13",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(1:53) 16-J.Goff up the middle to MIA 12 for 1 yard (94-J.Phillips)."
+     }
+    ]
+   },
+   "home": {
+    "team": "MIA",
+    "coach": "Jeff Hafley",
+    "score": 9,
+    "calls": 6,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 6:35, down 3, 4th & 5 at own 25",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.012,
+      "cost": 0.012,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(6:35) 48-B.Pinion punts 45 yards to DET 30, Center-46-T.Addington, out of bounds."
+     },
+     {
+      "when": "Q1 1:06, down 3, 4th & 7 at opp 16",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.011,
+      "cost": 0.011,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(1:06) 31-Z.Gonzalez 34 yard field goal is GOOD, Center-46-T.Addington, Holder-48-B.Pinion."
+     },
+     {
+      "when": "Q3 4:06, down 6, 4th & 6 at opp 34",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.003,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.35,
+      "what_happened": "(4:06) 31-Z.Gonzalez 52 yard field goal is GOOD, Center-46-T.Addington, Holder-48-B.Pinion."
+     },
+     {
+      "when": "Q4 14:55, down 10, 4th & 3 at own 36",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.007,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(14:55) (Punt formation) 48-B.Pinion pass short middle to 30-K.Allen to DET 18 for 46 yards (35-J.Bachie; 17-T.Martin)."
+     },
+     {
+      "when": "Q4 9:30, down 10, 4th & 16 at opp 16",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.025,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(9:30) 31-Z.Gonzalez 34 yard field goal is GOOD, Center-46-T.Addington, Holder-48-B.Pinion."
+     },
+     {
+      "when": "Q4 3:07, down 10, 4th & 12 at own 33",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(3:07) (Shotgun) 2-M.Willis pass incomplete deep right to 7-C.Douglas."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_GB_NE",
+   "week": 9,
+   "away": {
+    "team": "GB",
+    "coach": "Matt LaFleur",
+    "score": 45,
+    "calls": 8,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q2 13:40, up 14, 4th & 14 at opp 23",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.004,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.65,
+      "what_happened": "(13:40) 28-T.Smack 41 yard field goal is GOOD, Center-42-M.Orzech, Holder-19-D.Whelan."
+     },
+     {
+      "when": "Q2 11:14, up 17, 4th & 11 at own 22",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.018,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(11:14) 19-D.Whelan punts 46 yards to NE 32, Center-42-M.Orzech. 25-M.Jones ran ob at NE 32 for no gain."
+     },
+     {
+      "when": "Q2 7:15, up 10, 4th & 6 at 50",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.65,
+      "what_happened": "(7:15) 19-D.Whelan punts 50 yards to end zone, Center-42-M.Orzech, Touchback."
+     },
+     {
+      "when": "Q2 1:52, up 10, 4th & 3 at opp 43",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.009,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.5,
+      "what_happened": "(1:52) (Shotgun) 10-J.Love pass incomplete short middle to 83-S.Williams (0-C.Gonzalez). NE-7-C.Davis was injured during the play."
+     },
+     {
+      "when": "Q3 5:17, up 17, 4th & 6 at opp 33",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.002,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.35,
+      "what_happened": "(5:17) 28-T.Smack 51 yard field goal is GOOD, Center-42-M.Orzech, Holder-19-D.Whelan."
+     },
+     {
+      "when": "Q4 11:55, up 21, 4th & 1 at opp 20",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.001,
+      "cost": 0.001,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(11:55) 28-T.Smack 38 yard field goal is GOOD, Center-42-M.Orzech, Holder-19-D.Whelan."
+     },
+     {
+      "when": "Q4 7:08, up 24, 4th & 7 at own 15",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(7:08) 19-D.Whelan punts 56 yards to NE 29, Center-42-M.Orzech. 25-M.Jones pushed ob at NE 43 for 14 yards (58-I.McDuffie)."
+     },
+     {
+      "when": "Q4 1:18, up 18, 4th & 11 at own 38",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.7,
+      "what_happened": "(1:18) 19-D.Whelan punts 62 yards to end zone, Center-42-M.Orzech, Touchback. ** Injury Update: GB-58-I.McDuffie has returned to the game."
+     }
+    ]
+   },
+   "home": {
+    "team": "NE",
+    "coach": "Mike Vrabel",
+    "score": 27,
+    "calls": 5,
+    "mistakes": 1,
+    "wp_lost": 0.0,
+    "grade": "A",
+    "list": [
+     {
+      "when": "Q1 11:58, down 7, 4th & 16 at own 28",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.03,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(11:58) 19-M.Wishnowsky punts 58 yards to GB 14, Center-47-J.Ashby, downed by NE-33-M.Brown."
+     },
+     {
+      "when": "Q1 5:24, down 14, 4th & 16 at own 48",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.037,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(5:24) 19-M.Wishnowsky punts 50 yards to GB 2, impetus ends at GB 1, Center-47-J.Ashby, downed by NE-49-E.Hunter."
+     },
+     {
+      "when": "Q2 0:59, down 10, 4th & 10 at opp 46",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.65,
+      "what_happened": "(:59) 19-M.Wishnowsky punts 31 yards to GB 15, Center-47-J.Ashby, fair catch by 13-C.Owen."
+     },
+     {
+      "when": "Q3 8:57, down 17, 4th & 3 at own 38",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.012,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.3,
+      "what_happened": "(8:57) 19-M.Wishnowsky punts 53 yards to GB 9, Center-47-J.Ashby. 13-C.Owen to GB 22 for 13 yards (54-D.Muasau)."
+     },
+     {
+      "when": "Q4 9:24, down 24, 4th & 20 at opp 47",
+      "coach_call": "punt",
+      "engine_call": "fg",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(9:24) 19-M.Wishnowsky punts 35 yards to GB 12, Center-47-J.Ashby, fair catch by 13-C.Owen."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_HOU_LAC",
+   "week": 9,
+   "away": {
+    "team": "HOU",
+    "coach": "DeMeco Ryans",
+    "score": 44,
+    "calls": 6,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 3:16, up 4, 4th & 6 at opp 38",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.3,
+      "what_happened": "(3:16) 15-K.Fairbairn 56 yard field goal is GOOD, Center-40-A.Brinkman, Holder-38-K.Kroeger."
+     },
+     {
+      "when": "Q2 13:39, up 7, 4th & 1 at own 17",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.007,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(13:39) 38-K.Kroeger punts 34 yards to LAC 49, Center-40-A.Brinkman, out of bounds."
+     },
+     {
+      "when": "Q2 1:43, up 8, 4th & 11 at own 37",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.031,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(1:43) 38-K.Kroeger punts 38 yards to LAC 25, Center-40-A.Brinkman, out of bounds."
+     },
+     {
+      "when": "Q3 4:54, up 22, 4th & 17 at opp 45",
+      "coach_call": "punt",
+      "engine_call": "fg",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.55,
+      "what_happened": "(4:54) 38-K.Kroeger punts 34 yards to LAC 11, Center-40-A.Brinkman, fair catch by 12-D.Davis."
+     },
+     {
+      "when": "Q4 8:53, up 23, 4th & 4 at opp 13",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(8:53) 15-K.Fairbairn 31 yard field goal is GOOD, Center-40-A.Brinkman, Holder-38-K.Kroeger."
+     },
+     {
+      "when": "Q4 2:23, up 19, 4th & 9 at opp 23",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(2:23) 15-K.Fairbairn 41 yard field goal is GOOD, Center-40-A.Brinkman, Holder-38-K.Kroeger."
+     }
+    ]
+   },
+   "home": {
+    "team": "LAC",
+    "coach": "Jim Harbaugh",
+    "score": 22,
+    "calls": 11,
+    "mistakes": 2,
+    "wp_lost": 0.038,
+    "grade": "B",
+    "list": [
+     {
+      "when": "Q1 6:19, down 7, 4th & 3 at opp 34",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.02,
+      "cost": 0.026,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(6:19) 11-C.Dicker 52 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott."
+     },
+     {
+      "when": "Q1 0:47, down 7, 4th & 7 at opp 41",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.003,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(:47) 16-J.Scott punts 33 yards to HOU 8, Center-47-J.Harris, fair catch by 1-T.Dell."
+     },
+     {
+      "when": "Q2 8:16, down 7, 4th & 15 at opp 15",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.013,
+      "cost": 0.013,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(8:16) 11-C.Dicker 33 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott. ** Injury Update: LAC-92-J.Eboigbe has returned to the game."
+     },
+     {
+      "when": "Q2 5:14, down 4, 4th & 7 at opp 24",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.015,
+      "cost": 0.015,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(5:14) 11-C.Dicker 43 yard field goal is GOOD, Center-47-J.Harris, Holder-16-J.Scott."
+     },
+     {
+      "when": "Q2 3:01, down 8, 4th & 11 at own 22",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.008,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(3:01) 16-J.Scott punts 53 yards to HOU 25, Center-47-J.Harris. 1-T.Dell to HOU 26 for 1 yard (24-R.Shelley)."
+     },
+     {
+      "when": "Q2 1:17, down 8, 4th & 14 at own 21",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.026,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(1:17) 16-J.Scott punts 54 yards to HOU 25, Center-47-J.Harris. 1-T.Dell MUFFS catch, touched at HOU 27, and recovers at HOU 24."
+     },
+     {
+      "when": "Q2 0:10, down 15, 4th & 14 at own 26",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.012,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(:10) 16-J.Scott punts 49 yards to HOU 25, Center-47-J.Harris. 11-T.Smith ran ob at HOU 35 for 10 yards (40-H.Rucci)."
+     },
+     {
+      "when": "Q3 6:32, down 22, 4th & 2 at own 41",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.001,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(6:32) (Shotgun) 10-J.Herbert sacked at LAC 38 for -3 yards (90-J.Clowney)."
+     },
+     {
+      "when": "Q3 2:41, down 22, 4th & 1 at own 20",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.001,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(2:41) 10-J.Herbert pass deep left to 84-K.Lambert-Smith to HOU 30 for 50 yards (2-C.Bullock)."
+     },
+     {
+      "when": "Q4 4:24, down 26, 4th & 13 at opp 15",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.7,
+      "what_happened": "(4:24) (Shotgun) 7-D.Uiagalelei pass short middle to 12-D.Davis for 15 yards, TOUCHDOWN."
+     },
+     {
+      "when": "Q4 1:15, down 22, 4th & 10 at own 35",
+      "coach_call": "go",
+      "engine_call": "punt",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(1:15) (Shotgun) 7-D.Uiagalelei pass incomplete short middle to 12-D.Davis (94-D.Robinson)."
+     }
+    ]
+   }
+  },
   {
    "id": "2026_09_JAX_BAL",
    "week": 9,
@@ -3105,11 +4927,831 @@
    }
   },
   {
+   "id": "2026_09_LA_WAS",
+   "week": 9,
+   "away": {
+    "team": "LA",
+    "coach": "Sean McVay",
+    "score": 20,
+    "calls": 9,
+    "mistakes": 3,
+    "wp_lost": 0.154,
+    "grade": "F",
+    "list": [
+     {
+      "when": "Q1 5:18, down 3, 4th & 1 at opp 29",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.03,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(5:18) 23-K.Williams up the middle to WAS 27 for 2 yards (95-J.Newton; 39-J.Reaves)."
+     },
+     {
+      "when": "Q1 2:13, down 3, 4th & 7 at opp 14",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.021,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(2:13) 19-B.McManus 33 yard field goal is GOOD, Center-43-J.McQuaide, Holder-42-E.Evans."
+     },
+     {
+      "when": "Q2 12:33, down 7, 4th & 6 at own 24",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.029,
+      "cost": 0.029,
+      "confident_mistake": true,
+      "sure": 0.9,
+      "what_happened": "(12:33) 42-E.Evans punts 58 yards to WAS 18, Center-43-J.McQuaide, downed by LA-88-J.Whittington."
+     },
+     {
+      "when": "Q2 9:13, down 7, 4th & 2 at own 28",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.068,
+      "cost": 0.068,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(9:13) 42-E.Evans punts 53 yards to WAS 19, Center-43-J.McQuaide. 11-L.McCaffrey to WAS 29 for 10 yards (5-K.Kinchens; 48-O.Speights)."
+     },
+     {
+      "when": "Q2 4:39, down 7, 4th & 2 at own 44",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.118,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(4:39) 9-M.Stafford pass short middle to 12-P.Nacua to WAS 44 for 12 yards (20-Q.Martin)."
+     },
+     {
+      "when": "Q2 1:33, down 7, 4th & 3 at opp 38",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.048,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(1:33) (No Huddle, Shotgun) 9-M.Stafford pass short right to 12-P.Nacua to WAS 23 for 15 yards (39-J.Reaves; 23-T.Amos)."
+     },
+     {
+      "when": "Q2 0:05, down 7, 4th & 2 at opp 2",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.057,
+      "cost": 0.057,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(:05) 19-B.McManus 20 yard field goal is GOOD, Center-43-J.McQuaide, Holder-42-E.Evans."
+     },
+     {
+      "when": "Q3 7:40, up 3, 4th & 4 at own 41",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.006,
+      "cost": 0.006,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(7:40) 42-E.Evans punts 59 yards to end zone, Center-43-J.McQuaide, Touchback."
+     },
+     {
+      "when": "Q4 0:59, up 7, 4th & 11 at own 49",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.008,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:59) 42-E.Evans punts 42 yards to WAS 9, Center-43-J.McQuaide, fair catch by 14-A.Williams."
+     }
+    ]
+   },
+   "home": {
+    "team": "WAS",
+    "coach": "Dan Quinn",
+    "score": 13,
+    "calls": 8,
+    "mistakes": 2,
+    "wp_lost": 0.045,
+    "grade": "C",
+    "list": [
+     {
+      "when": "Q1 9:11, tied, 4th & 4 at opp 19",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.027,
+      "cost": 0.027,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(9:11) 19-D.Stevens 37 yard field goal is GOOD, Center-69-T.Ott, Holder-10-T.Way."
+     },
+     {
+      "when": "Q2 10:43, up 7, 4th & 3 at own 47",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.025,
+      "cost": 0.025,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(10:43) 10-T.Way punts 53 yards to end zone, Center-69-T.Ott, Touchback."
+     },
+     {
+      "when": "Q2 7:24, up 7, 4th & 5 at own 48",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.027,
+      "cost": 0.027,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(7:24) 10-T.Way punts 44 yards to LA 8, Center-69-T.Ott, fair catch by 23-K.Williams."
+     },
+     {
+      "when": "Q3 9:34, down 3, 4th & 1 at own 29",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.013,
+      "cost": 0.013,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(9:34) 10-T.Way punts 47 yards to LA 24, Center-69-T.Ott, fair catch by 23-K.Williams."
+     },
+     {
+      "when": "Q3 6:18, down 3, 4th & 3 at own 27",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.006,
+      "cost": 0.006,
+      "confident_mistake": false,
+      "sure": 0.5,
+      "what_happened": "(6:18) 10-T.Way punts 56 yards to LA 17, Center-69-T.Ott, fair catch by 23-K.Williams."
+     },
+     {
+      "when": "Q3 3:29, down 3, 4th & 6 at opp 23",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.036,
+      "cost": 0.036,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(3:29) 19-D.Stevens 41 yard field goal is GOOD, Center-69-T.Ott, Holder-10-T.Way."
+     },
+     {
+      "when": "Q4 8:22, down 7, 4th & 11 at opp 45",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.018,
+      "cost": 0.018,
+      "confident_mistake": true,
+      "sure": 0.9,
+      "what_happened": "(8:22) 10-T.Way punts 33 yards to LA 12, Center-69-T.Ott, fair catch by 23-K.Williams."
+     },
+     {
+      "when": "Q4 2:00, down 7, 4th & 17 at 50",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.009,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(2:00) (Shotgun) 5-J.Daniels pass incomplete deep left to 12-V.Jefferson (1-E.Forbes)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_LV_SF",
+   "week": 9,
+   "away": {
+    "team": "LV",
+    "coach": "Klint Kubiak",
+    "score": 17,
+    "calls": 3,
+    "mistakes": 1,
+    "wp_lost": 0.02,
+    "grade": "B",
+    "list": [
+     {
+      "when": "Q1 8:29, down 7, 4th & 3 at own 44",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.02,
+      "cost": 0.02,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(8:29) 6-A.Cole punts 45 yards to SF 11, Center-47-A.Ward, out of bounds."
+     },
+     {
+      "when": "Q2 1:16, down 14, 4th & 10 at opp 31",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.005,
+      "cost": 0.005,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(1:16) 14-M.Gay 50 yard field goal is GOOD, Center-47-A.Ward, Holder-6-A.Cole."
+     },
+     {
+      "when": "Q4 3:57, down 21, 4th & 11 at own 31",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(3:57) (Shotgun) 8-K.Cousins pass deep middle intended for 1-T.Tucker INTERCEPTED by 6-M.Mustapha [99-D.Buckner] at SF 27. 6-M.Mustapha to SF 27 for no gain (1-"
+     }
+    ]
+   },
+   "home": {
+    "team": "SF",
+    "coach": "Kyle Shanahan",
+    "score": 38,
+    "calls": 4,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 13:26, tied, 4th & 2 at opp 45",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.031,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(13:26) (Shotgun) 13-B.Purdy pass short left to 85-G.Kittle to LV 41 for 4 yards (31-T.Stukes)."
+     },
+     {
+      "when": "Q2 7:15, up 7, 4th & 1 at opp 23",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.022,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(7:15) 23-C.McCaffrey up the middle to LV 19 for 4 yards (44-T.Eichenberg; 17-N.Dean)."
+     },
+     {
+      "when": "Q3 5:34, up 11, 4th & 1 at own 40",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.004,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(5:34) 13-B.Purdy up the middle to SF 40 for no gain (94-F.Fatukasi)."
+     },
+     {
+      "when": "Q4 5:24, up 18, 4th & 6 at opp 17",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.001,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(5:24) 18-E.Pineiro 35 yard field goal is GOOD, Center-46-J.Weeks, Holder-15-C.Waitman."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_NYG_PHI",
+   "week": 9,
+   "away": {
+    "team": "NYG",
+    "coach": "John Harbaugh",
+    "score": 19,
+    "calls": 10,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 10:35, tied, 4th & 11 at opp 34",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.007,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(10:35) 34-D.Zvada 53 yard field goal is GOOD, Center-58-B.Mann, Holder-15-J.Stout."
+     },
+     {
+      "when": "Q1 5:35, up 3, 4th & 14 at opp 31",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.022,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(5:35) 34-D.Zvada 49 yard field goal is GOOD, Center-58-B.Mann, Holder-15-J.Stout."
+     },
+     {
+      "when": "Q2 11:06, down 2, 4th & 12 at own 48",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.026,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(11:06) 15-J.Stout punts 46 yards to PHI 6, Center-58-B.Mann. 33-C.DeJean to PHI 11 for 5 yards (54-M.Harrison; 51-J.Kelly)."
+     },
+     {
+      "when": "Q2 5:29, down 2, 4th & 12 at own 37",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.055,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(5:29) 15-J.Stout punts 45 yards to PHI 18, Center-58-B.Mann, fair catch by 33-C.DeJean."
+     },
+     {
+      "when": "Q2 0:47, down 2, 4th & 5 at own 46",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.007,
+      "cost": 0.007,
+      "confident_mistake": false,
+      "sure": 0.55,
+      "what_happened": "(:47) 15-J.Stout punts 52 yards to PHI 2, Center-58-B.Mann, downed by NYG-31-N.Jones."
+     },
+     {
+      "when": "Q3 10:58, down 2, 4th & 8 at own 29",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.008,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.5,
+      "what_happened": "(10:58) 15-J.Stout punts 62 yards to PHI 9, Center-58-B.Mann. 33-C.DeJean to PHI 22 for 13 yards (27-T.Nubin; 46-Z.Barnes)."
+     },
+     {
+      "when": "Q3 7:10, down 2, 4th & 1 at own 44",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.069,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(7:10) 19-J.Winston left guard to NYG 45 for 1 yard (29-M.Epps)."
+     },
+     {
+      "when": "Q4 9:10, up 5, 4th & 6 at opp 20",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(9:10) 34-D.Zvada 38 yard field goal is GOOD, Center-58-B.Mann, Holder-15-J.Stout."
+     },
+     {
+      "when": "Q4 4:28, up 8, 4th & 6 at opp 31",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.008,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(4:28) 34-D.Zvada 49 yard field goal is GOOD, Center-58-B.Mann, Holder-15-J.Stout."
+     },
+     {
+      "when": "Q4 1:42, up 8, 4th & 8 at own 48",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.15,
+      "what_happened": "(1:42) 15-J.Stout punts 47 yards to PHI 5, Center-58-B.Mann, out of bounds."
+     }
+    ]
+   },
+   "home": {
+    "team": "PHI",
+    "coach": "Nick Sirianni",
+    "score": 11,
+    "calls": 9,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q2 14:21, up 2, 4th & 2 at own 14",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.018,
+      "cost": 0.018,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(14:21) 10-B.Mann punts 44 yards to NYG 42, Center-41-R.Underwood. 89-C.Jones MUFFS catch, RECOVERED by PHI-41-R.Underwood at NYG 47. Penalty on NYG-31-N.Jones,"
+     },
+     {
+      "when": "Q2 2:00, up 2, 4th & 1 at opp 40",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.068,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(2:00) (Shotgun) 26-S.Barkley up the middle to NYG 41 for -1 yards (8-J.Holland)."
+     },
+     {
+      "when": "Q2 0:26, up 2, 4th & 4 at own 8",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.006,
+      "cost": 0.006,
+      "confident_mistake": false,
+      "sure": 0.5,
+      "what_happened": "(:26) 10-B.Mann punts 86 yards to NYG 6, Center-41-R.Underwood, out of bounds."
+     },
+     {
+      "when": "Q3 13:07, up 2, 4th & 12 at own 25",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.051,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(13:07) 10-B.Mann punts 60 yards to NYG 15, Center-41-R.Underwood, fair catch by 89-C.Jones."
+     },
+     {
+      "when": "Q3 10:28, up 2, 4th & 10 at own 22",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.029,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(10:28) 10-B.Mann punts 54 yards to NYG 24, Center-41-R.Underwood, fair catch by 89-C.Jones."
+     },
+     {
+      "when": "Q3 0:27, down 5, 4th & 8 at own 23",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.002,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.55,
+      "what_happened": "(:27) 10-B.Mann punts 63 yards to NYG 14, Center-41-R.Underwood. 89-C.Jones to NYG 26 for 12 yards (54-J.Trotter; 41-R.Underwood)."
+     },
+     {
+      "when": "Q4 2:00, down 11, 4th & 1 at opp 27",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.006,
+      "cost": 0.006,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(2:00) 4-J.Elliott 45 yard field goal is GOOD, Center-41-R.Underwood, Holder-10-B.Mann."
+     },
+     {
+      "when": "Q4 0:48, down 8, 4th & 11 at own 20",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.005,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:48) (Shotgun) 14-J.Milton pass short left to 88-D.Goedert pushed ob at PHI 31 for 11 yards (41-M.McFadden)."
+     },
+     {
+      "when": "Q4 0:06, down 8, 4th & 2 at own 44",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:06) (Shotgun) 14-J.Milton sacked at PHI 40 for -4 yards (91-D.Alexander)."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_NYJ_KC",
+   "week": 9,
+   "away": {
+    "team": "NYJ",
+    "coach": "Aaron Glenn",
+    "score": 12,
+    "calls": 9,
+    "mistakes": 4,
+    "wp_lost": 0.042,
+    "grade": "C",
+    "list": [
+     {
+      "when": "Q1 6:50, tied, 4th & 5 at opp 5",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.027,
+      "cost": 0.027,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(6:50) 19-J.Sanders 23 yard field goal is GOOD, Center-42-T.Hennessy, Holder-14-A.McNamara."
+     },
+     {
+      "when": "Q1 4:39, up 3, 4th & 6 at opp 30",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.008,
+      "cost": 0.008,
+      "confident_mistake": false,
+      "sure": 0.45,
+      "what_happened": "(4:39) 19-J.Sanders 48 yard field goal is GOOD, Center-42-T.Hennessy, Holder-14-A.McNamara."
+     },
+     {
+      "when": "Q2 8:17, down 1, 4th & 14 at opp 31",
+      "coach_call": "fg",
+      "engine_call": "fg",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.55,
+      "what_happened": "(8:17) 19-J.Sanders 49 yard field goal is GOOD, Center-42-T.Hennessy, Holder-14-A.McNamara."
+     },
+     {
+      "when": "Q2 2:22, down 5, 4th & 7 at opp 36",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.014,
+      "cost": 0.014,
+      "confident_mistake": true,
+      "sure": 0.9,
+      "what_happened": "(2:22) 19-J.Sanders 54 yard field goal is GOOD, Center-42-T.Hennessy, Holder-14-A.McNamara."
+     },
+     {
+      "when": "Q2 0:37, down 2, 4th & 15 at opp 35",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.004,
+      "cost": 0.004,
+      "confident_mistake": false,
+      "sure": 0.4,
+      "what_happened": "(:37) 19-J.Sanders 53 yard field goal is No Good, Wide Left, Center-42-T.Hennessy, Holder-14-A.McNamara."
+     },
+     {
+      "when": "Q3 8:07, down 9, 4th & 10 at own 33",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.003,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.65,
+      "what_happened": "(8:07) 14-A.McNamara punts 45 yards to KC 22, Center-42-T.Hennessy, fair catch by 81-N.Remigio."
+     },
+     {
+      "when": "Q4 11:47, down 16, 4th & 3 at opp 20",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.015,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(11:47) 7-G.Smith sacked at KC 26 for -6 yards (56-G.Karlaftis)."
+     },
+     {
+      "when": "Q4 6:42, down 16, 4th & 23 at own 7",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.001,
+      "cost": 0.001,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(6:42) 14-A.McNamara punts 58 yards to KC 35, Center-42-T.Hennessy. 81-N.Remigio to KC 43 for 8 yards (47-A.Beck)."
+     },
+     {
+      "when": "Q4 2:08, down 23, 4th & 9 at opp 37",
+      "coach_call": "go",
+      "engine_call": "punt",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": true,
+      "sure": 0.95,
+      "what_happened": "(2:08) (Shotgun) 7-G.Smith pass incomplete short right to 15-A.Mitchell (20-N.Williams)."
+     }
+    ]
+   },
+   "home": {
+    "team": "KC",
+    "coach": "Andy Reid",
+    "score": 35,
+    "calls": 3,
+    "mistakes": 1,
+    "wp_lost": 0.092,
+    "grade": "D",
+    "list": [
+     {
+      "when": "Q2 6:42, down 2, 4th & 2 at own 39",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.092,
+      "cost": 0.092,
+      "confident_mistake": true,
+      "sure": 1.0,
+      "what_happened": "(6:42) 14-M.Araiza punts 58 yards to NYJ 3, Center-41-J.Winchester. 18-I.Williams to NYJ 21 for 18 yards (43-J.Cochrane)."
+     },
+     {
+      "when": "Q3 10:27, up 2, 4th & 1 at opp 1",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.012,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(10:27) 87-T.Kelce right tackle for 1 yard, TOUCHDOWN."
+     },
+     {
+      "when": "Q3 6:43, up 9, 4th & 11 at own 32",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.006,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(6:43) 14-M.Araiza punts 38 yards to NYJ 30, Center-41-J.Winchester, downed by KC-39-M.Smith."
+     }
+    ]
+   }
+  },
+  {
+   "id": "2026_09_TB_CHI",
+   "week": 9,
+   "away": {
+    "team": "TB",
+    "coach": "Todd Bowles",
+    "score": 24,
+    "calls": 9,
+    "mistakes": 0,
+    "wp_lost": 0.0,
+    "grade": "A+",
+    "list": [
+     {
+      "when": "Q1 7:34, down 7, 4th & 4 at own 46",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.017,
+      "cost": 0.017,
+      "confident_mistake": false,
+      "sure": 0.7,
+      "what_happened": "(7:34) 9-R.Dixon punts 44 yards to CHI 10, Center-86-E.Deckers. 14-K.Raymond to CHI 19 for 9 yards (38-K.Knowles; 19-K.Johnson)."
+     },
+     {
+      "when": "Q1 1:02, down 14, 4th & 2 at opp 12",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.003,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(1:02) (Shotgun) 6-B.Mayfield pass short left to 88-C.Otton to CHI 10 for 2 yards (31-D.Thieneman)."
+     },
+     {
+      "when": "Q2 13:52, down 14, 4th & 9 at opp 9",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.007,
+      "cost": 0.007,
+      "confident_mistake": false,
+      "sure": 0.55,
+      "what_happened": "(13:52) 4-C.McLaughlin 27 yard field goal is GOOD, Center-86-E.Deckers, Holder-9-R.Dixon."
+     },
+     {
+      "when": "Q2 7:11, down 11, 4th & 1 at own 35",
+      "coach_call": "go",
+      "engine_call": "go",
+      "edge": 0.017,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(7:11) 6-B.Mayfield left guard to TB 35 for no gain (12-D.Bush; 97-J.Lynch)."
+     },
+     {
+      "when": "Q2 5:30, down 11, 4th & 10 at own 30",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.0,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.55,
+      "what_happened": "(5:30) 9-R.Dixon punts 48 yards to CHI 22, Center-86-E.Deckers. 14-K.Raymond to CHI 48 for 26 yards (87-P.Durham)."
+     },
+     {
+      "when": "Q3 8:52, down 4, 4th & 9 at own 19",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.008,
+      "cost": 0.008,
+      "confident_mistake": false,
+      "sure": 0.85,
+      "what_happened": "(8:52) 9-R.Dixon punts 54 yards to CHI 27, Center-86-E.Deckers. 14-K.Raymond to CHI 25 for -2 yards (38-K.Knowles)."
+     },
+     {
+      "when": "Q3 5:27, down 4, 4th & 22 at own 39",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.017,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(5:27) 9-R.Dixon punts 47 yards to CHI 14, Center-86-E.Deckers. 14-K.Raymond to CHI 29 for 15 yards (98-A.Nelson)."
+     },
+     {
+      "when": "Q3 2:02, down 11, 4th & 2 at own 34",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.012,
+      "cost": 0.012,
+      "confident_mistake": false,
+      "sure": 0.75,
+      "what_happened": "(2:02) 9-R.Dixon punts 50 yards to CHI 16, Center-86-E.Deckers. 14-K.Raymond MUFFS catch, and recovers at CHI 13."
+     },
+     {
+      "when": "Q4 11:28, down 11, 4th & 9 at opp 17",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.003,
+      "cost": 0.003,
+      "confident_mistake": false,
+      "sure": 0.6,
+      "what_happened": "(11:28) 4-C.McLaughlin 35 yard field goal is GOOD, Center-86-E.Deckers, Holder-9-R.Dixon."
+     }
+    ]
+   },
+   "home": {
+    "team": "CHI",
+    "coach": "Ben Johnson",
+    "score": 27,
+    "calls": 5,
+    "mistakes": 1,
+    "wp_lost": 0.015,
+    "grade": "A",
+    "list": [
+     {
+      "when": "Q2 3:06, up 11, 4th & 4 at opp 7",
+      "coach_call": "fg",
+      "engine_call": "go",
+      "edge": 0.015,
+      "cost": 0.015,
+      "confident_mistake": true,
+      "sure": 0.9,
+      "what_happened": "(3:06) 8-C.Santos 25 yard field goal is GOOD, Center-46-S.Daly, Holder-19-T.Taylor."
+     },
+     {
+      "when": "Q3 10:40, up 4, 4th & 3 at own 27",
+      "coach_call": "punt",
+      "engine_call": "go",
+      "edge": 0.018,
+      "cost": 0.018,
+      "confident_mistake": false,
+      "sure": 0.8,
+      "what_happened": "(10:40) 19-T.Taylor punts 55 yards to TB 18, Center-46-S.Daly, out of bounds."
+     },
+     {
+      "when": "Q3 7:01, up 4, 4th & 10 at own 25",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.019,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.95,
+      "what_happened": "(7:01) 19-T.Taylor punts 24 yards to CHI 49, Center-46-S.Daly, downed by CHI-39-J.Blackwell."
+     },
+     {
+      "when": "Q3 0:33, up 11, 4th & 9 at own 14",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.015,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 1.0,
+      "what_happened": "(:33) 19-T.Taylor punts 51 yards to TB 35, Center-46-S.Daly, out of bounds."
+     },
+     {
+      "when": "Q4 8:10, up 8, 4th & 12 at opp 46",
+      "coach_call": "punt",
+      "engine_call": "punt",
+      "edge": 0.006,
+      "cost": 0.0,
+      "confident_mistake": false,
+      "sure": 0.9,
+      "what_happened": "(8:10) 19-T.Taylor punts 31 yards to TB 15, Center-46-S.Daly, fair catch by 15-T.Johnson. ** Injury Update: TB-44-S.Tucker has returned to the game."
+     }
+    ]
+   }
+  },
+  {
    "id": "2026_08_ARI_DAL",
    "week": 8,
    "away": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 33,
     "calls": 6,
     "mistakes": 0,
@@ -3265,7 +5907,7 @@
    "week": 8,
    "away": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 0,
     "calls": 11,
     "mistakes": 3,
@@ -3572,7 +6214,7 @@
    },
    "home": {
     "team": "BUF",
-    "coach": "Sean McDermott",
+    "coach": "Joe Brady",
     "score": 36,
     "calls": 10,
     "mistakes": 0,
@@ -5912,7 +8554,7 @@
    },
    "home": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 16,
     "calls": 12,
     "mistakes": 1,
@@ -7386,7 +10028,7 @@
    },
    "home": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 29,
     "calls": 6,
     "mistakes": 1,
@@ -7577,7 +10219,7 @@
    "week": 6,
    "away": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 18,
     "calls": 9,
     "mistakes": 2,
@@ -7979,7 +10621,7 @@
    "week": 6,
    "away": {
     "team": "BUF",
-    "coach": "Sean McDermott",
+    "coach": "Joe Brady",
     "score": 33,
     "calls": 6,
     "mistakes": 0,
@@ -8362,7 +11004,7 @@
    },
    "home": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 23,
     "calls": 6,
     "mistakes": 0,
@@ -9962,7 +12604,7 @@
    },
    "home": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 23,
     "calls": 8,
     "mistakes": 0,
@@ -10057,7 +12699,7 @@
    "week": 5,
    "away": {
     "team": "BUF",
-    "coach": "Sean McDermott",
+    "coach": "Joe Brady",
     "score": 37,
     "calls": 3,
     "mistakes": 1,
@@ -10968,7 +13610,7 @@
    },
    "home": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 21,
     "calls": 9,
     "mistakes": 1,
@@ -12381,7 +15023,7 @@
    "week": 4,
    "away": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 24,
     "calls": 7,
     "mistakes": 2,
@@ -12537,7 +15179,7 @@
    "week": 4,
    "away": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 45,
     "calls": 3,
     "mistakes": 1,
@@ -14494,7 +17136,7 @@
    },
    "home": {
     "team": "BUF",
-    "coach": "Sean McDermott",
+    "coach": "Joe Brady",
     "score": 26,
     "calls": 5,
     "mistakes": 2,
@@ -15027,7 +17669,7 @@
    "week": 3,
    "away": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 30,
     "calls": 8,
     "mistakes": 0,
@@ -15163,7 +17805,7 @@
    "week": 3,
    "away": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 35,
     "calls": 4,
     "mistakes": 2,
@@ -16200,7 +18842,7 @@
    },
    "home": {
     "team": "BUF",
-    "coach": "Sean McDermott",
+    "coach": "Joe Brady",
     "score": 24,
     "calls": 3,
     "mistakes": 0,
@@ -17634,7 +20276,7 @@
    },
    "home": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 3,
     "calls": 6,
     "mistakes": 3,
@@ -18172,7 +20814,7 @@
    },
    "home": {
     "team": "BUF",
-    "coach": "Sean McDermott",
+    "coach": "Joe Brady",
     "score": 41,
     "calls": 2,
     "mistakes": 0,
@@ -19818,7 +22460,7 @@
    },
    "home": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 7,
     "calls": 7,
     "mistakes": 2,
@@ -20009,7 +22651,7 @@
    "week": 1,
    "away": {
     "team": "ARI",
-    "coach": "Jonathan Gannon",
+    "coach": "Mike LaFleur",
     "score": 26,
     "calls": 7,
     "mistakes": 4,
@@ -20165,7 +22807,7 @@
    "week": 1,
    "away": {
     "team": "ATL",
-    "coach": "Raheem Morris",
+    "coach": "Kevin Stefanski",
     "score": 13,
     "calls": 10,
     "mistakes": 2,
@@ -20507,7 +23149,7 @@
    "week": 1,
    "away": {
     "team": "BUF",
-    "coach": "Sean McDermott",
+    "coach": "Joe Brady",
     "score": 36,
     "calls": 6,
     "mistakes": 1,
@@ -22384,53 +25026,60 @@
  "game_letters": "A+ = no confident mistakes; otherwise ranked against every team-game since 2014 with one: A beats 75% of them, B 50%, C 25%, D 10%, F the worst 10%.",
  "teams": [
   {
-   "posteam": "PHI",
+   "posteam": "CAR",
    "games": 8,
-   "mistakes": 7,
-   "calls": 59,
-   "wins_lost_per_17": 0.309
+   "mistakes": 5,
+   "calls": 56,
+   "wins_lost_per_17": 0.275
   },
   {
-   "posteam": "CAR",
-   "games": 7,
-   "mistakes": 5,
-   "calls": 50,
-   "wins_lost_per_17": 0.314
+   "posteam": "PHI",
+   "games": 9,
+   "mistakes": 7,
+   "calls": 68,
+   "wins_lost_per_17": 0.275
   },
   {
    "posteam": "BUF",
-   "games": 7,
-   "mistakes": 4,
-   "calls": 35,
-   "wins_lost_per_17": 0.321
+   "games": 8,
+   "mistakes": 5,
+   "calls": 44,
+   "wins_lost_per_17": 0.339
   },
   {
    "posteam": "MIA",
-   "games": 7,
+   "games": 8,
    "mistakes": 8,
-   "calls": 43,
-   "wins_lost_per_17": 0.401
+   "calls": 49,
+   "wins_lost_per_17": 0.351
   },
   {
    "posteam": "SF",
-   "games": 7,
+   "games": 8,
    "mistakes": 3,
-   "calls": 35,
-   "wins_lost_per_17": 0.436
+   "calls": 39,
+   "wins_lost_per_17": 0.381
   },
   {
    "posteam": "DET",
-   "games": 7,
+   "games": 8,
    "mistakes": 6,
-   "calls": 44,
-   "wins_lost_per_17": 0.449
+   "calls": 52,
+   "wins_lost_per_17": 0.392
   },
   {
    "posteam": "CHI",
-   "games": 8,
-   "mistakes": 9,
-   "calls": 56,
-   "wins_lost_per_17": 0.462
+   "games": 9,
+   "mistakes": 10,
+   "calls": 61,
+   "wins_lost_per_17": 0.438
+  },
+  {
+   "posteam": "GB",
+   "games": 9,
+   "mistakes": 8,
+   "calls": 64,
+   "wins_lost_per_17": 0.442
   },
   {
    "posteam": "JAX",
@@ -22440,53 +25089,39 @@
    "wins_lost_per_17": 0.47
   },
   {
-   "posteam": "GB",
-   "games": 8,
-   "mistakes": 8,
-   "calls": 56,
-   "wins_lost_per_17": 0.497
-  },
-  {
-   "posteam": "DAL",
-   "games": 8,
-   "mistakes": 9,
-   "calls": 43,
-   "wins_lost_per_17": 0.516
+   "posteam": "ATL",
+   "games": 9,
+   "mistakes": 13,
+   "calls": 59,
+   "wins_lost_per_17": 0.535
   },
   {
    "posteam": "SEA",
-   "games": 8,
-   "mistakes": 8,
-   "calls": 55,
-   "wins_lost_per_17": 0.518
+   "games": 9,
+   "mistakes": 10,
+   "calls": 60,
+   "wins_lost_per_17": 0.549
   },
   {
-   "posteam": "LA",
-   "games": 8,
-   "mistakes": 7,
-   "calls": 46,
-   "wins_lost_per_17": 0.52
-  },
-  {
-   "posteam": "ATL",
-   "games": 8,
+   "posteam": "DAL",
+   "games": 9,
    "mistakes": 12,
-   "calls": 54,
-   "wins_lost_per_17": 0.597
+   "calls": 52,
+   "wins_lost_per_17": 0.592
   },
   {
-   "posteam": "NO",
-   "games": 7,
-   "mistakes": 9,
-   "calls": 48,
-   "wins_lost_per_17": 0.609
-  },
-  {
-   "posteam": "MIN",
-   "games": 7,
+   "posteam": "NYG",
+   "games": 8,
    "mistakes": 8,
-   "calls": 55,
-   "wins_lost_per_17": 0.632
+   "calls": 58,
+   "wins_lost_per_17": 0.608
+  },
+  {
+   "posteam": "TB",
+   "games": 9,
+   "mistakes": 13,
+   "calls": 67,
+   "wins_lost_per_17": 0.62
   },
   {
    "posteam": "PIT",
@@ -22496,46 +25131,60 @@
    "wins_lost_per_17": 0.643
   },
   {
-   "posteam": "KC",
-   "games": 7,
-   "mistakes": 11,
-   "calls": 47,
-   "wins_lost_per_17": 0.652
-  },
-  {
-   "posteam": "NYG",
-   "games": 7,
-   "mistakes": 8,
-   "calls": 48,
-   "wins_lost_per_17": 0.694
-  },
-  {
-   "posteam": "TB",
+   "posteam": "NO",
    "games": 8,
-   "mistakes": 13,
-   "calls": 58,
-   "wins_lost_per_17": 0.697
+   "mistakes": 10,
+   "calls": 56,
+   "wins_lost_per_17": 0.695
   },
   {
    "posteam": "WAS",
-   "games": 7,
-   "mistakes": 11,
-   "calls": 55,
-   "wins_lost_per_17": 0.714
-  },
-  {
-   "posteam": "CLE",
    "games": 8,
-   "mistakes": 16,
-   "calls": 62,
-   "wins_lost_per_17": 0.719
+   "mistakes": 13,
+   "calls": 63,
+   "wins_lost_per_17": 0.72
   },
   {
    "posteam": "LV",
+   "games": 9,
+   "mistakes": 13,
+   "calls": 56,
+   "wins_lost_per_17": 0.734
+  },
+  {
+   "posteam": "CLE",
+   "games": 9,
+   "mistakes": 17,
+   "calls": 72,
+   "wins_lost_per_17": 0.737
+  },
+  {
+   "posteam": "MIN",
+   "games": 8,
+   "mistakes": 9,
+   "calls": 63,
+   "wins_lost_per_17": 0.743
+  },
+  {
+   "posteam": "NE",
+   "games": 9,
+   "mistakes": 13,
+   "calls": 54,
+   "wins_lost_per_17": 0.745
+  },
+  {
+   "posteam": "LA",
+   "games": 9,
+   "mistakes": 10,
+   "calls": 55,
+   "wins_lost_per_17": 0.753
+  },
+  {
+   "posteam": "KC",
    "games": 8,
    "mistakes": 12,
-   "calls": 53,
-   "wins_lost_per_17": 0.783
+   "calls": 50,
+   "wins_lost_per_17": 0.766
   },
   {
    "posteam": "TEN",
@@ -22545,25 +25194,18 @@
    "wins_lost_per_17": 0.817
   },
   {
-   "posteam": "NE",
-   "games": 8,
-   "mistakes": 12,
-   "calls": 49,
-   "wins_lost_per_17": 0.837
-  },
-  {
    "posteam": "NYJ",
-   "games": 8,
-   "mistakes": 14,
-   "calls": 52,
-   "wins_lost_per_17": 0.878
+   "games": 9,
+   "mistakes": 18,
+   "calls": 61,
+   "wins_lost_per_17": 0.861
   },
   {
    "posteam": "ARI",
-   "games": 8,
-   "mistakes": 12,
-   "calls": 65,
-   "wins_lost_per_17": 0.948
+   "games": 9,
+   "mistakes": 13,
+   "calls": 72,
+   "wins_lost_per_17": 0.867
   },
   {
    "posteam": "BAL",
@@ -22573,39 +25215,39 @@
    "wins_lost_per_17": 1.01
   },
   {
-   "posteam": "IND",
+   "posteam": "LAC",
    "games": 8,
    "mistakes": 15,
-   "calls": 58,
-   "wins_lost_per_17": 1.13
-  },
-  {
-   "posteam": "LAC",
-   "games": 7,
-   "mistakes": 13,
-   "calls": 52,
-   "wins_lost_per_17": 1.173
+   "calls": 63,
+   "wins_lost_per_17": 1.107
   },
   {
    "posteam": "CIN",
-   "games": 7,
-   "mistakes": 13,
-   "calls": 36,
-   "wins_lost_per_17": 1.22
+   "games": 8,
+   "mistakes": 14,
+   "calls": 39,
+   "wins_lost_per_17": 1.118
+  },
+  {
+   "posteam": "IND",
+   "games": 9,
+   "mistakes": 16,
+   "calls": 67,
+   "wins_lost_per_17": 1.142
   },
   {
    "posteam": "HOU",
-   "games": 7,
+   "games": 8,
    "mistakes": 13,
-   "calls": 48,
-   "wins_lost_per_17": 1.333
+   "calls": 54,
+   "wins_lost_per_17": 1.166
   },
   {
    "posteam": "DEN",
-   "games": 8,
+   "games": 9,
    "mistakes": 14,
-   "calls": 57,
-   "wins_lost_per_17": 1.411
+   "calls": 61,
+   "wins_lost_per_17": 1.254
   }
  ]
 }
